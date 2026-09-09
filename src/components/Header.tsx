@@ -12,6 +12,7 @@ const navLinks = [
     href: '#services',
     dropdown: [
       { label: 'AI Agent Solutions', href: '/ai-agents' },
+      { label: 'AI Automation', href: '/ai-automation' },
       { label: 'AI Systems', href: '#' },
       { label: 'Digital Products', href: '#' },
       { label: 'Business Platforms', href: '#' },
@@ -22,7 +23,12 @@ const navLinks = [
   {
     label: 'Work',
     href: '#work',
-    dropdown: ['Van Travel Business', 'Power Mindset Breakthrough', 'AI FNA', 'Provexa AI'],
+    dropdown: [
+      { label: 'Van Travel Business', href: '/van-travel-business' },
+      'Power Mindset Breakthrough',
+      'AI FNA',
+      'Provexa AI',
+    ],
   },
   { label: 'Faq', href: '#faq' },
   { label: 'Contact', href: '/contact' },

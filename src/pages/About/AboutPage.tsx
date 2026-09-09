@@ -16,6 +16,8 @@ import integrationIcon from '../../assets/images/about/section2-icons/integratio
 import deploymentIcon from '../../assets/images/about/section2-icons/deployment.png';
 import heroBannerBlur from '../../assets/images/about/figma/hero-banner-blur.png';
 import ambientGlowBlob from '../../assets/images/about/figma/ambient-glow-blob.png';
+import archDecisionBg from '../../assets/images/about/figma/architecture-decision-bg.png';
+import archDecisionSphere from '../../assets/images/about/figma/architecture-decision-sphere.png';
 import heroBannerGlow from '../../assets/images/about/figma/about-banner12.png';
 import accessControlIcon from '../../assets/images/about/Access-control-c.png';
 import confidentialityIcon from '../../assets/images/about/Confidentiality-E.png';
@@ -26,9 +28,7 @@ import processGlow from '../../assets/images/about/figma/process-glow-rendered.p
 import archDivider1 from '../../assets/images/about/image-I-1.png';
 import archDivider2 from '../../assets/images/about/image-J-2.png';
 import archDivider3 from '../../assets/images/about/image-K-3.png';
-import archDivider4 from '../../assets/images/about/image-L-4.png';
 import archDivider5 from '../../assets/images/about/image-M-5.png';
-import principlesGlow from '../../assets/images/about/Engineering-principles-H.png';
 import aiGlow from '../../assets/images/about/Start-AI-Journey-P.png';
 import workGlow from '../../assets/images/about/Three-businesses-rigth-S.png';
 
@@ -115,20 +115,20 @@ const principles = [
     desc: 'The data model and integration boundaries are decided first. Systems fail slowly when this step is skipped, and the cost appears months later.',
   },
   {
-    title: 'Security as a default state',
-    desc: 'Least-privilege access, row-level authorization, encrypted secrets and audited administrative actions are part of the base build, not a later hardening project.',
-  },
-  {
     title: 'Automation with a human boundary',
     desc: 'Automated systems handle the predictable path. Ambiguity, exceptions and anything with commercial or legal consequence route to a person by design.',
   },
   {
-    title: 'No black boxes',
-    desc: 'Clients receive the code, the infrastructure, the documentation and the credentials. Ending an engagement should never mean losing a system.',
-  },
-  {
     title: 'AI applied where it pays off',
     desc: 'AI is used only where it demonstrably beats a simpler solution — never included just because it is fashionable to have.',
+  },
+  {
+    title: 'Security as a default state',
+    desc: 'Least-privilege access, row-level authorization, encrypted secrets and audited administrative actions are part of the base build, not a later hardening project.',
+  },
+  {
+    title: 'No black boxes',
+    desc: 'Clients receive the code, the infrastructure, the documentation and the credentials. Ending an engagement should never mean losing a system.',
   },
   {
     title: 'Honest scope',
@@ -315,7 +315,6 @@ export default function AboutPage() {
         <div className="container">
           <div className={`section-head ${layersHead.className}`} ref={layersHead.ref}>
             <img src={layersBadge} alt="" className="about-tech__badge" loading="lazy" />
-            {/* <span className="eyebrow-pill">How We Build</span> */}
             <h2 className="section-title">What we build, layer by layer</h2>
             <p className="section-subtitle">
               Every system we ship is made of the same five layers — scoped and
@@ -342,7 +341,7 @@ export default function AboutPage() {
       </section>
 
       <section className="about-principles section">
-        <img src={principlesGlow} alt="" className="about-principles__glow" loading="lazy" />
+        <img src={archDecisionBg} alt="" className="about-principles__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${principlesHead.className}`} ref={principlesHead.ref}>
             <span className="eyebrow-pill">Engineering principles</span>
@@ -353,14 +352,23 @@ export default function AboutPage() {
 
           <div className="about-arch-diagram">
             <div className="about-arch-diagram__panel about-arch-diagram__panel--left">
-              <span className="about-arch-diagram__pill">Business goal</span>
-              <span className="about-arch-diagram__pill">Existing systems</span>
-              <span className="about-arch-diagram__pill">Real data</span>
-              <span className="about-arch-diagram__pill">Constraints</span>
+              <div className="about-arch-diagram__row about-arch-diagram__row--end">
+                <span className="about-arch-diagram__pill about-arch-diagram__pill--orange">Business goal</span>
+              </div>
+              <div className="about-arch-diagram__row">
+                <span className="about-arch-diagram__pill about-arch-diagram__pill--blue">Existing systems</span>
+                <span className="about-arch-diagram__pill about-arch-diagram__pill--orange">Real data</span>
+              </div>
+              <div className="about-arch-diagram__row about-arch-diagram__row--center">
+                <span className="about-arch-diagram__pill about-arch-diagram__pill--orange">Constraints</span>
+              </div>
             </div>
             <div className="about-arch-diagram__center">
               <span className="about-arch-diagram__line" />
-              <div className="about-arch-diagram__circle">
+              <div
+                className="about-arch-diagram__circle"
+                style={{ backgroundImage: `url(${archDecisionSphere})` }}
+              >
                 <img src={architectureIcon} alt="" />
                 <span>
                   Architecture
@@ -371,9 +379,15 @@ export default function AboutPage() {
               <span className="about-arch-diagram__line" />
             </div>
             <div className="about-arch-diagram__panel about-arch-diagram__panel--right">
-              <span className="about-arch-diagram__pill">Documented model</span>
-              <span className="about-arch-diagram__pill">Working system</span>
-              <span className="about-arch-diagram__pill">Owned infrastructure</span>
+              <div className="about-arch-diagram__row">
+                <span className="about-arch-diagram__pill about-arch-diagram__pill--orange">Documented model</span>
+              </div>
+              <div className="about-arch-diagram__row">
+                <span className="about-arch-diagram__pill about-arch-diagram__pill--blue">Working system</span>
+              </div>
+              <div className="about-arch-diagram__row">
+                <span className="about-arch-diagram__pill about-arch-diagram__pill--orange">Owned infrastructure</span>
+              </div>
             </div>
           </div>
 
@@ -386,7 +400,6 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-        <img src={archDivider4} alt="" className="about-divider" loading="lazy" />
       </section>
 
       <section className="about-ai section">

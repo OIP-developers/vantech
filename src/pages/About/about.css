@@ -105,9 +105,13 @@
 
 .about-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.9fr 1fr;
   align-items: center;
-  gap: 60px;
+  gap: 70px;
+}
+
+.about-row > * {
+  min-width: 0;
 }
 
 .about-copy__list {
@@ -170,14 +174,14 @@
   background-size: cover;
   z-index: 2;
 }
-.about-process::after {
+.about-process:after {
   position: absolute;
   content: '';
   top:180px;
   right: 0;
   width: 256px;
   height: 605px;
-  background-image: url(../../../dist/assets/delivery-deliverables-right-imge-G-CHsMvwLQ.png);
+  background-image: url(../../../dist//assets/Three-businesses-rigth-S-C2aLWst_.png);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 2;
@@ -399,7 +403,6 @@
 .about-layers {
   position: relative;
   padding-top: 186px;
-  overflow: hidden;
 }
 
 .about-layers__bg {
@@ -418,6 +421,7 @@
 .about-layers .container {
   position: relative;
   z-index: 1;
+  max-width: 1228px;
 }
 
 .about-layers-table {
@@ -474,40 +478,57 @@
 /* ---------- Engineering principles ---------- */
 
 .about-principles {
-  padding-top: 149px;
+  position: relative;
+  padding: 149px 0 260px;
+  overflow: hidden;
+}
+
+.about-principles__bg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1920px;
+  max-width: none;
+  height: auto;
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .about-principles .container {
   z-index: 1;
-}
-
-.about-principles__glow {
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 560px;
-  height: auto;
-  opacity: 0.2;
-  filter: blur(20px);
-  z-index: 0;
-  pointer-events: none;
+  max-width: 1228px;
 }
 
 .about-principles__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px 25px;
   margin-top: 64px;
 }
 
 .about-principle-card {
   position: relative;
-  padding: 26px;
+  min-width: 0;
+  padding: 26px 28px;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(25px);
-  border: 1px solid var(--color-orange-3);
+  border: 1px solid transparent;
+}
+
+.about-principle-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--color-orange-3) 0%, rgba(0, 0, 0, 0) 55%, var(--color-blue-2) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .about-principle-card__title {
@@ -520,7 +541,7 @@
 }
 
 .about-principle-card__desc {
-  margin: 12px 0 0;
+  margin: 20px 0 0;
   color: var(--color-text-muted);
   font-size: 15px;
   line-height: 1.6;
@@ -530,7 +551,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 0;
   margin: 64px 0;
   flex-wrap: wrap;
 }
@@ -538,34 +559,47 @@
 .about-arch-diagram__panel {
   flex: 1 1 320px;
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 14px;
   padding: 32px 28px;
-  border-radius: 20px;
-  background: linear-gradient(176deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 100%);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 0% 100%, rgba(0, 122, 224, 0.2), transparent 55%),
+    linear-gradient(176deg, rgba(0, 0, 0, 0.85) 2.45%, rgba(10, 10, 12, 0.95) 100%);
   border: 1px solid var(--color-border-soft);
-  backdrop-filter: blur(40px);
 }
 
-.about-arch-diagram__panel--left {
+.about-arch-diagram__row {
+  display: flex;
+  gap: 12px;
+}
+
+.about-arch-diagram__panel--left .about-arch-diagram__row {
   justify-content: flex-end;
 }
 
-.about-arch-diagram__panel--right {
+.about-arch-diagram__row--center {
+  justify-content: center !important;
+}
+
+.about-arch-diagram__panel--right .about-arch-diagram__row {
   justify-content: flex-start;
 }
 
 .about-arch-diagram__pill {
-  padding: 11px 24px;
+  padding: 11px 22px;
   border-radius: 62px;
-  background: #1b1b1b;
+  background: #12151a;
   border: 1px solid var(--color-orange-3);
   color: var(--color-white);
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: 14px;
   white-space: nowrap;
+}
+
+.about-arch-diagram__pill--blue {
+  border-color: #2e7fd6;
 }
 
 .about-arch-diagram__center {
@@ -576,35 +610,37 @@
 
 .about-arch-diagram__line {
   position: relative;
-  width: 48px;
+  width: 56px;
   height: 0;
-  border-top: 1px dashed var(--color-orange-3);
-  opacity: 0.7;
+  border-top: 2px dotted #2e7fd6;
+  opacity: 0.85;
 }
 
 .about-arch-diagram__line::after {
   content: '';
   position: absolute;
-  top: -3px;
-  width: 6px;
-  height: 6px;
+  top: -4px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--color-orange-3);
-  box-shadow: 0 0 10px 2px rgba(255, 110, 20, 0.7);
+  box-shadow: 0 0 10px 3px rgba(255, 110, 20, 0.7);
 }
 
 .about-arch-diagram__line:first-child::after {
-  left: 0;
+  right: 16px;
 }
 
 .about-arch-diagram__line:last-child::after {
-  right: 0;
+  left: 16px;
 }
 
 .about-arch-diagram__circle {
   position: relative;
-  width: 150px;
-  height: 150px;
+  z-index: 1;
+  width: 220px;
+  height: 220px;
+  margin: 0 -10px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -613,30 +649,27 @@
   gap: 10px;
   padding: 16px;
   text-align: center;
-  background:
-    radial-gradient(circle at 28% 50%, rgba(0, 122, 224, 0.55), transparent 62%),
-    radial-gradient(circle at 72% 50%, rgba(255, 110, 20, 0.55), transparent 62%),
-    rgba(3, 1, 0, 0.7);
-  box-shadow: 0 0 45px 6px rgba(255, 110, 20, 0.18), 0 0 45px 6px rgba(0, 122, 224, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   flex-shrink: 0;
 }
 
 .about-arch-diagram__circle img {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
 }
 
 .about-arch-diagram__circle span {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.25;
   color: var(--color-white);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 980px) {
   .about-arch-diagram {
     flex-direction: column;
   }
@@ -644,8 +677,13 @@
     flex-basis: auto;
     width: 100%;
     padding: 24px 16px;
-    justify-content: center;
     gap: 10px;
+  }
+  .about-arch-diagram__row,
+  .about-arch-diagram__panel--left .about-arch-diagram__row,
+  .about-arch-diagram__panel--right .about-arch-diagram__row {
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .about-arch-diagram__pill {
     padding: 9px 14px;
@@ -656,27 +694,32 @@
   .about-arch-diagram__center {
     flex-direction: column;
   }
+  .about-arch-diagram__circle {
+    width: 170px;
+    height: 170px;
+    margin: -10px 0;
+  }
+  .about-arch-diagram__circle span {
+    font-size: 16px;
+  }
   .about-arch-diagram__line {
     width: 0;
     height: 28px;
     border-top: none;
-    border-left: 1px dashed var(--color-orange-3);
+    border-left: 2px dotted #2e7fd6;
   }
   .about-arch-diagram__line::after {
     top: auto;
     left: -3px;
   }
   .about-arch-diagram__line:first-child::after {
-    top: 0;
-  }
-  .about-arch-diagram__line:last-child::after {
     top: auto;
-    bottom: 0;
+    bottom: 16px;
     right: auto;
   }
-  .about-arch-diagram__panel--left,
-  .about-arch-diagram__panel--right {
-    justify-content: center;
+  .about-arch-diagram__line:last-child::after {
+    top: 16px;
+    left: -3px;
   }
 }
 
@@ -718,17 +761,22 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 13px;
 }
 
 .about-ai__point {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
-  padding: 22px 26px;
+  padding: 18px 24px;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid var(--color-orange-3);
+  min-width: 0;
+}
+
+.about-ai__point-text {
+  min-width: 0;
 }
 
 .about-ai__point-number {
@@ -758,13 +806,13 @@
 .about-risk__grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  margin-top: 48px;
+  gap: 32px;
+  margin-top: 64px;
 }
 
 .about-risk-card {
   position: relative;
-  padding: 28px 22px;
+  padding: 34px 24px;
   border-radius: 15px;
   background: linear-gradient(162deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 100%);
   border: 1px solid var(--color-orange-3);
@@ -772,28 +820,28 @@
 }
 
 .about-risk-card__icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
 }
 
 .about-risk-card__title {
   margin: 20px 0 0;
   font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 20px;
   color: var(--color-white);
 }
 
 .about-risk-card__desc {
-  margin: 10px 0 0;
+  margin: 20px 0 0;
   color: var(--color-text-muted);
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .about-risk__note {
-  margin: 40px auto 0;
+  margin: 56px auto 0;
   max-width: 800px;
   text-align: center;
   color: var(--color-text-muted);

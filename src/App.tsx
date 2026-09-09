@@ -6,6 +6,8 @@ import AboutPage from './pages/About/AboutPage';
 import PartnersPage from './pages/Partners/PartnersPage';
 import ContactPage from './pages/Contact/ContactPage';
 import AIAgentsPage from './pages/AIAgents/AIAgentsPage';
+import AIAutomationPage from './pages/AIAutomation/AIAutomationPage';
+import WorkVanTravelPage from './pages/WorkVanTravel/WorkVanTravelPage';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/partners" element={<PartnersPage />} />
         <Route path="/ai-agents" element={<AIAgentsPage />} />
+        <Route path="/ai-automation" element={<AIAutomationPage />} />
+        <Route path="/van-travel-business" element={<WorkVanTravelPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />

@@ -7,134 +7,179 @@ import CTA from '../../components/CTA';
 import { useReveal } from '../../hooks/useReveal';
 
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
-import aiAgentSvg from '../../assets/icons/griddy-icons-ai-assistant-filled.svg?raw';
-import aiEmployeeSvg from '../../assets/icons/garden-bot-sparkle-fill-12.svg?raw';
-import automationSvg from '../../assets/icons/eos-icons-action-chains.svg?raw';
-import voiceAiSvg from '../../assets/icons/ri-voice-ai-fill.svg?raw';
-import conversationalAiSvg from '../../assets/icons/boxicons-message-bubble-dots-filled.svg?raw';
-import customAiSvg from '../../assets/icons/meteor-icons-openai.svg?raw';
+import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
 
-import discoverSvg from '../../assets/icons/iconamoon-discover-light.svg?raw';
-import dataSvg from '../../assets/icons/bxs-data.svg?raw';
-import buildSvg from '../../assets/icons/ant-design-build-filled.svg?raw';
-import deploySvg from '../../assets/icons/ic-sharp-settings-applications.svg?raw';
+import routingSvg from '../../assets/icons/fluent-arrow-routing-rectangle-multiple-20-filled.svg?raw';
+import schedulerSvg from '../../assets/icons/ix-scheduler-filled.svg?raw';
+import faceAgentSvg from '../../assets/icons/mdi-face-agent.svg?raw';
+import fileRecordsSvg from '../../assets/icons/mage-file-records-fill.svg?raw';
+import personSupportSvg from '../../assets/icons/fluent-person-support-28-filled.svg?raw';
+import designSolidSvg from '../../assets/icons/clarity-design-solid.svg?raw';
 
-import speedSvg from '../../assets/icons/ic-outline-ads-click.svg?raw';
-import costSvg from '../../assets/icons/streamline-ultimate-monetization-touch-coin-bold.svg?raw';
-import qualitySvg from '../../assets/icons/fluent-receipt-sparkles-24-filled.svg?raw';
-import scaleSvg from '../../assets/icons/hugeicons-setup-01.svg?raw';
+import userCheckSvg from '../../assets/icons/bxs-user-check.svg?raw';
+import organizationSvg from '../../assets/icons/fluent-organization-20-filled.svg?raw';
+import plugConnectSvg from '../../assets/icons/boxicons-plug-connect-filled.svg?raw';
+import shieldErrorSvg from '../../assets/icons/fluent-shield-error-32-filled.svg?raw';
+import rateReviewSvg from '../../assets/icons/material-symbols-rate-review-rounded.svg?raw';
+import monitorHeartSvg from '../../assets/icons/ic-baseline-monitor-heart.svg?raw';
 
-import crmSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw';
-import voiceLineSvg from '../../assets/icons/ri-voice-ai-line.svg?raw';
-import emailSvg from '../../assets/icons/griddy-icons-email-filled.svg?raw';
-import messagesSvg from '../../assets/icons/boxicons-message-detail-filled.svg?raw';
-import paymentSvg from '../../assets/icons/fluent-payment-24-filled.svg?raw';
+import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
+import productFilledSvg from '../../assets/icons/ant-design-product-filled.svg?raw';
 
-import heroBannerBlur from '../../assets/images/about/figma/hero-banner-blur.png';
-import heroBannerGlow from '../../assets/images/about/figma/about-banner12.png';
-import processGlow from '../../assets/images/about/figma/process-glow-rendered.png';
-import archDivider1 from '../../assets/images/about/image-I-1.png';
-import archDivider2 from '../../assets/images/about/image-J-2.png';
-import aiGlow from '../../assets/images/about/Start-AI-Journey-P.png';
+import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw';
+import calendarSvg from '../../assets/icons/ant-design-calendar-filled.svg?raw';
+import phoneSvg from '../../assets/icons/solar-phone-calling-rounded-bold.svg?raw';
+import whatsappSvg from '../../assets/icons/basil-whatsapp-solid.svg?raw';
+import smsSvg from '../../assets/icons/mdi-message-processing.svg?raw';
+import emailSvg from '../../assets/icons/ic-baseline-email.svg?raw';
+import restApiSvg from '../../assets/icons/dashicons-rest-api.svg?raw';
 
-const agentTypes = [
+import heroOrb from '../../assets/images/ai-agents/figma/hero-orb.png';
+import sparkle3d from '../../assets/images/ai-agents/figma/sparkle-3d.png';
+import solutionIllustration from '../../assets/images/ai-agents/figma/solution-illustration.png';
+import buildGlow from '../../assets/images/ai-agents/figma/glow-ellipse-wide.png';
+import capabilitiesGlow from '../../assets/images/ai-agents/figma/glow-band.png';
+import architectureWave from '../../assets/images/ai-agents/figma/architecture-wave.svg';
+import pricingGlowOrb from '../../assets/images/ai-agents/figma/pricing-glow-orb.png';
+
+const problems = [
+  'Answers are generic because the assistant has no business knowledge.',
+  'The assistant can talk, but cannot actually do anything.',
+  'There is no defined handover when a request exceeds its scope.',
+  'Nobody can see what it said or why.',
+];
+
+const buildCards = [
   {
-    icon: aiAgentSvg,
-    title: 'AI Agents',
-    desc: 'Autonomous workers that complete multi-step tasks end to end — qualifying a lead, updating a record, scheduling a follow-up — without a person driving each step.',
+    icon: routingSvg,
+    title: 'Reception & Routing',
+    desc: 'Answers are generic because the assistant has no business knowledge.',
   },
   {
-    icon: aiEmployeeSvg,
-    title: 'AI Employees',
-    desc: 'A named role with a defined scope: it owns a queue, follows your playbook and reports on what it did.',
+    icon: schedulerSvg,
+    title: 'Scheduling Agents',
+    desc: 'Availability, booking and confirmation inside the conversation.',
   },
   {
-    icon: automationSvg,
-    title: 'Automation',
-    desc: 'The background workflows that route, notify and update systems so nothing depends on someone remembering to do it.',
+    icon: faceAgentSvg,
+    title: 'Sales Agents',
+    desc: 'Qualification, information and handover to your team.',
   },
   {
-    icon: voiceAiSvg,
-    title: 'Voice AI',
-    desc: 'Phone assistants that answer, qualify and route calls in a natural conversation, live or after hours.',
+    icon: fileRecordsSvg,
+    title: 'Operations Agents',
+    desc: 'Internal agents that retrieve information & update records.',
   },
   {
-    icon: conversationalAiSvg,
-    title: 'Conversational AI',
-    desc: 'Chat and messaging agents that hold context across a conversation instead of resetting after every reply.',
+    icon: personSupportSvg,
+    title: 'Support Agents',
+    desc: 'Answers grounded in your documented knowledge.',
   },
   {
-    icon: customAiSvg,
-    title: 'Custom AI',
-    desc: 'Models and tools built around a decision specific to your business, when an off-the-shelf assistant will not cut it.',
+    icon: designSolidSvg,
+    title: 'Escalation design',
+    desc: 'Defined thresholds where a human takes over with full context.',
   },
 ];
 
-const processSteps = [
+const capabilityRow1 = [
+  'Intent understanding',
+  'Knowledge grounding',
+  'Multi-channel conversations',
+  'Permitted actions',
+  'Record lookup and updates',
+  'Scheduling',
+];
+
+const capabilityRow2 = ['Conversation logging', 'Human escalation', 'Tone and policy control', 'Behaviour review'];
+
+const useCases = [
   {
-    number: '01',
-    icon: discoverSvg,
-    title: 'Discover & Scope',
-    desc: 'We map the task the agent will own, the systems it touches and the outcome that counts as success — written down before anything is built.',
+    title: 'Front-desk coverage',
+    desc: 'Enquiries answered outside working hours with proper handover.',
   },
   {
-    number: '02',
-    icon: dataSvg,
-    title: 'Ground in Your Data',
-    desc: 'The agent is connected to your actual content, records and knowledge base, so answers come from what is true for your business, not a generic model.',
+    title: 'Qualification',
+    desc: 'Structured information collected before your team engages.',
   },
   {
-    number: '03',
-    icon: buildSvg,
-    title: 'Build & Integrate',
-    desc: 'The agent is wired into your CRM, calendars, telephony or internal tools, with explicit permissions for what it can and cannot do.',
+    title: 'Customer support',
+    desc: 'Repeated questions answered from documented knowledge.',
   },
   {
-    number: '04',
-    icon: deploySvg,
-    title: 'Deploy & Monitor',
-    desc: 'Launch with logging, escalation paths and a rollback plan, then tuned against real usage instead of assumptions.',
+    title: 'Internal assistants',
+    desc: 'Staff-facing agents that find information across systems.',
   },
 ];
 
-const benefits = [
+const timelineSteps = [
+  { number: '01', title: 'Channels', tags: [['Chat', 'Voice'], ['SMS', 'Email'], ['Messaging']] },
+  { number: '02', title: 'Reasoning', tags: [['Intent', 'Policy'], ['Conversation state']] },
+  { number: '03', title: 'Knowledge', tags: [['Documents', 'FAQs'], ['Records'], ['Business rules']] },
+  { number: '04', title: 'Actions', tags: [['Lookups', 'Updates'], ['Scheduling'], ['Notifications']] },
+  { number: '05', title: 'Oversight', tags: [['Transcripts', 'Escalation'], ['Review']] },
+];
+
+const processCards = [
   {
-    icon: speedSvg,
-    title: 'Faster Response Times',
-    desc: 'Leads and customers get an answer in seconds, at any hour, instead of waiting on the next free rep.',
+    icon: userCheckSvg,
+    title: 'Define the role',
+    desc: 'Responsibilities, tone, boundaries and escalation rules.',
   },
   {
-    icon: costSvg,
-    title: 'Lower Operating Cost',
-    desc: 'Repetitive qualifying, routing and follow-up work moves onto a system that does not need a shift schedule.',
+    icon: organizationSvg,
+    title: 'Assemble knowledge',
+    desc: 'Collect and structure the information the agent may rely on.',
   },
   {
-    icon: qualitySvg,
-    title: 'Consistent Quality',
-    desc: 'The same playbook is followed every time — no missed steps, no answer that depends on who picked up.',
+    icon: plugConnectSvg,
+    title: 'Connect actions',
+    desc: 'Give the agent bounded access to the systems it needs.',
   },
   {
-    icon: scaleSvg,
-    title: 'Scales Without Hiring',
-    desc: 'Handle more volume the moment you need to, without a hiring and training cycle first.',
+    icon: shieldErrorSvg,
+    title: 'Build',
+    desc: 'Implement the agent, its guardrails and its logging.',
+  },
+  {
+    icon: rateReviewSvg,
+    title: 'Review',
+    desc: 'Test against real scenarios and refine from transcripts.',
+  },
+  {
+    icon: monitorHeartSvg,
+    title: 'Operate',
+    desc: 'Monitor conversations and extend capabilities over time.',
   },
 ];
 
-const channels = [
-  { icon: crmSvg, label: 'CRM' },
-  { icon: voiceLineSvg, label: 'Voice' },
+const integrations = [
+  { icon: funnelSvg, label: 'CRM' },
+  { icon: calendarSvg, label: 'Calendars' },
+  { icon: organizationSvg, label: 'Knowledge base' },
+  { icon: phoneSvg, label: 'Telephony' },
+  { icon: whatsappSvg, label: 'WhatsApp' },
+  { icon: smsSvg, label: 'SMS' },
   { icon: emailSvg, label: 'Email' },
-  { icon: messagesSvg, label: 'Messages' },
-  { icon: paymentSvg, label: 'Payments' },
-  { icon: dataSvg, label: 'RAG / Data' },
+  { icon: restApiSvg, label: 'Internal APIs' },
 ];
 
-const trustPoints = [
-  'Grounded in your content and data rather than open-ended generation',
-  'Explicit tool boundaries — an agent can only do what it has been given permission to do',
-  'Human escalation paths for anything sensitive, ambiguous or commercially significant',
-  'Full conversation and action logging so behavior can be reviewed and improved',
-  'Ongoing tuning informed by real usage instead of assumptions',
+const whyCards = [
+  {
+    icon: designServicesSvg,
+    title: 'Bounded by design',
+    desc: 'Agents act only within permissions you approve.',
+  },
+  {
+    icon: organizationSvg,
+    title: 'Grounded in your knowledge',
+    desc: 'Answers come from your content, not from guesswork.',
+  },
+  {
+    icon: productFilledSvg,
+    title: 'Escalation is part of the product',
+    desc: 'Handover to a person is designed, not an afterthought.',
+  },
 ];
 
 export default function AIAgentsPage() {
@@ -158,156 +203,290 @@ export default function AIAgentsPage() {
   }, []);
 
   const hero = useReveal('up');
-  const typesHead = useReveal('up');
-  const processHead = useReveal('up');
-  const benefitsHead = useReveal('up');
-  const channelsHead = useReveal('up');
-  const trustCopy = useReveal('left');
-  const trustList = useReveal<HTMLUListElement>('right');
+  const disappointHead = useReveal('left');
+  const disappointList = useReveal<HTMLUListElement>('right');
+  const solutionCopy = useReveal('right');
+  const buildHead = useReveal('up');
+  const capabilitiesHead = useReveal('up');
+  const usecasesHead = useReveal('up');
+  const architectureHead = useReveal('up');
+  const process2Head = useReveal('up');
+  const integrationsHead = useReveal('up');
+  const whyHead = useReveal('up');
 
   return (
     <main className="agents-page">
       <section className="agents-hero section">
-        <div className="agents-hero__banner">
-          <img src={heroBannerBlur} alt="" className="agents-hero__banner-img" loading="eager" />
-        </div>
-        <div className="agents-hero__banner-fade" />
-        <img src={heroBannerGlow} alt="" className="agents-hero__banner-glow" loading="eager" />
-        <div className={`container agents-hero__content ${hero.className}`} ref={hero.ref}>
-          <span className="eyebrow-pill">AI Agent Solutions</span>
-          <h1 className="agents-hero__title">
-            AI agents that handle real work, not just conversations.
-          </h1>
-          <p className="agents-hero__desc">
-            We design and deploy autonomous AI agents that qualify leads, answer
-            customers, update your systems and complete multi-step tasks — grounded
-            in your own data and built to a defined set of permissions.
-          </p>
-          <div className="agents-hero__actions">
-            <a href="#contact" className="btn btn-primary">
-              Start a Project
-              <Icon svg={arrowRightSvg} className="btn-icon" />
-            </a>
-            <a href="#process" className="btn btn-outline">
-              See How It Works
-              <Icon svg={arrowRightSvg} className="btn-icon" />
-            </a>
+        <div className="container">
+          <div className="row">
+          <div className={`agents-hero__content ${hero.className}`} ref={hero.ref}>
+            <span className="agents-hero__badge">
+              <Icon svg={servicesStarSvg} />
+              Services
+            </span>
+            <h1 className="agents-hero__title">AI Agents That Actually Work.</h1>
+            <p className="agents-hero__desc">
+              Agents built around a defined role, real business knowledge and permitted
+              actions — with a clear escalation path to your team when a request needs a
+              person.
+            </p>
+            <div className="agents-hero__actions">
+              <a href="#contact" className="btn btn-primary">
+                Get my project estimate
+                <Icon svg={arrowRightSvg} className="btn-icon" />
+              </a>
+              <a href="#agent-types" className="btn btn-outline">
+                Explore all services
+                <Icon svg={arrowRightSvg} className="btn-icon" />
+              </a>
+            </div>
+          </div>
+
+          <div className="agents-hero__graphic" aria-hidden="true">
+            <div className="hero__orbit-ring hero__orbit-ring--1" />
+            <div className="hero__orbit-ring hero__orbit-ring--2" />
+            <div className="hero__orbit-ring hero__orbit-ring--3" />
+            <div className="agents-hero__orb-wrap">
+              <img src={heroOrb} alt="" className="agents-hero__orb" loading="eager" />
+            </div>
+            <img src={sparkle3d} alt="" className="agents-hero__sparkle agents-hero__sparkle--a" />
+            <img src={sparkle3d} alt="" className="agents-hero__sparkle agents-hero__sparkle--b" />
+          </div>
           </div>
         </div>
       </section>
 
-      <section className="agents-types section" id="agent-types">
-        <div className="container">
-          <div className={`section-head ${typesHead.className}`} ref={typesHead.ref}>
-            <span className="eyebrow-pill">What We Build</span>
-            <h2 className="section-title">Six ways we put AI agents to work</h2>
-            <p className="section-subtitle">
-              Every agent is scoped to a specific job and the systems it needs to
-              touch — not a general-purpose chatbot bolted onto your website.
+      <section className="agents-disappoint section">
+        <div className="container agents-disappoint__row">
+          <div className={`agents-disappoint__copy ${disappointHead.className}`} ref={disappointHead.ref}>
+            <h2 className="agents-h1-lg">
+              Why Most <span className="accent">AI</span> Deployments Disappoint
+            </h2>
+            <p className="agents-p-lg">
+              A general-purpose chatbot with no knowledge, no permissions and no
+              escalation path creates work instead of removing it.
             </p>
           </div>
 
-          <div className="agents-types__grid">
-            {agentTypes.map((type) => (
-              <div className="agents-type-card" key={type.title}>
-                <div className="agents-type-card__icon">
-                  <Icon svg={type.icon} />
-                </div>
-                <h3 className="agents-type-card__title">{type.title}</h3>
-                <p className="agents-type-card__desc">{type.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <img src={archDivider2} alt="" className="agents-divider" loading="lazy" />
-      </section>
-
-      <section className="agents-process section" id="process">
-        <img src={processGlow} alt="" className="agents-process__glow-bg" loading="lazy" />
-        <div className="container agents-narrow">
-          <div className={`section-head ${processHead.className}`} ref={processHead.ref}>
-            <h2 className="section-title">How we take an agent from idea to production</h2>
-          </div>
-
-          <div className="agents-process__list">
-            {processSteps.map((step, i) => (
-              <div
-                className={`agents-process-item${i === 0 ? ' agents-process-item--active' : ''}`}
-                key={step.number}
-              >
-                <div className="agents-process-item__lead">
-                  <div className="agents-process-item__icon">
-                    <Icon svg={step.icon} />
-                  </div>
-                  <h3 className="agents-process-item__title">{step.title}</h3>
-                </div>
-                <p className="agents-process-item__desc">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="agents-benefits section">
-        <div className="container">
-          <div className={`section-head ${benefitsHead.className}`} ref={benefitsHead.ref}>
-            <span className="eyebrow-pill">Why It Pays Off</span>
-            <h2 className="section-title">What a well-built agent changes day to day</h2>
-          </div>
-
-          <div className="agents-benefits__grid">
-            {benefits.map((b) => (
-              <div className="agents-benefit-card" key={b.title}>
-                <div className="agents-benefit-card__icon">
-                  <Icon svg={b.icon} />
-                </div>
-                <h3 className="agents-benefit-card__title">{b.title}</h3>
-                <p className="agents-benefit-card__desc">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <img src={archDivider1} alt="" className="agents-divider" loading="lazy" />
-      </section>
-
-      <section className="agents-channels section">
-        <div className="container">
-          <div className={`section-head ${channelsHead.className}`} ref={channelsHead.ref}>
-            <h2 className="section-title">Works inside the tools you already run</h2>
-          </div>
-
-          <div className="agents-channels__row">
-            {channels.map((c) => (
-              <div className="agents-channel-pill" key={c.label}>
-                <Icon svg={c.icon} />
-                <span>{c.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="agents-trust section">
-        <img src={aiGlow} alt="" className="agents-trust__glow" loading="lazy" />
-        <div className="container agents-trust__row">
-          <div className={`agents-trust__copy ${trustCopy.className}`} ref={trustCopy.ref}>
-            <h2 className="agents-title">An agent you can actually trust with customers.</h2>
-            <p className="agents-desc">
-              A convincing demo takes an afternoon. An agent that answers accurately,
-              stays inside its permissions, escalates the right cases to a person, and
-              can be audited afterwards is an engineering project — that is the
-              standard every agent we ship is held to.
-            </p>
-          </div>
-
-          <ul className={`agents-trust__list ${trustList.className}`} ref={trustList.ref}>
-            {trustPoints.map((point, i) => (
-              <li key={point} className="agents-trust__point">
-                <span className="agents-trust__point-number">{String(i + 1).padStart(2, '0')}</span>
-                <span className="agents-trust__point-text">{point}</span>
+          <ul className={`agents-disappoint__list ${disappointList.className}`} ref={disappointList.ref}>
+            {problems.map((text, i) => (
+              <li className="agents-disappoint__item" key={text}>
+                <span className="agents-disappoint__item-number">{String(i + 1).padStart(2, '0')}</span>
+                <span className="agents-disappoint__item-text">{text}</span>
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="agents-solution section">
+        <div className="container agents-solution__row">
+          <div className="agents-solution__graphic">
+            <img src={solutionIllustration} alt="" loading="lazy" />
+          </div>
+
+          <div className={`agents-solution__copy ${solutionCopy.className}`} ref={solutionCopy.ref}>
+            <h2 className="agents-solution__title">Agents with a role, knowledge and permissions</h2>
+            <p className="agents-solution__desc">
+              We define what each agent is responsible for, connect it to your knowledge
+              and systems, and give it a bounded set of actions it is allowed to
+              perform. Conversations are logged, escalation is explicit, and behaviour
+              is reviewed against real transcripts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="agents-build section" id="agent-types">
+        <img src={buildGlow} alt="" className="agents-build__bg" loading="lazy" />
+        <div className="container">
+          <div className={`section-head ${buildHead.className}`} ref={buildHead.ref}>
+            <h2 className="agents-h2">What We Build</h2>
+          </div>
+
+          <div className="agents-build__grid">
+            {buildCards.map((card) => (
+              <div className="agents-card agents-build-card" key={card.title}>
+                <div className="agents-icon-badge">
+                  <Icon svg={card.icon} />
+                </div>
+                <h3 className="agents-build-card__title">{card.title}</h3>
+                <p className="agents-build-card__desc">{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="agents-capabilities section">
+        {/* <img src={capabilitiesGlow} alt="" className="agents-capabilities__bg" loading="lazy" /> */}
+        <div className="container">
+          <div className={`section-head ${capabilitiesHead.className}`} ref={capabilitiesHead.ref}>
+            <h2 className="agents-h2">Capabilities</h2>
+          </div>
+
+          <div className="agents-capabilities__rows">
+            <div className="agents-capabilities__row">
+              {capabilityRow1.map((label, i) => (
+                <span className={`agents-pill${i === 0 ? ' agents-pill--active' : ''}`} key={label}>
+                  <span className="agents-pill__dot">
+                    <span />
+                  </span>
+                  {label}
+                </span>
+              ))}
+            </div>
+            <div className="agents-capabilities__row">
+              {capabilityRow2.map((label) => (
+                <span className="agents-pill" key={label}>
+                  <span className="agents-pill__dot">
+                    <span />
+                  </span>
+                  {label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="agents-usecases section">
+        <div className="container">
+          <div className={`section-head ${usecasesHead.className}`} ref={usecasesHead.ref}>
+            <h2 className="agents-h2">Use Cases</h2>
+          </div>
+
+          <div className="agents-usecases__grid">
+            {useCases.map((item) => (
+              <div className="agents-card agents-usecase-card" key={item.title}>
+                <h3 className="agents-usecase-card__title">{item.title}</h3>
+                <hr className="agents-usecase-card__divider" />
+                <p className="agents-usecase-card__desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="agents-architecture section" id="process">
+        <img src={architectureWave} alt="" className="agents-architecture__bg" loading="lazy" />
+        <div className="container">
+          <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
+            <h2 className="agents-h1-lg agents-h1-lg--center">Agent architecture</h2>
+            <p className="agents-section-copy">
+              An agent is a system, not a prompt: knowledge, tools, permissions, memory
+              and escalation are designed together.
+            </p>
+          </div>
+
+          <div style={{ position: 'relative' }}>
+            <hr className="agents-architecture__divider" />
+            <span className="agents-architecture__divider-dot" />
+          </div>
+
+          <div className="agents-timeline">
+            {timelineSteps.map((step) => (
+              <div className="agents-timeline-step" key={step.number}>
+                <span className="agents-timeline-step__badge">{step.number}</span>
+                <h3 className="agents-timeline-step__title">{step.title}</h3>
+                <div className="agents-timeline-step__tags">
+                  {step.tags.map((row, i) => (
+                    <div className="agents-timeline-step__tag-row" key={i}>
+                      {row.map((tag) => (
+                        <span className="agents-timeline-tag" key={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="agents-process2 section">
+        <div className="container">
+          <div className={`section-head ${process2Head.className}`} ref={process2Head.ref}>
+            <h2 className="agents-h2">Agent architecture</h2>
+            <p className="agents-section-copy">
+              An agent is a system, not a prompt: knowledge, tools, permissions, memory
+              and escalation are designed together.
+            </p>
+          </div>
+
+          <div className="agents-process2__grid">
+            {processCards.map((card) => (
+              <div className="agents-card agents-card--flat agents-process2-card" key={card.title}>
+                <div className="agents-icon-badge">
+                  <Icon svg={card.icon} />
+                </div>
+                <div className="agents-process2-card__body">
+                  <h3 className="agents-process2-card__title">{card.title}</h3>
+                  <p className="agents-process2-card__desc">{card.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="agents-integrations section">
+        <div className="container">
+          <div className={`section-head ${integrationsHead.className}`} ref={integrationsHead.ref}>
+            <h2 className="agents-h1-lg agents-h1-lg--center">Potential Integrations</h2>
+          </div>
+
+          <div className="agents-integrations__grid">
+            {integrations.map((item) => (
+              <span className="agents-integration-pill" key={item.label}>
+                <Icon svg={item.icon} />
+                {item.label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="agents-why section">
+        <div className="container">
+          <div className={`section-head ${whyHead.className}`} ref={whyHead.ref}>
+            <h2 className="agents-h2">Why Van Tech Systems</h2>
+          </div>
+
+          <div className="agents-why__grid">
+            {whyCards.map((card) => (
+              <div className="agents-card agents-card--flat agents-why-card" key={card.title}>
+                <div className="agents-icon-badge">
+                  <Icon svg={card.icon} />
+                </div>
+                <div>
+                  <h3 className="agents-why-card__title">{card.title}</h3>
+                  <p className="agents-why-card__desc">{card.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="agents-pricing-cta section">
+        <div className="container">
+          <div className="agents-pricing-cta__card">
+            <img src={pricingGlowOrb} alt="" className="agents-pricing-cta__glow" loading="lazy" />
+            <div className="agents-pricing-cta__copy">
+              <h2 className="agents-pricing-cta__title">Starting at $1,500/month</h2>
+              <p className="agents-pricing-cta__desc">
+                Starting prices are planning benchmarks. Final pricing depends on scope,
+                architecture, integrations and technical requirements.
+              </p>
+            </div>
+            <a href="#contact" className="btn btn-primary">
+              Get my project estimate
+              <Icon svg={arrowRightSvg} className="btn-icon" />
+            </a>
+          </div>
         </div>
       </section>
 
