@@ -38,7 +38,6 @@ import heroOrb from '../../assets/images/ai-agents/figma/hero-orb.png';
 import sparkle3d from '../../assets/images/ai-agents/figma/sparkle-3d.png';
 import solutionIllustration from '../../assets/images/ai-agents/figma/solution-illustration.png';
 import buildGlow from '../../assets/images/ai-agents/figma/glow-ellipse-wide.png';
-import capabilitiesGlow from '../../assets/images/ai-agents/figma/glow-band.png';
 import architectureWave from '../../assets/images/ai-agents/figma/architecture-wave.svg';
 import pricingGlowOrb from '../../assets/images/ai-agents/figma/pricing-glow-orb.png';
 
@@ -319,7 +318,6 @@ export default function AIAgentsPage() {
       </section>
 
       <section className="agents-capabilities section">
-        {/* <img src={capabilitiesGlow} alt="" className="agents-capabilities__bg" loading="lazy" /> */}
         <div className="container">
           <div className={`section-head ${capabilitiesHead.className}`} ref={capabilitiesHead.ref}>
             <h2 className="agents-h2">Capabilities</h2>
