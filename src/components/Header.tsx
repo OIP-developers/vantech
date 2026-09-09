@@ -10,7 +10,13 @@ const navLinks = [
   {
     label: 'Services',
     href: '#services',
-    dropdown: ['AI Systems', 'Digital Products', 'Business Platforms', 'Digital Commerce'],
+    dropdown: [
+      { label: 'AI Agent Solutions', href: '/ai-agents' },
+      { label: 'AI Systems', href: '#' },
+      { label: 'Digital Products', href: '#' },
+      { label: 'Business Platforms', href: '#' },
+      { label: 'Digital Commerce', href: '#' },
+    ],
   },
   { label: 'Partner Program', href: '/partners' },
   {
@@ -54,13 +60,17 @@ export default function Header() {
                   {link.dropdown && (
                     <div className="navbar__dropdown-wrap">
                       <ul className="navbar__dropdown">
-                        {link.dropdown.map((item) => (
-                          <li key={item}>
-                            <a href="#" onClick={() => setIsMenuOpen(false)}>
-                              {item}
-                            </a>
-                          </li>
-                        ))}
+                        {link.dropdown.map((item) => {
+                          const itemLabel = typeof item === 'string' ? item : item.label;
+                          const itemHref = typeof item === 'string' ? '#' : item.href;
+                          return (
+                            <li key={itemLabel}>
+                              <a href={itemHref} onClick={() => setIsMenuOpen(false)}>
+                                {itemLabel}
+                              </a>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   )}

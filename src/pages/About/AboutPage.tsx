@@ -15,6 +15,7 @@ import buildIcon from '../../assets/images/about/section2-icons/build.png';
 import integrationIcon from '../../assets/images/about/section2-icons/integration.png';
 import deploymentIcon from '../../assets/images/about/section2-icons/deployment.png';
 import heroBannerBlur from '../../assets/images/about/figma/hero-banner-blur.png';
+import ambientGlowBlob from '../../assets/images/about/figma/ambient-glow-blob.png';
 import heroBannerGlow from '../../assets/images/about/figma/about-banner12.png';
 import accessControlIcon from '../../assets/images/about/Access-control-c.png';
 import confidentialityIcon from '../../assets/images/about/Confidentiality-E.png';
@@ -310,7 +311,7 @@ export default function AboutPage() {
       </section>
 
       <section className="about-layers section">
-        <img src={heroBannerBlur} alt="" className="about-layers__bg" loading="lazy" />
+        <img src={ambientGlowBlob} alt="" className="about-layers__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${layersHead.className}`} ref={layersHead.ref}>
             <img src={layersBadge} alt="" className="about-tech__badge" loading="lazy" />

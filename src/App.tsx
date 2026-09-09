@@ -5,6 +5,7 @@ import HomePage from './pages/Home/HomePage';
 import AboutPage from './pages/About/AboutPage';
 import PartnersPage from './pages/Partners/PartnersPage';
 import ContactPage from './pages/Contact/ContactPage';
+import AIAgentsPage from './pages/AIAgents/AIAgentsPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/partners" element={<PartnersPage />} />
+        <Route path="/ai-agents" element={<AIAgentsPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />
