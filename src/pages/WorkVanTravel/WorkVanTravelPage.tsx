@@ -14,6 +14,10 @@ import databaseGearSvg from '../../assets/icons/bi-database-fill-gear.svg?raw';
 import diagramVector29 from '../../assets/icons/work-van-diagram-vector-29.svg';
 import diagramVector30 from '../../assets/icons/work-van-diagram-vector-30.svg';
 import diagramVector31 from '../../assets/icons/work-van-diagram-vector-31.svg';
+import closingSparkle from '../../assets/icons/work-van-closing-sparkle.svg';
+import closingRing1 from '../../assets/icons/work-van-closing-ring-1.svg';
+import closingRing2 from '../../assets/icons/work-van-closing-ring-2.svg';
+import closingRing3 from '../../assets/icons/work-van-closing-ring-3.svg';
 
 import browserMockup from '../../assets/images/work-van-travel/figma/browser-mockup.png';
 import bannerWide from '../../assets/images/work-van-travel/figma/banner-wide.png';
@@ -80,7 +84,7 @@ export default function WorkVanTravelPage() {
   const relatedReveal = useReveal('up');
 
   return (
-    <main className="wvt-page">
+    <main className="wvt-page backimage-boy">
       <section className="wvt-hero section" id="wvt-hero">
 
         <div className="container wvt-hero__row">
@@ -129,9 +133,9 @@ export default function WorkVanTravelPage() {
           <div className="wvt-browser-mock">
             <div className="wvt-browser-mock__toolbar">
               <div className="wvt-browser-mock__dots">
-                <span />
-                <span />
-                <span />
+                <span className='red' />
+                <span className='yellow' />
+                <span className='green'/>
               </div>
               <div className="wvt-browser-mock__url">
                 <a href="https://vantravelbusiness.com/" target="_blank" rel="noreferrer">
@@ -263,6 +267,7 @@ export default function WorkVanTravelPage() {
               </div>
             ))}
           </div>
+          <p className="wvt-flow__caption">Conceptual system view</p>
         </div>
       </section>
 
@@ -288,9 +293,10 @@ export default function WorkVanTravelPage() {
 
             <div className="wvt-diagram__pills">
               {diagramPills.map((pill) => (
-                <span className="wvt-diagram__pill" key={pill}>
+                <span className="wvt-diagram__pill-row" key={pill}>
                   <span className="wvt-diagram__pill-dot" />
-                  {pill}
+                  <span className="wvt-diagram__pill-line" />
+                  <span className="wvt-diagram__pill">{pill}</span>
                 </span>
               ))}
             </div>
@@ -351,7 +357,11 @@ export default function WorkVanTravelPage() {
           <div className="wvt-closing__box">
             <img src={ctaBoxBg} alt="" className="wvt-closing__bg" loading="lazy" />
             <div className="wvt-closing__orb">
+              <img src={closingRing1} alt="" className="wvt-closing__ring wvt-closing__ring--1" />
+              <img src={closingRing2} alt="" className="wvt-closing__ring wvt-closing__ring--2" />
+              <img src={closingRing3} alt="" className="wvt-closing__ring wvt-closing__ring--3" />
               <img src={orbSphere} alt="" className="orb-sphere__img orb-sphere__img--spin" />
+              <img src={closingSparkle} alt="" className="wvt-closing__sparkle" />
             </div>
             <div className="wvt-closing__content">
               <h2 className="wvt-closing__title">Let&apos;s build what comes next.</h2>
