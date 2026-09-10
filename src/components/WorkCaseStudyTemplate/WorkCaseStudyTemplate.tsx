@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import '../../pages/WorkVanTravel/work-van-travel.css';
+import './work-case-study.css';
 import Icon from '../Icon';
 import FAQ from '../FAQ';
 import Testimonials from '../Testimonials';

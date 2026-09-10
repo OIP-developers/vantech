@@ -41,16 +41,24 @@ const navLinks = [
       { label: 'All Access Trip', href: '/all-access-trip' },
     ],
   },
-  { label: 'Faq', href: '#faq' },
+  { label: 'Faq', href: '#faq', samePage: true },
   { label: 'Contact', href: '/contact' },
 ];
 
 const languages = ['EN', 'FR', 'ES', 'PT'];
 
+const MOBILE_NAV_QUERY = '(max-width: 980px)';
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setOpenDropdown(null);
+  };
 
   return (
     <header className="site-header">
@@ -64,10 +72,27 @@ export default function Header() {
             <ul className="navbar__links">
               {navLinks.map((link) => {
                 const href =
-                  link.href.startsWith('#') && !isHome ? `/${link.href}` : link.href;
+                  link.href.startsWith('#') && !isHome && !link.samePage
+                    ? `/${link.href}`
+                    : link.href;
+                const isOpen = openDropdown === link.label;
                 return (
-                <li key={link.label} className={link.dropdown ? 'has-dropdown' : ''}>
-                  <a href={href} className="navbar__link" onClick={() => setIsMenuOpen(false)}>
+                <li
+                  key={link.label}
+                  className={`${link.dropdown ? 'has-dropdown' : ''}${isOpen ? ' is-dropdown-open' : ''}`}
+                >
+                  <a
+                    href={href}
+                    className="navbar__link"
+                    onClick={(e) => {
+                      if (link.dropdown && window.matchMedia(MOBILE_NAV_QUERY).matches) {
+                        e.preventDefault();
+                        setOpenDropdown((prev) => (prev === link.label ? null : link.label));
+                        return;
+                      }
+                      closeMenu();
+                    }}
+                  >
                     {link.label}
                     {link.dropdown && (
                       <Icon svg={arrowDownSvg} className="navbar__link-arrow" />
@@ -82,7 +107,7 @@ export default function Header() {
                           const itemHref = typeof item === 'string' ? '#' : item.href;
                           return (
                             <li key={itemLabel}>
-                              <a href={itemHref} onClick={() => setIsMenuOpen(false)}>
+                              <a href={itemHref} onClick={closeMenu}>
                                 {itemLabel}
                               </a>
                             </li>
@@ -107,7 +132,7 @@ export default function Header() {
             <a
               href={isHome ? '#contact' : '/#contact'}
               className="navbar__cta navbar__cta--mobile"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               Start a Project
             </a>
@@ -129,7 +154,10 @@ export default function Header() {
               className={`navbar__toggle${isMenuOpen ? ' is-open' : ''}`}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
-              onClick={() => setIsMenuOpen((open) => !open)}
+              onClick={() => {
+                setIsMenuOpen((open) => !open);
+                setOpenDropdown(null);
+              }}
             >
               <span />
               <span />
