@@ -15,7 +15,6 @@ import diagramVector29 from '../../assets/icons/work-van-diagram-vector-29.svg';
 import diagramVector30 from '../../assets/icons/work-van-diagram-vector-30.svg';
 import diagramVector31 from '../../assets/icons/work-van-diagram-vector-31.svg';
 
-import heroBannerBlur from '../../assets/images/about/figma/hero-banner-blur.png';
 import browserMockup from '../../assets/images/work-van-travel/figma/browser-mockup.png';
 import bannerWide from '../../assets/images/work-van-travel/figma/banner-wide.png';
 import iconCircleBg from '../../assets/images/work-van-travel/figma/icon-circle-bg.png';

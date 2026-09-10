@@ -14,8 +14,6 @@ import orbitRing from '../../assets/images/ai-automation/figma/orbit-ring.svg';
 import orbitEllipse from '../../assets/images/ai-automation/figma/orbit-ellipse.svg';
 // Shared hero ombre glow — the same asset already used behind the hero on
 // the About and Partners pages; reused here instead of a duplicate export.
-import heroBannerBlur from '../../assets/images/about/figma/hero-banner-blur.png';
-import bottomSphere from '../../assets/images/ai-automation/figma/bottom-sphere.png';
 
 const ORBIT_DURATION = '42s';
 
