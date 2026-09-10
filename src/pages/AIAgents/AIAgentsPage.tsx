@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './ai-agents.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -9,22 +9,25 @@ import { useReveal } from '../../hooks/useReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
 
-import routingSvg from '../../assets/icons/fluent-arrow-routing-rectangle-multiple-20-filled.svg?raw';
-import schedulerSvg from '../../assets/icons/ix-scheduler-filled.svg?raw';
-import faceAgentSvg from '../../assets/icons/mdi-face-agent.svg?raw';
-import fileRecordsSvg from '../../assets/icons/mage-file-records-fill.svg?raw';
-import personSupportSvg from '../../assets/icons/fluent-person-support-28-filled.svg?raw';
-import designSolidSvg from '../../assets/icons/clarity-design-solid.svg?raw';
+import buildIconReceptionRouting from '../../assets/images/ai-agents/figma/build-icon-reception-routing.png';
+import buildIconSales from '../../assets/images/ai-agents/figma/build-icon-sales.png';
+import buildIconSupport from '../../assets/images/ai-agents/figma/build-icon-support.png';
+import buildIconScheduling from '../../assets/images/ai-agents/figma/build-icon-scheduling.png';
+import buildIconOperations from '../../assets/images/ai-agents/figma/build-icon-operations.png';
+import buildIconEscalation from '../../assets/images/ai-agents/figma/build-icon-escalation.png';
 
-import userCheckSvg from '../../assets/icons/bxs-user-check.svg?raw';
+import processIconDefineRole from '../../assets/images/ai-agents/figma/process-icon-define-role.png';
+import processIconAssembleKnowledge from '../../assets/images/ai-agents/figma/process-icon-assemble-knowledge.png';
+import processIconConnectActions from '../../assets/images/ai-agents/figma/process-icon-connect-actions.png';
+import processIconBuild from '../../assets/images/ai-agents/figma/process-icon-build.png';
+import processIconReview from '../../assets/images/ai-agents/figma/process-icon-review.png';
+import processIconOperate from '../../assets/images/ai-agents/figma/process-icon-operate.png';
+
 import organizationSvg from '../../assets/icons/fluent-organization-20-filled.svg?raw';
-import plugConnectSvg from '../../assets/icons/boxicons-plug-connect-filled.svg?raw';
-import shieldErrorSvg from '../../assets/icons/fluent-shield-error-32-filled.svg?raw';
-import rateReviewSvg from '../../assets/icons/material-symbols-rate-review-rounded.svg?raw';
-import monitorHeartSvg from '../../assets/icons/ic-baseline-monitor-heart.svg?raw';
 
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import productFilledSvg from '../../assets/icons/ant-design-product-filled.svg?raw';
+import whyIconBoundedDesign from '../../assets/images/ai-agents/figma/why-icon-bounded-design.png';
+import whyIconGroundedKnowledge from '../../assets/images/ai-agents/figma/why-icon-grounded-knowledge.png';
+import whyIconEscalationProduct from '../../assets/images/ai-agents/figma/why-icon-escalation-product.png';
 
 import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw';
 import calendarSvg from '../../assets/icons/ant-design-calendar-filled.svg?raw';
@@ -36,9 +39,7 @@ import restApiSvg from '../../assets/icons/dashicons-rest-api.svg?raw';
 
 import heroOrb from '../../assets/images/ai-agents/figma/hero-orb.png';
 import sparkle3d from '../../assets/images/ai-agents/figma/sparkle-3d.png';
-import solutionIllustration from '../../assets/images/ai-agents/figma/solution-illustration.png';
-import buildGlow from '../../assets/images/ai-agents/figma/glow-ellipse-wide.png';
-import architectureWave from '../../assets/images/ai-agents/figma/architecture-wave.svg';
+import solutionIllustration from '../../assets/images/ai-agents/figma/agents-solution__graphic.png';
 import pricingGlowOrb from '../../assets/images/ai-agents/figma/pricing-glow-orb.png';
 
 const problems = [
@@ -50,34 +51,40 @@ const problems = [
 
 const buildCards = [
   {
-    icon: routingSvg,
+    icon: buildIconReceptionRouting,
     title: 'Reception & Routing',
     desc: 'Answers are generic because the assistant has no business knowledge.',
+    descWidth: 310,
   },
   {
-    icon: schedulerSvg,
-    title: 'Scheduling Agents',
-    desc: 'Availability, booking and confirmation inside the conversation.',
-  },
-  {
-    icon: faceAgentSvg,
+    icon: buildIconSales,
     title: 'Sales Agents',
     desc: 'Qualification, information and handover to your team.',
+    descWidth: 345,
   },
   {
-    icon: fileRecordsSvg,
-    title: 'Operations Agents',
-    desc: 'Internal agents that retrieve information & update records.',
-  },
-  {
-    icon: personSupportSvg,
+    icon: buildIconSupport,
     title: 'Support Agents',
     desc: 'Answers grounded in your documented knowledge.',
+    descWidth: 324,
   },
   {
-    icon: designSolidSvg,
+    icon: buildIconScheduling,
+    title: 'Scheduling Agents',
+    desc: 'Availability, booking and confirmation inside the conversation.',
+    descWidth: 306,
+  },
+  {
+    icon: buildIconOperations,
+    title: 'Operations Agents',
+    desc: 'Internal agents that retrieve information & update records.',
+    descWidth: 342,
+  },
+  {
+    icon: buildIconEscalation,
     title: 'Escalation design',
     desc: 'Defined thresholds where a human takes over with full context.',
+    descWidth: 335,
   },
 ];
 
@@ -121,43 +128,52 @@ const timelineSteps = [
 
 const processCards = [
   {
-    icon: userCheckSvg,
+    icon: processIconDefineRole,
     title: 'Define the role',
     desc: 'Responsibilities, tone, boundaries and escalation rules.',
+    descWidth: 253,
   },
   {
-    icon: organizationSvg,
+    icon: processIconAssembleKnowledge,
     title: 'Assemble knowledge',
     desc: 'Collect and structure the information the agent may rely on.',
+    descWidth: 264,
   },
   {
-    icon: plugConnectSvg,
+    icon: processIconConnectActions,
     title: 'Connect actions',
     desc: 'Give the agent bounded access to the systems it needs.',
+    descWidth: 242,
   },
   {
-    icon: shieldErrorSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'Implement the agent, its guardrails and its logging.',
+    descWidth: 253,
   },
   {
-    icon: rateReviewSvg,
+    icon: processIconReview,
     title: 'Review',
     desc: 'Test against real scenarios and refine from transcripts.',
+    descWidth: 253,
   },
   {
-    icon: monitorHeartSvg,
+    icon: processIconOperate,
     title: 'Operate',
     desc: 'Monitor conversations and extend capabilities over time.',
+    descWidth: 253,
   },
 ];
 
-const integrations = [
+const integrationsRow1 = [
   { icon: funnelSvg, label: 'CRM' },
   { icon: calendarSvg, label: 'Calendars' },
   { icon: organizationSvg, label: 'Knowledge base' },
   { icon: phoneSvg, label: 'Telephony' },
   { icon: whatsappSvg, label: 'WhatsApp' },
+];
+
+const integrationsRow2 = [
   { icon: smsSvg, label: 'SMS' },
   { icon: emailSvg, label: 'Email' },
   { icon: restApiSvg, label: 'Internal APIs' },
@@ -165,17 +181,17 @@ const integrations = [
 
 const whyCards = [
   {
-    icon: designServicesSvg,
+    icon: whyIconBoundedDesign,
     title: 'Bounded by design',
     desc: 'Agents act only within permissions you approve.',
   },
   {
-    icon: organizationSvg,
+    icon: whyIconGroundedKnowledge,
     title: 'Grounded in your knowledge',
     desc: 'Answers come from your content, not from guesswork.',
   },
   {
-    icon: productFilledSvg,
+    icon: whyIconEscalationProduct,
     title: 'Escalation is part of the product',
     desc: 'Handover to a person is designed, not an afterthought.',
   },
@@ -297,7 +313,6 @@ export default function AIAgentsPage() {
       </section>
 
       <section className="agents-build section" id="agent-types">
-        <img src={buildGlow} alt="" className="agents-build__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${buildHead.className}`} ref={buildHead.ref}>
             <h2 className="agents-h2">What We Build</h2>
@@ -306,11 +321,14 @@ export default function AIAgentsPage() {
           <div className="agents-build__grid">
             {buildCards.map((card) => (
               <div className="agents-card agents-build-card" key={card.title}>
-                <div className="agents-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="agents-build-card__glow" />
+                <div className="agents-build-card__head">
+                  <h3 className="agents-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="agents-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="agents-build-card__title">{card.title}</h3>
-                <p className="agents-build-card__desc">{card.desc}</p>
+                <p className="agents-build-card__desc" style={{ maxWidth: card.descWidth }}>
+                  {card.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -325,8 +343,8 @@ export default function AIAgentsPage() {
 
           <div className="agents-capabilities__rows">
             <div className="agents-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`agents-pill${i === 0 ? ' agents-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="agents-pill" key={label}>
                   <span className="agents-pill__dot">
                     <span />
                   </span>
@@ -367,7 +385,6 @@ export default function AIAgentsPage() {
       </section>
 
       <section className="agents-architecture section" id="process">
-        <img src={architectureWave} alt="" className="agents-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="agents-h1-lg agents-h1-lg--center">Agent architecture</h2>
@@ -417,13 +434,13 @@ export default function AIAgentsPage() {
           <div className="agents-process2__grid">
             {processCards.map((card) => (
               <div className="agents-card agents-card--flat agents-process2-card" key={card.title}>
-                <div className="agents-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="agents-process2-card__body">
                   <h3 className="agents-process2-card__title">{card.title}</h3>
-                  <p className="agents-process2-card__desc">{card.desc}</p>
+                  <p className="agents-process2-card__desc" style={{ maxWidth: card.descWidth }}>
+                    {card.desc}
+                  </p>
                 </div>
+                <img src={card.icon} alt="" className="agents-process2-card__badge" loading="lazy" />
               </div>
             ))}
           </div>
@@ -437,12 +454,40 @@ export default function AIAgentsPage() {
           </div>
 
           <div className="agents-integrations__grid">
-            {integrations.map((item) => (
-              <span className="agents-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="agents-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="agents-integration-connector" aria-hidden="true">
+                      <span className="agents-integration-connector__line" />
+                      <span className="agents-integration-connector__diamond-outer" />
+                      <span className="agents-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="agents-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="agents-integrations__row agents-integrations__row--offset">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="agents-integration-connector" aria-hidden="true">
+                      <span className="agents-integration-connector__line" />
+                      <span className="agents-integration-connector__diamond-outer" />
+                      <span className="agents-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="agents-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -456,13 +501,9 @@ export default function AIAgentsPage() {
           <div className="agents-why__grid">
             {whyCards.map((card) => (
               <div className="agents-card agents-card--flat agents-why-card" key={card.title}>
-                <div className="agents-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="agents-why-card__title">{card.title}</h3>
-                  <p className="agents-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="agents-why-card__badge" loading="lazy" />
+                <h3 className="agents-why-card__title">{card.title}</h3>
+                <p className="agents-why-card__desc">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -488,8 +529,8 @@ export default function AIAgentsPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );
