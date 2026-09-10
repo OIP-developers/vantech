@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import type { CSSProperties } from 'react';
 import './ai-automation.css';
 import Icon from '../../components/Icon';
@@ -11,19 +12,28 @@ import databaseSvg from '../../assets/icons/bi-database-fill.svg?raw';
 import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
 import workflowSvg from '../../assets/icons/boxicons-workflow-alt-filled.svg?raw';
 import supportSvg from '../../assets/icons/fluent-person-support-28-filled.svg?raw';
-
 import accountFilterSvg from '../../assets/icons/mdi-account-filter.svg?raw';
 import diplomaBoldSvg from '../../assets/icons/solar-diploma-bold.svg?raw';
-import trendingUpSvg from '../../assets/icons/mingcute-trending-up-fill.svg?raw';
-import schedulerSvg from '../../assets/icons/ix-scheduler-filled.svg?raw';
-
-import mapFilledSvg from '../../assets/icons/boxicons-map-filled.svg?raw';
 import plugConnectSvg from '../../assets/icons/boxicons-plug-connect-filled.svg?raw';
-import shieldErrorSvg from '../../assets/icons/fluent-shield-error-32-filled.svg?raw';
 import examMultipleChoiceSvg from '../../assets/icons/healthicons-i-exam-multiple-choice.svg?raw';
-import monitorHeartSvg from '../../assets/icons/ic-baseline-monitor-heart.svg?raw';
 
-import productFilledSvg from '../../assets/icons/ant-design-product-filled.svg?raw';
+import buildIconLeadCapture from '../../assets/images/ai-automation/figma/build-icon-lead-capture.png';
+import buildIconQualification from '../../assets/images/ai-automation/figma/build-icon-qualification.png';
+import buildIconCrmOperations from '../../assets/images/ai-automation/figma/build-icon-crm-operations.png';
+import buildIconFollowup from '../../assets/images/ai-automation/figma/build-icon-followup.png';
+import buildIconScheduling from '../../assets/images/ai-automation/figma/build-icon-scheduling.png';
+import buildIconReporting from '../../assets/images/ai-automation/figma/build-icon-reporting.png';
+
+import processIconMap from '../../assets/images/ai-automation/figma/process-icon-map.png';
+import processIconDesign from '../../assets/images/ai-automation/figma/process-icon-design.png';
+import processIconConnect from '../../assets/images/ai-automation/figma/process-icon-connect.png';
+import processIconBuild from '../../assets/images/ai-automation/figma/process-icon-build.png';
+import processIconTest from '../../assets/images/ai-automation/figma/process-icon-test.png';
+import processIconOperate from '../../assets/images/ai-automation/figma/process-icon-operate.png';
+
+import whyIconWorkflow from '../../assets/images/ai-automation/figma/why-icon-workflow.png';
+import whyIconDesign from '../../assets/images/ai-automation/figma/why-icon-design.png';
+import whyIconProduct from '../../assets/images/ai-automation/figma/why-icon-product.png';
 
 import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw';
 import emailSvg from '../../assets/icons/ic-baseline-email.svg?raw';
@@ -39,7 +49,6 @@ import badgeCircle from '../../assets/images/ai-automation/figma/badge-circle.pn
 import orbitRing from '../../assets/images/ai-automation/figma/orbit-ring.svg';
 import orbitEllipse from '../../assets/images/ai-automation/figma/orbit-ellipse.svg';
 import bottomSphere from '../../assets/images/ai-automation/figma/bottom-sphere.png';
-import solutionIllustration from '../../assets/images/ai-automation/figma/solution-illustration.png';
 import architectureWave from '../../assets/images/ai-automation/figma/architecture-wave.png';
 import pricingGlowOrb from '../../assets/images/ai-automation/figma/pricing-glow-orb.png';
 // Shared hero ombre glow — the same asset already used behind the hero on
@@ -57,6 +66,17 @@ const orbitBadges = [
   { svg: workflowSvg, angle: -2.92, radius: 216, size: 78 },
 ];
 
+const solutionNodes = [
+  { icon: accountFilterSvg, left: 41, top: 7, border: 'blue' as const },
+  { icon: databaseSvg, left: 67, top: 7, border: 'orange' as const },
+  { icon: designServicesSvg, left: 95, top: 44, border: 'orange' as const },
+  { icon: supportSvg, left: 95, top: 60, border: 'blue' as const },
+  { icon: plugConnectSvg, left: 67, top: 96, border: 'orange' as const },
+  { icon: diplomaBoldSvg, left: 41, top: 96, border: 'blue' as const },
+  { icon: examMultipleChoiceSvg, left: 5, top: 60, border: 'blue' as const },
+  { icon: funnelSvg, left: 5, top: 44, border: 'orange' as const },
+];
+
 const frictionPoints = [
   { number: '01', text: 'Leads sit unqualified while someone finds time to review them.' },
   { number: '02', text: 'The same data is entered into several systems by hand.' },
@@ -66,34 +86,40 @@ const frictionPoints = [
 
 const offeringCards = [
   {
-    icon: accountFilterSvg,
+    icon: buildIconLeadCapture,
     title: 'Lead Capture & Routing',
     desc: 'Forms, inbound messages and enquiries routed by rules or AI.',
+    descWidth: 335,
   },
   {
-    icon: diplomaBoldSvg,
+    icon: buildIconQualification,
     title: 'Qualification',
     desc: 'Structured scoring and summarization before a human reads anything.',
+    descWidth: 325,
   },
   {
-    icon: databaseSvg,
+    icon: buildIconCrmOperations,
     title: 'CRM Operations',
     desc: 'Records created and updated automatically from real activity.',
+    descWidth: 261,
   },
   {
-    icon: trendingUpSvg,
+    icon: buildIconFollowup,
     title: 'Follow-up Sequences',
     desc: 'Timed, conditional messaging across email and messaging channels.',
+    descWidth: 314,
   },
   {
-    icon: schedulerSvg,
+    icon: buildIconScheduling,
     title: 'Scheduling',
     desc: 'Booking, reminders and rescheduling handled inside the workflow.',
+    descWidth: 309,
   },
   {
-    icon: supportSvg,
+    icon: buildIconReporting,
     title: 'Reporting',
     desc: 'Operational metrics compiled continuously instead of monthly.',
+    descWidth: 359,
   },
 ];
 
@@ -136,43 +162,46 @@ const timelineSteps = [
 
 const processCards = [
   {
-    icon: mapFilledSvg,
+    icon: processIconMap,
     title: 'Map',
     desc: 'Document the process as it runs today, including exceptions.',
   },
   {
-    icon: designServicesSvg,
+    icon: processIconDesign,
     title: 'Design',
     desc: 'Define triggers, decision logic and where a human stays in the loop.',
   },
   {
-    icon: plugConnectSvg,
+    icon: processIconConnect,
     title: 'Connect',
     desc: 'Establish access to the systems involved and validate the data flow.',
   },
   {
-    icon: shieldErrorSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'Implement workflows with logging, validation and error handling.',
   },
   {
-    icon: examMultipleChoiceSvg,
+    icon: processIconTest,
     title: 'Test',
     desc: 'Run against real scenarios, including the ones that normally break.',
   },
   {
-    icon: monitorHeartSvg,
+    icon: processIconOperate,
     title: 'Operate',
     desc: 'Monitor, tune and extend as the process changes.',
   },
 ];
 
-const integrations = [
+const integrationsRow1 = [
   { icon: funnelSvg, label: 'CRM' },
   { icon: emailSvg, label: 'Email' },
   { icon: messageFilledSvg, label: 'Messaging' },
   { icon: calendarSvg, label: 'Calendars' },
   { icon: formFilledSvg, label: 'Forms' },
+];
+
+const integrationsRow2 = [
   { icon: databaseSvg, label: 'Databases' },
   { icon: spreadsheetsSvg, label: 'Spreadsheets' },
   { icon: webhookSvg, label: 'Webhooks' },
@@ -181,17 +210,17 @@ const integrations = [
 
 const whyCards = [
   {
-    icon: workflowSvg,
+    icon: whyIconWorkflow,
     title: 'Built around the real process',
     desc: 'We automate the workflow you actually run, including its exceptions.',
   },
   {
-    icon: designServicesSvg,
+    icon: whyIconDesign,
     title: 'Observable by design',
     desc: 'Every run is logged, so failures surface instead of hiding.',
   },
   {
-    icon: productFilledSvg,
+    icon: whyIconProduct,
     title: 'Observable by design',
     desc: 'Every run is logged, so failures surface instead of hiding.',
   },
@@ -264,19 +293,13 @@ export default function AIAutomationPage() {
                   className="ai-automation-orbit__anchor"
                   style={
                     {
-                      '--start-angle': `${item.angle}deg`,
                       animationDuration: ORBIT_DURATION,
+                      animationDelay: `-${(i / orbitBadges.length) * 42}s`,
                     } as CSSProperties
                   }
                 >
-                  <div
-                    className="ai-automation-orbit__radius"
-                    style={{ '--radius': item.radius } as CSSProperties}
-                  >
-                    <div
-                      className="ai-automation-orbit__counter"
-                      style={{ animationDuration: ORBIT_DURATION }}
-                    >
+                  <div className="ai-automation-orbit__radius">
+                    <div className="ai-automation-orbit__counter">
                       <span
                         className="ai-automation-orbit__badge"
                         style={
@@ -336,7 +359,54 @@ export default function AIAutomationPage() {
           </div>
 
           <div className={`ai-automation-solution__graphic ${solutionGraphic.className}`} ref={solutionGraphic.ref}>
-            <img src={solutionIllustration} alt="" loading="lazy" />
+            <div className="ai-automation-solution-network">
+              <svg
+                className="ai-automation-solution-network__lines"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                {solutionNodes.map((node, i) => {
+                  const cx = 50;
+                  const cy = 47;
+                  const dx = cx - node.left;
+                  const dy = cy - node.top;
+                  const endX = node.left + dx * 0.78;
+                  const endY = node.top + dy * 0.78;
+                  const dotX = node.left + dx * 0.22;
+                  const dotY = node.top + dy * 0.22;
+                  return (
+                    <g key={i}>
+                      <line
+                        x1={node.left}
+                        y1={node.top}
+                        x2={endX}
+                        y2={endY}
+                        className={`ai-automation-solution-network__line ai-automation-solution-network__line--${node.border}`}
+                      />
+                      <circle
+                        cx={dotX}
+                        cy={dotY}
+                        r="1"
+                        className="ai-automation-solution-network__dot"
+                      />
+                    </g>
+                  );
+                })}
+              </svg>
+
+              <img src={heroStar} alt="" className="ai-automation-solution-network__star" loading="lazy" />
+
+              {solutionNodes.map((node, i) => (
+                <span
+                  key={i}
+                  className={`ai-automation-solution-network__node ai-automation-solution-network__node--${node.border}`}
+                  style={{ left: `${node.left}%`, top: `${node.top}%` }}
+                >
+                  <Icon svg={node.icon} />
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -350,11 +420,14 @@ export default function AIAutomationPage() {
           <div className="ai-automation-build__grid">
             {offeringCards.map((card) => (
               <div className="ai-automation-card ai-automation-build-card" key={card.title}>
-                <div className="ai-automation-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="ai-automation-build-card__glow" />
+                <div className="ai-automation-build-card__head">
+                  <h3 className="ai-automation-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="ai-automation-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="ai-automation-build-card__title">{card.title}</h3>
-                <p className="ai-automation-build-card__desc">{card.desc}</p>
+                <p className="ai-automation-build-card__desc" style={{ maxWidth: card.descWidth }}>
+                  {card.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -457,13 +530,11 @@ export default function AIAutomationPage() {
           <div className="ai-automation-process2__grid">
             {processCards.map((card) => (
               <div className="ai-automation-card ai-automation-card--flat ai-automation-process2-card" key={card.title}>
-                <div className="ai-automation-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="ai-automation-process2-card__body">
                   <h3 className="ai-automation-process2-card__title">{card.title}</h3>
                   <p className="ai-automation-process2-card__desc">{card.desc}</p>
                 </div>
+                <img src={card.icon} alt="" className="ai-automation-process2-card__badge" loading="lazy" />
               </div>
             ))}
           </div>
@@ -477,12 +548,40 @@ export default function AIAutomationPage() {
           </div>
 
           <div className="ai-automation-integrations__grid">
-            {integrations.map((item) => (
-              <span className="ai-automation-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="ai-automation-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="ai-automation-integration-connector" aria-hidden="true">
+                      <span className="ai-automation-integration-connector__line" />
+                      <span className="ai-automation-integration-connector__diamond-outer" />
+                      <span className="ai-automation-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="ai-automation-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="ai-automation-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="ai-automation-integration-connector" aria-hidden="true">
+                      <span className="ai-automation-integration-connector__line" />
+                      <span className="ai-automation-integration-connector__diamond-outer" />
+                      <span className="ai-automation-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="ai-automation-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -496,13 +595,9 @@ export default function AIAutomationPage() {
           <div className="ai-automation-why__grid">
             {whyCards.map((card, i) => (
               <div className="ai-automation-card ai-automation-card--flat ai-automation-why-card" key={`${card.title}-${i}`}>
-                <div className="ai-automation-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="ai-automation-why-card__title">{card.title}</h3>
-                  <p className="ai-automation-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="ai-automation-why-card__badge" loading="lazy" />
+                <h3 className="ai-automation-why-card__title">{card.title}</h3>
+                <p className="ai-automation-why-card__desc">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -533,8 +628,8 @@ export default function AIAutomationPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );

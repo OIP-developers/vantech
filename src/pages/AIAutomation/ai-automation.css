@@ -4,14 +4,20 @@
    namespaced with the ai-automation- prefix. */
 
 .ai-automation-page {
+  position: relative;
+  overflow-x: clip;
   padding-top: 91px;
+  background-image: url(../../assets/images/ai-automation/figma/services-body-bg.webp);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
 }
 /* ---------- Hero ---------- */
 
 .ai-automation-hero {
   position: relative;
   padding-top: 129px;
-  padding-bottom: 260px;
+  padding-bottom: 160px;
 }
 
 .ai-automation-ambient-glow {
@@ -96,6 +102,18 @@
   margin-top: 40px;
 }
 
+.ai-automation-hero__actions .btn-primary {
+  background: transparent;
+  border: 1.8px solid var(--color-border);
+  box-shadow: none;
+}
+
+.ai-automation-hero__actions .btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-2) 100%);
+  border-color: transparent;
+  box-shadow: 0 12px 28px rgba(255, 102, 0, 0.4);
+}
+
 /* ---------- Hero graphic: star + floating orbit badges ---------- */
 
 .ai-automation-hero__graphic {
@@ -131,8 +149,8 @@
 
 .ai-automation-orbit__ring {
   position: absolute;
-  left: 42%;
-  top: 55%;
+  left: 30%;
+  top: 70%;
   width: 41%;
   height: auto;
   transform: translate(-50%, -50%) rotate(-45.83deg);
@@ -142,23 +160,22 @@
 
 .ai-automation-orbit__ellipse {
   position: absolute;
-  left: 52%;
-  top: 37%;
-  width: 79%;
+  left: 49%;
+  top: 35%;
+  width: 70%;
   height: auto;
   transform: translate(-50%, -50%) rotate(14.11deg);
-  opacity: 0.55;
   pointer-events: none;
+  z-index: 1;
 }
 
 .ai-automation-orbit__anchor {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 49%;
+  top: 35%;
   width: 0;
   height: 0;
-  transform-origin: 0 0;
-  animation-name: orbit-spin;
+  animation-name: ai-automation-badge-orbit;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   will-change: transform;
@@ -168,16 +185,40 @@
   position: absolute;
   left: 0;
   top: 0;
-  transform: translateX(calc(var(--radius) * var(--orbit-scale, 1) * 1px));
 }
 
 .ai-automation-orbit__counter {
   position: absolute;
   left: 0;
   top: 0;
-  animation-name: orbit-counter-spin;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+}
+
+@keyframes ai-automation-badge-orbit {
+  0.0000% { transform: translate(-50%, -50%) translate(210.45px, 52.90px); }
+  4.1667% { transform: translate(-50%, -50%) translate(200.47px, 62.27px); }
+  8.3333% { transform: translate(-50%, -50%) translate(176.83px, 67.39px); }
+  12.5000% { transform: translate(-50%, -50%) translate(141.14px, 67.93px); }
+  16.6667% { transform: translate(-50%, -50%) translate(95.83px, 63.83px); }
+  20.8333% { transform: translate(-50%, -50%) translate(43.99px, 55.38px); }
+  25.0000% { transform: translate(-50%, -50%) translate(-10.85px, 43.16px); }
+  29.1667% { transform: translate(-50%, -50%) translate(-64.95px, 28.00px); }
+  33.3333% { transform: translate(-50%, -50%) translate(-114.62px, 10.93px); }
+  37.5000% { transform: translate(-50%, -50%) translate(-156.48px, -6.89px); }
+  41.6667% { transform: translate(-50%, -50%) translate(-187.68px, -24.23px); }
+  45.8333% { transform: translate(-50%, -50%) translate(-206.09px, -39.93px); }
+  50.0000% { transform: translate(-50%, -50%) translate(-210.45px, -52.90px); }
+  54.1667% { transform: translate(-50%, -50%) translate(-200.47px, -62.27px); }
+  58.3333% { transform: translate(-50%, -50%) translate(-176.83px, -67.39px); }
+  62.5000% { transform: translate(-50%, -50%) translate(-141.14px, -67.93px); }
+  66.6667% { transform: translate(-50%, -50%) translate(-95.83px, -63.83px); }
+  70.8333% { transform: translate(-50%, -50%) translate(-43.99px, -55.38px); }
+  75.0000% { transform: translate(-50%, -50%) translate(10.85px, -43.16px); }
+  79.1667% { transform: translate(-50%, -50%) translate(64.95px, -28.00px); }
+  83.3333% { transform: translate(-50%, -50%) translate(114.62px, -10.93px); }
+  87.5000% { transform: translate(-50%, -50%) translate(156.48px, 6.89px); }
+  91.6667% { transform: translate(-50%, -50%) translate(187.68px, 24.23px); }
+  95.8333% { transform: translate(-50%, -50%) translate(206.09px, 39.93px); }
+  100.0000% { transform: translate(-50%, -50%) translate(210.45px, 52.90px); }
 }
 
 .ai-automation-orbit__badge {
@@ -214,7 +255,7 @@
 
 .ai-automation-friction__sphere {
   position: absolute;
-  left: -110px;
+  left: -185px;
   bottom: -110px;
   width: 320px;
   height: 320px;
@@ -228,8 +269,8 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 60px;
+  /* justify-content: space-between; */
+  gap: 160px;
 }
 
 .ai-automation-friction__copy {
@@ -263,6 +304,7 @@
 }
 
 .ai-automation-friction-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -270,7 +312,20 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(25px);
-  border: 1px solid var(--color-orange-3);
+  border: 1px solid transparent;
+}
+
+.ai-automation-friction-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: var(--gradient-border);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .ai-automation-friction-item__number {
@@ -365,9 +420,31 @@
 .ai-automation-card {
   position: relative;
   border-radius: 15px;
-  border: 1px solid var(--color-orange-3);
+  border: 1px solid transparent;
   background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 102.09%);
   backdrop-filter: blur(25px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-automation-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 15px;
+  background: var(--gradient-border);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.ai-automation-card:hover {
+  transform: translateY(-6px);
+}
+
+.ai-automation-card:hover::before {
+  background: var(--color-orange);
 }
 
 .ai-automation-card--flat {
@@ -434,10 +511,96 @@
   max-width: 44%;
 }
 
-.ai-automation-solution__graphic img {
+.ai-automation-solution-network {
+  position: relative;
   width: 100%;
+  aspect-ratio: 1;
+}
+
+.ai-automation-solution-network__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ai-automation-solution-network__line {
+  stroke-width: 0.35;
+  stroke-dasharray: 1.4 1.4;
+  fill: none;
+}
+
+.ai-automation-solution-network__line--orange {
+  stroke: var(--color-orange-3);
+  opacity: 0.7;
+}
+
+.ai-automation-solution-network__line--blue {
+  stroke: var(--color-blue-2, #0173d4);
+  opacity: 0.7;
+}
+
+.ai-automation-solution-network__dot {
+  fill: var(--color-white);
+}
+
+.ai-automation-solution-network__star {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: 34%;
   height: auto;
-  display: block;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 30px rgba(30, 166, 254, 0.35)) drop-shadow(0 0 30px rgba(255, 102, 0, 0.3));
+  animation: ai-automation-network-star-pulse 4s ease-in-out infinite;
+}
+
+.ai-automation-solution-network__node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-white);
+  animation: ai-automation-network-float 5s ease-in-out infinite;
+}
+
+.ai-automation-solution-network__node .icon {
+  width: 42%;
+  height: 42%;
+}
+
+.ai-automation-solution-network__node--orange {
+  border: 1.5px solid var(--color-orange-3);
+  box-shadow: 0 0 20px rgba(255, 110, 20, 0.35);
+}
+
+.ai-automation-solution-network__node--blue {
+  border: 1.5px solid var(--color-blue-2, #0173d4);
+  box-shadow: 0 0 20px rgba(23, 122, 212, 0.35);
+}
+
+.ai-automation-solution-network__node:nth-child(2) { animation-delay: -0.6s; }
+.ai-automation-solution-network__node:nth-child(3) { animation-delay: -1.2s; }
+.ai-automation-solution-network__node:nth-child(4) { animation-delay: -1.8s; }
+.ai-automation-solution-network__node:nth-child(5) { animation-delay: -2.4s; }
+.ai-automation-solution-network__node:nth-child(6) { animation-delay: -3s; }
+.ai-automation-solution-network__node:nth-child(7) { animation-delay: -3.6s; }
+.ai-automation-solution-network__node:nth-child(8) { animation-delay: -4.2s; }
+
+@keyframes ai-automation-network-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-6px); }
+}
+
+@keyframes ai-automation-network-star-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
 }
 
 /* ---------- What we Automate ---------- */
@@ -454,11 +617,51 @@
 }
 
 .ai-automation-build-card {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
   padding: 32px 28px;
+}
+
+.ai-automation-build-card__glow {
+  position: absolute;
+  right: -40px;
+  bottom: -60px;
+  width: 160px;
+  height: 160px;
+  background: var(--color-orange);
+  filter: blur(80px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.ai-automation-build-card:hover .ai-automation-build-card__glow {
+  opacity: 0.5;
+}
+
+.ai-automation-build-card__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.ai-automation-build-card__badge {
+  flex-shrink: 0;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  box-shadow:
+    0 41.672px 54.377px rgba(255, 88, 0, 0.19),
+    0 17.308px 22.585px rgba(255, 88, 0, 0.22),
+    0 70.8px 180.371px rgba(255, 88, 0, 0.34);
 }
 
 .ai-automation-build-card__title {
@@ -471,6 +674,8 @@
 }
 
 .ai-automation-build-card__desc {
+  position: relative;
+  z-index: 1;
   margin: 0;
   font-family: var(--font-heading);
   font-weight: 500;
@@ -501,17 +706,27 @@
 }
 
 .ai-automation-pill {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 15px;
   border-radius: 7px;
-  border: 1px solid var(--color-orange-3);
+  border: 1.5px solid transparent;
+  background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
+              var(--gradient-border) border-box;
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: 16px;
   color: var(--color-white);
   white-space: nowrap;
+  cursor: default;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.ai-automation-pill:hover {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
 }
 
 .ai-automation-pill__dot {
@@ -528,6 +743,11 @@
   height: 8px;
   transform: rotate(45deg);
   background: var(--color-orange);
+  transition: background 0.3s ease;
+}
+
+.ai-automation-pill:hover .ai-automation-pill__dot span {
+  background: var(--color-white);
 }
 
 /* ---------- Use Cases ---------- */
@@ -597,8 +817,7 @@
 .ai-automation-architecture__divider {
   position: relative;
   margin-top: 56px;
-  border: none;
-  border-top: 1px solid var(--color-border-soft-4);
+  border: 1px dashed rgba(255, 255, 255, 0.5);
 }
 
 .ai-automation-architecture__divider-dot {
@@ -613,10 +832,12 @@
 }
 
 .ai-automation-timeline {
-  margin-top: -14px;
+  margin-top: -30px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  position: relative;
+  z-index: 0;
 }
 
 .ai-automation-timeline-step {
@@ -631,7 +852,7 @@
   width: 43px;
   height: 43px;
   border-radius: 50%;
-  background: var(--color-bg-card-2);
+  background: var(--color-orange-3);
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 18px;
@@ -692,12 +913,24 @@
 .ai-automation-process2-card {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 24px;
   padding: 28px;
 }
 
 .ai-automation-process2-card__body {
   min-width: 0;
+}
+
+.ai-automation-process2-card__badge {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow:
+    0 41.672px 54.377px rgba(255, 88, 0, 0.19),
+    0 17.308px 22.585px rgba(255, 88, 0, 0.22),
+    0 70.8px 180.371px rgba(255, 88, 0, 0.34);
 }
 
 .ai-automation-process2-card__title {
@@ -726,31 +959,92 @@
 .ai-automation-integrations__grid {
   margin-top: 50px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.ai-automation-integrations__row {
+  display: flex;
+  align-items: center;
 }
 
 .ai-automation-integration-pill {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   width: 190px;
+  flex-shrink: 0;
   justify-content: center;
   padding: 15px;
   border-radius: 7px;
   background: rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--color-orange-3);
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: 16px;
   color: var(--color-white);
 }
 
+.ai-automation-integration-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 7px;
+  background: var(--gradient-border);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 .ai-automation-integration-pill .icon {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+}
+
+.ai-automation-integration-connector {
+  position: relative;
+  width: 105px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.ai-automation-integration-connector__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    #0267bc 0%,
+    rgba(2, 103, 188, 0) 49%,
+    rgba(255, 110, 20, 0) 51%,
+    #ff6e14 100%
+  );
+}
+
+.ai-automation-integration-connector__diamond-outer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14.167px;
+  height: 14.167px;
+  border: 0.4px solid #0173d4;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ai-automation-integration-connector__diamond-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  background: #d75c11;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 /* ---------- Why Van Tech Systems ---------- */
@@ -768,10 +1062,21 @@
 
 .ai-automation-why-card {
   display: flex;
-  align-items: center;
-  gap: 24px;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 28px;
   min-height: 190px;
+}
+
+.ai-automation-why-card__badge {
+  flex-shrink: 0;
+  width: 62px;
+  height: 62px;
+  margin-bottom: 29px;
+  box-shadow:
+    0 41.672px 54.377px rgba(255, 88, 0, 0.19),
+    0 17.308px 22.585px rgba(255, 88, 0, 0.22),
+    0 70.8px 180.371px rgba(255, 88, 0, 0.34);
 }
 
 .ai-automation-why-card__title {
@@ -808,20 +1113,32 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(25px);
-  border: 1px solid var(--color-orange-3);
+  border: 1px solid transparent;
   overflow: hidden;
+}
+
+.ai-automation-pricing-cta__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: var(--gradient-border);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .ai-automation-pricing-cta__glow {
   position: absolute;
-  right: -60px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 4px;
   width: 420px;
   max-width: 55%;
   opacity: 0.6;
   z-index: 0;
   pointer-events: none;
+  bottom: 0;
 }
 
 .ai-automation-pricing-cta__copy {
