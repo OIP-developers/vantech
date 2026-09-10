@@ -6,11 +6,6 @@
 .ai-automation-page {
   padding-top: 91px;
 }
-body .ai-automation-page {
-    background-image: url(../../../dist/assets/Ai-Automation-all-server-page.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 /* ---------- Hero ---------- */
 
 .ai-automation-hero {
@@ -328,6 +323,627 @@ body .ai-automation-page {
   .ai-automation-friction-item {
     padding: 16px 20px;
     gap: 16px;
+  }
+}
+
+/* ---------- Shared heading styles (sections below the friction block) ---------- */
+
+.ai-automation-h2 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.ai-automation-h1-lg {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.ai-automation-h1-lg--center {
+  text-align: center;
+}
+
+.ai-automation-section-copy {
+  max-width: 838px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Card surface (shared by offering / use-case / process cards) ---------- */
+
+.ai-automation-card {
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid var(--color-orange-3);
+  background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 102.09%);
+  backdrop-filter: blur(25px);
+}
+
+.ai-automation-card--flat {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.ai-automation-icon-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--color-bg-card-3);
+  border: 1.5px solid var(--color-orange-3);
+  box-shadow: 0 20px 40px rgba(255, 88, 0, 0.25);
+  color: var(--color-orange);
+}
+
+.ai-automation-icon-badge .icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---------- Workflows that run without supervision (solution intro) ---------- */
+
+.ai-automation-solution {
+  padding-top: 40px;
+}
+
+.ai-automation-solution__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.ai-automation-solution__copy {
+  flex: 1;
+  max-width: 650px;
+}
+
+.ai-automation-solution__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 54px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.ai-automation-solution__desc {
+  margin-top: 24px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.ai-automation-solution__graphic {
+  flex-shrink: 0;
+  width: 480px;
+  max-width: 44%;
+}
+
+.ai-automation-solution__graphic img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- What we Automate ---------- */
+
+.ai-automation-build {
+  padding-top: 160px;
+}
+
+.ai-automation-build__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 60px;
+}
+
+.ai-automation-build-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 28px;
+}
+
+.ai-automation-build-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.ai-automation-build-card__desc {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Capabilities ---------- */
+
+.ai-automation-capabilities {
+  padding-top: 160px;
+}
+
+.ai-automation-capabilities__rows {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.ai-automation-capabilities__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.ai-automation-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.ai-automation-pill__dot {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-automation-pill__dot span {
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--color-orange);
+}
+
+/* ---------- Use Cases ---------- */
+
+.ai-automation-usecases {
+  padding-top: 100px;
+}
+
+.ai-automation-usecases__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+  margin-top: 30px;
+}
+
+.ai-automation-usecase-card {
+  padding: 24px 26px;
+}
+
+.ai-automation-usecase-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+.ai-automation-usecase-card__divider {
+  margin: 16px 0;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.ai-automation-usecase-card__desc {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-white);
+}
+
+/* ---------- Workflow architecture (timeline) ---------- */
+
+.ai-automation-architecture {
+  position: relative;
+  padding-top: 160px;
+}
+
+.ai-automation-architecture__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40px;
+  width: 100%;
+  height: auto;
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ai-automation-architecture .container {
+  position: relative;
+  z-index: 1;
+}
+
+.ai-automation-architecture__divider {
+  position: relative;
+  margin-top: 56px;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.ai-automation-architecture__divider-dot {
+  position: absolute;
+  right: 1%;
+  top: -6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-orange-3);
+  box-shadow: 0 0 14px var(--color-orange-3);
+}
+
+.ai-automation-timeline {
+  margin-top: -14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ai-automation-timeline-step {
+  flex: 1;
+  min-width: 0;
+}
+
+.ai-automation-timeline-step__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: var(--color-bg-card-2);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-white);
+}
+
+.ai-automation-timeline-step__title {
+  margin: 40px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--color-orange-3);
+}
+
+.ai-automation-timeline-step__tags {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ai-automation-timeline-step__tag-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ai-automation-timeline-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 18px;
+  border-radius: 83px;
+  background: #11161d;
+  border: 1.33px solid #292d34;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ---------- Implementation process ---------- */
+
+.ai-automation-process2 {
+  padding-top: 160px;
+}
+
+.ai-automation-process2__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 60px;
+}
+
+.ai-automation-process2-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+}
+
+.ai-automation-process2-card__body {
+  min-width: 0;
+}
+
+.ai-automation-process2-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--color-orange);
+}
+
+.ai-automation-process2-card__desc {
+  margin: 8px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Potential Integrations ---------- */
+
+.ai-automation-integrations {
+  padding-top: 140px;
+}
+
+.ai-automation-integrations__grid {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.ai-automation-integration-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 190px;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-white);
+}
+
+.ai-automation-integration-pill .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------- Why Van Tech Systems ---------- */
+
+.ai-automation-why {
+  padding-top: 140px;
+}
+
+.ai-automation-why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 60px;
+}
+
+.ai-automation-why-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  min-height: 190px;
+}
+
+.ai-automation-why-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--color-orange);
+}
+
+.ai-automation-why-card__desc {
+  margin: 10px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Pricing CTA banner ---------- */
+
+.ai-automation-pricing-cta {
+  padding: 60px 0 120px;
+}
+
+.ai-automation-pricing-cta__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 50px 60px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+  overflow: hidden;
+}
+
+.ai-automation-pricing-cta__glow {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  max-width: 55%;
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ai-automation-pricing-cta__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 611px;
+}
+
+.ai-automation-pricing-cta__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.ai-automation-pricing-cta__desc {
+  margin: 18px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.ai-automation-pricing-cta .btn {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+/* ---------- Responsive: sections below the friction block ---------- */
+
+@media (max-width: 1180px) {
+  .ai-automation-solution__row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ai-automation-solution__copy {
+    max-width: 100%;
+  }
+
+  .ai-automation-solution__graphic {
+    max-width: 60%;
+  }
+
+  .ai-automation-timeline {
+    flex-wrap: wrap;
+  }
+
+  .ai-automation-timeline-step {
+    flex: 1 1 30%;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .ai-automation-h2 {
+    font-size: 38px;
+  }
+
+  .ai-automation-h1-lg {
+    font-size: 40px;
+  }
+
+  .ai-automation-solution__title {
+    font-size: 38px;
+  }
+
+  .ai-automation-build__grid,
+  .ai-automation-process2__grid,
+  .ai-automation-why__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ai-automation-usecases__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ai-automation-timeline {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .ai-automation-pricing-cta__card {
+    justify-content: center;
+    text-align: center;
+    padding: 40px 32px;
+  }
+
+  .ai-automation-pricing-cta__copy {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .ai-automation-solution__graphic {
+    max-width: 80%;
+  }
+
+  .ai-automation-build__grid,
+  .ai-automation-process2__grid,
+  .ai-automation-why__grid,
+  .ai-automation-usecases__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-automation-process2-card,
+  .ai-automation-why-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .ai-automation-integration-pill {
+    width: calc(50% - 9px);
+  }
+
+  .ai-automation-pricing-cta__title {
+    font-size: 30px;
   }
 }
 

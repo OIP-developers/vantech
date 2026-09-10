@@ -1,0 +1,826 @@
+/* ---------- Mobile Application Page ---------- */
+/* Reuses design tokens (colors, .container, .section, .eyebrow-pill,
+   .section-title, .section-head, .btn) defined in src/styles/global.css. */
+
+.mobileapp-page {
+  overflow-x: clip;
+}
+
+/* ---------- Shared heading styles ---------- */
+
+.mobileapp-h2 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.mobileapp-h1-lg {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 1.15;
+  color: var(--color-white);
+}
+
+.mobileapp-h1-lg--center {
+  text-align: center;
+}
+
+.mobileapp-p-lg {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-white);
+  max-width: 620px;
+}
+
+.mobileapp-section-copy {
+  max-width: 890px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Card surface (shared by build / use-case / process cards) ---------- */
+
+.mobileapp-card {
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid var(--color-orange-3);
+  background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 102.09%);
+  backdrop-filter: blur(25px);
+}
+
+.mobileapp-card--flat {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.mobileapp-icon-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--color-bg-card-3);
+  border: 1.5px solid var(--color-orange-3);
+  box-shadow: 0 20px 40px rgba(255, 88, 0, 0.25);
+  color: var(--color-orange);
+}
+
+.mobileapp-icon-badge .icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---------- Hero ---------- */
+
+.mobileapp-hero {
+  position: relative;
+  padding: 180px 0 140px;
+  overflow: clip;
+}
+
+.mobileapp-hero__glow {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 1400px;
+  max-width: 160%;
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mobileapp-hero .row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.mobileapp-hero__content {
+  max-width: 620px;
+}
+
+.mobileapp-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: 0.84px solid var(--color-orange);
+  border-radius: 19px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-white);
+}
+
+.mobileapp-hero__badge .icon {
+  width: 13px;
+  height: 14px;
+}
+
+.mobileapp-hero__title {
+  margin-top: 28px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 62px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.mobileapp-hero__desc {
+  margin-top: 24px;
+  max-width: 552px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.mobileapp-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.mobileapp-hero__graphic {
+  position: relative;
+  flex-shrink: 0;
+  width: 497px;
+  height: 586px;
+  pointer-events: none;
+}
+
+.mobileapp-hero__mockup {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotate(-8.33deg);
+  filter: drop-shadow(0 30px 60px rgba(255, 102, 0, 0.3));
+}
+
+.mobileapp-hero__icon-card {
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+  width: 162px;
+  transform: rotate(-5.47deg);
+  filter: drop-shadow(0 20px 40px rgba(30, 166, 254, 0.35));
+}
+
+/* ---------- Problem / Solution ---------- */
+
+.mobileapp-disappoint {
+  padding-top: 120px;
+}
+
+.mobileapp-disappoint__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.mobileapp-disappoint__copy {
+  max-width: 620px;
+}
+
+.mobileapp-disappoint__list {
+  flex: 1;
+  max-width: 725px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.mobileapp-disappoint__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+}
+
+.mobileapp-disappoint__item-number {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-orange-2);
+}
+
+.mobileapp-disappoint__item-text {
+  font-size: 16px;
+  color: var(--color-white);
+}
+
+.mobileapp-solution {
+  padding-top: 140px;
+}
+
+.mobileapp-solution__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.mobileapp-solution__graphic {
+  flex-shrink: 0;
+  width: 424px;
+  max-width: 46%;
+}
+
+.mobileapp-solution__graphic img {
+  width: 100%;
+  height: auto;
+}
+
+.mobileapp-solution__copy {
+  flex: 1;
+  max-width: 651px;
+}
+
+.mobileapp-solution__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.mobileapp-solution__desc {
+  margin-top: 20px;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- What We Build ---------- */
+
+.mobileapp-build {
+  position: relative;
+  padding-top: 150px;
+}
+
+.mobileapp-build__bg {
+  position: absolute;
+  right: -260px;
+  top: -80px;
+  width: 900px;
+  max-width: 90%;
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mobileapp-build .container {
+  position: relative;
+  z-index: 1;
+}
+
+.mobileapp-build__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 71px;
+}
+
+.mobileapp-build-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 28px;
+}
+
+.mobileapp-build-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.mobileapp-build-card__desc {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Capabilities ---------- */
+
+.mobileapp-capabilities {
+  padding-top: 140px;
+}
+
+.mobileapp-capabilities__rows {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.mobileapp-capabilities__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 19px;
+}
+
+.mobileapp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.mobileapp-pill--active {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.mobileapp-pill__dot {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileapp-pill__dot span {
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--color-orange);
+}
+
+.mobileapp-pill--active .mobileapp-pill__dot span {
+  background: var(--color-white);
+}
+
+/* ---------- Use Cases ---------- */
+
+.mobileapp-usecases {
+  padding-top: 125px;
+}
+
+.mobileapp-usecases__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 27px;
+  margin-top: 30px;
+}
+
+.mobileapp-usecase-card {
+  padding: 24px 26px;
+}
+
+.mobileapp-usecase-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--color-white);
+}
+
+.mobileapp-usecase-card__divider {
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.mobileapp-usecase-card__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-white);
+}
+
+/* ---------- MVP architecture (pipeline) ---------- */
+
+.mobileapp-architecture {
+  position: relative;
+  padding-top: 160px;
+}
+
+.mobileapp-architecture__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40px;
+  width: 100%;
+  height: auto;
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mobileapp-architecture .container {
+  position: relative;
+  z-index: 1;
+}
+
+.mobileapp-architecture__divider {
+  position: relative;
+  margin-top: 63px;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.mobileapp-architecture__divider-dot {
+  position: absolute;
+  right: 1%;
+  top: -6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-orange-3);
+  box-shadow: 0 0 14px var(--color-orange-3);
+}
+
+.mobileapp-timeline {
+  margin-top: -21px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.mobileapp-timeline-step {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobileapp-timeline-step__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: var(--color-bg-card-2);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+.mobileapp-timeline-step__title {
+  margin: 50px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--color-orange-3);
+}
+
+.mobileapp-timeline-step__tags {
+  margin-top: 29px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.mobileapp-timeline-step__tag-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.mobileapp-timeline-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 20px;
+  border-radius: 83px;
+  background: #11161d;
+  border: 1.33px solid #292d34;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ---------- Development Process ---------- */
+
+.mobileapp-process2 {
+  padding-top: 190px;
+}
+
+.mobileapp-process2__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 64px;
+}
+
+.mobileapp-process2-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+}
+
+.mobileapp-process2-card__body {
+  min-width: 0;
+}
+
+.mobileapp-process2-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-orange);
+}
+
+.mobileapp-process2-card__desc {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Potential Integrations ---------- */
+
+.mobileapp-integrations {
+  padding-top: 140px;
+}
+
+.mobileapp-integrations__grid {
+  margin-top: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mobileapp-integration-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 197px;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-white);
+}
+
+.mobileapp-integration-pill .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------- Why Van Tech Systems ---------- */
+
+.mobileapp-why {
+  padding-top: 170px;
+}
+
+.mobileapp-why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 64px;
+}
+
+.mobileapp-why-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  min-height: 195px;
+}
+
+.mobileapp-why-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-orange);
+}
+
+.mobileapp-why-card__desc {
+  margin: 10px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Pricing CTA banner ---------- */
+
+.mobileapp-pricing-cta {
+  padding: 60px 0 120px;
+}
+
+.mobileapp-pricing-cta__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 50px 60px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+  overflow: hidden;
+}
+
+.mobileapp-pricing-cta__glow {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 480px;
+  max-width: 55%;
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mobileapp-pricing-cta__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 611px;
+}
+
+.mobileapp-pricing-cta__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.mobileapp-pricing-cta__desc {
+  margin: 18px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.mobileapp-pricing-cta .btn {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  font-size: 27px;
+  padding: 18px 27px;
+  gap: 18px;
+}
+
+.mobileapp-pricing-cta .btn .btn-icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+  .mobileapp-h1-lg {
+    font-size: 54px;
+  }
+  .mobileapp-hero__graphic {
+    width: 380px;
+    height: 448px;
+  }
+  .mobileapp-disappoint__row {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .mobileapp-timeline {
+    flex-wrap: wrap;
+  }
+  .mobileapp-timeline-step {
+    flex: 1 1 30%;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 980px) {
+  .mobileapp-hero {
+    padding: 130px 0 60px;
+  }
+  .mobileapp-hero .row {
+    flex-direction: column;
+  }
+  .mobileapp-hero__title {
+    font-size: 42px;
+  }
+  .mobileapp-hero__graphic {
+    display: none;
+  }
+  .mobileapp-h2 {
+    font-size: 38px;
+  }
+  .mobileapp-h1-lg {
+    font-size: 42px;
+  }
+  .mobileapp-solution__row {
+    flex-direction: column;
+  }
+  .mobileapp-solution__graphic {
+    max-width: 100%;
+    width: 320px;
+  }
+  .mobileapp-build__grid,
+  .mobileapp-process2__grid,
+  .mobileapp-why__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mobileapp-usecases__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mobileapp-timeline {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .mobileapp-pricing-cta__card {
+    justify-content: center;
+    text-align: center;
+    padding: 40px 32px;
+  }
+  .mobileapp-pricing-cta__copy {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobileapp-hero__title {
+    font-size: 32px;
+  }
+  .mobileapp-hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .mobileapp-hero__actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+  .mobileapp-h2 {
+    font-size: 30px;
+  }
+  .mobileapp-h1-lg {
+    font-size: 32px;
+  }
+  .mobileapp-disappoint__item {
+    padding: 16px 20px;
+  }
+  .mobileapp-build__grid,
+  .mobileapp-process2__grid,
+  .mobileapp-why__grid,
+  .mobileapp-usecases__grid {
+    grid-template-columns: 1fr;
+  }
+  .mobileapp-process2-card,
+  .mobileapp-why-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .mobileapp-integration-pill {
+    width: calc(50% - 10px);
+  }
+  .mobileapp-pricing-cta__title {
+    font-size: 32px;
+  }
+}

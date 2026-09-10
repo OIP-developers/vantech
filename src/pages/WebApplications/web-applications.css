@@ -1,0 +1,909 @@
+/* ---------- Web Applications Page ---------- */
+/* Reuses design tokens (colors, .container, .section, .eyebrow-pill,
+   .section-title, .section-head, .btn) defined in src/styles/global.css. */
+
+.webapps-page {
+  overflow-x: clip;
+}
+
+/* ---------- Shared heading styles ---------- */
+
+.webapps-h2 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.webapps-h1-lg {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 1.15;
+  color: var(--color-white);
+}
+
+.webapps-h1-lg--center {
+  text-align: center;
+}
+
+.webapps-p-lg {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-white);
+  max-width: 620px;
+}
+
+.webapps-section-copy {
+  max-width: 890px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Card surface (shared by build / use-case / process cards) ---------- */
+
+.webapps-card {
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid var(--color-orange-3);
+  background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 102.09%);
+  backdrop-filter: blur(25px);
+}
+
+.webapps-card--flat {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.webapps-icon-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--color-bg-card-3);
+  border: 1.5px solid var(--color-orange-3);
+  box-shadow: 0 20px 40px rgba(255, 88, 0, 0.25);
+  color: var(--color-orange);
+}
+
+.webapps-icon-badge .icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---------- Hero ---------- */
+
+.webapps-hero {
+  position: relative;
+  padding: 220px 0 160px;
+  overflow: clip;
+}
+
+.webapps-hero__bg-glow {
+  position: absolute;
+  left: 0;
+  top: -60px;
+  width: 100%;
+  height: 1100px;
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webapps-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.webapps-hero__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.webapps-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+}
+
+.webapps-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: 0.84px solid var(--color-orange);
+  border-radius: 19px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-white);
+}
+
+.webapps-hero__badge .icon {
+  width: 13px;
+  height: 14px;
+}
+
+.webapps-hero__title {
+  margin-top: 28px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 62px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.webapps-hero__desc {
+  margin-top: 24px;
+  max-width: 552px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.webapps-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.webapps-hero__graphic {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 669px;
+  height: 578px;
+}
+
+.webapps-hero__grid-lines {
+  position: absolute;
+  left: -60px;
+  top: -140px;
+  width: 700px;
+  height: 820px;
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webapps-hero__screen {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
+}
+
+.webapps-hero__icon-float {
+  position: absolute;
+  z-index: 2;
+  right: -30px;
+  top: 180px;
+  width: 210px;
+  height: auto;
+  filter: drop-shadow(0 0 40px rgba(255, 102, 0, 0.35));
+  animation: webapps-float 5s ease-in-out infinite;
+}
+
+.webapps-hero__code-badge {
+  position: absolute;
+  z-index: 2;
+  left: 30px;
+  top: 10px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-card-3);
+  border: 1.5px solid var(--color-orange-3);
+  box-shadow: 0 20px 40px rgba(255, 88, 0, 0.3);
+  color: var(--color-orange);
+  animation: webapps-float 6s ease-in-out infinite reverse;
+}
+
+.webapps-hero__code-badge .icon {
+  width: 48px;
+  height: 48px;
+}
+
+@keyframes webapps-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .webapps-hero__icon-float,
+  .webapps-hero__code-badge {
+    animation: none;
+  }
+}
+
+/* ---------- Problem / Solution ---------- */
+
+.webapps-disappoint {
+  padding-top: 60px;
+}
+
+.webapps-disappoint__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.webapps-disappoint__copy {
+  max-width: 620px;
+}
+
+.webapps-disappoint__list {
+  flex: 1;
+  max-width: 725px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.webapps-disappoint__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+}
+
+.webapps-disappoint__item-number {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-orange-2);
+}
+
+.webapps-disappoint__item-text {
+  font-size: 16px;
+  color: var(--color-white);
+}
+
+.webapps-solution {
+  position: relative;
+  padding-top: 160px;
+}
+
+.webapps-solution__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 670px;
+  object-fit: cover;
+  opacity: 0.45;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webapps-solution .container {
+  position: relative;
+  z-index: 1;
+}
+
+.webapps-solution__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.webapps-solution__graphic {
+  flex-shrink: 0;
+  width: 500px;
+  max-width: 46%;
+}
+
+.webapps-solution__graphic img {
+  width: 100%;
+  height: auto;
+}
+
+.webapps-solution__copy {
+  flex: 1;
+  max-width: 651px;
+}
+
+.webapps-solution__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.webapps-solution__desc {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- What We Build ---------- */
+
+.webapps-build {
+  position: relative;
+  padding-top: 160px;
+}
+
+.webapps-build__bg {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  width: 1140px;
+  max-width: 140%;
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webapps-build .container {
+  position: relative;
+  z-index: 1;
+}
+
+.webapps-build__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 60px;
+}
+
+.webapps-build-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 28px;
+}
+
+.webapps-build-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.webapps-build-card__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Capabilities ---------- */
+
+.webapps-capabilities {
+  padding-top: 140px;
+}
+
+.webapps-capabilities__rows {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.webapps-capabilities__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 19px;
+}
+
+.webapps-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.webapps-pill--active {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.webapps-pill__dot {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.webapps-pill__dot span {
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--color-orange);
+}
+
+.webapps-pill--active .webapps-pill__dot span {
+  background: var(--color-white);
+}
+
+/* ---------- Use Cases ---------- */
+
+.webapps-usecases {
+  position: relative;
+  padding-top: 140px;
+}
+
+.webapps-usecases__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40px;
+  width: 100%;
+  height: 670px;
+  object-fit: cover;
+  opacity: 0.45;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webapps-usecases .container {
+  position: relative;
+  z-index: 1;
+}
+
+.webapps-usecases__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 27px;
+  margin-top: 30px;
+}
+
+.webapps-usecase-card {
+  padding: 24px 26px;
+}
+
+.webapps-usecase-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--color-white);
+}
+
+.webapps-usecase-card__divider {
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.webapps-usecase-card__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-white);
+}
+
+/* ---------- Application architecture (pipeline) ---------- */
+
+.webapps-architecture {
+  position: relative;
+  padding-top: 180px;
+}
+
+.webapps-architecture__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40px;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webapps-architecture .container {
+  position: relative;
+  z-index: 1;
+}
+
+.webapps-architecture__divider {
+  position: relative;
+  margin-top: 63px;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.webapps-architecture__divider-dot {
+  position: absolute;
+  right: 1%;
+  top: -6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-orange-3);
+  box-shadow: 0 0 14px var(--color-orange-3);
+}
+
+.webapps-timeline {
+  margin-top: -21px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.webapps-timeline-step {
+  flex: 1;
+  min-width: 0;
+}
+
+.webapps-timeline-step__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: var(--color-bg-card-2);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+.webapps-timeline-step__title {
+  margin: 50px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--color-orange-3);
+}
+
+.webapps-timeline-step__tags {
+  margin-top: 29px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.webapps-timeline-step__tag-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.webapps-timeline-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 20px;
+  border-radius: 83px;
+  background: #11161d;
+  border: 1.33px solid #292d34;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ---------- Development process ---------- */
+
+.webapps-process2 {
+  padding-top: 200px;
+}
+
+.webapps-process2__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 64px;
+}
+
+.webapps-process2-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+}
+
+.webapps-process2-card__body {
+  min-width: 0;
+}
+
+.webapps-process2-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-orange);
+}
+
+.webapps-process2-card__desc {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Potential Integrations ---------- */
+
+.webapps-integrations {
+  padding-top: 200px;
+}
+
+.webapps-integrations__grid {
+  margin-top: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.webapps-integration-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 197px;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-white);
+}
+
+.webapps-integration-pill .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------- Why Van Tech Systems ---------- */
+
+.webapps-why {
+  padding-top: 200px;
+}
+
+.webapps-why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 64px;
+}
+
+.webapps-why-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  min-height: 195px;
+}
+
+.webapps-why-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-orange);
+}
+
+.webapps-why-card__desc {
+  margin: 10px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Pricing CTA banner ---------- */
+
+.webapps-pricing-cta {
+  position: relative;
+  padding: 100px 0 120px;
+}
+
+.webapps-pricing-cta__card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 50px 60px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+}
+
+.webapps-pricing-cta__glow {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 480px;
+  max-width: 55%;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webapps-pricing-cta__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 611px;
+}
+
+.webapps-pricing-cta__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.webapps-pricing-cta__desc {
+  margin: 18px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.webapps-pricing-cta .btn {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  font-size: 22px;
+  padding: 16px 24px;
+  gap: 16px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+  .webapps-h1-lg {
+    font-size: 54px;
+  }
+  .webapps-hero__graphic {
+    width: 460px;
+    height: 400px;
+  }
+  .webapps-disappoint__row {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .webapps-timeline {
+    flex-wrap: wrap;
+  }
+  .webapps-timeline-step {
+    flex: 1 1 30%;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 980px) {
+  .webapps-hero {
+    padding: 130px 0 60px;
+  }
+  .webapps-hero__title {
+    font-size: 42px;
+  }
+  .webapps-hero__graphic {
+    display: none;
+  }
+  .webapps-h2 {
+    font-size: 38px;
+  }
+  .webapps-h1-lg {
+    font-size: 42px;
+  }
+  .webapps-solution__row {
+    flex-direction: column;
+  }
+  .webapps-solution__graphic {
+    max-width: 100%;
+    width: 360px;
+  }
+  .webapps-build__grid,
+  .webapps-process2__grid,
+  .webapps-why__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .webapps-usecases__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .webapps-timeline {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .webapps-pricing-cta__card {
+    justify-content: center;
+    text-align: center;
+    padding: 40px 32px;
+  }
+  .webapps-pricing-cta__copy {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .webapps-hero__title {
+    font-size: 32px;
+  }
+  .webapps-hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .webapps-hero__actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+  .webapps-h2 {
+    font-size: 30px;
+  }
+  .webapps-h1-lg {
+    font-size: 32px;
+  }
+  .webapps-disappoint__item {
+    padding: 16px 20px;
+  }
+  .webapps-build__grid,
+  .webapps-process2__grid,
+  .webapps-why__grid,
+  .webapps-usecases__grid {
+    grid-template-columns: 1fr;
+  }
+  .webapps-process2-card,
+  .webapps-why-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .webapps-integration-pill {
+    width: calc(50% - 10px);
+  }
+  .webapps-pricing-cta__title {
+    font-size: 32px;
+  }
+}

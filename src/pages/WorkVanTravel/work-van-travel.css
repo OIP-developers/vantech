@@ -8,11 +8,6 @@
 }
 
 /* ---------- Hero ---------- */
-body .image-body {
-    background-image: url(../../../dist/assets/Work-Van-Travel-Business-banner.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .wvt-hero {
   position: relative;
   padding: 150px 0 70px;
@@ -716,7 +711,7 @@ body .image-body {
     right: -170px;
     width: 341px;
     height: 331px;
-    background-image: url(../../../dist/assets/moonimg-D43OTtWZ.webp);
+    background-image: url(../../assets/images/moonimg.webp);
     background-repeat: no-repeat;
     background-size: cover;
 }

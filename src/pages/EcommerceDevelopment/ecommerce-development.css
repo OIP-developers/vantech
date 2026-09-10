@@ -1,0 +1,902 @@
+/* ---------- Ecommerce Development Page ---------- */
+/* Reuses design tokens (colors, .container, .section, .eyebrow-pill,
+   .section-title, .section-head, .btn) defined in src/styles/global.css. */
+
+.ecommerce-page {
+  overflow-x: clip;
+}
+
+/* ---------- Shared heading styles ---------- */
+
+.ecommerce-h2 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.ecommerce-h1-lg {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 1.15;
+  color: var(--color-white);
+}
+
+.ecommerce-h1-lg .accent {
+  color: var(--color-orange-3);
+}
+
+.ecommerce-h1-lg--center {
+  text-align: center;
+}
+
+.ecommerce-p-lg {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-white);
+  max-width: 620px;
+}
+
+.ecommerce-section-copy {
+  max-width: 838px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Card surface (shared by build / use-case / process cards) ---------- */
+
+.ecommerce-card {
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid var(--color-orange-3);
+  background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 102.09%);
+  backdrop-filter: blur(25px);
+}
+
+.ecommerce-card--flat {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.ecommerce-icon-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--color-bg-card-3);
+  border: 1.5px solid var(--color-orange-3);
+  box-shadow: 0 20px 40px rgba(255, 88, 0, 0.25);
+  color: var(--color-orange);
+}
+
+.ecommerce-icon-badge .icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---------- Hero ---------- */
+
+.ecommerce-hero {
+  position: relative;
+  padding: 329px 0 258px;
+}
+
+.ecommerce-hero .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.ecommerce-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+}
+
+.ecommerce-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: 0.84px solid var(--color-orange);
+  border-radius: 19px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-white);
+}
+
+.ecommerce-hero__badge .icon {
+  width: 13px;
+  height: 14px;
+}
+
+.ecommerce-hero__title {
+  margin-top: 28px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 62px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.ecommerce-hero__desc {
+  margin-top: 24px;
+  max-width: 552px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.ecommerce-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.ecommerce-hero__graphic {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 0;
+  width: 560px;
+  height: 560px;
+  pointer-events: none;
+}
+
+.ecommerce-hero__glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  max-width: none;
+  opacity: 0.55;
+  filter: blur(10px);
+}
+
+.ecommerce-hero__outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 40px rgba(255, 102, 0, 0.35));
+  animation: ecommerce-outline-float 6s ease-in-out infinite;
+}
+
+@keyframes ecommerce-outline-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.ecommerce-hero__badge-icon {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  filter: drop-shadow(0 20px 30px rgba(255, 88, 0, 0.35));
+  animation: ecommerce-badge-float 5s ease-in-out infinite;
+}
+
+.ecommerce-hero__badge-icon--a {
+  right: 20px;
+  top: 60px;
+  transform: rotate(-15deg);
+}
+
+.ecommerce-hero__badge-icon--b {
+  left: 10px;
+  bottom: 80px;
+  transform: rotate(20deg);
+  animation-delay: -2.4s;
+}
+
+@keyframes ecommerce-badge-float {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--r, 0deg)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecommerce-hero__outline,
+  .ecommerce-hero__badge-icon {
+    animation: none;
+  }
+}
+
+/* ---------- Where Commerce Operations Leak ---------- */
+
+.ecommerce-leak {
+  padding-top: 250px;
+}
+
+.ecommerce-leak__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.ecommerce-leak__copy {
+  max-width: 620px;
+}
+
+.ecommerce-leak__list {
+  flex: 1;
+  max-width: 725px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.ecommerce-leak__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+}
+
+.ecommerce-leak__item-number {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-orange-2);
+}
+
+.ecommerce-leak__item-text {
+  font-size: 16px;
+  color: var(--color-white);
+}
+
+/* ---------- Solution ---------- */
+
+.ecommerce-solution {
+  padding-top: 188px;
+}
+
+.ecommerce-solution__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.ecommerce-solution__graphic {
+  position: relative;
+  flex-shrink: 0;
+  width: 480px;
+  max-width: 46%;
+  aspect-ratio: 1 / 1;
+}
+
+.ecommerce-solution__glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+  max-width: none;
+  opacity: 0.5;
+}
+
+.ecommerce-solution__outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+.ecommerce-solution__illustration {
+  position: relative;
+  width: 90%;
+  height: auto;
+  margin: 5%;
+}
+
+.ecommerce-solution__copy {
+  flex: 1;
+  max-width: 651px;
+}
+
+.ecommerce-solution__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.ecommerce-solution__desc {
+  margin-top: 20px;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- What We Build ---------- */
+
+.ecommerce-build {
+  position: relative;
+  padding-top: 183px;
+}
+
+.ecommerce-build__bg {
+  position: absolute;
+  left: 50%;
+  top: 60px;
+  transform: translateX(-50%);
+  width: 1140px;
+  max-width: 130%;
+  opacity: 0.45;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ecommerce-build .container {
+  position: relative;
+  z-index: 1;
+}
+
+.ecommerce-build__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 71px;
+}
+
+.ecommerce-build-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 28px;
+}
+
+.ecommerce-build-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.ecommerce-build-card__desc {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Capabilities ---------- */
+
+.ecommerce-capabilities {
+  position: relative;
+  padding-top: 186px;
+}
+
+.ecommerce-capabilities__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -80px;
+  width: 100%;
+  height: 670px;
+  object-fit: cover;
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ecommerce-capabilities .container {
+  position: relative;
+  z-index: 1;
+}
+
+.ecommerce-capabilities__rows {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.ecommerce-capabilities__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 19px;
+}
+
+.ecommerce-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.ecommerce-pill--active {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.ecommerce-pill__dot {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ecommerce-pill__dot span {
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--color-orange);
+}
+
+.ecommerce-pill--active .ecommerce-pill__dot span {
+  background: var(--color-white);
+}
+
+/* ---------- Use Cases ---------- */
+
+.ecommerce-usecases {
+  padding-top: 125px;
+}
+
+.ecommerce-usecases__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 27px;
+  margin-top: 30px;
+}
+
+.ecommerce-usecase-card {
+  padding: 24px 26px;
+}
+
+.ecommerce-usecase-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--color-white);
+}
+
+.ecommerce-usecase-card__divider {
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.ecommerce-usecase-card__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-white);
+}
+
+/* ---------- MVP architecture (pipeline) ---------- */
+
+.ecommerce-architecture {
+  position: relative;
+  padding-top: 223px;
+}
+
+.ecommerce-architecture__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40px;
+  width: 100%;
+  height: auto;
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ecommerce-architecture .container {
+  position: relative;
+  z-index: 1;
+}
+
+.ecommerce-architecture__divider {
+  position: relative;
+  margin-top: 63px;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.ecommerce-architecture__divider-dot {
+  position: absolute;
+  right: 1%;
+  top: -6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-orange-3);
+  box-shadow: 0 0 14px var(--color-orange-3);
+}
+
+.ecommerce-timeline {
+  margin-top: -21px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ecommerce-timeline-step {
+  flex: 1;
+  min-width: 0;
+}
+
+.ecommerce-timeline-step__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: var(--color-bg-card-2);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+.ecommerce-timeline-step__title {
+  margin: 50px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--color-orange-3);
+}
+
+.ecommerce-timeline-step__tags {
+  margin-top: 29px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.ecommerce-timeline-step__tag-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ecommerce-timeline-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 20px;
+  border-radius: 83px;
+  background: #11161d;
+  border: 1.33px solid #292d34;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ---------- Development Process ---------- */
+
+.ecommerce-process2 {
+  padding-top: 200px;
+}
+
+.ecommerce-process2__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 64px;
+}
+
+.ecommerce-process2-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+}
+
+.ecommerce-process2-card__body {
+  min-width: 0;
+}
+
+.ecommerce-process2-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-orange);
+}
+
+.ecommerce-process2-card__desc {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Potential Integrations ---------- */
+
+.ecommerce-integrations {
+  padding-top: 211px;
+}
+
+.ecommerce-integrations__grid {
+  margin-top: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ecommerce-integration-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 197px;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-white);
+}
+
+.ecommerce-integration-pill .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------- Why Van Tech Systems ---------- */
+
+.ecommerce-why {
+  padding-top: 251px;
+}
+
+.ecommerce-why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 64px;
+}
+
+.ecommerce-why-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  min-height: 195px;
+}
+
+.ecommerce-why-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-orange);
+}
+
+.ecommerce-why-card__desc {
+  margin: 10px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Pricing CTA banner ---------- */
+
+.ecommerce-pricing-cta {
+  padding: 60px 0 120px;
+}
+
+.ecommerce-pricing-cta__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 50px 60px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+}
+
+.ecommerce-pricing-cta__glow {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 480px;
+  max-width: 55%;
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ecommerce-pricing-cta__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 611px;
+}
+
+.ecommerce-pricing-cta__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.ecommerce-pricing-cta__desc {
+  margin: 18px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.ecommerce-pricing-cta .btn {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  font-size: 27px;
+  padding: 18px 27px;
+  gap: 18px;
+}
+
+.ecommerce-pricing-cta .btn .btn-icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+  .ecommerce-h1-lg {
+    font-size: 54px;
+  }
+  .ecommerce-hero__graphic {
+    width: 440px;
+    height: 440px;
+  }
+  .ecommerce-leak__row {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .ecommerce-timeline {
+    flex-wrap: wrap;
+  }
+  .ecommerce-timeline-step {
+    flex: 1 1 30%;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 980px) {
+  .ecommerce-hero {
+    padding: 130px 0 60px;
+  }
+  .ecommerce-hero .row {
+    flex-direction: column;
+  }
+  .ecommerce-hero__title {
+    font-size: 42px;
+  }
+  .ecommerce-hero__graphic {
+    display: none;
+  }
+  .ecommerce-h2 {
+    font-size: 38px;
+  }
+  .ecommerce-h1-lg {
+    font-size: 42px;
+  }
+  .ecommerce-solution__row {
+    flex-direction: column;
+  }
+  .ecommerce-solution__graphic {
+    max-width: 100%;
+    width: 360px;
+  }
+  .ecommerce-build__grid,
+  .ecommerce-process2__grid,
+  .ecommerce-why__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ecommerce-usecases__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ecommerce-timeline {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .ecommerce-pricing-cta__card {
+    justify-content: center;
+    text-align: center;
+    padding: 40px 32px;
+  }
+  .ecommerce-pricing-cta__copy {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .ecommerce-hero__title {
+    font-size: 32px;
+  }
+  .ecommerce-hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ecommerce-hero__actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+  .ecommerce-h2 {
+    font-size: 30px;
+  }
+  .ecommerce-h1-lg {
+    font-size: 32px;
+  }
+  .ecommerce-leak__item {
+    padding: 16px 20px;
+  }
+  .ecommerce-build__grid,
+  .ecommerce-process2__grid,
+  .ecommerce-why__grid,
+  .ecommerce-usecases__grid {
+    grid-template-columns: 1fr;
+  }
+  .ecommerce-process2-card,
+  .ecommerce-why-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .ecommerce-integration-pill {
+    width: calc(50% - 10px);
+  }
+  .ecommerce-pricing-cta__title {
+    font-size: 32px;
+  }
+}

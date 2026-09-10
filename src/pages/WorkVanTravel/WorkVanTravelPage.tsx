@@ -80,7 +80,7 @@ export default function WorkVanTravelPage() {
   const relatedReveal = useReveal('up');
 
   return (
-    <main className="wvt-page image-body">
+    <main className="wvt-page">
       <section className="wvt-hero section" id="wvt-hero">
 
         <div className="container wvt-hero__row">

@@ -94,11 +94,6 @@
   width: 26px;
   height: 26px;
 }
-body .agents-page {
-  background-image: url(../../../dist//assets/ai-agents-page.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 /* ---------- Hero ---------- */
 
 .agents-hero {

@@ -1,0 +1,909 @@
+/* ---------- MVP Development Page ---------- */
+/* Reuses design tokens (colors, .container, .section, .eyebrow-pill,
+   .section-title, .section-head, .btn) defined in src/styles/global.css. */
+
+.mvp-page {
+  overflow-x: clip;
+}
+
+/* ---------- Shared heading styles ---------- */
+
+.mvp-h2 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.mvp-h1-lg {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 1.15;
+  color: var(--color-white);
+}
+
+.mvp-h1-lg--center {
+  text-align: center;
+}
+
+.mvp-p-lg {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-white);
+  max-width: 620px;
+}
+
+.mvp-section-copy {
+  max-width: 838px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Card surface (shared by build / use-case / process cards) ---------- */
+
+.mvp-card {
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid var(--color-orange-3);
+  background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 102.09%);
+  backdrop-filter: blur(25px);
+}
+
+.mvp-card--flat {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.mvp-icon-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--color-bg-card-3);
+  border: 1.5px solid var(--color-orange-3);
+  box-shadow: 0 20px 40px rgba(255, 88, 0, 0.25);
+  color: var(--color-orange);
+}
+
+.mvp-icon-badge .icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---------- Hero ---------- */
+
+.mvp-hero {
+  position: relative;
+  padding: 220px 0 200px;
+  overflow: clip;
+}
+
+.mvp-hero__glow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 900px;
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mvp-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.mvp-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+}
+
+.mvp-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: 0.84px solid var(--color-orange);
+  border-radius: 19px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-white);
+}
+
+.mvp-hero__badge .icon {
+  width: 13px;
+  height: 14px;
+}
+
+.mvp-hero__title {
+  margin-top: 28px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 62px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.mvp-hero__desc {
+  margin-top: 24px;
+  max-width: 552px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.mvp-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.mvp-hero__graphic {
+  position: absolute;
+  z-index: 0;
+  right: -20px;
+  top: 0px;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+}
+
+.mvp-hero__glow-blob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+  max-width: none;
+  opacity: 0.6;
+  filter: blur(40px);
+}
+
+.mvp-hero__orbit-path {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  animation: mvp-orbit-spin 30s linear infinite;
+  will-change: transform;
+}
+
+.mvp-hero__rocket {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 62%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 50px rgba(255, 102, 0, 0.4)) drop-shadow(0 0 80px rgba(30, 166, 254, 0.28));
+  animation: mvp-rocket-float 6s ease-in-out infinite;
+}
+
+@keyframes mvp-orbit-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes mvp-rocket-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-16px); }
+}
+
+.mvp-hero__float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-bg-card-3);
+  border: 1.5px solid var(--color-orange-3);
+  box-shadow: 0 20px 40px rgba(255, 88, 0, 0.3);
+  color: var(--color-orange);
+  animation: mvp-rocket-float 6s ease-in-out infinite;
+}
+
+.mvp-hero__float .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.mvp-hero__float--a {
+  right: 30px;
+  bottom: 130px;
+  animation-delay: -2s;
+}
+
+.mvp-hero__float--b {
+  left: 40px;
+  top: 110px;
+  animation-delay: -4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mvp-hero__orbit-path,
+  .mvp-hero__rocket,
+  .mvp-hero__float {
+    animation: none;
+  }
+}
+
+/* ---------- Problem / Solution ---------- */
+
+.mvp-disappoint {
+  padding-top: 120px;
+}
+
+.mvp-disappoint__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.mvp-disappoint__copy {
+  max-width: 620px;
+}
+
+.mvp-disappoint__list {
+  flex: 1;
+  max-width: 725px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.mvp-disappoint__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+}
+
+.mvp-disappoint__item-number {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-orange-2);
+}
+
+.mvp-disappoint__item-text {
+  font-size: 16px;
+  color: var(--color-white);
+}
+
+.mvp-solution {
+  padding-top: 150px;
+}
+
+.mvp-solution__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.mvp-solution__graphic {
+  position: relative;
+  flex-shrink: 0;
+  width: 420px;
+  max-width: 42%;
+  aspect-ratio: 1 / 1;
+}
+
+.mvp-solution__glow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+.mvp-solution__line {
+  position: absolute;
+  width: 60%;
+  object-fit: contain;
+}
+
+.mvp-solution__line--a {
+  left: 8%;
+  top: 20%;
+}
+
+.mvp-solution__line--b {
+  left: 20%;
+  bottom: 18%;
+}
+
+.mvp-solution__copy {
+  flex: 1;
+  max-width: 651px;
+}
+
+.mvp-solution__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.mvp-solution__desc {
+  margin-top: 20px;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- What We Build ---------- */
+
+.mvp-build {
+  position: relative;
+  padding-top: 160px;
+}
+
+.mvp-build__bg {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%) rotate(180deg);
+  width: 1140px;
+  max-width: 130%;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mvp-build .container {
+  position: relative;
+  z-index: 1;
+}
+
+.mvp-build__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 71px;
+}
+
+.mvp-build-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 28px;
+}
+
+.mvp-build-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.mvp-build-card__desc {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Capabilities ---------- */
+
+.mvp-capabilities {
+  padding-top: 150px;
+}
+
+.mvp-capabilities__rows {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.mvp-capabilities__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 19px;
+}
+
+.mvp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.mvp-pill--active {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.mvp-pill__dot {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mvp-pill__dot span {
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--color-orange);
+}
+
+.mvp-pill--active .mvp-pill__dot span {
+  background: var(--color-white);
+}
+
+/* ---------- Use Cases ---------- */
+
+.mvp-usecases {
+  padding-top: 125px;
+}
+
+.mvp-usecases__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 27px;
+  margin-top: 30px;
+}
+
+.mvp-usecase-card {
+  padding: 24px 26px;
+}
+
+.mvp-usecase-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--color-white);
+}
+
+.mvp-usecase-card__divider {
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.mvp-usecase-card__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-white);
+}
+
+/* ---------- MVP architecture (pipeline) ---------- */
+
+.mvp-architecture {
+  position: relative;
+  padding-top: 150px;
+}
+
+.mvp-architecture__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40px;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mvp-architecture .container {
+  position: relative;
+  z-index: 1;
+}
+
+.mvp-architecture__divider {
+  position: relative;
+  margin-top: 63px;
+  border: none;
+  border-top: 1px solid var(--color-border-soft-4);
+}
+
+.mvp-architecture__divider-dot {
+  position: absolute;
+  right: 1%;
+  top: -6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-orange-3);
+  box-shadow: 0 0 14px var(--color-orange-3);
+}
+
+.mvp-timeline {
+  margin-top: -21px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.mvp-timeline-step {
+  flex: 1;
+  min-width: 0;
+}
+
+.mvp-timeline-step__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: var(--color-bg-card-2);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+.mvp-timeline-step__title {
+  margin: 50px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--color-orange-3);
+}
+
+.mvp-timeline-step__tags {
+  margin-top: 29px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.mvp-timeline-step__tag-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.mvp-timeline-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 20px;
+  border-radius: 83px;
+  background: #11161d;
+  border: 1.33px solid #292d34;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ---------- Development Process ---------- */
+
+.mvp-process2 {
+  padding-top: 200px;
+}
+
+.mvp-process2__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 64px;
+}
+
+.mvp-process2-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+}
+
+.mvp-process2-card__body {
+  min-width: 0;
+}
+
+.mvp-process2-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-orange);
+}
+
+.mvp-process2-card__desc {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Potential Integrations ---------- */
+
+.mvp-integrations {
+  padding-top: 180px;
+}
+
+.mvp-integrations__grid {
+  margin-top: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mvp-integration-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 197px;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-orange-3);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-white);
+}
+
+.mvp-integration-pill .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------- Why Van Tech Systems ---------- */
+
+.mvp-why {
+  padding-top: 200px;
+}
+
+.mvp-why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 64px;
+}
+
+.mvp-why-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  min-height: 195px;
+}
+
+.mvp-why-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-orange);
+}
+
+.mvp-why-card__desc {
+  margin: 10px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+/* ---------- Pricing CTA banner ---------- */
+
+.mvp-pricing-cta {
+  padding: 60px 0 120px;
+}
+
+.mvp-pricing-cta__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 50px 60px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--color-orange-3);
+}
+
+.mvp-pricing-cta__glow {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 480px;
+  max-width: 55%;
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mvp-pricing-cta__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 611px;
+}
+
+.mvp-pricing-cta__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 1.2;
+  color: var(--color-orange);
+}
+
+.mvp-pricing-cta__desc {
+  margin: 18px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.mvp-pricing-cta .btn {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  font-size: 27px;
+  padding: 18px 27px;
+  gap: 18px;
+}
+
+.mvp-pricing-cta .btn .btn-icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+  .mvp-h1-lg {
+    font-size: 54px;
+  }
+  .mvp-hero__graphic {
+    width: 440px;
+    height: 440px;
+    right: -60px;
+  }
+  .mvp-disappoint__row {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .mvp-timeline {
+    flex-wrap: wrap;
+  }
+  .mvp-timeline-step {
+    flex: 1 1 40%;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 980px) {
+  .mvp-hero {
+    padding: 130px 0 60px;
+  }
+  .mvp-hero__title {
+    font-size: 42px;
+  }
+  .mvp-hero__graphic {
+    display: none;
+  }
+  .mvp-h2 {
+    font-size: 38px;
+  }
+  .mvp-h1-lg {
+    font-size: 42px;
+  }
+  .mvp-solution__row {
+    flex-direction: column;
+  }
+  .mvp-solution__graphic {
+    max-width: 100%;
+    width: 320px;
+  }
+  .mvp-build__grid,
+  .mvp-process2__grid,
+  .mvp-why__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mvp-usecases__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mvp-timeline {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .mvp-pricing-cta__card {
+    justify-content: center;
+    text-align: center;
+    padding: 40px 32px;
+  }
+  .mvp-pricing-cta__copy {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .mvp-hero__title {
+    font-size: 32px;
+  }
+  .mvp-hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .mvp-hero__actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+  .mvp-h2 {
+    font-size: 30px;
+  }
+  .mvp-h1-lg {
+    font-size: 32px;
+  }
+  .mvp-disappoint__item {
+    padding: 16px 20px;
+  }
+  .mvp-build__grid,
+  .mvp-process2__grid,
+  .mvp-why__grid,
+  .mvp-usecases__grid {
+    grid-template-columns: 1fr;
+  }
+  .mvp-process2-card,
+  .mvp-why-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .mvp-integration-pill {
+    width: calc(50% - 10px);
+  }
+  .mvp-pricing-cta__title {
+    font-size: 32px;
+  }
+}

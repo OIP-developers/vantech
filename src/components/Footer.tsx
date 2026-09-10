@@ -12,8 +12,20 @@ const companyLinks = [
   { label: 'FAQs', href: '#faq' },
   { label: 'Contact', href: '/contact' },
 ];
-const servicesLinksA = ['AI Agents', 'AI Automations', 'Model Development', 'Autopilot', 'MVP Development'];
-const servicesLinksB = ['Web Applications', 'Mobile Applications', 'SaaS Development', 'Custom Software', 'Ecommerce'];
+const servicesLinksA = [
+  { label: 'AI Agents', href: '/ai-agents' },
+  { label: 'AI Automations', href: '/ai-automation' },
+  { label: 'Model Development', href: '/model-development' },
+  { label: 'Autopilot', href: '/auto-pilot' },
+  { label: 'MVP Development', href: '/mvp-development' },
+];
+const servicesLinksB = [
+  { label: 'Web Applications', href: '/web-applications' },
+  { label: 'Mobile Applications', href: '/mobile-application' },
+  { label: 'SaaS Development', href: '/saas-development' },
+  { label: 'Custom Software', href: '/custom-development' },
+  { label: 'Ecommerce', href: '/ecommerce-development' },
+];
 const legalLinks = ['Legal center', 'Cookies', 'Accessibility', 'AI usage'];
 
 export default function Footer() {
@@ -80,15 +92,15 @@ export default function Footer() {
               <div className="footer-links__columns">
                 <ul>
                   {servicesLinksA.map((l) => (
-                    <li key={l}>
-                      <a href="#services">{l}</a>
+                    <li key={l.label}>
+                      <a href={l.href}>{l.label}</a>
                     </li>
                   ))}
                 </ul>
                 <ul>
                   {servicesLinksB.map((l) => (
-                    <li key={l}>
-                      <a href="#services">{l}</a>
+                    <li key={l.label}>
+                      <a href={l.href}>{l.label}</a>
                     </li>
                   ))}
                 </ul>
