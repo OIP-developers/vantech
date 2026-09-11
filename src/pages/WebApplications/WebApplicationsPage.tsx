@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './web-applications.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -8,20 +8,8 @@ import { useReveal } from '../../hooks/useReveal';
 
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
-import codeSvg from '../../assets/icons/at-icons-code.svg?raw';
 
 import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw';
-import schedulerSvg from '../../assets/icons/ix-scheduler-filled.svg?raw';
-import dashboardFilledSvg from '../../assets/icons/boxicons-dashboard-filled.svg?raw';
-import toolsSvg from '../../assets/icons/ep-tools.svg?raw';
-import systemOkSvg from '../../assets/icons/eos-icons-system-ok.svg?raw';
-import fileSystemSvg from '../../assets/icons/eos-icons-file-system.svg?raw';
-
-import findInPageSvg from '../../assets/icons/material-symbols-find-in-page-rounded.svg?raw';
-import devBoardSvg from '../../assets/icons/material-symbols-light-developer-board-rounded.svg?raw';
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import securitySvg from '../../assets/icons/ic-outline-security.svg?raw';
-import rocketSvg from '../../assets/icons/heroicons-rocket-launch-20-solid.svg?raw';
 
 import accountBalanceSvg from '../../assets/icons/ic-round-account-balance.svg?raw';
 import paymentsSvg from '../../assets/icons/ic-baseline-payments.svg?raw';
@@ -31,18 +19,29 @@ import databaseSvg from '../../assets/icons/ant-design-database-filled.svg?raw';
 import webhookSvg from '../../assets/icons/carbon-webhook.svg?raw';
 import restApiSvg from '../../assets/icons/dashicons-rest-api.svg?raw';
 
-import openDataSvg from '../../assets/icons/academicons-open-data.svg?raw';
-import industrySvg from '../../assets/icons/streamline-industry-innovation-and-infrastructure-remix.svg?raw';
-import deepfakeSvg from '../../assets/icons/streamline-plump-deepfake-technology-1-solid.svg?raw';
-
-import heroBgGlow from '../../assets/images/web-applications/figma/hero-bg-glow.png';
-import heroGridLines from '../../assets/images/web-applications/figma/hero-grid-lines.svg';
 import heroWebAppScreen from '../../assets/images/web-applications/figma/hero-web-app-screen.png';
 import heroWebAppIcon from '../../assets/images/web-applications/figma/hero-web-app-icon.png';
+import webApplicationsIcon from '../../assets/images/web-applications/figma/web-applicationsicon.png';
 import solutionIllustration from '../../assets/images/web-applications/figma/solution-illustration.png';
-import sectionGlow from '../../assets/images/web-applications/figma/section-glow.png';
-import buildGlow from '../../assets/images/web-applications/figma/build-glow.png';
-import architectureWave from '../../assets/images/web-applications/figma/architecture-wave.svg';
+import pricingGlowOrb from '../../assets/images/web-applications/figma/pricing-glow-orb.png';
+
+import buildIconCrm from '../../assets/images/web-applications/figma/build-icon-crm.png';
+import buildIconBooking from '../../assets/images/web-applications/figma/build-icon-booking.png';
+import buildIconClientPortals from '../../assets/images/web-applications/figma/build-icon-client-portals.png';
+import buildIconInternalTools from '../../assets/images/web-applications/figma/build-icon-internal-tools.png';
+import buildIconOperations from '../../assets/images/web-applications/figma/build-icon-operations.png';
+import buildIconWorkflow from '../../assets/images/web-applications/figma/build-icon-workflow.png';
+
+import processIconDiscover from '../../assets/images/web-applications/figma/process-icon-discover.png';
+import processIconArchitect from '../../assets/images/web-applications/figma/process-icon-architect.png';
+import processIconDesign from '../../assets/images/web-applications/figma/process-icon-design.png';
+import processIconBuild from '../../assets/images/web-applications/figma/process-icon-build.png';
+import processIconTest from '../../assets/images/web-applications/figma/process-icon-test.png';
+import processIconLaunch from '../../assets/images/web-applications/figma/process-icon-launch.png';
+
+import whyIconModelled from '../../assets/images/web-applications/figma/why-icon-modelled.png';
+import whyIconPermissions from '../../assets/images/web-applications/figma/why-icon-permissions.png';
+import whyIconExtend from '../../assets/images/web-applications/figma/why-icon-extend.png';
 
 const problems = [
   'Critical processes run in spreadsheets beside the official system.',
@@ -53,34 +52,39 @@ const problems = [
 
 const buildCards = [
   {
-    icon: funnelSvg,
+    icon: buildIconCrm,
     title: 'CRM Platforms',
     desc: 'Pipelines and customer records designed around your sales process.',
+    descWidth: 345,
   },
   {
-    icon: schedulerSvg,
+    icon: buildIconBooking,
     title: 'Booking Platforms',
     desc: 'Availability, scheduling and confirmation workflows.',
   },
   {
-    icon: dashboardFilledSvg,
+    icon: buildIconClientPortals,
     title: 'Client portals',
     desc: 'Secure external access to documents, status and communication.',
+    descWidth: 320,
   },
   {
-    icon: toolsSvg,
+    icon: buildIconInternalTools,
     title: 'Internal Tools',
     desc: 'Admin interfaces that replace manual spreadsheet work.',
+    descWidth: 314,
   },
   {
-    icon: systemOkSvg,
+    icon: buildIconOperations,
     title: 'Operations Systems',
     desc: 'The day-to-day tooling your team runs the business on.',
+    descWidth: 316,
   },
   {
-    icon: fileSystemSvg,
+    icon: buildIconWorkflow,
     title: 'Workflow Systems',
     desc: 'Multi-step approvals, assignments and status tracking.',
+    descWidth: 324,
   },
 ];
 
@@ -115,52 +119,55 @@ const useCases = [
 ];
 
 const timelineSteps = [
-  { number: '01', title: 'Frontend', tags: [['Responsive UI', 'Dashboards'], ['Forms', 'Reporting']] },
-  { number: '02', title: 'API', tags: [['Endpoints', 'Validation'], ['Rate limits']] },
-  { number: '03', title: 'Business logic', tags: [['Workflows', 'Rules'], ['Automation']] },
-  { number: '04', title: 'Operations', tags: [['Deployment', 'Monitoring'], ['Analytics']] },
-  { number: '05', title: 'Platform', tags: [['Authentication', 'Monitoring'], ['Deployment', 'Integrations']] },
+  { number: '01', title: 'Frontend', tags: [['Responsive UI'], ['Dashboards'], ['Forms'], ['Reporting']] },
+  { number: '02', title: 'API', tags: [['Endpoints'], ['Validation'], ['Rate limits']] },
+  { number: '03', title: 'Business logic', tags: [['Workflows', 'Rules'], ['Automation', 'Automation']] },
+  { number: '04', title: 'Operations', tags: [['Deployment'], ['Monitoring', 'Analytics']] },
+  { number: '05', title: 'Platform', tags: [['Authentication'], ['Monitoring'], ['Deployment', 'Integrations']] },
 ];
 
 const processCards = [
   {
-    icon: findInPageSvg,
+    icon: processIconDiscover,
     title: 'Discover',
     desc: 'Users, roles, workflows and the systems already in place.',
   },
   {
-    icon: devBoardSvg,
+    icon: processIconArchitect,
     title: 'Architect',
     desc: 'Data model, permissions, integrations and infrastructure.',
   },
   {
-    icon: designServicesSvg,
+    icon: processIconDesign,
     title: 'Design',
     desc: 'Interface design for the roles that will use it daily.',
   },
   {
-    icon: codeSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'Iterative development with review at each increment.',
   },
   {
-    icon: securitySvg,
+    icon: processIconTest,
     title: 'Test',
     desc: 'Functional QA, permission testing and security review.',
   },
   {
-    icon: rocketSvg,
+    icon: processIconLaunch,
     title: 'Launch',
     desc: 'Deployment, data migration where needed, training and handover.',
   },
 ];
 
-const integrations = [
+const integrationsRow1 = [
   { icon: funnelSvg, label: 'CRM' },
   { icon: accountBalanceSvg, label: 'Accounting' },
   { icon: paymentsSvg, label: 'Payments' },
   { icon: emailSvg, label: 'Email' },
   { icon: calendarSvg, label: 'Calendars' },
+];
+
+const integrationsRow2 = [
   { icon: databaseSvg, label: 'Storage' },
   { icon: webhookSvg, label: 'Identity providers' },
   { icon: restApiSvg, label: 'Internal APIs' },
@@ -168,17 +175,17 @@ const integrations = [
 
 const whyCards = [
   {
-    icon: openDataSvg,
+    icon: whyIconModelled,
     title: 'Modelled on your operation',
     desc: 'The data structure reflects how your business actually works.',
   },
   {
-    icon: industrySvg,
+    icon: whyIconPermissions,
     title: 'Permissions taken seriously',
     desc: 'Access control is designed with the application, not bolted on.',
   },
   {
-    icon: deepfakeSvg,
+    icon: whyIconExtend,
     title: 'Built to extend',
     desc: 'New modules and integrations fit the existing architecture.',
   },
@@ -219,7 +226,6 @@ export default function WebApplicationsPage() {
   return (
     <main className="webapps-page">
       <section className="webapps-hero section">
-        <img src={heroBgGlow} alt="" className="webapps-hero__bg-glow" loading="eager" />
         <div className="container">
           <div className="webapps-hero__row">
             <div className={`webapps-hero__content ${hero.className}`} ref={hero.ref}>
@@ -245,10 +251,7 @@ export default function WebApplicationsPage() {
             </div>
 
             <div className="webapps-hero__graphic" aria-hidden="true">
-              <img src={heroGridLines} alt="" className="webapps-hero__grid-lines" />
-              <div className="webapps-hero__code-badge">
-                <Icon svg={codeSvg} />
-              </div>
+              <img src={webApplicationsIcon} alt="" className="webapps-hero__code-badge" />
               <img src={heroWebAppScreen} alt="" className="webapps-hero__screen" loading="eager" />
               <img src={heroWebAppIcon} alt="" className="webapps-hero__icon-float" />
             </div>
@@ -278,7 +281,6 @@ export default function WebApplicationsPage() {
       </section>
 
       <section className="webapps-solution section">
-        <img src={sectionGlow} alt="" className="webapps-solution__bg" loading="lazy" />
         <div className="container webapps-solution__row">
           <div className="webapps-solution__graphic">
             <img src={solutionIllustration} alt="" loading="lazy" />
@@ -296,7 +298,6 @@ export default function WebApplicationsPage() {
       </section>
 
       <section className="webapps-build section" id="build">
-        <img src={buildGlow} alt="" className="webapps-build__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${buildHead.className}`} ref={buildHead.ref}>
             <h2 className="webapps-h2">What we build</h2>
@@ -305,11 +306,12 @@ export default function WebApplicationsPage() {
           <div className="webapps-build__grid">
             {buildCards.map((card) => (
               <div className="webapps-card webapps-build-card" key={card.title}>
-                <div className="webapps-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="webapps-build-card__glow" />
+                <div className="webapps-build-card__head">
+                  <h3 className="webapps-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="webapps-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="webapps-build-card__title">{card.title}</h3>
-                <p className="webapps-build-card__desc">{card.desc}</p>
+                <p className="webapps-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -324,8 +326,8 @@ export default function WebApplicationsPage() {
 
           <div className="webapps-capabilities__rows">
             <div className="webapps-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`webapps-pill${i === 0 ? ' webapps-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="webapps-pill" key={label}>
                   <span className="webapps-pill__dot">
                     <span />
                   </span>
@@ -348,7 +350,6 @@ export default function WebApplicationsPage() {
       </section>
 
       <section className="webapps-usecases section">
-        <img src={sectionGlow} alt="" className="webapps-usecases__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${usecasesHead.className}`} ref={usecasesHead.ref}>
             <h2 className="webapps-h2">Use Cases</h2>
@@ -367,7 +368,6 @@ export default function WebApplicationsPage() {
       </section>
 
       <section className="webapps-architecture section" id="process">
-        <img src={architectureWave} alt="" className="webapps-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="webapps-h1-lg webapps-h1-lg--center">Application Architecture</h2>
@@ -413,13 +413,11 @@ export default function WebApplicationsPage() {
           <div className="webapps-process2__grid">
             {processCards.map((card) => (
               <div className="webapps-card webapps-card--flat webapps-process2-card" key={card.title}>
-                <div className="webapps-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="webapps-process2-card__body">
                   <h3 className="webapps-process2-card__title">{card.title}</h3>
                   <p className="webapps-process2-card__desc">{card.desc}</p>
                 </div>
+                <img src={card.icon} alt="" className="webapps-process2-card__badge" />
               </div>
             ))}
           </div>
@@ -433,12 +431,40 @@ export default function WebApplicationsPage() {
           </div>
 
           <div className="webapps-integrations__grid">
-            {integrations.map((item) => (
-              <span className="webapps-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="webapps-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="webapps-integration-connector" aria-hidden="true">
+                      <span className="webapps-integration-connector__line" />
+                      <span className="webapps-integration-connector__diamond-outer" />
+                      <span className="webapps-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="webapps-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="webapps-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="webapps-integration-connector" aria-hidden="true">
+                      <span className="webapps-integration-connector__line" />
+                      <span className="webapps-integration-connector__diamond-outer" />
+                      <span className="webapps-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="webapps-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -452,13 +478,9 @@ export default function WebApplicationsPage() {
           <div className="webapps-why__grid">
             {whyCards.map((card) => (
               <div className="webapps-card webapps-card--flat webapps-why-card" key={card.title}>
-                <div className="webapps-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="webapps-why-card__title">{card.title}</h3>
-                  <p className="webapps-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="webapps-badge-img webapps-why-card__badge" />
+                <h3 className="webapps-why-card__title">{card.title}</h3>
+                <p className="webapps-why-card__desc">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -468,7 +490,7 @@ export default function WebApplicationsPage() {
       <section className="webapps-pricing-cta section">
         <div className="container">
           <div className="webapps-pricing-cta__card">
-            <img src={sectionGlow} alt="" className="webapps-pricing-cta__glow" loading="lazy" />
+            <img src={pricingGlowOrb} alt="" className="webapps-pricing-cta__glow" loading="lazy" />
             <div className="webapps-pricing-cta__copy">
               <h2 className="webapps-pricing-cta__title">Starting at $5,000/month</h2>
               <p className="webapps-pricing-cta__desc">
@@ -484,8 +506,8 @@ export default function WebApplicationsPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );

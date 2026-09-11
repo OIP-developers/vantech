@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './ecommerce-development.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -9,19 +9,6 @@ import { useReveal } from '../../hooks/useReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
 
-import storeAltSvg from '../../assets/icons/boxicons-store-alt-filled.svg?raw';
-import wpfAssistantSvg from '../../assets/icons/wpf-assistant.svg?raw';
-import cashierSvg from '../../assets/icons/streamline-sharp-cashier-machine-2-solid.svg?raw';
-import cartExchangeSvg from '../../assets/icons/streamline-ultimate-mobile-shopping-cart-exchange-bold.svg?raw';
-import orderApproveSvg from '../../assets/icons/material-symbols-order-approve.svg?raw';
-import fileReportSvg from '../../assets/icons/boxicons-file-report-filled.svg?raw';
-
-import findInPageSvg from '../../assets/icons/material-symbols-find-in-page-rounded.svg?raw';
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import robotFilledSvg from '../../assets/icons/boxicons-robot-filled.svg?raw';
-import outlineSecuritySvg from '../../assets/icons/ic-outline-security.svg?raw';
-import rocketLaunchSvg from '../../assets/icons/heroicons-rocket-launch-20-solid.svg?raw';
-
 import paymentsSvg from '../../assets/icons/ic-baseline-payments.svg?raw';
 import shippingFastSvg from '../../assets/icons/fa7-solid-shipping-fast.svg?raw';
 import emailSvg from '../../assets/icons/ic-baseline-email.svg?raw';
@@ -31,21 +18,28 @@ import analyticsSvg from '../../assets/icons/clarity-analytics-solid.svg?raw';
 import warehouseSvg from '../../assets/icons/ic-baseline-warehouse.svg?raw';
 import accountingSvg from '../../assets/icons/map-accounting.svg?raw';
 
-import contentSaveCogSvg from '../../assets/icons/mdi-content-save-cog.svg?raw';
-import ixAiSvg from '../../assets/icons/ix-ai.svg?raw';
-import atRulerSvg from '../../assets/icons/at-icons-ruler.svg?raw';
-
-import heroOutline from '../../assets/images/ecommerce-development/figma/hero-outline.svg';
 import heroGlow from '../../assets/images/ecommerce-development/figma/hero-glow.png';
-import heroBadgeCart from '../../assets/images/ecommerce-development/figma/hero-badge-cart.svg';
-import heroBadgeOrder from '../../assets/images/ecommerce-development/figma/hero-badge-order.svg';
-import solutionOutline from '../../assets/images/ecommerce-development/figma/solution-outline.svg';
 import solutionGlow from '../../assets/images/ecommerce-development/figma/solution-glow.png';
-import solutionIllustration from '../../assets/images/ecommerce-development/figma/solution-illustration.png';
-import buildGlow from '../../assets/images/ecommerce-development/figma/build-glow.png';
-import architectureBg from '../../assets/images/ecommerce-development/figma/architecture-bg.svg';
+
+import buildIconStorefront from '../../assets/images/ecommerce-development/figma/build-icon-storefront.png';
+import buildIconAssistant from '../../assets/images/ecommerce-development/figma/build-icon-assistant.png';
+import buildIconCheckout from '../../assets/images/ecommerce-development/figma/build-icon-checkout.png';
+import buildIconRecovery from '../../assets/images/ecommerce-development/figma/build-icon-recovery.png';
+import buildIconPostpurchase from '../../assets/images/ecommerce-development/figma/build-icon-postpurchase.png';
+import buildIconOperations from '../../assets/images/ecommerce-development/figma/build-icon-operations.png';
+
+import processIconDiscover from '../../assets/images/ecommerce-development/figma/process-icon-discover.png';
+import processIconDesign from '../../assets/images/ecommerce-development/figma/process-icon-design.png';
+import processIconBuild from '../../assets/images/ecommerce-development/figma/process-icon-build.png';
+import processIconAutomate from '../../assets/images/ecommerce-development/figma/process-icon-automate.png';
+import processIconTest from '../../assets/images/ecommerce-development/figma/process-icon-test.png';
+import processIconLaunch from '../../assets/images/ecommerce-development/figma/process-icon-launch.png';
+
+import whyIconOperations from '../../assets/images/ecommerce-development/figma/why-icon-operations.png';
+import whyIconAutomation from '../../assets/images/ecommerce-development/figma/why-icon-automation.png';
+import whyIconMeasurable from '../../assets/images/ecommerce-development/figma/why-icon-measurable.png';
+
 import pricingGlowOrb from '../../assets/images/ecommerce-development/figma/pricing-glow-orb.png';
-import capabilitiesGlow from '../../assets/images/ecommerce-development/figma/glow-ellipse-wide.png';
 
 const problems = [
   'Support answers the same order questions every day.',
@@ -56,34 +50,40 @@ const problems = [
 
 const buildCards = [
   {
-    icon: storeAltSvg,
+    icon: buildIconStorefront,
     title: 'Storefront',
     desc: 'A fast, responsive buying experience designed around your catalogue.',
+    descWidth: 310,
   },
   {
-    icon: wpfAssistantSvg,
+    icon: buildIconAssistant,
     title: 'Commerce Assistant',
     desc: 'AI answers for order, product and policy questions.',
+    descWidth: 281,
   },
   {
-    icon: cashierSvg,
+    icon: buildIconCheckout,
     title: 'Checkout and Payments',
     desc: 'Payment flows, subscriptions and order confirmation.',
+    descWidth: 330,
   },
   {
-    icon: cartExchangeSvg,
+    icon: buildIconRecovery,
     title: 'Recovery and Lifecycle',
     desc: 'Cart recovery and lifecycle messaging based on real behaviour.',
+    descWidth: 321,
   },
   {
-    icon: orderApproveSvg,
+    icon: buildIconPostpurchase,
     title: 'Post-purchase',
     desc: 'Order status, shipping updates and returns communication.',
+    descWidth: 298,
   },
   {
-    icon: fileReportSvg,
+    icon: buildIconOperations,
     title: 'Operations',
     desc: 'Admin tooling and reporting for the team running the store.',
+    descWidth: 293,
   },
 ];
 
@@ -131,34 +131,40 @@ const timelineSteps = [
 
 const processCards = [
   {
-    icon: findInPageSvg,
+    icon: processIconDiscover,
     title: 'Discover',
     desc: 'Catalogue, customer journeys and operational constraints.',
+    descWidth: 232,
   },
   {
-    icon: designServicesSvg,
+    icon: processIconDesign,
     title: 'Design',
     desc: 'Storefront and checkout experience across devices.',
+    descWidth: 227,
   },
   {
-    icon: designServicesSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'Store, payments, order flow and integrations.',
+    descWidth: 277,
   },
   {
-    icon: robotFilledSvg,
+    icon: processIconAutomate,
     title: 'Automate',
     desc: 'Support, recovery and lifecycle messaging.',
+    descWidth: 264,
   },
   {
-    icon: outlineSecuritySvg,
+    icon: processIconTest,
     title: 'Test',
     desc: 'Payment testing, responsive QA and performance review.',
+    descWidth: 218,
   },
   {
-    icon: rocketLaunchSvg,
+    icon: processIconLaunch,
     title: 'Launch',
     desc: 'Deployment, analytics and post-launch monitoring.',
+    descWidth: 257,
   },
 ];
 
@@ -175,21 +181,27 @@ const integrations = [
 
 const whyCards = [
   {
-    icon: contentSaveCogSvg,
+    icon: whyIconOperations,
     title: 'Built for operations',
     desc: 'We design the work behind the order, not only the storefront.',
+    descWidth: 395,
   },
   {
-    icon: ixAiSvg,
+    icon: whyIconAutomation,
     title: 'Automation where it repeats',
     desc: 'AI is applied to the questions and journeys that recur.',
+    descWidth: 358,
   },
   {
-    icon: atRulerSvg,
+    icon: whyIconMeasurable,
     title: 'Measurable',
     desc: 'Analytics are instrumented as part of the build.',
+    descWidth: 315,
   },
 ];
+
+const integrationsRow1 = integrations.slice(0, 5);
+const integrationsRow2 = integrations.slice(5);
 
 export default function EcommerceDevelopmentPage() {
   useEffect(() => {
@@ -252,18 +264,7 @@ export default function EcommerceDevelopmentPage() {
             </div>
 
             <div className="ecommerce-hero__graphic" aria-hidden="true">
-              <img src={heroGlow} alt="" className="ecommerce-hero__glow" loading="eager" />
-              <img src={heroOutline} alt="" className="ecommerce-hero__outline" loading="eager" />
-              <img
-                src={heroBadgeCart}
-                alt=""
-                className="ecommerce-hero__badge-icon ecommerce-hero__badge-icon--a"
-              />
-              <img
-                src={heroBadgeOrder}
-                alt=""
-                className="ecommerce-hero__badge-icon ecommerce-hero__badge-icon--b"
-              />
+              <img src={heroGlow} alt="" className="ecommerce-hero__mockup" loading="eager" />
             </div>
           </div>
         </div>
@@ -296,14 +297,7 @@ export default function EcommerceDevelopmentPage() {
       <section className="ecommerce-solution section">
         <div className="container ecommerce-solution__row">
           <div className="ecommerce-solution__graphic">
-            <img src={solutionGlow} alt="" className="ecommerce-solution__glow" loading="lazy" />
-            <img src={solutionOutline} alt="" className="ecommerce-solution__outline" loading="lazy" />
-            <img
-              src={solutionIllustration}
-              alt=""
-              className="ecommerce-solution__illustration"
-              loading="lazy"
-            />
+            <img src={solutionGlow} alt="" className="ecommerce-solution__mockup" loading="lazy" />
           </div>
 
           <div className={`ecommerce-solution__copy ${solutionCopy.className}`} ref={solutionCopy.ref}>
@@ -318,7 +312,6 @@ export default function EcommerceDevelopmentPage() {
       </section>
 
       <section className="ecommerce-build section" id="what-we-build">
-        <img src={buildGlow} alt="" className="ecommerce-build__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${buildHead.className}`} ref={buildHead.ref}>
             <h2 className="ecommerce-h2">What We Build</h2>
@@ -327,11 +320,12 @@ export default function EcommerceDevelopmentPage() {
           <div className="ecommerce-build__grid">
             {buildCards.map((card) => (
               <div className="ecommerce-card ecommerce-build-card" key={card.title}>
-                <div className="ecommerce-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="ecommerce-build-card__glow" />
+                <div className="ecommerce-build-card__head">
+                  <h3 className="ecommerce-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="ecommerce-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="ecommerce-build-card__title">{card.title}</h3>
-                <p className="ecommerce-build-card__desc">{card.desc}</p>
+                <p className="ecommerce-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -339,7 +333,6 @@ export default function EcommerceDevelopmentPage() {
       </section>
 
       <section className="ecommerce-capabilities section">
-        <img src={capabilitiesGlow} alt="" className="ecommerce-capabilities__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${capabilitiesHead.className}`} ref={capabilitiesHead.ref}>
             <h2 className="ecommerce-h2">Capabilities</h2>
@@ -347,8 +340,8 @@ export default function EcommerceDevelopmentPage() {
 
           <div className="ecommerce-capabilities__rows">
             <div className="ecommerce-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`ecommerce-pill${i === 0 ? ' ecommerce-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="ecommerce-pill" key={label}>
                   <span className="ecommerce-pill__dot">
                     <span />
                   </span>
@@ -389,7 +382,6 @@ export default function EcommerceDevelopmentPage() {
       </section>
 
       <section className="ecommerce-architecture section" id="architecture">
-        <img src={architectureBg} alt="" className="ecommerce-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="ecommerce-h1-lg ecommerce-h1-lg--center">MVP architecture</h2>
@@ -435,13 +427,11 @@ export default function EcommerceDevelopmentPage() {
           <div className="ecommerce-process2__grid">
             {processCards.map((card, i) => (
               <div className="ecommerce-card ecommerce-card--flat ecommerce-process2-card" key={`${card.title}-${i}`}>
-                <div className="ecommerce-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="ecommerce-process2-card__body">
                   <h3 className="ecommerce-process2-card__title">{card.title}</h3>
-                  <p className="ecommerce-process2-card__desc">{card.desc}</p>
+                  <p className="ecommerce-process2-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
                 </div>
+                <img src={card.icon} alt="" className="ecommerce-process2-card__badge" loading="lazy" />
               </div>
             ))}
           </div>
@@ -455,12 +445,40 @@ export default function EcommerceDevelopmentPage() {
           </div>
 
           <div className="ecommerce-integrations__grid">
-            {integrations.map((item) => (
-              <span className="ecommerce-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="ecommerce-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="ecommerce-integration-connector">
+                      <span className="ecommerce-integration-connector__line" />
+                      <span className="ecommerce-integration-connector__diamond-outer" />
+                      <span className="ecommerce-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="ecommerce-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="ecommerce-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="ecommerce-integration-connector">
+                      <span className="ecommerce-integration-connector__line" />
+                      <span className="ecommerce-integration-connector__diamond-outer" />
+                      <span className="ecommerce-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="ecommerce-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -474,13 +492,9 @@ export default function EcommerceDevelopmentPage() {
           <div className="ecommerce-why__grid">
             {whyCards.map((card) => (
               <div className="ecommerce-card ecommerce-card--flat ecommerce-why-card" key={card.title}>
-                <div className="ecommerce-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="ecommerce-why-card__title">{card.title}</h3>
-                  <p className="ecommerce-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="ecommerce-badge-img ecommerce-why-card__badge" />
+                <h3 className="ecommerce-why-card__title">{card.title}</h3>
+                <p className="ecommerce-why-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -506,8 +520,8 @@ export default function EcommerceDevelopmentPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );

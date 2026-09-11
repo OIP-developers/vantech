@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './model-development.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -9,20 +9,6 @@ import { useReveal } from '../../hooks/useReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
 
-import clipboardDataSvg from '../../assets/icons/bi-clipboard2-data-fill.svg?raw';
-import organizationSvg from '../../assets/icons/fluent-organization-20-filled.svg?raw';
-import safeRetrievalSvg from '../../assets/icons/icon-park-solid-safe-retrieval.svg?raw';
-import businessCenterSvg from '../../assets/icons/ic-baseline-business-center.svg?raw';
-import fingerAccessSvg from '../../assets/icons/hugeicons-finger-access.svg?raw';
-import reviewResponseSvg from '../../assets/icons/fluent-mdl2-review-response-solid.svg?raw';
-
-import cloudKeySvg from '../../assets/icons/mdi-cloud-key.svg?raw';
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import sitemapSvg from '../../assets/icons/mdi-sitemap.svg?raw';
-import rulerSvg from '../../assets/icons/at-icons-ruler.svg?raw';
-import mergeSvg from '../../assets/icons/eos-icons-merge.svg?raw';
-import dataUsageSvg from '../../assets/icons/material-symbols-data-usage.svg?raw';
-
 import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw';
 import databaseFilledSvg from '../../assets/icons/ant-design-database-filled.svg?raw';
 import listsRoundedSvg from '../../assets/icons/material-symbols-lists-rounded.svg?raw';
@@ -30,14 +16,29 @@ import hostGroupSvg from '../../assets/icons/clarity-host-group-solid.svg?raw';
 import restApiSvg from '../../assets/icons/dashicons-rest-api.svg?raw';
 import analyticsSvg from '../../assets/icons/clarity-analytics-solid-badged.svg?raw';
 
-import replyBigSvg from '../../assets/icons/boxicons-reply-big-filled.svg?raw';
-import folderQualitySvg from '../../assets/icons/icon-park-solid-folder-quality.svg?raw';
-
-import heroIllustration from '../../assets/images/model-development/figma/hero-illustration.png';
+import heroIllustration from '../../assets/images/model-development/figma/bannnersectionimg/modeldev-hero__graphic.png';
+import heroStarLeft from '../../assets/images/model-development/figma/bannnersectionimg/modeldev-heroIconleft.png';
+import heroStarRight from '../../assets/images/model-development/figma/bannnersectionimg/modeldev-heroIconright.png';
 import solutionIllustration from '../../assets/images/model-development/figma/solution-illustration.png';
-import buildGlow from '../../assets/images/model-development/figma/glow-band.png';
-import howItWorksWave from '../../assets/images/model-development/figma/how-it-works-wave.svg';
 import pricingGlowOrb from '../../assets/images/model-development/figma/pricing-glow.png';
+
+import buildIconDataIngestion from '../../assets/images/model-development/figma/build-icon-data-ingestion.png';
+import buildIconKnowledgeStructuring from '../../assets/images/model-development/figma/build-icon-knowledge-structuring.png';
+import buildIconRetrieval from '../../assets/images/model-development/figma/build-icon-retrieval.png';
+import buildIconBusinessReasoning from '../../assets/images/model-development/figma/build-icon-business-reasoning.png';
+import buildIconAccessBoundaries from '../../assets/images/model-development/figma/build-icon-access-boundaries.png';
+import buildIconEvaluation from '../../assets/images/model-development/figma/build-icon-evaluation.png';
+
+import processIconAssess from '../../assets/images/model-development/figma/process-icon-assess.png';
+import processIconArchitect from '../../assets/images/model-development/figma/process-icon-architect.png';
+import processIconBuild from '../../assets/images/model-development/figma/process-icon-build.png';
+import processIconEvaluate from '../../assets/images/model-development/figma/process-icon-evaluate.png';
+import processIconIntegrate from '../../assets/images/model-development/figma/process-icon-integrate.png';
+import processIconImprove from '../../assets/images/model-development/figma/process-icon-improve.png';
+
+import whyIconGrounded from '../../assets/images/model-development/figma/why-icon-grounded.png';
+import whyIconMeasured from '../../assets/images/model-development/figma/why-icon-measured.png';
+import whyIconScoped from '../../assets/images/model-development/figma/why-icon-scoped.png';
 
 const problems = [
   'Knowledge is scattered across documents, systems and people.',
@@ -48,34 +49,40 @@ const problems = [
 
 const buildCards = [
   {
-    icon: clipboardDataSvg,
+    icon: buildIconDataIngestion,
     title: 'Data Ingestion',
     desc: 'Pipelines that collect documents and records into a usable form.',
+    descWidth: 310,
   },
   {
-    icon: organizationSvg,
+    icon: buildIconKnowledgeStructuring,
     title: 'Knowledge Structuring',
     desc: 'Chunking, metadata and indexing designed for retrieval quality.',
+    descWidth: 280,
   },
   {
-    icon: safeRetrievalSvg,
+    icon: buildIconRetrieval,
     title: 'Retrieval (RAG)',
     desc: 'Grounded responses that cite the underlying source.',
+    descWidth: 282,
   },
   {
-    icon: businessCenterSvg,
+    icon: buildIconBusinessReasoning,
     title: 'Business Reasoning',
     desc: 'Your rules and constraints applied to model output.',
+    descWidth: 304,
   },
   {
-    icon: fingerAccessSvg,
+    icon: buildIconAccessBoundaries,
     title: 'Access Boundaries',
     desc: 'Permissions that determine who can retrieve what.',
+    descWidth: 305,
   },
   {
-    icon: reviewResponseSvg,
+    icon: buildIconEvaluation,
     title: 'Evaluation',
     desc: 'Test sets and review cycles that track answer quality over time.',
+    descWidth: 313,
   },
 ];
 
@@ -124,59 +131,63 @@ const timelineSteps = [
 
 const processCards = [
   {
-    icon: cloudKeySvg,
+    icon: processIconAssess,
     title: 'Assess',
     desc: 'Review the data available, its quality and its constraints.',
   },
   {
-    icon: designServicesSvg,
+    icon: processIconArchitect,
     title: 'Architect',
     desc: 'Design ingestion, indexing, retrieval and access boundaries.',
   },
   {
-    icon: sitemapSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'Implement the pipeline and the retrieval and reasoning layer.',
   },
   {
-    icon: rulerSvg,
+    icon: processIconEvaluate,
     title: 'Evaluate',
     desc: 'Measure output against a defined test set with real questions.',
   },
   {
-    icon: mergeSvg,
+    icon: processIconIntegrate,
     title: 'Integrate',
     desc: 'Expose the layer to the agents, search or applications that use it.',
   },
   {
-    icon: dataUsageSvg,
+    icon: processIconImprove,
     title: 'Improve',
     desc: 'Refine retrieval, prompts and rules as usage grows.',
   },
 ];
 
-const integrations = [
+const integrationsRow1 = [
   { icon: funnelSvg, label: 'Databases' },
   { icon: databaseFilledSvg, label: 'Document storage' },
   { icon: listsRoundedSvg, label: 'Vector indexes' },
   { icon: hostGroupSvg, label: 'Model providers' },
+];
+
+const integrationsRow2 = [
   { icon: restApiSvg, label: 'Internal APIs' },
   { icon: analyticsSvg, label: 'Analytics' },
 ];
 
 const whyCards = [
   {
-    icon: replyBigSvg,
+    icon: whyIconGrounded,
     title: 'Grounded and traceable',
     desc: 'Answers reference the sources they came from.',
+    descWidth: 313,
   },
   {
-    icon: folderQualitySvg,
+    icon: whyIconMeasured,
     title: 'Measured, not assumed',
     desc: 'Quality is evaluated against real questions before rollout.',
   },
   {
-    icon: cloudKeySvg,
+    icon: whyIconScoped,
     title: 'Scoped access',
     desc: 'Permissions decide what the system can retrieve and for whom.',
   },
@@ -248,6 +259,8 @@ export default function ModelDevelopmentPage() {
 
             <div className="modeldev-hero__graphic" aria-hidden="true">
               <img src={heroIllustration} alt="" className="modeldev-hero__illustration" loading="eager" />
+              <img src={heroStarLeft} alt="" className="modeldev-hero__star modeldev-hero__star--left" loading="eager" />
+              <img src={heroStarRight} alt="" className="modeldev-hero__star modeldev-hero__star--right" loading="eager" />
             </div>
           </div>
         </div>
@@ -292,7 +305,6 @@ export default function ModelDevelopmentPage() {
       </section>
 
       <section className="modeldev-build section" id="offerings">
-        <img src={buildGlow} alt="" className="modeldev-build__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${buildHead.className}`} ref={buildHead.ref}>
             <h2 className="modeldev-h2">What we build</h2>
@@ -301,11 +313,12 @@ export default function ModelDevelopmentPage() {
           <div className="modeldev-build__grid">
             {buildCards.map((card) => (
               <div className="modeldev-card modeldev-build-card" key={card.title}>
-                <div className="modeldev-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="modeldev-build-card__glow" />
+                <div className="modeldev-build-card__head">
+                  <h3 className="modeldev-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="modeldev-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="modeldev-build-card__title">{card.title}</h3>
-                <p className="modeldev-build-card__desc">{card.desc}</p>
+                <p className="modeldev-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -320,8 +333,8 @@ export default function ModelDevelopmentPage() {
 
           <div className="modeldev-capabilities__rows">
             <div className="modeldev-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`modeldev-pill${i === 0 ? ' modeldev-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="modeldev-pill" key={label}>
                   <span className="modeldev-pill__dot">
                     <span />
                   </span>
@@ -362,7 +375,6 @@ export default function ModelDevelopmentPage() {
       </section>
 
       <section className="modeldev-architecture section" id="process">
-        <img src={howItWorksWave} alt="" className="modeldev-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="modeldev-h1-lg modeldev-h1-lg--center">How it works</h2>
@@ -408,13 +420,11 @@ export default function ModelDevelopmentPage() {
           <div className="modeldev-process2__grid">
             {processCards.map((card) => (
               <div className="modeldev-card modeldev-card--flat modeldev-process2-card" key={card.title}>
-                <div className="modeldev-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="modeldev-process2-card__body">
                   <h3 className="modeldev-process2-card__title">{card.title}</h3>
                   <p className="modeldev-process2-card__desc">{card.desc}</p>
                 </div>
+                <img src={card.icon} alt="" className="modeldev-process2-card__badge" />
               </div>
             ))}
           </div>
@@ -428,12 +438,40 @@ export default function ModelDevelopmentPage() {
           </div>
 
           <div className="modeldev-integrations__grid">
-            {integrations.map((item) => (
-              <span className="modeldev-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="modeldev-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="modeldev-integration-connector" aria-hidden="true">
+                      <span className="modeldev-integration-connector__line" />
+                      <span className="modeldev-integration-connector__diamond-outer" />
+                      <span className="modeldev-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="modeldev-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="modeldev-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="modeldev-integration-connector" aria-hidden="true">
+                      <span className="modeldev-integration-connector__line" />
+                      <span className="modeldev-integration-connector__diamond-outer" />
+                      <span className="modeldev-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="modeldev-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -447,13 +485,9 @@ export default function ModelDevelopmentPage() {
           <div className="modeldev-why__grid">
             {whyCards.map((card) => (
               <div className="modeldev-card modeldev-card--flat modeldev-why-card" key={card.title}>
-                <div className="modeldev-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="modeldev-why-card__title">{card.title}</h3>
-                  <p className="modeldev-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="modeldev-badge-img modeldev-why-card__badge" />
+                <h3 className="modeldev-why-card__title">{card.title}</h3>
+                <p className="modeldev-why-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -479,8 +513,8 @@ export default function ModelDevelopmentPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );

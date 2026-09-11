@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './custom-development.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -9,20 +9,6 @@ import { useReveal } from '../../hooks/useReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
 
-import computerChipSvg from '../../assets/icons/streamline-ultimate-computer-chip-core-bold.svg?raw';
-import peopleTeamSvg from '../../assets/icons/fluent-people-team-20-filled.svg?raw';
-import documentSolidSvg from '../../assets/icons/basil-document-solid.svg?raw';
-import analyticsSvg from '../../assets/icons/dashicons-analytics.svg?raw';
-import financeRoundedSvg from '../../assets/icons/material-symbols-finance-rounded.svg?raw';
-import integrationsIconSvg from '../../assets/icons/stash-integrations.svg?raw';
-
-import findInPageSvg from '../../assets/icons/material-symbols-find-in-page-rounded.svg?raw';
-import developerBoardSvg from '../../assets/icons/material-symbols-light-developer-board-rounded.svg?raw';
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import atCodeSvg from '../../assets/icons/at-icons-code.svg?raw';
-import outlineSecuritySvg from '../../assets/icons/ic-outline-security.svg?raw';
-import databaseMigrationSvg from '../../assets/icons/eos-icons-database-migration.svg?raw';
-
 import paymentsSvg from '../../assets/icons/fluent-payment-24-filled.svg?raw';
 import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw';
 import emailSvg from '../../assets/icons/ic-baseline-email.svg?raw';
@@ -31,16 +17,27 @@ import identityPlatformSvg from '../../assets/icons/material-symbols-light-ident
 import toolsSvg from '../../assets/icons/bi-tools.svg?raw';
 import restApiSvg from '../../assets/icons/dashicons-rest-api.svg?raw';
 
-import round3pSvg from '../../assets/icons/ic-round-3p.svg?raw';
-import componentsSvg from '../../assets/icons/icon-park-solid-components.svg?raw';
-
-import heroGlowMask from '../../assets/images/custom-development/figma/hero-glow-mask.png';
-import heroGridLines from '../../assets/images/custom-development/figma/hero-illustration.svg';
 import heroBracket from '../../assets/images/custom-development/figma/hero-graphic-glow.png';
-import waveOfferings from '../../assets/images/custom-development/figma/wave-offerings.png';
-import solutionFrame from '../../assets/images/custom-development/figma/solution-frame.svg';
 import solutionIllustration from '../../assets/images/custom-development/figma/solution-illustration.png';
-import architectureWave from '../../assets/images/custom-development/figma/architecture-wave.svg';
+
+import buildIconOperations from '../../assets/images/custom-development/figma/build-icon-operations.png';
+import buildIconTeam from '../../assets/images/custom-development/figma/build-icon-team.png';
+import buildIconDocument from '../../assets/images/custom-development/figma/build-icon-document.png';
+import buildIconData from '../../assets/images/custom-development/figma/build-icon-data.png';
+import buildIconFinance from '../../assets/images/custom-development/figma/build-icon-finance.png';
+import buildIconIntegrations from '../../assets/images/custom-development/figma/build-icon-integrations.png';
+
+import processIconDiscover from '../../assets/images/custom-development/figma/process-icon-discover.png';
+import processIconArchitect from '../../assets/images/custom-development/figma/process-icon-architect.png';
+import processIconDesign from '../../assets/images/custom-development/figma/process-icon-design.png';
+import processIconBuild from '../../assets/images/custom-development/figma/process-icon-build.png';
+import processIconTest from '../../assets/images/custom-development/figma/process-icon-test.png';
+import processIconAdopt from '../../assets/images/custom-development/figma/process-icon-adopt.png';
+
+import whyIconProcess from '../../assets/images/custom-development/figma/why-icon-process.png';
+import whyIconDocumented from '../../assets/images/custom-development/figma/why-icon-documented.png';
+import whyIconEvolve from '../../assets/images/custom-development/figma/why-icon-evolve.png';
+
 import pricingGlowOrb from '../../assets/images/custom-development/figma/pricing-glow-orb.png';
 
 const problems = [
@@ -52,34 +49,40 @@ const problems = [
 
 const buildCards = [
   {
-    icon: computerChipSvg,
+    icon: buildIconOperations,
     title: 'Operations platforms',
     desc: 'The core system your organization runs on daily.',
+    descWidth: 298,
   },
   {
-    icon: peopleTeamSvg,
+    icon: buildIconTeam,
     title: 'Team and Permissions',
     desc: 'Roles, assignments and accountability across departments.',
+    descWidth: 340,
   },
   {
-    icon: documentSolidSvg,
+    icon: buildIconDocument,
     title: 'Document Workflows',
     desc: 'Generation, approval, storage and retrieval with an audit trail.',
+    descWidth: 363,
   },
   {
-    icon: analyticsSvg,
+    icon: buildIconData,
     title: 'Data and Reporting',
     desc: 'One source of truth with dashboards built on it.',
+    descWidth: 317,
   },
   {
-    icon: financeRoundedSvg,
+    icon: buildIconFinance,
     title: 'Finance Operations',
     desc: 'Quotes, invoicing status and financial reporting workflows.',
+    descWidth: 341,
   },
   {
-    icon: integrationsIconSvg,
+    icon: buildIconIntegrations,
     title: 'Integrations',
     desc: 'Connections to the tools that remain part of the operation.',
+    descWidth: 318,
   },
 ];
 
@@ -119,43 +122,49 @@ const useCases = [
 ];
 
 const timelineSteps = [
-  { number: '01', title: 'Tenants', tags: [['Organizations', 'Members'], ['Roles', 'Invitations']] },
-  { number: '02', title: 'Platform', tags: [['Authentication', 'Isolation policies'], ['API', 'Webhooks']] },
-  { number: '03', title: 'Commercial', tags: [['Plans', 'Subscriptions'], ['Payments', 'Usage']] },
-  { number: '04', title: 'Data', tags: [['Database', 'Storage'], ['Analytics', 'Audit log']] },
-  { number: '05', title: 'Operations', tags: [['Admin console', 'Monitoring'], ['Deployment', 'Support tooling']] },
+  { number: '01', title: 'Tenants', tags: [['Organizations'], ['Members'], ['Roles'], ['Invitations']] },
+  { number: '02', title: 'Platform', tags: [['Authentication'], ['Isolation policies'], ['API'], ['Webhooks']] },
+  { number: '03', title: 'Commercial', tags: [['Plans'], ['Subscriptions'], ['Payments'], ['Usage']] },
+  { number: '04', title: 'Data', tags: [['Database'], ['Storage', 'Analytics'], ['Audit log']] },
+  { number: '05', title: 'Operations', tags: [['Admin console'], ['Monitoring'], ['Deployment'], ['Support tooling']] },
 ];
 
 const processCards = [
   {
-    icon: findInPageSvg,
+    icon: processIconDiscover,
     title: 'Discover',
     desc: 'Departments, processes, documents and reporting requirements.',
+    descWidth: 228,
   },
   {
-    icon: developerBoardSvg,
+    icon: processIconArchitect,
     title: 'Architect',
     desc: 'Data model, permissions, integrations and infrastructure.',
+    descWidth: 204,
   },
   {
-    icon: designServicesSvg,
+    icon: processIconDesign,
     title: 'Design',
     desc: 'Interfaces for each role that will use the platform.',
+    descWidth: 240,
   },
   {
-    icon: atCodeSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'Module-by-module development with review at each stage.',
+    descWidth: 217,
   },
   {
-    icon: outlineSecuritySvg,
+    icon: processIconTest,
     title: 'Test',
     desc: 'Process testing, permissions, security and performance.',
+    descWidth: 244,
   },
   {
-    icon: databaseMigrationSvg,
+    icon: processIconAdopt,
     title: 'Adopt',
     desc: 'Migration, training, rollout and continued improvement.',
+    descWidth: 254,
   },
 ];
 
@@ -172,21 +181,27 @@ const integrations = [
 
 const whyCards = [
   {
-    icon: round3pSvg,
+    icon: whyIconProcess,
     title: 'Built from your process',
     desc: "The platform reflects your operation instead of a vendor's assumptions.",
+    descWidth: 380,
   },
   {
-    icon: documentSolidSvg,
+    icon: whyIconDocumented,
     title: 'Documented architecture',
     desc: 'Structure, decisions and data model are written down.',
+    descWidth: 366,
   },
   {
-    icon: componentsSvg,
+    icon: whyIconEvolve,
     title: 'Room to evolve',
     desc: 'New departments, modules and integrations fit the same foundation.',
+    descWidth: 390,
   },
 ];
+
+const integrationsRow1 = integrations.slice(0, 5);
+const integrationsRow2 = integrations.slice(5);
 
 export default function CustomDevelopmentPage() {
   useEffect(() => {
@@ -223,7 +238,6 @@ export default function CustomDevelopmentPage() {
   return (
     <main className="customdev-page">
       <section className="customdev-hero section">
-        <img src={heroGlowMask} alt="" className="customdev-hero__glow" loading="eager" />
         <div className="container">
           <div className="row">
             <div className={`customdev-hero__content ${hero.className}`} ref={hero.ref}>
@@ -253,7 +267,6 @@ export default function CustomDevelopmentPage() {
             </div>
 
             <div className="customdev-hero__graphic" aria-hidden="true">
-              <img src={heroGridLines} alt="" className="customdev-hero__grid" loading="lazy" />
               <img src={heroBracket} alt="" className="customdev-hero__bracket" loading="eager" />
             </div>
           </div>
@@ -261,7 +274,6 @@ export default function CustomDevelopmentPage() {
       </section>
 
       <section className="customdev-disappoint section">
-        <img src={waveOfferings} alt="" className="customdev-disappoint__bg" loading="lazy" />
         <div className="container customdev-disappoint__row">
           <div className={`customdev-disappoint__copy ${disappointHead.className}`} ref={disappointHead.ref}>
             <h2 className="customdev-h1-lg">Outgrowing The Tools You Started With</h2>
@@ -285,7 +297,6 @@ export default function CustomDevelopmentPage() {
       <section className="customdev-solution section">
         <div className="container customdev-solution__row">
           <div className="customdev-solution__graphic">
-            <img src={solutionFrame} alt="" className="customdev-solution__frame" loading="lazy" />
             <img src={solutionIllustration} alt="" loading="lazy" />
           </div>
 
@@ -309,11 +320,12 @@ export default function CustomDevelopmentPage() {
           <div className="customdev-build__grid">
             {buildCards.map((card) => (
               <div className="customdev-card customdev-build-card" key={card.title}>
-                <div className="customdev-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="customdev-build-card__glow" />
+                <div className="customdev-build-card__head">
+                  <h3 className="customdev-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="customdev-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="customdev-build-card__title">{card.title}</h3>
-                <p className="customdev-build-card__desc">{card.desc}</p>
+                <p className="customdev-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -328,8 +340,8 @@ export default function CustomDevelopmentPage() {
 
           <div className="customdev-capabilities__rows">
             <div className="customdev-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`customdev-pill${i === 0 ? ' customdev-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="customdev-pill" key={label}>
                   <span className="customdev-pill__dot">
                     <span />
                   </span>
@@ -370,7 +382,6 @@ export default function CustomDevelopmentPage() {
       </section>
 
       <section className="customdev-architecture section" id="process">
-        <img src={architectureWave} alt="" className="customdev-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="customdev-h1-lg customdev-h1-lg--center">Platform architecture</h2>
@@ -416,13 +427,11 @@ export default function CustomDevelopmentPage() {
           <div className="customdev-process2__grid">
             {processCards.map((card) => (
               <div className="customdev-card customdev-card--flat customdev-process2-card" key={card.title}>
-                <div className="customdev-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="customdev-process2-card__body">
                   <h3 className="customdev-process2-card__title">{card.title}</h3>
-                  <p className="customdev-process2-card__desc">{card.desc}</p>
+                  <p className="customdev-process2-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
                 </div>
+                <img src={card.icon} alt="" className="customdev-process2-card__badge" loading="lazy" />
               </div>
             ))}
           </div>
@@ -436,12 +445,40 @@ export default function CustomDevelopmentPage() {
           </div>
 
           <div className="customdev-integrations__grid">
-            {integrations.map((item, i) => (
-              <span className="customdev-integration-pill" key={`${item.label}-${i}`}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="customdev-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="customdev-integration-connector">
+                      <span className="customdev-integration-connector__line" />
+                      <span className="customdev-integration-connector__diamond-outer" />
+                      <span className="customdev-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="customdev-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="customdev-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="customdev-integration-connector">
+                      <span className="customdev-integration-connector__line" />
+                      <span className="customdev-integration-connector__diamond-outer" />
+                      <span className="customdev-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="customdev-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -455,13 +492,9 @@ export default function CustomDevelopmentPage() {
           <div className="customdev-why__grid">
             {whyCards.map((card) => (
               <div className="customdev-card customdev-card--flat customdev-why-card" key={card.title}>
-                <div className="customdev-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="customdev-why-card__title">{card.title}</h3>
-                  <p className="customdev-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="customdev-badge-img customdev-why-card__badge" />
+                <h3 className="customdev-why-card__title">{card.title}</h3>
+                <p className="customdev-why-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -487,8 +520,8 @@ export default function CustomDevelopmentPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );
