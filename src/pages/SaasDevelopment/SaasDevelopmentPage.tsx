@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './saas-development.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -9,19 +9,8 @@ import { useReveal } from '../../hooks/useReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
 
-import computerChipSvg from '../../assets/icons/streamline-ultimate-computer-chip-core-bold.svg?raw';
 import identityPlatformSvg from '../../assets/icons/material-symbols-light-identity-platform-rounded.svg?raw';
-import creditcardSvg from '../../assets/icons/f7-creditcard-fill.svg?raw';
-import mobileSvg from '../../assets/icons/material-symbols-mobile-2.svg?raw';
-import administratorSvg from '../../assets/icons/clarity-administrator-solid.svg?raw';
 import restApiSvg from '../../assets/icons/dashicons-rest-api.svg?raw';
-
-import findInPageSvg from '../../assets/icons/material-symbols-find-in-page-rounded.svg?raw';
-import developerBoardSvg from '../../assets/icons/material-symbols-light-developer-board-rounded.svg?raw';
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import codeSvg from '../../assets/icons/at-icons-code.svg?raw';
-import securitySvg from '../../assets/icons/ic-outline-security.svg?raw';
-import rocketSvg from '../../assets/icons/heroicons-rocket-launch-20-solid.svg?raw';
 
 import paymentsSvg from '../../assets/icons/ic-baseline-payments.svg?raw';
 import emailSvg from '../../assets/icons/dashicons-email.svg?raw';
@@ -29,13 +18,28 @@ import analyticsSvg from '../../assets/icons/clarity-analytics-solid.svg?raw';
 import toolsSvg from '../../assets/icons/bi-tools.svg?raw';
 import webhooksSvg from '../../assets/icons/ph-webhooks-logo-fill.svg?raw';
 
-import peopleTeamSvg from '../../assets/icons/fluent-people-team-20-filled.svg?raw';
-
 import heroMockup from '../../assets/images/saas-development/figma/hero-dashboard-mockup.png';
 import solutionIllustration from '../../assets/images/saas-development/figma/solution-illustration.png';
-import buildGlow from '../../assets/images/ai-agents/figma/glow-ellipse-wide.png';
-import architectureWave from '../../assets/images/ai-agents/figma/architecture-wave.svg';
-import pricingGlowOrb from '../../assets/images/ai-agents/figma/pricing-glow-orb.png';
+
+import buildIconMultitenant from '../../assets/images/saas-development/figma/build-icon-multitenant.png';
+import buildIconIdentity from '../../assets/images/saas-development/figma/build-icon-identity.png';
+import buildIconBilling from '../../assets/images/saas-development/figma/build-icon-billing.png';
+import buildIconProduct from '../../assets/images/saas-development/figma/build-icon-product.png';
+import buildIconAdmin from '../../assets/images/saas-development/figma/build-icon-admin.png';
+import buildIconPlatform from '../../assets/images/saas-development/figma/build-icon-platform.png';
+
+import processIconDefine from '../../assets/images/saas-development/figma/process-icon-define.png';
+import processIconArchitect from '../../assets/images/saas-development/figma/process-icon-architect.png';
+import processIconDesign from '../../assets/images/saas-development/figma/process-icon-design.png';
+import processIconBuild from '../../assets/images/saas-development/figma/process-icon-build.png';
+import processIconTest from '../../assets/images/saas-development/figma/process-icon-test.png';
+import processIconLaunch from '../../assets/images/saas-development/figma/process-icon-launch.png';
+
+import whyIconTenancy from '../../assets/images/saas-development/figma/why-icon-tenancy.png';
+import whyIconBilling from '../../assets/images/saas-development/figma/why-icon-billing.png';
+import whyIconOperable from '../../assets/images/saas-development/figma/why-icon-operable.png';
+
+import pricingGlowOrb from '../../assets/images/saas-development/figma/pricing-glow-orb.png';
 
 const problems = [
   'Tenant data separation was not designed at the start.',
@@ -46,34 +50,40 @@ const problems = [
 
 const buildCards = [
   {
-    icon: computerChipSvg,
+    icon: buildIconMultitenant,
     title: 'Multi-tenant core',
     desc: 'Organizations, membership and enforced data isolation.',
+    descWidth: 271,
   },
   {
-    icon: identityPlatformSvg,
+    icon: buildIconIdentity,
     title: 'Identity',
     desc: 'Sign-up, invitations, roles and permissions per organization.',
+    descWidth: 351,
   },
   {
-    icon: creditcardSvg,
+    icon: buildIconBilling,
     title: 'Billing',
     desc: 'Plans, trials, upgrades and subscription lifecycle.',
+    descWidth: 327,
   },
   {
-    icon: mobileSvg,
+    icon: buildIconProduct,
     title: 'Product surface',
     desc: 'The application your customers use every day.',
+    descWidth: 297,
   },
   {
-    icon: administratorSvg,
+    icon: buildIconAdmin,
     title: 'Admin console',
     desc: 'Internal tooling to support accounts and investigate issues.',
+    descWidth: 334,
   },
   {
-    icon: restApiSvg,
+    icon: buildIconPlatform,
     title: 'Platform Services',
     desc: 'APIs, webhooks, email and storage for the product.',
+    descWidth: 289,
   },
 ];
 
@@ -116,34 +126,40 @@ const timelineSteps = [
 
 const processCards = [
   {
-    icon: findInPageSvg,
+    icon: processIconDefine,
     title: 'Define',
     desc: 'Product scope, customer model and commercial structure.',
+    descWidth: 247,
   },
   {
-    icon: developerBoardSvg,
+    icon: processIconArchitect,
     title: 'Architect',
     desc: 'Tenancy, identity, permissions, billing and data design.',
+    descWidth: 243,
   },
   {
-    icon: designServicesSvg,
+    icon: processIconDesign,
     title: 'Design',
     desc: 'Product interface and onboarding for new organizations.',
+    descWidth: 200,
   },
   {
-    icon: codeSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'Platform and product development in reviewable increments.',
+    descWidth: 222,
   },
   {
-    icon: securitySvg,
+    icon: processIconTest,
     title: 'Test',
     desc: 'Isolation testing, permission testing, billing and security review.',
+    descWidth: 224,
   },
   {
-    icon: rocketSvg,
+    icon: processIconLaunch,
     title: 'Launch',
     desc: 'Deployment, monitoring, admin tooling and iteration plan.',
+    descWidth: 254,
   },
 ];
 
@@ -159,21 +175,27 @@ const integrations = [
 
 const whyCards = [
   {
-    icon: designServicesSvg,
+    icon: whyIconTenancy,
     title: 'Tenancy first',
     desc: 'Isolation and permissions are designed before features.',
+    descWidth: 366,
   },
   {
-    icon: creditcardSvg,
+    icon: whyIconBilling,
     title: 'Commercially complete',
     desc: 'Plans, billing and administration are part of the build.',
+    descWidth: 354,
   },
   {
-    icon: peopleTeamSvg,
+    icon: whyIconOperable,
     title: 'Operable',
     desc: 'You get the tooling required to support real customers.',
+    descWidth: 351,
   },
 ];
+
+const integrationsRow1 = integrations.slice(0, 4);
+const integrationsRow2 = integrations.slice(4);
 
 export default function SaasDevelopmentPage() {
   useEffect(() => {
@@ -283,7 +305,6 @@ export default function SaasDevelopmentPage() {
       </section>
 
       <section className="saas-build section" id="what-we-build">
-        <img src={buildGlow} alt="" className="saas-build__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${buildHead.className}`} ref={buildHead.ref}>
             <h2 className="saas-h2">What we build</h2>
@@ -292,11 +313,12 @@ export default function SaasDevelopmentPage() {
           <div className="saas-build__grid">
             {buildCards.map((card) => (
               <div className="saas-card saas-build-card" key={card.title}>
-                <div className="saas-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="saas-build-card__glow" />
+                <div className="saas-build-card__head">
+                  <h3 className="saas-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="saas-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="saas-build-card__title">{card.title}</h3>
-                <p className="saas-build-card__desc">{card.desc}</p>
+                <p className="saas-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -311,8 +333,8 @@ export default function SaasDevelopmentPage() {
 
           <div className="saas-capabilities__rows">
             <div className="saas-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`saas-pill${i === 0 ? ' saas-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="saas-pill" key={label}>
                   <span className="saas-pill__dot">
                     <span />
                   </span>
@@ -353,7 +375,6 @@ export default function SaasDevelopmentPage() {
       </section>
 
       <section className="saas-architecture section" id="process">
-        <img src={architectureWave} alt="" className="saas-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="saas-h1-lg saas-h1-lg--center">SaaS architecture</h2>
@@ -398,13 +419,11 @@ export default function SaasDevelopmentPage() {
           <div className="saas-process2__grid">
             {processCards.map((card) => (
               <div className="saas-card saas-card--flat saas-process2-card" key={card.title}>
-                <div className="saas-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="saas-process2-card__body">
                   <h3 className="saas-process2-card__title">{card.title}</h3>
-                  <p className="saas-process2-card__desc">{card.desc}</p>
+                  <p className="saas-process2-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
                 </div>
+                <img src={card.icon} alt="" className="saas-process2-card__badge" loading="lazy" />
               </div>
             ))}
           </div>
@@ -418,12 +437,40 @@ export default function SaasDevelopmentPage() {
           </div>
 
           <div className="saas-integrations__grid">
-            {integrations.map((item) => (
-              <span className="saas-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="saas-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="saas-integration-connector">
+                      <span className="saas-integration-connector__line" />
+                      <span className="saas-integration-connector__diamond-outer" />
+                      <span className="saas-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="saas-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="saas-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="saas-integration-connector">
+                      <span className="saas-integration-connector__line" />
+                      <span className="saas-integration-connector__diamond-outer" />
+                      <span className="saas-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="saas-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -437,13 +484,9 @@ export default function SaasDevelopmentPage() {
           <div className="saas-why__grid">
             {whyCards.map((card) => (
               <div className="saas-card saas-card--flat saas-why-card" key={card.title}>
-                <div className="saas-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="saas-why-card__title">{card.title}</h3>
-                  <p className="saas-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="saas-badge-img saas-why-card__badge" />
+                <h3 className="saas-why-card__title">{card.title}</h3>
+                <p className="saas-why-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -469,8 +512,8 @@ export default function SaasDevelopmentPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );

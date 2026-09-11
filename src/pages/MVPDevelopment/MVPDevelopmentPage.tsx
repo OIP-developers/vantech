@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './mvp-development.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -9,23 +9,6 @@ import { useReveal } from '../../hooks/useReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
 
-import reviewResponseSvg from '../../assets/icons/fluent-mdl2-review-response-solid.svg?raw';
-import outlineSecuritySvg from '../../assets/icons/ic-outline-security.svg?raw';
-
-import fileSystemSvg from '../../assets/icons/eos-icons-file-system.svg?raw';
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import applicationSvg from '../../assets/icons/eos-icons-application.svg?raw';
-import clipboardDataSvg from '../../assets/icons/bi-clipboard-data-fill.svg?raw';
-import rocketLaunchSvg from '../../assets/icons/heroicons-rocket-launch-20-solid.svg?raw';
-
-import findInPageSvg from '../../assets/icons/material-symbols-find-in-page-rounded.svg?raw';
-import dictionaryBookSvg from '../../assets/icons/streamline-dictionary-language-book-solid.svg?raw';
-import atCodeSvg from '../../assets/icons/at-icons-code.svg?raw';
-
-import scopeOutlineSvg from '../../assets/icons/cuida-scope-outline.svg?raw';
-import industryInnovationSvg from '../../assets/icons/streamline-industry-innovation-and-infrastructure-remix.svg?raw';
-import deepfakeTechnologySvg from '../../assets/icons/streamline-plump-deepfake-technology-1-solid.svg?raw';
-
 import paymentsSvg from '../../assets/icons/ic-baseline-payments.svg?raw';
 import emailSvg from '../../assets/icons/ic-baseline-email.svg?raw';
 import fingerprintSvg from '../../assets/icons/fluent-fingerprint-32-filled.svg?raw';
@@ -33,16 +16,27 @@ import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw'
 import databaseSvg from '../../assets/icons/bi-database-fill.svg?raw';
 import webhookSvg from '../../assets/icons/carbon-webhook.svg?raw';
 
-import heroGlowBlob from '../../assets/images/mvp-development/figma/hero-glow-blob.png';
 import heroRocket from '../../assets/images/mvp-development/figma/hero-rocket.png';
-import heroOrbitPath from '../../assets/images/mvp-development/figma/hero-orbit-path.svg';
-import sectionGlow from '../../assets/images/mvp-development/figma/section-glow.png';
 import solutionGlow from '../../assets/images/mvp-development/figma/solution-glow.png';
-import solutionLine1 from '../../assets/images/mvp-development/figma/solution-line-1.svg';
-import solutionLine2 from '../../assets/images/mvp-development/figma/solution-line-2.svg';
-import buildGlow from '../../assets/images/mvp-development/figma/build-glow.png';
-import architectureWave from '../../assets/images/mvp-development/figma/architecture-wave.svg';
 import pricingGlowOrb from '../../assets/images/mvp-development/figma/pricing-glow-orb.png';
+
+import buildIconProductDefinition from '../../assets/images/mvp-development/figma/build-icon-product-definition.png';
+import buildIconProductDesign from '../../assets/images/mvp-development/figma/build-icon-product-design.png';
+import buildIconApplication from '../../assets/images/mvp-development/figma/build-icon-application.png';
+import buildIconDataFoundation from '../../assets/images/mvp-development/figma/build-icon-data-foundation.png';
+import buildIconLaunchSetup from '../../assets/images/mvp-development/figma/build-icon-launch-setup.png';
+import buildIconIterationPlan from '../../assets/images/mvp-development/figma/build-icon-iteration-plan.png';
+
+import processIconDiscover from '../../assets/images/mvp-development/figma/process-icon-discover.png';
+import processIconDefine from '../../assets/images/mvp-development/figma/process-icon-define.png';
+import processIconDesign from '../../assets/images/mvp-development/figma/process-icon-design.png';
+import processIconBuild from '../../assets/images/mvp-development/figma/process-icon-build.png';
+import processIconTest from '../../assets/images/mvp-development/figma/process-icon-test.png';
+import processIconLaunch from '../../assets/images/mvp-development/figma/process-icon-launch.png';
+
+import whyIconScoped from '../../assets/images/mvp-development/figma/why-icon-scoped.png';
+import whyIconArchitected from '../../assets/images/mvp-development/figma/why-icon-architected.png';
+import whyIconTeam from '../../assets/images/mvp-development/figma/why-icon-team.png';
 
 const problems = [
   'Scope grows faster than the product can be built.',
@@ -53,34 +47,40 @@ const problems = [
 
 const buildCards = [
   {
-    icon: fileSystemSvg,
+    icon: buildIconProductDefinition,
     title: 'Product Definition',
     desc: 'Core user flows, data model and the scope of the first release.',
+    descWidth: 301,
   },
   {
-    icon: designServicesSvg,
+    icon: buildIconProductDesign,
     title: 'Product Design',
     desc: 'Interface design and prototypes for the flows that matter most.',
+    descWidth: 327,
   },
   {
-    icon: applicationSvg,
+    icon: buildIconApplication,
     title: 'Application',
     desc: 'Frontend, backend, authentication and business logic in one codebase.',
+    descWidth: 322,
   },
   {
-    icon: clipboardDataSvg,
+    icon: buildIconDataFoundation,
     title: 'Data Foundation',
     desc: 'A schema designed for the product you intend to grow, not just to demo.',
+    descWidth: 328,
   },
   {
-    icon: rocketLaunchSvg,
+    icon: buildIconLaunchSetup,
     title: 'Launch Setup',
     desc: 'Deployment, environments, monitoring and basic analytics.',
+    descWidth: 327,
   },
   {
-    icon: reviewResponseSvg,
+    icon: buildIconIterationPlan,
     title: 'Iteration Plan',
     desc: 'A prioritized backlog based on what the release actually reveals.',
+    descWidth: 329,
   },
 ];
 
@@ -123,59 +123,62 @@ const timelineSteps = [
 
 const processCards = [
   {
-    icon: findInPageSvg,
+    icon: processIconDiscover,
     title: 'Discover',
     desc: 'Requirements, users, constraints and the goal of the first release.',
   },
   {
-    icon: dictionaryBookSvg,
+    icon: processIconDefine,
     title: 'Define',
     desc: 'Scope, data model and success criteria agreed before the build starts.',
   },
   {
-    icon: designServicesSvg,
+    icon: processIconDesign,
     title: 'Design',
     desc: 'Flows and interface design for the core product experience.',
   },
   {
-    icon: atCodeSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'Application development in reviewable increments.',
   },
   {
-    icon: outlineSecuritySvg,
+    icon: processIconTest,
     title: 'Test',
     desc: 'Functional QA, security review and responsive testing.',
   },
   {
-    icon: rocketLaunchSvg,
+    icon: processIconLaunch,
     title: 'Launch',
     desc: 'Deployment, handover and a plan for the next iteration.',
   },
 ];
 
-const integrations = [
+const integrationsRow1 = [
   { icon: paymentsSvg, label: 'Payments' },
   { icon: emailSvg, label: 'Email' },
   { icon: fingerprintSvg, label: 'Auth providers' },
   { icon: funnelSvg, label: 'CRM' },
+];
+
+const integrationsRow2 = [
   { icon: databaseSvg, label: 'Storage' },
   { icon: webhookSvg, label: 'Webhooks' },
 ];
 
 const whyCards = [
   {
-    icon: scopeOutlineSvg,
+    icon: whyIconScoped,
     title: 'Scoped before it is built',
     desc: 'We agree what the first release proves before development starts.',
   },
   {
-    icon: industryInnovationSvg,
+    icon: whyIconArchitected,
     title: 'Architected to continue',
     desc: 'The foundation supports the next version instead of blocking it.',
   },
   {
-    icon: deepfakeTechnologySvg,
+    icon: whyIconTeam,
     title: 'One technology team',
     desc: 'Design, development, data and deployment under one architecture.',
   },
@@ -216,7 +219,6 @@ export default function MVPDevelopmentPage() {
   return (
     <main className="mvp-page">
       <section className="mvp-hero section">
-        <img src={sectionGlow} alt="" className="mvp-hero__glow" loading="eager" />
         <div className="container">
           <div className="row">
             <div className={`mvp-hero__content ${hero.className}`} ref={hero.ref}>
@@ -247,15 +249,7 @@ export default function MVPDevelopmentPage() {
             </div>
 
             <div className="mvp-hero__graphic" aria-hidden="true">
-              <img src={heroGlowBlob} alt="" className="mvp-hero__glow-blob" loading="eager" />
-              <img src={heroOrbitPath} alt="" className="mvp-hero__orbit-path" />
               <img src={heroRocket} alt="" className="mvp-hero__rocket" loading="eager" />
-              <span className="mvp-hero__float mvp-hero__float--a">
-                <Icon svg={reviewResponseSvg} />
-              </span>
-              <span className="mvp-hero__float mvp-hero__float--b">
-                <Icon svg={outlineSecuritySvg} />
-              </span>
             </div>
           </div>
         </div>
@@ -285,9 +279,7 @@ export default function MVPDevelopmentPage() {
       <section className="mvp-solution section">
         <div className="container mvp-solution__row">
           <div className="mvp-solution__graphic" aria-hidden="true">
-            <img src={solutionGlow} alt="" className="mvp-solution__glow" loading="lazy" />
-            <img src={solutionLine1} alt="" className="mvp-solution__line mvp-solution__line--a" />
-            <img src={solutionLine2} alt="" className="mvp-solution__line mvp-solution__line--b" />
+            <img src={solutionGlow} alt="" className="mvp-solution__mockup" loading="lazy" />
           </div>
 
           <div className={`mvp-solution__copy ${solutionCopy.className}`} ref={solutionCopy.ref}>
@@ -304,7 +296,6 @@ export default function MVPDevelopmentPage() {
       </section>
 
       <section className="mvp-build section" id="what-we-build">
-        <img src={buildGlow} alt="" className="mvp-build__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${buildHead.className}`} ref={buildHead.ref}>
             <h2 className="mvp-h2">What We Build</h2>
@@ -313,11 +304,12 @@ export default function MVPDevelopmentPage() {
           <div className="mvp-build__grid">
             {buildCards.map((card) => (
               <div className="mvp-card mvp-build-card" key={card.title}>
-                <div className="mvp-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="mvp-build-card__glow" />
+                <div className="mvp-build-card__head">
+                  <h3 className="mvp-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="mvp-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="mvp-build-card__title">{card.title}</h3>
-                <p className="mvp-build-card__desc">{card.desc}</p>
+                <p className="mvp-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -332,8 +324,8 @@ export default function MVPDevelopmentPage() {
 
           <div className="mvp-capabilities__rows">
             <div className="mvp-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`mvp-pill${i === 0 ? ' mvp-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="mvp-pill" key={label}>
                   <span className="mvp-pill__dot">
                     <span />
                   </span>
@@ -374,7 +366,6 @@ export default function MVPDevelopmentPage() {
       </section>
 
       <section className="mvp-architecture section" id="process">
-        <img src={architectureWave} alt="" className="mvp-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="mvp-h1-lg mvp-h1-lg--center">MVP architecture</h2>
@@ -420,13 +411,11 @@ export default function MVPDevelopmentPage() {
           <div className="mvp-process2__grid">
             {processCards.map((card) => (
               <div className="mvp-card mvp-card--flat mvp-process2-card" key={card.title}>
-                <div className="mvp-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="mvp-process2-card__body">
                   <h3 className="mvp-process2-card__title">{card.title}</h3>
                   <p className="mvp-process2-card__desc">{card.desc}</p>
                 </div>
+                <img src={card.icon} alt="" className="mvp-process2-card__badge" />
               </div>
             ))}
           </div>
@@ -440,12 +429,40 @@ export default function MVPDevelopmentPage() {
           </div>
 
           <div className="mvp-integrations__grid">
-            {integrations.map((item) => (
-              <span className="mvp-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="mvp-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="mvp-integration-connector" aria-hidden="true">
+                      <span className="mvp-integration-connector__line" />
+                      <span className="mvp-integration-connector__diamond-outer" />
+                      <span className="mvp-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="mvp-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="mvp-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="mvp-integration-connector" aria-hidden="true">
+                      <span className="mvp-integration-connector__line" />
+                      <span className="mvp-integration-connector__diamond-outer" />
+                      <span className="mvp-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="mvp-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -459,13 +476,9 @@ export default function MVPDevelopmentPage() {
           <div className="mvp-why__grid">
             {whyCards.map((card) => (
               <div className="mvp-card mvp-card--flat mvp-why-card" key={card.title}>
-                <div className="mvp-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="mvp-why-card__title">{card.title}</h3>
-                  <p className="mvp-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="mvp-badge-img mvp-why-card__badge" />
+                <h3 className="mvp-why-card__title">{card.title}</h3>
+                <p className="mvp-why-card__desc">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -491,8 +504,8 @@ export default function MVPDevelopmentPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );
