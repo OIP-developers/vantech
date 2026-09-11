@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './mobile-application.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -9,19 +9,6 @@ import { useReveal } from '../../hooks/useReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
 
-import androidStudioSvg from '../../assets/icons/simple-icons-androidstudio.svg?raw';
-import mobileReportSvg from '../../assets/icons/fluent-mdl2-mobile-report.svg?raw';
-import mobileFriendlySvg from '../../assets/icons/ic-baseline-mobile-friendly.svg?raw';
-import codeSvg from '../../assets/icons/at-icons-code.svg?raw';
-import administratorSvg from '../../assets/icons/clarity-administrator-solid.svg?raw';
-import fileSystemSvg from '../../assets/icons/eos-icons-file-system.svg?raw';
-
-import findInPageSvg from '../../assets/icons/material-symbols-find-in-page-rounded.svg?raw';
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import supabaseSvg from '../../assets/icons/bxl-supabase.svg?raw';
-import outlineSecuritySvg from '../../assets/icons/ic-outline-security.svg?raw';
-import rocketLaunchSvg from '../../assets/icons/heroicons-rocket-launch-20-solid.svg?raw';
-
 import paymentsSvg from '../../assets/icons/ic-baseline-payments.svg?raw';
 import pushSvg from '../../assets/icons/famicons-push.svg?raw';
 import identityPlatformSvg from '../../assets/icons/material-symbols-light-identity-platform-rounded.svg?raw';
@@ -30,14 +17,27 @@ import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw'
 import databaseSvg from '../../assets/icons/ant-design-database-filled.svg?raw';
 import restApiSvg from '../../assets/icons/dashicons-rest-api.svg?raw';
 
-import storeFilledSvg from '../../assets/icons/boxicons-store-filled.svg?raw';
-
-import heroGlow from '../../assets/images/mobile-application/figma/hero-glow.png';
 import heroAppMockup from '../../assets/images/mobile-application/figma/hero-app-mockup.png';
-import heroWebAppIcon from '../../assets/images/mobile-application/figma/hero-web-app-icon.png';
 import solutionIllustration from '../../assets/images/mobile-application/figma/solution-illustration.png';
-import glowEllipse from '../../assets/images/mobile-application/figma/glow-ellipse-a.png';
-import architectureWave from '../../assets/images/mobile-application/figma/architecture-wave.svg';
+
+import buildIconCustomer from '../../assets/images/mobile-application/figma/build-icon-customer.png';
+import buildIconBusiness from '../../assets/images/mobile-application/figma/build-icon-business.png';
+import buildIconCompanion from '../../assets/images/mobile-application/figma/build-icon-companion.png';
+import buildIconBackend from '../../assets/images/mobile-application/figma/build-icon-backend.png';
+import buildIconAdmin from '../../assets/images/mobile-application/figma/build-icon-admin.png';
+import buildIconRelease from '../../assets/images/mobile-application/figma/build-icon-release.png';
+
+import processIconDiscover from '../../assets/images/mobile-application/figma/process-icon-discover.png';
+import processIconDesign from '../../assets/images/mobile-application/figma/process-icon-design.png';
+import processIconArchitect from '../../assets/images/mobile-application/figma/process-icon-architect.png';
+import processIconBuild from '../../assets/images/mobile-application/figma/process-icon-build.png';
+import processIconTest from '../../assets/images/mobile-application/figma/process-icon-test.png';
+import processIconLaunch from '../../assets/images/mobile-application/figma/process-icon-launch.png';
+
+import whyIconBackend from '../../assets/images/mobile-application/figma/why-icon-backend.png';
+import whyIconDesigned from '../../assets/images/mobile-application/figma/why-icon-designed.png';
+import whyIconRelease from '../../assets/images/mobile-application/figma/why-icon-release.png';
+
 import pricingGlowOrb from '../../assets/images/mobile-application/figma/pricing-glow-orb.png';
 
 const problems = [
@@ -49,34 +49,40 @@ const problems = [
 
 const buildCards = [
   {
-    icon: androidStudioSvg,
+    icon: buildIconCustomer,
     title: 'Customer Apps',
     desc: 'Accounts, activity, bookings, payments and notifications.',
+    descWidth: 327,
   },
   {
-    icon: mobileReportSvg,
+    icon: buildIconBusiness,
     title: 'Business Apps',
     desc: 'Field and internal tools for teams working away from a desk.',
+    descWidth: 343,
   },
   {
-    icon: mobileFriendlySvg,
+    icon: buildIconCompanion,
     title: 'Companion Apps',
     desc: 'Mobile access to an existing platform or portal.',
+    descWidth: 312,
   },
   {
-    icon: codeSvg,
+    icon: buildIconBackend,
     title: 'Backend Services',
     desc: 'APIs, data and authentication supporting the app.',
+    descWidth: 342,
   },
   {
-    icon: administratorSvg,
+    icon: buildIconAdmin,
     title: 'Admin dashboard',
     desc: 'A web surface for managing users, content and operations.',
+    descWidth: 289,
   },
   {
-    icon: fileSystemSvg,
+    icon: buildIconRelease,
     title: 'Release Setup',
     desc: 'Build pipelines, store preparation and versioning.',
+    descWidth: 310,
   },
 ];
 
@@ -119,42 +125,51 @@ const timelineSteps = [
 
 const processCards = [
   {
-    icon: findInPageSvg,
+    icon: processIconDiscover,
     title: 'Discover',
     desc: 'Users, platforms, core journeys and technical constraints.',
+    descWidth: 253,
   },
   {
-    icon: designServicesSvg,
+    icon: processIconDesign,
     title: 'Design',
     desc: 'Mobile interface design and prototypes for the main flows.',
+    descWidth: 208,
   },
   {
-    icon: supabaseSvg,
+    icon: processIconArchitect,
     title: 'Architect',
     desc: 'Backend, data model, authentication and notifications.',
+    descWidth: 195,
   },
   {
-    icon: codeSvg,
+    icon: processIconBuild,
     title: 'Build',
     desc: 'App and backend development with test builds you can install.',
+    descWidth: 217,
   },
   {
-    icon: outlineSecuritySvg,
+    icon: processIconTest,
     title: 'Test',
     desc: 'Device testing, performance checks and release candidate QA.',
+    descWidth: 229,
   },
   {
-    icon: rocketLaunchSvg,
+    icon: processIconLaunch,
     title: 'Release',
     desc: 'Store submission support, monitoring and post-launch fixes.',
+    descWidth: 216,
   },
 ];
 
-const integrations = [
+const integrationsRow1 = [
   { icon: paymentsSvg, label: 'Payments' },
   { icon: pushSvg, label: 'Push services' },
   { icon: identityPlatformSvg, label: 'Identity providers' },
   { icon: analyticsSvg, label: 'Analytics' },
+];
+
+const integrationsRow2 = [
   { icon: funnelSvg, label: 'CRM' },
   { icon: databaseSvg, label: 'Storage' },
   { icon: restApiSvg, label: 'Internal APIs' },
@@ -162,17 +177,17 @@ const integrations = [
 
 const whyCards = [
   {
-    icon: supabaseSvg,
+    icon: whyIconBackend,
     title: 'Backend included',
     desc: 'We build the system the app depends on, not just the screens.',
   },
   {
-    icon: designServicesSvg,
+    icon: whyIconDesigned,
     title: 'Designed for real use',
     desc: 'Sessions, notifications and errors are treated as product features.',
   },
   {
-    icon: storeFilledSvg,
+    icon: whyIconRelease,
     title: 'Release-ready',
     desc: 'Store requirements are planned into the build, not discovered at the end.',
   },
@@ -213,7 +228,6 @@ export default function MobileApplicationPage() {
   return (
     <main className="mobileapp-page">
       <section className="mobileapp-hero section">
-        <img src={heroGlow} alt="" className="mobileapp-hero__glow" loading="eager" />
         <div className="container">
           <div className="row">
             <div className={`mobileapp-hero__content ${hero.className}`} ref={hero.ref}>
@@ -241,7 +255,6 @@ export default function MobileApplicationPage() {
 
             <div className="mobileapp-hero__graphic" aria-hidden="true">
               <img src={heroAppMockup} alt="" className="mobileapp-hero__mockup" loading="eager" />
-              <img src={heroWebAppIcon} alt="" className="mobileapp-hero__icon-card" loading="eager" />
             </div>
           </div>
         </div>
@@ -286,7 +299,6 @@ export default function MobileApplicationPage() {
       </section>
 
       <section className="mobileapp-build section" id="app-types">
-        <img src={glowEllipse} alt="" className="mobileapp-build__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${buildHead.className}`} ref={buildHead.ref}>
             <h2 className="mobileapp-h2">What We Build</h2>
@@ -295,11 +307,12 @@ export default function MobileApplicationPage() {
           <div className="mobileapp-build__grid">
             {buildCards.map((card) => (
               <div className="mobileapp-card mobileapp-build-card" key={card.title}>
-                <div className="mobileapp-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="mobileapp-build-card__glow" />
+                <div className="mobileapp-build-card__head">
+                  <h3 className="mobileapp-build-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="mobileapp-build-card__badge" loading="lazy" />
                 </div>
-                <h3 className="mobileapp-build-card__title">{card.title}</h3>
-                <p className="mobileapp-build-card__desc">{card.desc}</p>
+                <p className="mobileapp-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -314,8 +327,8 @@ export default function MobileApplicationPage() {
 
           <div className="mobileapp-capabilities__rows">
             <div className="mobileapp-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`mobileapp-pill${i === 0 ? ' mobileapp-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="mobileapp-pill" key={label}>
                   <span className="mobileapp-pill__dot">
                     <span />
                   </span>
@@ -356,7 +369,6 @@ export default function MobileApplicationPage() {
       </section>
 
       <section className="mobileapp-architecture section" id="process">
-        <img src={architectureWave} alt="" className="mobileapp-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="mobileapp-h1-lg mobileapp-h1-lg--center">MVP architecture</h2>
@@ -402,13 +414,11 @@ export default function MobileApplicationPage() {
           <div className="mobileapp-process2__grid">
             {processCards.map((card) => (
               <div className="mobileapp-card mobileapp-card--flat mobileapp-process2-card" key={card.title}>
-                <div className="mobileapp-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
                 <div className="mobileapp-process2-card__body">
                   <h3 className="mobileapp-process2-card__title">{card.title}</h3>
-                  <p className="mobileapp-process2-card__desc">{card.desc}</p>
+                  <p className="mobileapp-process2-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
                 </div>
+                <img src={card.icon} alt="" className="mobileapp-process2-card__badge" />
               </div>
             ))}
           </div>
@@ -422,12 +432,40 @@ export default function MobileApplicationPage() {
           </div>
 
           <div className="mobileapp-integrations__grid">
-            {integrations.map((item) => (
-              <span className="mobileapp-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="mobileapp-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="mobileapp-integration-connector" aria-hidden="true">
+                      <span className="mobileapp-integration-connector__line" />
+                      <span className="mobileapp-integration-connector__diamond-outer" />
+                      <span className="mobileapp-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="mobileapp-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="mobileapp-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="mobileapp-integration-connector" aria-hidden="true">
+                      <span className="mobileapp-integration-connector__line" />
+                      <span className="mobileapp-integration-connector__diamond-outer" />
+                      <span className="mobileapp-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="mobileapp-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -441,13 +479,9 @@ export default function MobileApplicationPage() {
           <div className="mobileapp-why__grid">
             {whyCards.map((card) => (
               <div className="mobileapp-card mobileapp-card--flat mobileapp-why-card" key={card.title}>
-                <div className="mobileapp-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="mobileapp-why-card__title">{card.title}</h3>
-                  <p className="mobileapp-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="mobileapp-badge-img mobileapp-why-card__badge" />
+                <h3 className="mobileapp-why-card__title">{card.title}</h3>
+                <p className="mobileapp-why-card__desc">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -473,8 +507,8 @@ export default function MobileApplicationPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );

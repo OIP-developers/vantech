@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import './auto-pilot.css';
 import Icon from '../../components/Icon';
 import Testimonials from '../../components/Testimonials';
@@ -8,17 +8,6 @@ import { useReveal } from '../../hooks/useReveal';
 
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import servicesStarSvg from '../../assets/icons/figma-services-star.svg?raw';
-
-import eosIconsFileSystemSvg from '../../assets/icons/eos-icons-file-system.svg?raw';
-import griddyAiAssistantSvg from '../../assets/icons/griddy-icons-ai-assistant-filled.svg?raw';
-import monitorHeartSvg from '../../assets/icons/ic-baseline-monitor-heart.svg?raw';
-import ixMaintenanceSvg from '../../assets/icons/ix-maintenance.svg?raw';
-import thesvgSvgoSvg from '../../assets/icons/thesvg-svgo.svg?raw';
-import rateReviewSvg from '../../assets/icons/material-symbols-rate-review-rounded.svg?raw';
-
-import pencilRulerSvg from '../../assets/icons/streamline-ultimate-design-tool-pencil-ruler-bold.svg?raw';
-import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
-import sitemapSvg from '../../assets/icons/mdi-sitemap.svg?raw';
 
 import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw';
 import phoneSvg from '../../assets/icons/solar-phone-calling-rounded-bold.svg?raw';
@@ -30,15 +19,27 @@ import formSvg from '../../assets/icons/fluent-form-32-filled.svg?raw';
 import personSupportSvg from '../../assets/icons/fluent-person-support-28-filled.svg?raw';
 import databaseSvg from '../../assets/icons/bi-database-fill.svg?raw';
 
-import replyBigSvg from '../../assets/icons/boxicons-reply-big-filled.svg?raw';
-import folderQualitySvg from '../../assets/icons/icon-park-solid-folder-quality.svg?raw';
-import cloudKeySvg from '../../assets/icons/mdi-cloud-key.svg?raw';
-
 import heroPhoto from '../../assets/images/auto-pilot/figma/hero-photo.png';
-import ambientGlow from '../../assets/images/auto-pilot/figma/ambient-glow.png';
-import solutionIllustration from '../../assets/images/auto-pilot/figma/solution-illustration.png';
-import diagramWave from '../../assets/images/auto-pilot/figma/diagram-wave.svg';
+import solutionMoon from '../../assets/images/auto-pilot/figma/solution-moon.png';
+import solutionRipple from '../../assets/images/auto-pilot/figma/solution-ripple.png';
 import pricingGlowOrb from '../../assets/images/auto-pilot/figma/pricing-glow-orb.png';
+
+import includedIconConnectedSystems from '../../assets/images/auto-pilot/figma/included-icon-connected-systems.png';
+import includedIconAiHandling from '../../assets/images/auto-pilot/figma/included-icon-ai-handling.png';
+import includedIconMonitoring from '../../assets/images/auto-pilot/figma/included-icon-monitoring.png';
+import includedIconMaintenance from '../../assets/images/auto-pilot/figma/included-icon-maintenance.png';
+import includedIconOptimization from '../../assets/images/auto-pilot/figma/included-icon-optimization.png';
+import includedIconEvaluation from '../../assets/images/auto-pilot/figma/included-icon-evaluation.png';
+
+import processIconAssess from '../../assets/images/auto-pilot/figma/process-icon-assess.png';
+import processIconDesign from '../../assets/images/auto-pilot/figma/process-icon-design.png';
+import processIconDeploy from '../../assets/images/auto-pilot/figma/process-icon-deploy.png';
+import processIconOperate from '../../assets/images/auto-pilot/figma/process-icon-operate.png';
+import processIconOptimize from '../../assets/images/auto-pilot/figma/process-icon-optimize.png';
+
+import whyIconGrounded from '../../assets/images/auto-pilot/figma/why-icon-grounded.png';
+import whyIconMeasured from '../../assets/images/auto-pilot/figma/why-icon-measured.png';
+import whyIconScoped from '../../assets/images/auto-pilot/figma/why-icon-scoped.png';
 
 const problems = [
   'Nobody notices when a workflow silently fails.',
@@ -49,34 +50,39 @@ const problems = [
 
 const includedCards = [
   {
-    icon: eosIconsFileSystemSvg,
+    icon: includedIconConnectedSystems,
     title: 'Connected Systems',
     desc: 'One automation layer across the tools your operations depend on.',
+    descWidth: 317,
   },
   {
-    icon: griddyAiAssistantSvg,
+    icon: includedIconAiHandling,
     title: 'AI handling',
     desc: 'Qualification, reception and response where it adds real value.',
+    descWidth: 313,
   },
   {
-    icon: monitorHeartSvg,
+    icon: includedIconMonitoring,
     title: 'Monitoring',
     desc: 'Continuous checks with alerting when something stops working.',
+    descWidth: 319,
   },
   {
-    icon: ixMaintenanceSvg,
+    icon: includedIconMaintenance,
     title: 'Maintenance',
     desc: 'Fixes and adjustments when platforms or processes change.',
+    descWidth: 345,
   },
   {
-    icon: thesvgSvgoSvg,
+    icon: includedIconOptimization,
     title: 'Optimization',
     desc: 'Ongoing refinement of logic, timing and routing.',
   },
   {
-    icon: rateReviewSvg,
+    icon: includedIconEvaluation,
     title: 'Evaluation',
     desc: 'Test sets and review cycles that track answer quality over time.',
+    descWidth: 313,
   },
 ];
 
@@ -119,38 +125,41 @@ const hubColumns = [
 
 const processCards = [
   {
-    icon: pencilRulerSvg,
+    icon: processIconAssess,
     title: 'Assess',
     desc: 'Review current operations, tools and volumes.',
   },
   {
-    icon: designServicesSvg,
+    icon: processIconDesign,
     title: 'Design',
     desc: 'Define the automation layer and the reporting you need.',
   },
   {
-    icon: sitemapSvg,
+    icon: processIconDeploy,
     title: 'Deploy',
     desc: 'Implement workflows and connect the systems involved.',
   },
   {
-    icon: monitorHeartSvg,
+    icon: processIconOperate,
     title: 'Operate',
     desc: 'Monitor and maintain everything to keep operations running smoothly. Respond quickly whenever an issue or request needs attention.',
   },
   {
-    icon: thesvgSvgoSvg,
+    icon: processIconOptimize,
     title: 'Optimize',
     desc: 'Review performance regularly to ensure everything works effectively. Refine the logic based on results and changing requirements.',
   },
 ];
 
-const integrations = [
+const integrationsRow1 = [
   { icon: funnelSvg, label: 'CRM' },
   { icon: phoneSvg, label: 'Telephony' },
   { icon: whatsappSvg, label: 'WhatsApp' },
   { icon: smsSvg, label: 'SMS' },
   { icon: emailSvg, label: 'Email' },
+];
+
+const integrationsRow2 = [
   { icon: calendarSvg, label: 'Calendars' },
   { icon: formSvg, label: 'Forms' },
   { icon: personSupportSvg, label: 'Support desks' },
@@ -159,17 +168,17 @@ const integrations = [
 
 const whyCards = [
   {
-    icon: replyBigSvg,
+    icon: whyIconGrounded,
     title: 'Grounded and traceable',
     desc: 'Answers reference the sources they came from.',
   },
   {
-    icon: folderQualitySvg,
+    icon: whyIconMeasured,
     title: 'Measured, not assumed',
     desc: 'Quality is evaluated against real questions before rollout.',
   },
   {
-    icon: cloudKeySvg,
+    icon: whyIconScoped,
     title: 'Scoped access',
     desc: 'Permissions decide what the system can retrieve and for whom.',
   },
@@ -236,7 +245,6 @@ export default function AutoPilotPage() {
             </div>
 
             <div className="autopilot-hero__graphic" aria-hidden="true">
-              <img src={ambientGlow} alt="" className="autopilot-hero__glow" loading="eager" />
               <div className="autopilot-hero__photo-wrap">
                 <img src={heroPhoto} alt="" className="autopilot-hero__photo" loading="eager" />
               </div>
@@ -268,8 +276,9 @@ export default function AutoPilotPage() {
 
       <section className="autopilot-solution section">
         <div className="container autopilot-solution__row">
-          <div className="autopilot-solution__graphic">
-            <img src={solutionIllustration} alt="" loading="lazy" />
+          <div className="autopilot-solution__graphic" aria-hidden="true">
+            <img src={solutionMoon} alt="" className="autopilot-solution__moon" loading="lazy" />
+            <img src={solutionRipple} alt="" className="autopilot-solution__ripple" loading="lazy" />
           </div>
 
           <div className={`autopilot-solution__copy ${solutionCopy.className}`} ref={solutionCopy.ref}>
@@ -292,11 +301,12 @@ export default function AutoPilotPage() {
           <div className="autopilot-included__grid">
             {includedCards.map((card) => (
               <div className="autopilot-card autopilot-included-card" key={card.title}>
-                <div className="autopilot-icon-badge">
-                  <Icon svg={card.icon} />
+                <div className="autopilot-included-card__glow" />
+                <div className="autopilot-included-card__head">
+                  <h3 className="autopilot-included-card__title">{card.title}</h3>
+                  <img src={card.icon} alt="" className="autopilot-included-card__badge" loading="lazy" />
                 </div>
-                <h3 className="autopilot-included-card__title">{card.title}</h3>
-                <p className="autopilot-included-card__desc">{card.desc}</p>
+                <p className="autopilot-included-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -311,8 +321,8 @@ export default function AutoPilotPage() {
 
           <div className="autopilot-capabilities__rows">
             <div className="autopilot-capabilities__row">
-              {capabilityRow1.map((label, i) => (
-                <span className={`autopilot-pill${i === 0 ? ' autopilot-pill--active' : ''}`} key={label}>
+              {capabilityRow1.map((label) => (
+                <span className="autopilot-pill" key={label}>
                   <span className="autopilot-pill__dot">
                     <span />
                   </span>
@@ -353,7 +363,6 @@ export default function AutoPilotPage() {
       </section>
 
       <section className="autopilot-hub section">
-        <img src={diagramWave} alt="" className="autopilot-hub__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${hubHead.className}`} ref={hubHead.ref}>
             <h2 className="autopilot-h1-lg autopilot-h1-lg--center">The Operations Hub</h2>
@@ -396,18 +405,29 @@ export default function AutoPilotPage() {
             <h2 className="autopilot-h2">How The Engagement Works</h2>
           </div>
 
-          <div className="autopilot-process__grid">
-            {processCards.map((card) => (
-              <div className="autopilot-card autopilot-card--flat autopilot-process-card" key={card.title}>
-                <div className="autopilot-icon-badge">
-                  <Icon svg={card.icon} />
+          <div className="autopilot-process__rows">
+            <div className="autopilot-process__grid">
+              {processCards.slice(0, 3).map((card) => (
+                <div className="autopilot-card autopilot-card--flat autopilot-process-card" key={card.title}>
+                  <div className="autopilot-process-card__body">
+                    <h3 className="autopilot-process-card__title">{card.title}</h3>
+                    <p className="autopilot-process-card__desc">{card.desc}</p>
+                  </div>
+                  <img src={card.icon} alt="" className="autopilot-process-card__badge" />
                 </div>
-                <div className="autopilot-process-card__body">
-                  <h3 className="autopilot-process-card__title">{card.title}</h3>
-                  <p className="autopilot-process-card__desc">{card.desc}</p>
+              ))}
+            </div>
+            <div className="autopilot-process__grid autopilot-process__grid--2">
+              {processCards.slice(3).map((card) => (
+                <div className="autopilot-card autopilot-card--flat autopilot-process-card" key={card.title}>
+                  <div className="autopilot-process-card__body">
+                    <h3 className="autopilot-process-card__title">{card.title}</h3>
+                    <p className="autopilot-process-card__desc">{card.desc}</p>
+                  </div>
+                  <img src={card.icon} alt="" className="autopilot-process-card__badge" />
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -419,12 +439,40 @@ export default function AutoPilotPage() {
           </div>
 
           <div className="autopilot-integrations__grid">
-            {integrations.map((item) => (
-              <span className="autopilot-integration-pill" key={item.label}>
-                <Icon svg={item.icon} />
-                {item.label}
-              </span>
-            ))}
+            <div className="autopilot-integrations__row">
+              {integrationsRow1.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="autopilot-integration-connector" aria-hidden="true">
+                      <span className="autopilot-integration-connector__line" />
+                      <span className="autopilot-integration-connector__diamond-outer" />
+                      <span className="autopilot-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="autopilot-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+            <div className="autopilot-integrations__row">
+              {integrationsRow2.map((item, i) => (
+                <Fragment key={item.label}>
+                  {i > 0 && (
+                    <span className="autopilot-integration-connector" aria-hidden="true">
+                      <span className="autopilot-integration-connector__line" />
+                      <span className="autopilot-integration-connector__diamond-outer" />
+                      <span className="autopilot-integration-connector__diamond-inner" />
+                    </span>
+                  )}
+                  <span className="autopilot-integration-pill">
+                    <Icon svg={item.icon} />
+                    {item.label}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -438,13 +486,9 @@ export default function AutoPilotPage() {
           <div className="autopilot-why__grid">
             {whyCards.map((card) => (
               <div className="autopilot-card autopilot-card--flat autopilot-why-card" key={card.title}>
-                <div className="autopilot-icon-badge">
-                  <Icon svg={card.icon} />
-                </div>
-                <div>
-                  <h3 className="autopilot-why-card__title">{card.title}</h3>
-                  <p className="autopilot-why-card__desc">{card.desc}</p>
-                </div>
+                <img src={card.icon} alt="" className="autopilot-badge-img autopilot-why-card__badge" />
+                <h3 className="autopilot-why-card__title">{card.title}</h3>
+                <p className="autopilot-why-card__desc">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -470,8 +514,8 @@ export default function AutoPilotPage() {
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );

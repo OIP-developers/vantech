@@ -489,6 +489,7 @@
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
+  max-width: calc(var(--dw) * 1px);
 }
 
 /* ---------- Capabilities ---------- */
@@ -601,7 +602,7 @@
 }
 
 .agents-usecase-card__divider {
-  margin: 18px 0;
+  margin: 43px 0px 19px;
   border: none;
   border-top: 1px solid var(--color-border-soft-4);
 }
@@ -711,7 +712,7 @@
 /* ---------- Build process (agent architecture, part 2) ---------- */
 
 .agents-process2 {
-  padding-top: 311px;
+  padding-top: 250px;
 }
 
 .agents-process2__grid {
@@ -757,12 +758,13 @@
 }
 
 .agents-process2-card__desc {
-  margin: 8px 0 0;
+  margin: 28px 0 0;
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-white);
+  max-width: calc(var(--dw) * 1px);
 }
 
 /* ---------- Potential Integrations ---------- */
@@ -993,6 +995,531 @@
 
 /* ---------- Responsive ---------- */
 
+/* ---------- Fluid desktop scaling (min-width: 981px) ---------- */
+/* Auto-generated: mirrors the vw-scaling pattern used on Home/About pages.
+   Base px rules above remain unchanged and are used for tablet/mobile. */
+
+@media (min-width: 981px) {
+  .agents-narrow {
+    max-width: 56.25vw;
+  }
+
+  .agents-h2 {
+    font-size: 2.6042vw;
+  }
+
+  .agents-h1-lg {
+    font-size: 3.6458vw;
+  }
+
+  .agents-p-lg {
+    margin-top: 1.0417vw;
+    font-size: 1.0417vw;
+    max-width: 22.3958vw;
+  }
+
+  .agents-p {
+    font-size: 0.8333vw;
+  }
+
+  .agents-section-copy {
+    max-width: 43.6458vw;
+    font-size: 0.8333vw;
+  }
+
+  .agents-card {
+    border-radius: 0.7813vw;
+    border: 0.0521vw solid transparent;
+    backdrop-filter: blur(1.3021vw);
+  }
+
+  .agents-card::before {
+    padding: 0.0521vw;
+    border-radius: 0.7813vw;
+  }
+
+  .agents-card:hover {
+    transform: translateY(-0.3125vw);
+  }
+
+  .agents-card:hover .agents-icon-badge {
+    box-shadow: 0 1.0417vw 2.0833vw rgba(255, 88, 0, 0.45);
+  }
+
+  .agents-icon-badge {
+    width: 3.2292vw;
+    height: 3.2292vw;
+    border: 0.0781vw solid var(--color-orange-3);
+    box-shadow: 0 1.0417vw 2.0833vw rgba(255, 88, 0, 0.25);
+  }
+
+  .agents-build-card__badge {
+    width: 3.2292vw;
+    height: 3.2292vw;
+    box-shadow: 0 2.1704vw 2.8321vw rgba(255, 88, 0, 0.19),
+    0 0.9015vw 1.1763vw rgba(255, 88, 0, 0.22),
+    0 3.6875vw 9.3943vw rgba(255, 88, 0, 0.34);
+  }
+
+  .agents-icon-badge .icon {
+    width: 1.3542vw;
+    height: 1.3542vw;
+  }
+
+  .agents-hero {
+    padding: 14.5833vw 0 13.4375vw;
+  }
+
+  .agents-hero__content {
+    max-width: 32.2917vw;
+  }
+
+  .agents-hero__badge {
+    gap: 0.3125vw;
+    padding: 0.4688vw 0.9375vw;
+    border: 0.0438vw solid var(--color-orange);
+    border-radius: 0.9896vw;
+    font-size: 0.6771vw;
+  }
+
+  .agents-hero__badge .icon {
+    width: 0.6771vw;
+    height: 0.7292vw;
+  }
+
+  .agents-hero__title {
+    margin-top: 1.4583vw;
+    font-size: 3.2292vw;
+  }
+
+  .agents-hero__desc {
+    margin-top: 1.25vw;
+    max-width: 28.75vw;
+    font-size: 0.8333vw;
+  }
+
+  .agents-hero__actions {
+    gap: 0.8333vw;
+    margin-top: 1.6667vw;
+  }
+
+  .agents-hero__actions .btn-primary {
+    border: 0.0938vw solid var(--color-border);
+  }
+
+  .agents-hero__actions .btn-primary:hover {
+    box-shadow: 0 0.625vw 1.4583vw rgba(255, 102, 0, 0.4);
+  }
+
+  .agents-hero__graphic {
+    right: -1.0417vw;
+    top: 0.5208vw;
+    width: 32.2917vw;
+    height: 31.3542vw;
+  }
+
+  .agents-hero__orb-wrap {
+    width: 25vw;
+    height: 25vw;
+    filter: drop-shadow(0 0 3.125vw rgba(255, 102, 0, 0.45)) drop-shadow(0 0 4.6875vw rgba(30, 166, 254, 0.3));
+  }
+
+  .agents-hero__sparkle--a {
+    top: 15.625vw;
+    right: -0.5208vw;
+    width: 9.8958vw;
+  }
+
+  .agents-hero__sparkle--b {
+    top: 2.0833vw;
+    right: 20.8333vw;
+    width: 5.625vw;
+  }
+
+  .agents-disappoint {
+    padding-top: 7.2917vw;
+  }
+
+  .agents-disappoint__row {
+    gap: 3.125vw;
+  }
+
+  .agents-disappoint__copy {
+    max-width: 32.2917vw;
+  }
+
+  .agents-disappoint__list {
+    max-width: 37.7604vw;
+    gap: 1.3021vw;
+    margin: 0.2083vw 0 0;
+  }
+
+  .agents-disappoint__item {
+    gap: 1.0417vw;
+    padding: 1.0417vw 1.5625vw;
+    border-radius: 0.5208vw;
+    backdrop-filter: blur(1.3021vw);
+    border: 0.0521vw solid transparent;
+  }
+
+  .agents-disappoint__item::before {
+    padding: 0.0521vw;
+    border-radius: 0.5208vw;
+  }
+
+  .agents-disappoint__item-number {
+    font-size: 0.8333vw;
+  }
+
+  .agents-disappoint__item-text {
+    font-size: 0.8333vw;
+  }
+
+  .agents-solution {
+    padding-top: 9.7917vw;
+  }
+
+  .agents-solution__row {
+    gap: 7.8125vw;
+  }
+
+  .agents-solution__graphic {
+    max-width: 31.25vw;
+  }
+
+  .agents-solution__copy {
+    max-width: 33.0729vw;
+  }
+
+  .agents-solution__title {
+    font-size: 3.6458vw;
+  }
+
+  .agents-solution__desc {
+    margin-top: 1.7188vw;
+    font-size: 1.1458vw;
+  }
+
+  .agents-build {
+    padding-top: 5.8854vw;
+  }
+
+  .agents-build::before {
+    top: 3.125vw;
+    width: 59.375vw;
+  }
+
+  .agents-build__grid {
+    gap: 1.3542vw;
+    margin-top: 3.6979vw;
+  }
+
+  .agents-card.agents-build-card {
+    gap: 1.0417vw;
+    padding: 1.6667vw 1.4583vw;
+    backdrop-filter: blur(1.3021vw);
+    border-radius: 0.7813vw;
+  }
+
+  .agents-build-card__glow {
+    right: -2.0833vw;
+    bottom: -3.125vw;
+    width: 8.3333vw;
+    height: 8.3333vw;
+    filter: blur(4.1667vw);
+  }
+
+  .agents-build-card::before {
+    padding: 0.0521vw;
+    border-radius: 0.7813vw;
+  }
+
+  .agents-build-card__head {
+    gap: 0.8333vw;
+  }
+
+  .agents-build-card__title {
+    font-size: 1.3542vw;
+  }
+
+  .agents-build-card__desc {
+    font-size: 0.9375vw;
+    max-width: calc(var(--dw) / 1920 * 100vw);
+  }
+
+  .agents-capabilities {
+    padding-top: 8.125vw;
+  }
+
+  .agents-capabilities__bg {
+    top: -4.1667vw;
+    height: 34.8958vw;
+  }
+
+  .agents-capabilities__rows {
+    margin-top: 3.125vw;
+    gap: 1.3021vw;
+  }
+
+  .agents-capabilities__row {
+    gap: 0.9896vw;
+  }
+
+  .agents-pill {
+    gap: 0.5208vw;
+    padding: 0.7813vw;
+    border-radius: 0.3646vw;
+    border: 0.0781vw solid transparent;
+    font-size: 0.9375vw;
+  }
+
+  .agents-pill__dot {
+    width: 0.5729vw;
+    height: 0.5729vw;
+  }
+
+  .agents-pill__dot span {
+    width: 0.4167vw;
+    height: 0.4167vw;
+  }
+
+  .agents-usecases {
+    padding-top: 6.5104vw;
+  }
+
+  .agents-usecases__grid {
+    gap: 1.4063vw;
+    margin-top: 1.5625vw;
+  }
+
+  .agents-usecase-card {
+    padding: 1.25vw 1.3542vw;
+  }
+
+  .agents-usecase-card__title {
+    font-size: 1.1458vw;
+  }
+
+  .agents-usecase-card__divider {
+    margin: 2.2396vw 0vw 0.9896vw;
+    border-top: 0.0521vw solid var(--color-border-soft-4);
+  }
+
+  .agents-usecase-card__desc {
+    font-size: 0.8333vw;
+  }
+
+  .agents-architecture {
+    padding-top: 11.6146vw;
+  }
+
+  .agents-architecture__divider {
+    margin-top: 3.2813vw;
+    border: 0.0521vw dashed rgba(255, 255, 255, 0.5);
+  }
+
+  .agents-architecture__divider-dot {
+    top: -0.3125vw;
+    width: 0.6771vw;
+    height: 0.6771vw;
+    box-shadow: 0 0 0.7292vw var(--color-orange-3);
+  }
+
+  .agents-timeline {
+    margin-top: -1.5625vw;
+    gap: 1.0417vw;
+  }
+
+  .agents-timeline-step__badge {
+    width: 2.2396vw;
+    height: 2.2396vw;
+    font-size: 1.0417vw;
+  }
+
+  .agents-timeline-step__title {
+    margin: 2.6042vw 0 0;
+    font-size: 1.5625vw;
+  }
+
+  .agents-timeline-step__tags {
+    margin-top: 1.5104vw;
+    gap: 0.6771vw;
+  }
+
+  .agents-timeline-step__tag-row {
+    gap: 0.7292vw;
+  }
+
+  .agents-timeline-tag {
+    height: 1.875vw;
+    padding: 0 1.0417vw;
+    border-radius: 4.3229vw;
+    border: 0.0693vw solid #292d34;
+    font-size: 0.8854vw;
+  }
+
+  .agents-process2 {
+    padding-top: 13.0208vw;
+  }
+
+  .agents-process2__grid {
+    gap: 1.3542vw;
+    margin-top: 3.3333vw;
+  }
+
+  .agents-process2-card {
+    gap: 1.8229vw;
+    padding: 2.6042vw 1.9792vw 2.6042vw 1.1979vw;
+  }
+
+  .section-head.reveal.reveal--up.is-visible {
+    gap: 0.8854vw;
+  }
+
+  .agents-process2-card__badge {
+    width: 6.25vw;
+    height: 6.25vw;
+    box-shadow: 0 2.1704vw 2.8321vw rgba(255, 88, 0, 0.19),
+    0 0.9015vw 1.1763vw rgba(255, 88, 0, 0.22),
+    0 3.6875vw 9.3943vw rgba(255, 88, 0, 0.34);
+  }
+
+  .agents-process2-card__title {
+    font-size: 1.3542vw;
+  }
+
+  .agents-process2-card__desc {
+    margin: 1.4583vw 0 0;
+    font-size: 0.8333vw;
+    max-width: calc(var(--dw) / 1920 * 100vw);
+  }
+
+  .agents-integrations {
+    padding-top: 10.9896vw;
+  }
+
+  .agents-integrations__grid {
+    margin-top: 3.3333vw;
+    gap: 1.875vw;
+  }
+
+  .agents-integration-pill {
+    gap: 0.5208vw;
+    width: 10.2604vw;
+    padding: 0.7813vw;
+    border-radius: 0.3646vw;
+    font-size: 0.9375vw;
+  }
+
+  .agents-integration-pill::before {
+    padding: 0.0521vw;
+    border-radius: 0.3646vw;
+  }
+
+  .agents-integration-pill .icon {
+    width: 0.9375vw;
+    height: 0.9375vw;
+  }
+
+  .agents-integration-connector {
+    width: 5.4688vw;
+    height: 1.0417vw;
+  }
+
+  .agents-integration-connector__line {
+    height: 0.0521vw;
+  }
+
+  .agents-integration-connector__diamond-outer {
+    width: 0.7379vw;
+    height: 0.7379vw;
+    border: 0.0208vw solid #0173d4;
+  }
+
+  .agents-integration-connector__diamond-inner {
+    width: 0.4688vw;
+    height: 0.4688vw;
+  }
+
+  .agents-why {
+    padding-top: 13.0729vw;
+  }
+
+  .agents-why__grid {
+    gap: 1.3542vw;
+    margin-top: 3.3333vw;
+  }
+
+  .agents-why-card {
+    padding: 1.4583vw;
+    min-height: 10.1563vw;
+  }
+
+  .agents-why-card__badge {
+    width: 3.2292vw;
+    height: 3.2292vw;
+    margin-bottom: 2.0833vw;
+    box-shadow: 0 2.1704vw 2.8321vw rgba(255, 88, 0, 0.19),
+    0 0.9015vw 1.1763vw rgba(255, 88, 0, 0.22),
+    0 3.6875vw 9.3943vw rgba(255, 88, 0, 0.34);
+  }
+
+  .agents-why-card__title {
+    font-size: 1.3542vw;
+  }
+
+  .agents-why-card__desc {
+    margin: 0.5208vw 0 0;
+    font-size: 0.8333vw;
+  }
+
+  .agents-pricing-cta {
+    padding: 3.125vw 0 6.25vw;
+  }
+
+  .agents-pricing-cta__card {
+    gap: 2.0833vw;
+    padding: 2.6042vw 3.125vw;
+    border-radius: 0.5208vw;
+    backdrop-filter: blur(1.3021vw);
+    border: 0.0521vw solid transparent;
+  }
+
+  .agents-pricing-cta__card::before {
+    padding: 0.0521vw;
+    border-radius: 0.5208vw;
+  }
+
+  .agents-pricing-cta__glow {
+    right: 1.0417vw;
+    width: 25vw;
+  }
+
+  .agents-pricing-cta__copy {
+    max-width: 31.8229vw;
+  }
+
+  .agents-pricing-cta__title {
+    font-size: 2.6042vw;
+  }
+
+  .agents-pricing-cta__desc {
+    margin: 0.9375vw 0 0;
+    font-size: 0.9375vw;
+  }
+
+  .agents-pricing-cta .btn {
+    font-size: 1.4063vw;
+    padding: 0.9375vw 1.4063vw;
+    gap: 0.9375vw;
+  }
+
+  .agents-pricing-cta .btn .btn-icon {
+    width: 1.875vw;
+    height: 1.875vw;
+  }
+}
+
 @media (max-width: 1180px) {
   .agents-h1-lg {
     font-size: 54px;
@@ -1002,7 +1529,7 @@
     height: 440px;
     right: -60px;
   }
-  .agents-hero__orb {
+  .agents-hero__orb-wrap {
     width: 380px;
     height: 380px;
   }
@@ -1061,6 +1588,14 @@
   }
   .agents-pricing-cta__copy {
     max-width: 100%;
+  }
+  .agents-integrations__row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .agents-integration-connector {
+    display: none;
   }
 }
 

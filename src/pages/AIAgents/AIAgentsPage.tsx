@@ -326,7 +326,7 @@ export default function AIAgentsPage() {
                   <h3 className="agents-build-card__title">{card.title}</h3>
                   <img src={card.icon} alt="" className="agents-build-card__badge" loading="lazy" />
                 </div>
-                <p className="agents-build-card__desc" style={{ maxWidth: card.descWidth }}>
+                <p className="agents-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>
                   {card.desc}
                 </p>
               </div>
@@ -436,7 +436,7 @@ export default function AIAgentsPage() {
               <div className="agents-card agents-card--flat agents-process2-card" key={card.title}>
                 <div className="agents-process2-card__body">
                   <h3 className="agents-process2-card__title">{card.title}</h3>
-                  <p className="agents-process2-card__desc" style={{ maxWidth: card.descWidth }}>
+                  <p className="agents-process2-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>
                     {card.desc}
                   </p>
                 </div>

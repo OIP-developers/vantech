@@ -12,10 +12,6 @@ import databaseSvg from '../../assets/icons/bi-database-fill.svg?raw';
 import designServicesSvg from '../../assets/icons/ic-baseline-design-services.svg?raw';
 import workflowSvg from '../../assets/icons/boxicons-workflow-alt-filled.svg?raw';
 import supportSvg from '../../assets/icons/fluent-person-support-28-filled.svg?raw';
-import accountFilterSvg from '../../assets/icons/mdi-account-filter.svg?raw';
-import diplomaBoldSvg from '../../assets/icons/solar-diploma-bold.svg?raw';
-import plugConnectSvg from '../../assets/icons/boxicons-plug-connect-filled.svg?raw';
-import examMultipleChoiceSvg from '../../assets/icons/healthicons-i-exam-multiple-choice.svg?raw';
 
 import buildIconLeadCapture from '../../assets/images/ai-automation/figma/build-icon-lead-capture.png';
 import buildIconQualification from '../../assets/images/ai-automation/figma/build-icon-qualification.png';
@@ -49,7 +45,7 @@ import badgeCircle from '../../assets/images/ai-automation/figma/badge-circle.pn
 import orbitRing from '../../assets/images/ai-automation/figma/orbit-ring.svg';
 import orbitEllipse from '../../assets/images/ai-automation/figma/orbit-ellipse.svg';
 import bottomSphere from '../../assets/images/ai-automation/figma/bottom-sphere.png';
-import architectureWave from '../../assets/images/ai-automation/figma/architecture-wave.png';
+import solutionIllustration from '../../assets/images/ai-automation/figma/solution-illustration.png';
 import pricingGlowOrb from '../../assets/images/ai-automation/figma/pricing-glow-orb.png';
 // Shared hero ombre glow — the same asset already used behind the hero on
 // the About and Partners pages; reused here instead of a duplicate export.
@@ -64,17 +60,6 @@ const orbitBadges = [
   { svg: designServicesSvg, angle: -149.6, radius: 228, size: 78 },
   { svg: databaseSvg, angle: -42.35, radius: 163, size: 56 },
   { svg: workflowSvg, angle: -2.92, radius: 216, size: 78 },
-];
-
-const solutionNodes = [
-  { icon: accountFilterSvg, left: 41, top: 7, border: 'blue' as const },
-  { icon: databaseSvg, left: 67, top: 7, border: 'orange' as const },
-  { icon: designServicesSvg, left: 95, top: 44, border: 'orange' as const },
-  { icon: supportSvg, left: 95, top: 60, border: 'blue' as const },
-  { icon: plugConnectSvg, left: 67, top: 96, border: 'orange' as const },
-  { icon: diplomaBoldSvg, left: 41, top: 96, border: 'blue' as const },
-  { icon: examMultipleChoiceSvg, left: 5, top: 60, border: 'blue' as const },
-  { icon: funnelSvg, left: 5, top: 44, border: 'orange' as const },
 ];
 
 const frictionPoints = [
@@ -305,7 +290,7 @@ export default function AIAutomationPage() {
                         style={
                           {
                             backgroundImage: `url(${badgeCircle})`,
-                            '--badge-size': `${item.size}px`,
+                            '--badge-size': item.size,
                           } as CSSProperties
                         }
                       >
@@ -359,54 +344,7 @@ export default function AIAutomationPage() {
           </div>
 
           <div className={`ai-automation-solution__graphic ${solutionGraphic.className}`} ref={solutionGraphic.ref}>
-            <div className="ai-automation-solution-network">
-              <svg
-                className="ai-automation-solution-network__lines"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                {solutionNodes.map((node, i) => {
-                  const cx = 50;
-                  const cy = 47;
-                  const dx = cx - node.left;
-                  const dy = cy - node.top;
-                  const endX = node.left + dx * 0.78;
-                  const endY = node.top + dy * 0.78;
-                  const dotX = node.left + dx * 0.22;
-                  const dotY = node.top + dy * 0.22;
-                  return (
-                    <g key={i}>
-                      <line
-                        x1={node.left}
-                        y1={node.top}
-                        x2={endX}
-                        y2={endY}
-                        className={`ai-automation-solution-network__line ai-automation-solution-network__line--${node.border}`}
-                      />
-                      <circle
-                        cx={dotX}
-                        cy={dotY}
-                        r="1"
-                        className="ai-automation-solution-network__dot"
-                      />
-                    </g>
-                  );
-                })}
-              </svg>
-
-              <img src={heroStar} alt="" className="ai-automation-solution-network__star" loading="lazy" />
-
-              {solutionNodes.map((node, i) => (
-                <span
-                  key={i}
-                  className={`ai-automation-solution-network__node ai-automation-solution-network__node--${node.border}`}
-                  style={{ left: `${node.left}%`, top: `${node.top}%` }}
-                >
-                  <Icon svg={node.icon} />
-                </span>
-              ))}
-            </div>
+            <img src={solutionIllustration} alt="" loading="lazy" />
           </div>
         </div>
       </section>
@@ -425,7 +363,7 @@ export default function AIAutomationPage() {
                   <h3 className="ai-automation-build-card__title">{card.title}</h3>
                   <img src={card.icon} alt="" className="ai-automation-build-card__badge" loading="lazy" />
                 </div>
-                <p className="ai-automation-build-card__desc" style={{ maxWidth: card.descWidth }}>
+                <p className="ai-automation-build-card__desc" style={{ '--dw': card.descWidth } as React.CSSProperties}>
                   {card.desc}
                 </p>
               </div>
@@ -484,7 +422,6 @@ export default function AIAutomationPage() {
       </section>
 
       <section className="ai-automation-architecture section" id="process">
-        <img src={architectureWave} alt="" className="ai-automation-architecture__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${architectureHead.className}`} ref={architectureHead.ref}>
             <h2 className="ai-automation-h1-lg ai-automation-h1-lg--center">Workflow architecture</h2>
