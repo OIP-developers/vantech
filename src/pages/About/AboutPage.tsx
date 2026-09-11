@@ -6,31 +6,22 @@ import FAQ from '../../components/FAQ';
 import CTA from '../../components/CTA';
 import { useReveal } from '../../hooks/useReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
-import workBadgeSvg from '../../assets/icons/mdi-briefcase-outline.svg?raw';
-import techBadge from '../../assets/images/section-about-3/technology-badge.png';
-import layersBadge from '../../assets/images/section-about-3/layers-badge.png';
+import techBadge from '../../assets/images/section-about-3/technology-badge.webp';
+import layersBadge from '../../assets/images/section-about-3/layers-badge.webp';
+import Threebusinesses from '../../assets/images/about/three-ways-businesses-con.webp';
 import discoveryIcon from '../../assets/images/about/section2-icons/discovery.png';
 import architectureIcon from '../../assets/images/about/section2-icons/architecture.png';
 import buildIcon from '../../assets/images/about/section2-icons/build.png';
 import integrationIcon from '../../assets/images/about/section2-icons/integration.png';
 import deploymentIcon from '../../assets/images/about/section2-icons/deployment.png';
-import heroBannerBlur from '../../assets/images/about/figma/hero-banner-blur.png';
-import ambientGlowBlob from '../../assets/images/about/figma/ambient-glow-blob.png';
-import archDecisionBg from '../../assets/images/about/figma/architecture-decision-bg.png';
-import archDecisionSphere from '../../assets/images/about/figma/architecture-decision-sphere.png';
-import heroBannerGlow from '../../assets/images/about/figma/about-banner12.png';
+import heroBannerBlur from '../../assets/images/about/hero-banner-blur.webp';
+import archDecisionSphere from '../../assets/images/about/figma/architecture-decision-sphere.webp';
 import accessControlIcon from '../../assets/images/about/Access-control-c.png';
 import confidentialityIcon from '../../assets/images/about/Confidentiality-E.png';
 import dataHandlingIcon from '../../assets/images/about/Data-handling-F.png';
 import ownershipIcon from '../../assets/images/about/Ownership-handover-N.png';
 import responsibleAiIcon from '../../assets/images/about/Responsible-AI-O.png';
-import processGlow from '../../assets/images/about/figma/process-glow-rendered.png';
-import archDivider1 from '../../assets/images/about/image-I-1.png';
-import archDivider2 from '../../assets/images/about/image-J-2.png';
-import archDivider3 from '../../assets/images/about/image-K-3.png';
-import archDivider5 from '../../assets/images/about/image-M-5.png';
-import aiGlow from '../../assets/images/about/Start-AI-Journey-P.png';
-import workGlow from '../../assets/images/about/Three-businesses-rigth-S.png';
+import workGlow from '../../assets/images/about/Three-businesses-rigth-S.webp';
 
 const processSteps = [
   {
@@ -234,13 +225,11 @@ export default function AboutPage() {
   const workHead = useReveal('up');
 
   return (
-    <main className="about-page">
+    <main className="about-page about-banner">
       <section className="about-hero section">
         <div className="about-hero__banner">
           <img src={heroBannerBlur} alt="" className="about-hero__banner-img" loading="eager" />
         </div>
-        <div className="about-hero__banner-fade" />
-        <img src={heroBannerGlow} alt="" className="about-hero__banner-glow" loading="eager" />
         <div className={`container about-hero__content ${hero.className}`} ref={hero.ref}>
           <span className="eyebrow-pill">About Van Tech Systems</span>
           <h1 className="about-hero__title">
@@ -266,7 +255,6 @@ export default function AboutPage() {
       </section>
 
       <section className="about-process section">
-        <img src={processGlow} alt="" className="about-process__glow-bg" loading="lazy" />
         <div className="container maix-new-widthadd">
           <div className={`section-head ${processHead.className}`} ref={processHead.ref}>
             <h2 className="section-title">
@@ -307,19 +295,13 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-        <img src={archDivider2} alt="" className="about-divider" loading="lazy" />
       </section>
 
       <section className="about-layers section">
-        <img src={ambientGlowBlob} alt="" className="about-layers__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${layersHead.className}`} ref={layersHead.ref}>
             <img src={layersBadge} alt="" className="about-tech__badge" loading="lazy" />
             <h2 className="section-title">What we build, layer by layer</h2>
-            <p className="section-subtitle">
-              Every system we ship is made of the same five layers — scoped and
-              tested on their own before they come together.
-            </p>
           </div>
 
           <div className="about-layers-table">
@@ -337,11 +319,9 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-        <img src={archDivider3} alt="" className="about-divider-top" loading="lazy" />
       </section>
 
       <section className="about-principles section">
-        <img src={archDecisionBg} alt="" className="about-principles__bg" loading="lazy" />
         <div className="container">
           <div className={`section-head ${principlesHead.className}`} ref={principlesHead.ref}>
             <span className="eyebrow-pill">Engineering principles</span>
@@ -403,7 +383,6 @@ export default function AboutPage() {
       </section>
 
       <section className="about-ai section">
-        <img src={aiGlow} alt="" className="about-ai__glow" loading="lazy" />
         <div className="container about-row">
           <div className={`about-copy ${aiCopy.className}`} ref={aiCopy.ref}>
             <h2 className="about-title">
@@ -430,7 +409,6 @@ export default function AboutPage() {
             ))}
           </ul>
         </div>
-        <img src={archDivider5} alt="" className="about-divider" loading="lazy" />
       </section>
 
       <section className="about-risk section">
@@ -460,31 +438,33 @@ export default function AboutPage() {
             </a>
           </p>
         </div>
-        <img src={archDivider1} alt="" className="about-divider" loading="lazy" />
       </section>
 
       <section className="about-work section">
         <img src={workGlow} alt="" className="about-work__glow" loading="lazy" />
         <div className="container">
           <div className={`section-head ${workHead.className}`} ref={workHead.ref}>
+            <img src={Threebusinesses} alt="" className="about-tech__badge" loading="lazy" />
             <h2 className="section-title">Three ways businesses work with us</h2>
           </div>
 
           <div className="about-work__grid">
             {workCards.map((card) => (
               <div className="about-work-card" key={card.number}>
-                <Icon svg={workBadgeSvg} className="about-work-card__badge" />
-                <h3 className="about-work-card__title">{card.title}</h3>
+                {/* <Icon svg={workBadgeSvg} className="about-work-card__badge" /> */}
+                <div className="icon-fle">
+                  <h3 className="about-work-card__title">{card.title}</h3>
+                  <span className="about-work-card__number">{card.number}</span>
+                </div>
                 <p className="about-work-card__desc">{card.desc}</p>
-                <span className="about-work-card__number">{card.number}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <Testimonials />
       <FAQ />
+      <Testimonials />
       <CTA />
     </main>
   );

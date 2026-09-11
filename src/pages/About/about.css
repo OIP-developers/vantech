@@ -5,9 +5,13 @@
 
 .about-hero {
   position: relative;
-  padding: 249px 0 220px;
+  padding: 249px 0 448px;
 }
-
+body .about-banner{
+  background-image: url(../../assets/images/about/about-page-bg.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .about-hero__banner {
   position: absolute;
   top: 0;
@@ -107,7 +111,7 @@
   display: grid;
   grid-template-columns: 0.9fr 1fr;
   align-items: center;
-  gap: 70px;
+  gap:90px;
 }
 
 .about-row > * {
@@ -150,17 +154,18 @@
 }
 
 .about-desc {
-  margin: 16px 0 0;
-  color: var(--color-text-muted);
-  font-size: 16px;
-  line-height: 1.6;
+    margin: 38px 0 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
 }
 
 /* ---------- Delivery process (timeline steps) ---------- */
 
 .about-process {
   position: relative;
-  padding-top: 149px;
+  padding-top: 100px;
 }
 .about-process:before {
   position: absolute;
@@ -169,7 +174,7 @@
   left: 0;
   width: 267px;
   height: 612px;
-  background-image: url(../../assets/images/about/delivery-left-img-a.png);
+  background-image: url(../../assets/images/about/delivery-left-img-a.webp);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 2;
@@ -181,7 +186,7 @@
   right: 0;
   width: 256px;
   height: 605px;
-  background-image: url(../../assets/images/about/Three-businesses-rigth-S.png);
+  background-image: url(../../assets/images/about/Three-businesses-rigth-S.webp);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 2;
@@ -296,7 +301,7 @@
 /* ---------- Technology (owned, not rented) ---------- */
 
 .about-tech {
-  padding-top: 419px;
+  padding-top: 398px;
   text-align: center;
 }
 .about-tech .container {
@@ -318,7 +323,7 @@
   width: 145px;
   height: 145px;
   margin: 0 auto;
-  animation: about-tech-badge-pulse 3.5s ease-in-out infinite;
+  /* animation: about-tech-badge-pulse 3.5s ease-in-out infinite; */
 }
 .about-divider-top {
   position: absolute;
@@ -458,13 +463,13 @@
 .about-layers-table__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap:23px;
   flex: 1;
   min-width: 0;
 }
 
 .about-layers-table__tag {
-  padding: 10px 18px;
+  padding:6px 21px;
   border-radius: 60px;
   background: var(--color-bg-card-3);
   border: 1px solid var(--color-orange-3);
@@ -479,10 +484,16 @@
 
 .about-principles {
   position: relative;
-  padding: 149px 0 260px;
+  padding: 193px 0 260px;
   overflow: hidden;
 }
-
+.about-ai .reveal.reveal--up.is-visible {
+    max-width: 623px;
+}
+.about-risk .reveal.reveal--up.is-visible {
+  max-width: 600px;
+  width: 100%;
+}
 .about-principles__bg {
   position: absolute;
   bottom: 0;
@@ -505,7 +516,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px 25px;
-  margin-top: 64px;
+  margin-top:108px;
 }
 
 .about-principle-card {
@@ -541,8 +552,8 @@
 }
 
 .about-principle-card__desc {
-  margin: 20px 0 0;
-  color: var(--color-text-muted);
+  margin:32px 0 0;
+  color:#fff;
   font-size: 15px;
   line-height: 1.6;
 }
@@ -557,16 +568,22 @@
 }
 
 .about-arch-diagram__panel {
-  flex: 1 1 320px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 32px 28px;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at 0% 100%, rgba(0, 122, 224, 0.2), transparent 55%),
-    linear-gradient(176deg, rgba(0, 0, 0, 0.85) 2.45%, rgba(10, 10, 12, 0.95) 100%);
+  gap: 12px;
+  padding:44px 20px;
+  border-radius: 20px;
+  background: linear-gradient(176deg, rgba(0, 0, 0, 0.85) 2.45%, rgba(10, 10, 12, 0.95) 100%);
   border: 1px solid var(--color-border-soft);
+  width: 423px;
+}
+
+.about-arch-diagram__panel--left {
+  background: radial-gradient(circle at 0% 100%, rgba(46, 127, 214, 0.28), transparent 55%), linear-gradient(176deg, rgba(0, 0, 0, 0.85) 2.45%, rgba(10, 10, 12, 0.95) 100%);
+}
+
+.about-arch-diagram__panel--right {
+  background: radial-gradient(circle at 100% 100%, rgba(255, 110, 20, 0.28), transparent 55%), linear-gradient(176deg, rgba(0, 0, 0, 0.85) 2.45%, rgba(10, 10, 12, 0.95) 100%);
 }
 
 .about-arch-diagram__row {
@@ -575,7 +592,7 @@
 }
 
 .about-arch-diagram__panel--left .about-arch-diagram__row {
-  justify-content: flex-end;
+  justify-content: flex-end !important;
 }
 
 .about-arch-diagram__row--center {
@@ -587,14 +604,15 @@
 }
 
 .about-arch-diagram__pill {
-  padding: 11px 22px;
-  border-radius: 62px;
-  background: #12151a;
+  padding: 8px 24px;
+  border-radius: 5px;
+  background: rgba(4, 6, 10, 0.6);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--color-orange-3);
   color: var(--color-white);
   font-family: var(--font-heading);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   white-space: nowrap;
 }
 
@@ -638,16 +656,16 @@
 .about-arch-diagram__circle {
   position: relative;
   z-index: 1;
-  width: 220px;
-  height: 220px;
-  margin: 0 -10px;
+  width: 258px;
+  height: 252px;
+  margin: 0 0px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 16px;
+  gap: 11px;
+  padding: 0;
   text-align: center;
   background-size: cover;
   background-position: center;
@@ -726,7 +744,7 @@
 /* ---------- Useful AI section ---------- */
 
 .about-ai {
-  padding-top: 149px;
+  padding-top: 181px;
 }
 
 .about-ai .container {
@@ -752,7 +770,7 @@
 
 .about-ai .about-title,
 .about-ai .about-desc {
-  max-width: 560px;
+  max-width:660px;
 }
 
 .about-ai__list {
@@ -796,9 +814,13 @@
 /* ---------- Risk / ownership grid ---------- */
 
 .about-risk {
-  padding-top: 149px;
+  padding-top:214px;
 }
-
+.about-work-card .icon-fle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .about-risk .container {
   z-index: 1;
 }
@@ -806,13 +828,13 @@
 .about-risk__grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 32px;
-  margin-top: 64px;
+  gap: 35px;
+  margin-top: 69px;
 }
 
 .about-risk-card {
   position: relative;
-  padding: 34px 24px;
+  padding:34px 34px 45px 30px;
   border-radius: 15px;
   background: linear-gradient(162deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 100%);
   border: 1px solid var(--color-orange-3);
@@ -834,19 +856,21 @@
 }
 
 .about-risk-card__desc {
-  margin: 20px 0 0;
-  color: var(--color-text-muted);
-  font-size: 14px;
+  margin: 23px 0 0;
+  color:#fff;
+  font-size: 17px;
   line-height: 1.6;
+  font-weight: 200;
 }
 
 .about-risk__note {
   margin: 56px auto 0;
-  max-width: 800px;
+  max-width: 100%;
   text-align: center;
-  color: var(--color-text-muted);
-  font-size: 15px;
+  color: #fff;
+  font-size: 16px;
   line-height: 1.7;
+  font-weight: 600;
 }
 
 .about-risk__note-link {
@@ -859,7 +883,7 @@
 
 .about-work {
   position: relative;
-  padding: 149px 0 0;
+  padding:306px 0 0;
 }
 
 .about-work .container {
@@ -868,11 +892,11 @@
 
 .about-work__glow {
   position: absolute;
-  top: 40px;
-  right: -140px;
-  width: 380px;
-  height: auto;
-  opacity: 0.35;
+  top: -10px;
+  right: 0;
+  width: 170px;
+  height: 331px;
+  opacity: 1;
   z-index: 0;
   pointer-events: none;
 }
@@ -880,13 +904,13 @@
 .about-work__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
+  gap: 29px;
+  margin-top:57px;
 }
 
 .about-work-card {
   position: relative;
-  padding: 28px;
+  padding: 26px 25px 33px 23px;
   border-radius: 15px;
   background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 100%);
   border: 1px solid var(--color-orange-3);
@@ -910,26 +934,514 @@
 }
 
 .about-work-card__desc {
-  margin: 16px 0 0;
-  color: var(--color-text-muted);
+  margin: 36px 0 0;
+  color: #fff;
   font-size: 16px;
   line-height: 1.5;
-  text-align: center;
+  text-align: left;
+  max-width: 330px;
+  letter-spacing: 0.3px;
 }
-
+.about-work .reveal.reveal--up.is-visible {
+  gap: 12px;
+}
+.about-principles .reveal.reveal--up.is-visible {
+  width: 100%;
+  max-width: 623px;
+}
 .about-work-card__number {
-  display: block;
-  margin-top: 24px;
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 24px;
   color: var(--color-white);
   text-align: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  filter: drop-shadow(0px 41.6719px 54.3767px rgba(255, 88, 0, 0.1867)) drop-shadow(0px 17.3084px 22.5853px rgba(255, 88, 0, 0.22)) drop-shadow(0px 70.8px 180.371px rgba(255, 88, 0, 0.34));
+  background-image: url(../../assets/images/about/three-businesses-number.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* ---------- Responsive ---------- */
 
 
-@media(min-width:981px){}
+@media (min-width: 981px) {
+
+  .about-hero {
+    padding: 12.9688vw 0 23.3333vw;
+  }
+
+  .about-hero__banner {
+    filter: blur(3.125vw);
+  }
+
+  .about-hero__banner-fade {
+    height: 57.2917vw;
+  }
+
+  .maix-new-widthadd {
+    max-width: 50.8333vw;
+  }
+
+  .about-hero__banner-glow {
+    bottom: -6.7708vw;
+    width: 90.9375vw;
+    height: 18.75vw;
+  }
+
+  .about-hero__content {
+    max-width: 46.875vw;
+  }
+
+  .about-hero__title {
+    font-size: 3.2292vw;
+    margin: 1.875vw 0 2.2396vw;
+  }
+
+  .about-hero__desc {
+    font-size: 0.8333vw;
+    margin-bottom: 2.8646vw;
+  }
+
+  .about-hero__actions {
+    gap: 0.8333vw;
+    margin-top: 0.4167vw;
+  }
+
+  .about-divider {
+    top: 17.7604vw;
+    width: 50.8854vw;
+    height: 9.8958vw;
+  }
+
+  .about-row {
+    gap: 4.6875vw;
+  }
+
+  .about-copy__list {
+    margin: 1.25vw 0 0;
+    gap: 0.8333vw;
+  }
+
+  .about-copy__list li {
+    gap: 0.625vw;
+    font-size: 0.8333vw;
+  }
+
+  .about-copy__dot {
+    margin-top: 0.3646vw;
+    width: 0.4167vw;
+    height: 0.4167vw;
+  }
+
+  .about-title {
+    font-size: 2.6042vw;
+  }
+
+  .about-desc {
+    margin: 1.9792vw 0 0;
+    font-size: 0.8333vw;
+  }
+
+  .about-process {
+    padding-top: 5.2083vw;
+  }
+
+  .about-process:before {
+    bottom: -13.0208vw;
+    width: 13.9063vw;
+    height: 31.875vw;
+  }
+
+  .about-process:after {
+    top: 9.375vw;
+    width: 13.3333vw;
+    height: 31.5104vw;
+  }
+
+  .about-process__glow-bg {
+    top: -2.0833vw;
+  }
+
+  .about-process__list {
+    gap: 1.8229vw;
+    margin-top: 3.3333vw;
+  }
+
+  .about-process-item {
+    gap: 8.0208vw;
+    padding: 1.4583vw 1.6667vw;
+    border-radius: 0.7813vw;
+    backdrop-filter: blur(1.3021vw);
+    border: 0.0521vw solid transparent;
+  }
+
+  .about-process-item::before {
+    padding: 0.0521vw;
+    border-radius: 0.7813vw;
+  }
+
+  .about-process-item__lead {
+    min-width: 9.8438vw;
+    gap: 1.1979vw;
+  }
+
+  .about-process-item__icon {
+    width: 2.0833vw;
+    height: 2.0833vw;
+    border: 0.1042vw solid var(--color-orange-3);
+  }
+
+  .about-process-item__icon .icon {
+    width: 0.8333vw;
+    height: 0.8333vw;
+  }
+
+  .about-process-item__icon--img {
+    width: 1.5625vw;
+    height: 1.5625vw;
+  }
+
+  .about-process-item__title {
+    font-size: 1.25vw;
+  }
+
+  .about-process-item__desc {
+    font-size: 0.8333vw;
+  }
+
+  .about-tech {
+    padding-top: 20.7292vw;
+  }
+
+  .about-tech .container {
+    max-width: 63.9583vw;
+  }
+
+  .about-tech__badge {
+    width: 7.5521vw;
+    height: 7.5521vw;
+  }
+
+  .about-divider-top {
+    top: 6.7708vw;
+    width: 50.8854vw;
+    height: 10.7813vw;
+  }
+
+  .about-tech .about-title {
+    margin: 1.9271vw 0 2.5vw;
+  }
+
+  .about-tech__grid {
+    gap: 1.25vw;
+  }
+
+  .about-tech-card {
+    padding: 1.8229vw 1.9271vw 1.9792vw 2.1354vw;
+    border-radius: 0.7813vw;
+    backdrop-filter: blur(2.0833vw);
+    border: 0.1042vw solid var(--color-border-soft);
+    font-size: 0.8333vw;
+  }
+
+  .about-tech-card--primary {
+    padding: 1.7708vw 3.8542vw 2.0833vw;
+    border: 0.1198vw solid transparent;
+    font-size: 1.5625vw;
+  }
+
+  .about-tech-card--primary::before {
+    padding: 0.1198vw;
+    border-radius: 0.7813vw;
+  }
+
+  .about-layers {
+    padding-top: 9.6875vw;
+  }
+
+  .about-layers__bg {
+    top: -6.25vw;
+    height: 46.875vw;
+    filter: blur(1.0417vw);
+  }
+
+  .about-layers .container {
+    max-width: 63.9583vw;
+  }
+
+  .about-layers-table {
+    margin-top: 2.5vw;
+    padding: 0 1.6667vw;
+    border-radius: 0.8333vw;
+    border: 0.0521vw solid var(--color-orange-3);
+    backdrop-filter: blur(2.0833vw);
+  }
+
+  .about-layers-table__row {
+    gap: 0.8333vw 1.25vw;
+    padding: 1.25vw 0;
+    border-bottom: 0.0521vw solid var(--color-border-soft);
+  }
+
+  .about-layers-table__title {
+    flex: 0 0 10.4167vw;
+    font-size: 0.9375vw;
+  }
+
+  .about-layers-table__tags {
+    gap: 1.1979vw;
+  }
+
+  .about-layers-table__tag {
+    padding: 0.3125vw 1.0938vw;
+    border-radius: 3.125vw;
+    border: 0.0521vw solid var(--color-orange-3);
+    font-size: 0.7292vw;
+  }
+
+  .about-principles {
+    padding: 10.0521vw 0 13.5417vw;
+  }
+
+  .about-ai .reveal.reveal--up.is-visible {
+    max-width: 32.4479vw;
+  }
+
+  .about-risk .reveal.reveal--up.is-visible {
+    max-width: 31.25vw;
+  }
+
+  .about-principles__bg {
+    width: 100vw;
+  }
+
+  .about-principles .container {
+    max-width: 63.9583vw;
+  }
+
+  .about-principles__grid {
+    gap: 1.25vw 1.3021vw;
+    margin-top: 5.625vw;
+  }
+
+  .about-principle-card {
+    padding: 1.3542vw 1.4583vw;
+    border-radius: 0.7813vw;
+    backdrop-filter: blur(1.3021vw);
+    border: 0.0521vw solid transparent;
+  }
+
+  .about-principle-card::before {
+    padding: 0.0521vw;
+    border-radius: 0.7813vw;
+  }
+
+  .about-principle-card__title {
+    font-size: 1.0417vw;
+  }
+
+  .about-principle-card__desc {
+    margin: 1.6667vw 0 0;
+    font-size: 0.7813vw;
+  }
+
+  .about-arch-diagram {
+    margin: 3.3333vw 0;
+  }
+
+  .about-arch-diagram__panel {
+    gap: 0.625vw;
+    padding: 2.2917vw 1.0417vw;
+    border-radius: 1.0417vw;
+    border: 0.0521vw solid var(--color-border-soft);
+    width: 22.0313vw;
+  }
+
+  .about-arch-diagram__row {
+    gap: 0.625vw;
+  }
+
+  .about-arch-diagram__pill {
+    padding: 0.4167vw 1.25vw;
+    border-radius: 0.2604vw;
+    backdrop-filter: blur(0.5208vw);
+    border: 0.0521vw solid var(--color-orange-3);
+    font-size: 0.8333vw;
+  }
+
+  .about-arch-diagram__line {
+    width: 2.9167vw;
+    border-top: 0.1042vw dotted #2e7fd6;
+  }
+
+  .about-arch-diagram__line::after {
+    top: -0.2083vw;
+    width: 0.4167vw;
+    height: 0.4167vw;
+    box-shadow: 0 0 0.5208vw 0.1563vw rgba(255, 110, 20, 0.7);
+  }
+
+  .about-arch-diagram__line:first-child::after {
+    right: 0.8333vw;
+  }
+
+  .about-arch-diagram__line:last-child::after {
+    left: 0.8333vw;
+  }
+
+  .about-arch-diagram__circle {
+    width: 13.4375vw;
+    height: 13.125vw;
+    margin: 0 0;
+    gap: 0.5729vw;
+  }
+
+  .about-arch-diagram__circle img {
+    width: 1.5625vw;
+    height: 1.5625vw;
+  }
+
+  .about-arch-diagram__circle span {
+    font-size: 1.0417vw;
+  }
+
+  .about-ai {
+    padding-top: 9.4271vw;
+  }
+
+  .about-ai .about-divider {
+    bottom: -4.9479vw;
+  }
+
+  .about-ai__glow {
+    right: -4.1667vw;
+    width: 23.9583vw;
+    filter: blur(0.5208vw);
+  }
+
+  .about-ai .about-title,
+.about-ai .about-desc {
+    max-width: 34.375vw;
+  }
+
+  .about-ai__list {
+    gap: 0.6771vw;
+  }
+
+  .about-ai__point {
+    gap: 1.0417vw;
+    padding: 0.9375vw 1.25vw;
+    border-radius: 0.5208vw;
+    border: 0.0521vw solid var(--color-orange-3);
+  }
+
+  .about-ai__point-number {
+    font-size: 0.8333vw;
+  }
+
+  .about-ai__point-text {
+    font-size: 0.8333vw;
+  }
+
+  .about-risk {
+    padding-top: 11.1458vw;
+  }
+
+  .about-risk__grid {
+    gap: 1.8229vw;
+    margin-top: 3.5937vw;
+  }
+
+  .about-risk-card {
+    padding: 1.7708vw 1.7708vw 2.3438vw 1.5625vw;
+    border-radius: 0.7813vw;
+    border: 0.0521vw solid var(--color-orange-3);
+    backdrop-filter: blur(0.2604vw);
+  }
+
+  .about-risk-card__icon {
+    width: 1.875vw;
+    height: 1.875vw;
+  }
+
+  .about-risk-card__title {
+    margin: 1.0417vw 0 0;
+    font-size: 1.0417vw;
+  }
+
+  .about-risk-card__desc {
+    margin: 1.1979vw 0 0;
+    font-size: 0.8854vw;
+  }
+
+  .about-risk__note {
+    margin: 2.9167vw auto 0;
+    font-size: 0.8333vw;
+  }
+
+  .about-risk__note-link {
+    text-underline-offset: 0.1042vw;
+  }
+
+  .about-work {
+    padding: 15.9375vw 0 0;
+  }
+
+  .about-work__glow {
+    top: -0.5208vw;
+    width: 8.8542vw;
+    height: 17.2396vw;
+  }
+
+  .about-work__grid {
+    gap: 1.5104vw;
+    margin-top: 2.9688vw;
+  }
+
+  .about-work-card {
+    padding: 1.3542vw 1.3021vw 1.7188vw 1.1979vw;
+    border-radius: 0.7813vw;
+    border: 0.0521vw solid var(--color-orange-3);
+    backdrop-filter: blur(1.3021vw);
+  }
+
+  .about-work-card__badge {
+    width: 2.9167vw;
+    height: 2.9167vw;
+    margin: 0 auto 1.25vw;
+  }
+
+  .about-work-card__title {
+    font-size: 1.25vw;
+  }
+
+  .about-work-card__desc {
+    margin: 1.875vw 0 0;
+    font-size: 0.8333vw;
+    max-width: 17.1875vw;
+    letter-spacing: 0.0156vw;
+  }
+
+  .about-work .reveal.reveal--up.is-visible {
+    gap: 0.625vw;
+  }
+
+  .about-principles .reveal.reveal--up.is-visible {
+    max-width: 32.4479vw;
+  }
+
+  .about-work-card__number {
+    font-size: 1.25vw;
+    width: 3.2292vw;
+    height: 3.2292vw;
+    filter: drop-shadow(0 2.1704vw 2.8321vw rgba(255, 88, 0, 0.1867)) drop-shadow(0 0.9015vw 1.1763vw rgba(255, 88, 0, 0.22)) drop-shadow(0 3.6875vw 9.3943vw rgba(255, 88, 0, 0.34));
+  }
+}
 
 @media (max-width: 980px) {
   .about-hero {

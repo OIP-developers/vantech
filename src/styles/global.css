@@ -381,7 +381,7 @@ h1, h2, h3, h4, p {
 .navbar__dropdown {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   min-width: 220px;
   padding: 10px;
   background: var(--color-bg);
@@ -392,7 +392,7 @@ h1, h2, h3, h4, p {
 
 .navbar__dropdown li a {
   display: block;
-  padding: 10px 12px;
+  padding: 6px 12px;
   border-radius: 6px;
   font-family: var(--font-ui);
   font-size: 15px;
@@ -2611,7 +2611,7 @@ a.navbar__cta--mobile {
     padding-top: 0.938vw;
   }
   .navbar__dropdown {
-    gap: 0.208vw;
+    gap: 0.104vw;
     min-width: 11.458vw;
     padding: 0.521vw;
     border: 0.052vw solid var(--color-border);
@@ -2619,7 +2619,7 @@ a.navbar__cta--mobile {
     box-shadow: 0 1.25vw 2.5vw rgba(0, 0, 0, 0.5);
   }
   .navbar__dropdown li a {
-    padding: 0.521vw 0.625vw;
+    padding: 0.313vw 0.625vw;
     border-radius: 0.313vw;
     font-size: 0.781vw;
   }
@@ -3504,22 +3504,35 @@ a.navbar__cta--mobile {
     pointer-events: auto;
     transform: none;
     display: none;
+    width: 100%;
+    max-height: 60vh;
+    overflow-y: auto;
   }
 
-  .navbar__links li.has-dropdown:hover .navbar__dropdown-wrap {
+  .navbar__links li.has-dropdown.is-dropdown-open .navbar__dropdown-wrap {
     display: block;
   }
 
+  /* Touch taps can leave :hover engaged on the li, which would otherwise
+     re-apply the desktop centering transform and shift the dropdown off-screen. */
+  .navbar__links li.has-dropdown:hover .navbar__dropdown-wrap {
+    transform: none;
+  }
+
   .navbar__dropdown {
-    align-items: center;
+    align-items: stretch;
     box-shadow: none;
     border: none;
     padding: 0;
+    width: 100%;
+    min-width: 0;
   }
 
   .navbar__dropdown li a {
     text-align: center;
     font-size: 16px;
+    white-space: normal;
+    width: 100%;
   }
 
   .navbar__langs {

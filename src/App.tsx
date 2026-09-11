@@ -16,6 +16,16 @@ import SaasDevelopmentPage from './pages/SaasDevelopment/SaasDevelopmentPage';
 import CustomDevelopmentPage from './pages/CustomDevelopment/CustomDevelopmentPage';
 import EcommerceDevelopmentPage from './pages/EcommerceDevelopment/EcommerceDevelopmentPage';
 import WorkVanTravelPage from './pages/WorkVanTravel/WorkVanTravelPage';
+import WorkMainPage from './pages/WorkMain/WorkMainPage';
+import WorkPowerMindsetBreakthroughPage from './pages/WorkPowerMindsetBreakthrough/WorkPowerMindsetBreakthroughPage';
+import WorkVanTravelBusinessTwoPage from './pages/WorkVanTravelBusinessTwo/WorkVanTravelBusinessTwoPage';
+import WorkOneTapDigitalCardPage from './pages/WorkOneTapDigitalCard/WorkOneTapDigitalCardPage';
+import WorkPMBConsultingPage from './pages/WorkPMBConsulting/WorkPMBConsultingPage';
+import WorkMightyOakLegacyPage from './pages/WorkMightyOakLegacy/WorkMightyOakLegacyPage';
+import WorkSolidRockLeadershipPage from './pages/WorkSolidRockLeadership/WorkSolidRockLeadershipPage';
+import WorkBuketiFinancialConsultingPage from './pages/WorkBuketiFinancialConsulting/WorkBuketiFinancialConsultingPage';
+import WorkLelofitPage from './pages/WorkLelofit/WorkLelofitPage';
+import WorkAllAccessTripPage from './pages/WorkAllAccessTrip/WorkAllAccessTripPage';
 
 function App() {
   return (
@@ -35,7 +45,17 @@ function App() {
         <Route path="/saas-development" element={<SaasDevelopmentPage />} />
         <Route path="/custom-development" element={<CustomDevelopmentPage />} />
         <Route path="/ecommerce-development" element={<EcommerceDevelopmentPage />} />
+        <Route path="/work" element={<WorkMainPage />} />
         <Route path="/van-travel-business" element={<WorkVanTravelPage />} />
+        <Route path="/power-mindset-breakthrough" element={<WorkPowerMindsetBreakthroughPage />} />
+        <Route path="/van-travel-business-two" element={<WorkVanTravelBusinessTwoPage />} />
+        <Route path="/onetap-digital-card" element={<WorkOneTapDigitalCardPage />} />
+        <Route path="/pmb-consulting" element={<WorkPMBConsultingPage />} />
+        <Route path="/mighty-oak-legacy" element={<WorkMightyOakLegacyPage />} />
+        <Route path="/solid-rock-leadership-development" element={<WorkSolidRockLeadershipPage />} />
+        <Route path="/buketi-insurance-services" element={<WorkBuketiFinancialConsultingPage />} />
+        <Route path="/lelofit" element={<WorkLelofitPage />} />
+        <Route path="/all-access-trip" element={<WorkAllAccessTripPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />
