@@ -7,6 +7,57 @@
   padding-top: 91px;
 }
 
+/* ---------- Shared animations (gradient-border pills + their lead icons) ---------- */
+
+/* Animates only the gradient's own angle (not the element's transform), so the
+   ring stays exactly on the pill's rounded outline instead of a rotated box
+   swinging its corners outside a short, wide pill. */
+@property --wvt-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes wvt-border-spin {
+  to {
+    --wvt-angle: 360deg;
+  }
+}
+
+@keyframes wvt-dot-pulse {
+  0%,
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+  50% {
+    transform: rotate(45deg) scale(1.35);
+  }
+}
+
+@keyframes wvt-outcome-dot-spin {
+  0% {
+    transform: rotate(45deg) scale(1);
+  }
+  50% {
+    transform: rotate(225deg) scale(1.4);
+  }
+  100% {
+    transform: rotate(405deg) scale(1);
+  }
+}
+
+@keyframes wvt-badge-icon-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.75;
+  }
+}
+
 /* ---------- Hero ---------- */
 .wvt-hero {
   position: relative;
@@ -89,9 +140,45 @@ body .backimage-boy {
   white-space: nowrap;
 }
 
+/* Some pages' Figma hero shows all badges inside one merged pill instead of
+   separate pills per badge — opt in per page via hero.badgesMerged. */
+.wvt-badges--merged {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.wvt-badges--merged::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 20px;
+  background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: wvt-border-spin 3s linear infinite;
+}
+
+.wvt-badges--merged .wvt-badge {
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 0;
+}
+
 .wvt-badge .icon {
   width: 13px;
   height: 14px;
+  animation: wvt-badge-icon-pulse 1.8s ease-in-out infinite;
 }
 
 .wvt-hero__title {
@@ -361,6 +448,7 @@ body .backimage-boy {
   flex-shrink: 0;
   background: var(--color-orange);
   transform: rotate(45deg);
+  animation: wvt-dot-pulse 1.6s ease-in-out infinite;
 }
 
 .wvt-tag::after {
@@ -369,11 +457,12 @@ body .backimage-boy {
   inset: 0;
   padding: 1px;
   border-radius: 100px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  animation: wvt-border-spin 3s linear infinite;
 }
 
 .wvt-sidebar-card--link {
@@ -500,14 +589,14 @@ body .backimage-boy {
 }
 
 .wvt-flow__step {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 9px 16px;
   border: 1px solid transparent;
   border-radius: 100px;
-  background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+  background: var(--color-bg);
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: 16px;
@@ -522,6 +611,21 @@ body .backimage-boy {
   flex-shrink: 0;
   background: var(--color-orange);
   transform: rotate(45deg);
+  animation: wvt-dot-pulse 1.6s ease-in-out infinite;
+}
+
+.wvt-flow__step::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 100px;
+  background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: wvt-border-spin 3s linear infinite;
 }
 
 .wvt-flow__connector {
@@ -713,11 +817,12 @@ body .backimage-boy {
   inset: 0;
   padding: 1.5px;
   border-radius: 5px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  animation: wvt-border-spin 3s linear infinite;
 }
 
 /* ---------- Outcome ---------- */
@@ -749,6 +854,7 @@ body .backimage-boy {
   flex-shrink: 0;
   background: var(--color-orange-3);
   transform: rotate(45deg);
+  animation: wvt-outcome-dot-spin 2s ease-in-out infinite;
 }
 
 /* ---------- Divider banner ---------- */
@@ -893,11 +999,32 @@ body .backimage-boy {
 }
 
 .wvt-related__cta .btn-outline {
-  border-color: var(--color-orange-3);
+  position: relative;
+  background: var(--color-bg);
+  border: 1.8px solid transparent;
+}
+
+.wvt-related__cta .btn-outline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1.8px;
+  border-radius: 6px;
+  background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: wvt-border-spin 3s linear infinite;
 }
 
 .wvt-related__cta .btn-outline:hover {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-2) 100%);
   border-color: transparent;
+}
+
+.wvt-related__cta .btn-outline:hover::after {
+  opacity: 0;
 }
 
 /* ---------- Closing CTA box ---------- */
@@ -1096,6 +1223,39 @@ body .backimage-boy {
     color: var(--color-white);
     white-space: nowrap;
   }
+
+  .wvt-badges--merged {
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.625vw;
+    padding: 0.4167vw 0.9375vw;
+    border-radius: 1.0417vw;
+    border: 0.0521vw solid transparent;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .wvt-badges--merged::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 0.0521vw;
+    border-radius: 1.0417vw;
+    background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: wvt-border-spin 3s linear infinite;
+  }
+
+  .wvt-badges--merged .wvt-badge {
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 0;
+  }
   
   .wvt-badge .icon {
     width: 0.6771vw;
@@ -1141,6 +1301,7 @@ body .backimage-boy {
     margin-top: 5.2083vw;
     border: 0.0521vw solid rgba(145, 145, 145, 0.4);
     border-radius: 0.5208vw;
+    overflow: hidden;
   }
   
   .wvt-browser-mock__toolbar {
@@ -1369,6 +1530,7 @@ body .backimage-boy {
     flex-shrink: 0;
     background: var(--color-orange);
     transform: rotate(45deg);
+    animation: wvt-dot-pulse 1.6s ease-in-out infinite;
   }
 
   .wvt-tag::after {
@@ -1377,11 +1539,12 @@ body .backimage-boy {
     inset: 0;
     padding: 0.0521vw;
     border-radius: 5.2083vw;
-    background: var(--gradient-border);
+    background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+    animation: wvt-border-spin 3s linear infinite;
   }
   
   .wvt-sidebar-card--link {
@@ -1508,21 +1671,21 @@ body .backimage-boy {
   }
   
   .wvt-flow__step {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.5208vw;
     padding: 0.4688vw 0.8333vw;
     border: 0.0521vw solid transparent;
     border-radius: 5.2083vw;
-    background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-                var(--gradient-border) border-box;
+    background: var(--color-bg);
     font-family: var(--font-heading);
     font-weight: 500;
     font-size: 0.8333vw;
     color: var(--color-white);
     white-space: nowrap;
   }
-  
+
   .wvt-flow__step::before {
     content: '';
     width: 0.4167vw;
@@ -1530,6 +1693,21 @@ body .backimage-boy {
     flex-shrink: 0;
     background: var(--color-orange);
     transform: rotate(45deg);
+    animation: wvt-dot-pulse 1.6s ease-in-out infinite;
+  }
+
+  .wvt-flow__step::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 0.0521vw;
+    border-radius: 5.2083vw;
+    background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: wvt-border-spin 3s linear infinite;
   }
   
   .wvt-flow__connector {
@@ -1721,11 +1899,12 @@ body .backimage-boy {
     inset: 0;
     padding: 0.0781vw;
     border-radius: 0.2604vw;
-    background: var(--gradient-border);
+    background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+    animation: wvt-border-spin 3s linear infinite;
   }
   
   /* ---------- Outcome ---------- */
@@ -1757,6 +1936,7 @@ body .backimage-boy {
     flex-shrink: 0;
     background: var(--color-orange-3);
     transform: rotate(45deg);
+    animation: wvt-outcome-dot-spin 2s ease-in-out infinite;
   }
   
   /* ---------- Divider banner ---------- */
@@ -1901,11 +2081,32 @@ body .backimage-boy {
   }
   
   .wvt-related__cta .btn-outline {
-    border-color: var(--color-orange-3);
+    position: relative;
+    background: var(--color-bg);
+    border: 0.0938vw solid transparent;
   }
-  
+
+  .wvt-related__cta .btn-outline::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 0.0938vw;
+    border-radius: 0.3125vw;
+    background: conic-gradient(from var(--wvt-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: wvt-border-spin 3s linear infinite;
+  }
+
   .wvt-related__cta .btn-outline:hover {
+    background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-2) 100%);
     border-color: transparent;
+  }
+
+  .wvt-related__cta .btn-outline:hover::after {
+    opacity: 0;
   }
   
   /* ---------- Closing CTA box ---------- */
@@ -2072,6 +2273,7 @@ body .backimage-boy {
   .wvt-related-card {
     flex: 1 1 calc(50% - 12px);
     max-width: calc(50% - 12px);
+    padding: 18px 14px;
   }
 
   .wvt-diagram {
@@ -2086,6 +2288,7 @@ body .backimage-boy {
     justify-content: center;
     text-align: center;
     padding: 48px 32px;
+    gap: 60px;
   }
 
   .wvt-closing__content {
@@ -2104,13 +2307,27 @@ body .backimage-boy {
     top: auto;
     transform: none;
     order: 2;
-    margin: 0 auto;
+    margin: 50px -70px -90px auto;
   }
 }
 
 @media (max-width: 767px) {
+  .wvt-hero__row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .wvt-hero__title {
     font-size: 44px;
+  }
+
+  .wvt-browser-mock {
+    position: relative;
+    z-index: 2;
+    margin-top: 60px;
+    border: 1px solid rgba(145, 145, 145, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   .wvt-browser-mock__toolbar {
@@ -2130,6 +2347,7 @@ body .backimage-boy {
   .wvt-detail,
   .wvt-approach {
     padding: 60px 0;
+    padding-top: 0;
   }
 
   .wvt-approach .container::after {
@@ -2140,23 +2358,234 @@ body .backimage-boy {
     flex-direction: column;
   }
 
+  .wvt-sidebar-card {
+    flex: 1 1 150px;
+  }
+
   .wvt-related__title {
     font-size: 40px;
+  }
+
+  .wvt-outcome {
+    padding: 49px 0 50px;
+  }
+
+  .wvt-banner {
+    max-width: 90%;
+    height: 200px;
+  }
+
+  .wvt-banner__icon {
+    width: 110px;
+    height: 110px;
+  }
+
+  .wvt-banner__icon .icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .wvt-related {
+    padding: 0 0 120px;
+  }
+
+  .wvt-related__grid {
+    margin-top: 40px;
+    gap: 25px 17px;
+  }
+
+  .wvt-related-card {
+    flex: 1 1 calc(50% - 9px);
+    max-width: calc(50% - 9px);
+    padding: 17px 11px;
+  }
+
+  .wvt-related-card__image {
+    height: 190px;
+    border-radius: 8px;
+  }
+
+  .wvt-related-card__tag {
+    margin-top: 30px;
+    padding: 7px 16px;
+    border-radius: 60px;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+  }
+
+  .wvt-related-card__title {
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+  }
+
+  .wvt-closing {
+    padding: 0 0 40px;
   }
 
   .wvt-closing__title {
     font-size: 36px;
   }
+
+  .wvt-closing__content {
+    order: 1;
+    align-items: center;
+    max-width: 100%;
+    gap: 30px;
+  }
 }
 
 @media (max-width: 599px) {
+  .wvt-hero {
+    padding-top: 60px;
+  }
+
+  .wvt-hero__row {
+    align-items: center;
+  }
+
+  .wvt-hero__left,
+  .wvt-hero__right {
+    text-align: center;
+    width: 100%;
+  }
+
+  .wvt-badges {
+    justify-content: center;
+  }
+
   .wvt-hero__title {
-    font-size: 36px;
+    margin-top: 30px;
+    font-size: 28px;
+  }
+
+  .wvt-hero__title--one-line-mobile {
+    font-size: 22px;
+    white-space: nowrap;
+  }
+
+  .wvt-hero__title--one-line-mobile br {
+    display: none;
+  }
+
+  .wvt-hero__right {
+    padding-top: 20px;
+  }
+
+  .wvt-hero__desc {
+    font-size: 14px;
+  }
+
+  .wvt-hero__actions {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .wvt-hero__actions .btn {
+    flex: 1 1 0;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .wvt-hero__actions .btn-icon {
+    width: 14px;
+    height: 14px;
   }
 
   .wvt-badge {
     font-size: 12px;
     padding: 7px 14px;
+  }
+
+  .wvt-stats {
+    gap: 16px;
+    margin-top: 60px;
+  }
+
+  .wvt-stat__label {
+    font-size: 20px;
+  }
+
+  .wvt-stat__value {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  .wvt-eyebrow-number {
+    font-size: 20px;
+  }
+
+  .wvt-detail-item {
+    padding: 18px 0;
+  }
+
+  .wvt-detail-item__desc {
+    margin-top: 14px;
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+  }
+
+  .wvt-capabilities__grid {
+    gap: 18px;
+    margin-top: 30px;
+  }
+
+  .wvt-capability-card {
+    flex: 1 1 100%;
+    min-width: 100%;
+    padding: 15px 12px;
+    border-radius: 9px;
+    gap: 13px;
+  }
+
+  .wvt-flow__steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 11px;
+    margin-top: 25px;
+  }
+
+  .wvt-flow__step-wrap {
+    gap: 5px;
+    width: 100%;
+  }
+
+  .wvt-flow__step {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wvt-flow__connector {
+    display: none;
+  }
+
+  .wvt-flow__step {
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    font-size: 13px;
+  }
+
+  .wvt-flow__step::before {
+    width: 6px;
+    height: 6px;
+  }
+
+  .wvt-outcome__list {
+    margin-top: 21px;
+    gap: 14px;
+  }
+
+  .wvt-outcome__list li {
+    gap: 10px;
+    font-size: 14px;
   }
 
   .wvt-diagram {
@@ -2201,8 +2630,32 @@ body .backimage-boy {
     display: none;
   }
 
+  .wvt-banner {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .wvt-banner__img {
+    height: auto;
+  }
+
+  .wvt-banner__icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .wvt-banner__icon .icon {
+    width: 30px;
+    height: 30px;
+  }
+
   .wvt-related__title {
     font-size: 32px;
+  }
+
+  .wvt-related__grid {
+    margin-top: 20px;
+    gap: 24px 15px;
   }
 
   .wvt-related-card {
@@ -2210,12 +2663,47 @@ body .backimage-boy {
     max-width: 100%;
   }
 
+  .wvt-related__cta {
+    margin-top: 50px;
+  }
+
+  .wvt-closing:before {
+    top: -150px;
+    right: -80px;
+    width: 160px;
+    height: 160px;
+    z-index: 0;
+  }
+
   .wvt-closing__title {
-    font-size: 30px;
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .wvt-closing__box {
+    justify-content: center;
+    text-align: center;
+    padding: 28px 14px;
+    gap: 30px;
+  }
+
+  .wvt-closing__content {
+    gap: 20px;
+  }
+
+  .wvt-closing__desc {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
   }
 
   .wvt-closing__orb {
     width: 180px;
     height: 180px;
+    margin: 50px -50px -60px auto;
+  }
+
+  .wvt-closing__sparkle {
+    width: 60%;
   }
 }
