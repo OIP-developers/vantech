@@ -224,6 +224,13 @@ export default function MobileApplicationPage() {
   const process2Head = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="mobileapp-page">
@@ -304,7 +311,7 @@ export default function MobileApplicationPage() {
             <h2 className="mobileapp-h2">What We Build</h2>
           </div>
 
-          <div className="mobileapp-build__grid">
+          <div className={`mobileapp-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {buildCards.map((card) => (
               <div className="mobileapp-card mobileapp-build-card" key={card.title}>
                 <div className="mobileapp-build-card__glow" />
@@ -325,7 +332,7 @@ export default function MobileApplicationPage() {
             <h2 className="mobileapp-h2">Capabilities</h2>
           </div>
 
-          <div className="mobileapp-capabilities__rows">
+          <div className={`mobileapp-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="mobileapp-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="mobileapp-pill" key={label}>
@@ -356,7 +363,7 @@ export default function MobileApplicationPage() {
             <h2 className="mobileapp-h2">Use Cases</h2>
           </div>
 
-          <div className="mobileapp-usecases__grid">
+          <div className={`mobileapp-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="mobileapp-card mobileapp-usecase-card" key={item.title}>
                 <h3 className="mobileapp-usecase-card__title">{item.title}</h3>
@@ -383,7 +390,7 @@ export default function MobileApplicationPage() {
             <span className="mobileapp-architecture__divider-dot" />
           </div>
 
-          <div className="mobileapp-timeline">
+          <div className={`mobileapp-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="mobileapp-timeline-step" key={step.number}>
                 <span className="mobileapp-timeline-step__badge">{step.number}</span>
@@ -411,7 +418,7 @@ export default function MobileApplicationPage() {
             <h2 className="mobileapp-h2">Development Process</h2>
           </div>
 
-          <div className="mobileapp-process2__grid">
+          <div className={`mobileapp-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card) => (
               <div className="mobileapp-card mobileapp-card--flat mobileapp-process2-card" key={card.title}>
                 <div className="mobileapp-process2-card__body">
@@ -431,7 +438,7 @@ export default function MobileApplicationPage() {
             <h2 className="mobileapp-h1-lg mobileapp-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="mobileapp-integrations__grid">
+          <div className={`mobileapp-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="mobileapp-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -476,7 +483,7 @@ export default function MobileApplicationPage() {
             <h2 className="mobileapp-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="mobileapp-why__grid">
+          <div className={`mobileapp-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="mobileapp-card mobileapp-card--flat mobileapp-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="mobileapp-badge-img mobileapp-why-card__badge" />

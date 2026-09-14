@@ -1349,34 +1349,6 @@
   }
 }
 
-@media (max-width: 1180px) {
-  .modeldev-h1-lg {
-    font-size: 54px;
-  }
-  .modeldev-disappoint__row {
-    flex-direction: column;
-    gap: 40px;
-  }
-  .modeldev-solution__row {
-    flex-direction: column-reverse;
-  }
-  .modeldev-solution__graphic {
-    max-width: 100%;
-    width: 360px;
-  }
-  .modeldev-timeline {
-    flex-wrap: wrap;
-  }
-  .modeldev-timeline-step {
-    flex: 1 1 30%;
-    min-width: 220px;
-  }
-  .modeldev-hero__graphic {
-    width: 380px;
-    height: auto;
-  }
-}
-
 @media (max-width: 980px) {
   .modeldev-hero {
     padding: 130px 0 60px;
@@ -1384,8 +1356,24 @@
   .modeldev-hero .row {
     flex-direction: column;
   }
+  .modeldev-hero__content {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .modeldev-hero__desc {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+  }
+  .modeldev-hero__actions {
+    justify-content: center;
+  }
   .modeldev-hero__graphic {
-    display: none;
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    margin: 40px auto 0;
   }
   .modeldev-hero__title {
     font-size: 42px;
@@ -1396,6 +1384,25 @@
   .modeldev-h1-lg {
     font-size: 42px;
   }
+  .modeldev-p-lg {
+    margin: 20px auto 0;
+    font-size: 18px;
+    max-width: 90%;
+  }
+  .modeldev-disappoint {
+    padding-top: 20px;
+  }
+  .modeldev-solution {
+    padding-top: 100px;
+  }
+  .modeldev-capabilities {
+    position: relative;
+    padding-top: 116px;
+  }
+  .modeldev-architecture {
+    position: relative;
+    padding-top: 113px;
+  }
   .modeldev-build__grid,
   .modeldev-process2__grid,
   .modeldev-why__grid {
@@ -1405,8 +1412,8 @@
     grid-template-columns: repeat(2, 1fr);
   }
   .modeldev-timeline {
-    flex-direction: column;
-    gap: 32px;
+    flex-direction: row;
+    gap: 20px;
   }
   .modeldev-pricing-cta__card {
     justify-content: center;
@@ -1424,6 +1431,111 @@
   .modeldev-integration-connector {
     display: none;
   }
+  .modeldev-disappoint__row {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .modeldev-disappoint__copy {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .modeldev-disappoint__list {
+    max-width: 100%;
+    margin: 4px auto 0;
+  }
+  .modeldev-disappoint__item {
+    gap: 10px;
+  }
+  .modeldev-solution__row {
+    flex-direction: column-reverse;
+  }
+  .modeldev-solution__title {
+    font-size: 40px;
+    text-align: center;
+  }
+  .modeldev-solution__copy {
+    max-width: 100%;
+    text-align: center;
+  }
+  .modeldev-solution__desc {
+    width: 100%;
+    font-size: 20px;
+    margin-top: 30px;
+  }
+  .modeldev-solution__graphic {
+    max-width: 100%;
+    width: 360px;
+  }
+  .modeldev-process2 {
+    padding-top: 70px;
+  }
+  .modeldev-timeline-step__title {
+    margin: 20px 0 0;
+    font-size: 22px;
+  }
+  .modeldev-section-copy {
+    max-width: 100%;
+  }
+  .modeldev-timeline-tag {
+    font-size: 13px;
+    height: auto;
+    padding: 8px 16px;
+  }
+  .modeldev-timeline-step__tag-row {
+    gap: 8px;
+  }
+  .modeldev-timeline-step__badge {
+    font-size: 16px;
+    width: 38px;
+    height: 38px;
+  }
+  .modeldev-process2-card__badge {
+    width: 100px;
+    height: 100px;
+  }
+  .modeldev-process2-card {
+    gap: 29px;
+    padding: 30px 20px 30px 20px;
+  }
+  .modeldev-process2-card__title {
+    font-size: 20px;
+  }
+  .modeldev-integrations {
+    padding-top: 131px;
+  }
+  .modeldev-integrations__grid {
+    margin-top: 40px;
+    gap: 22px;
+  }
+  .modeldev-integration-pill {
+    gap: 10px;
+    min-width: 0;
+    width: 195px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  .modeldev-why {
+    padding-top: 121px;
+  }
+  .modeldev-why-card__badge {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 40px;
+  }
+  .modeldev-why-card__title {
+    font-size: 20px;
+  }
+  .modeldev-pricing-cta {
+    padding: 60px 0 60px;
+  }
+  .modeldev-pricing-cta__glow {
+    left: 50%;
+    right: auto;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 767px) {
@@ -1432,11 +1544,12 @@
   }
   .modeldev-hero__actions {
     flex-direction: column;
+    align-items: center;
     width: 100%;
   }
   .modeldev-hero__actions .btn {
     justify-content: center;
-    width: 100%;
+    width: 60%;
   }
   .modeldev-h2 {
     font-size: 30px;
@@ -1446,6 +1559,7 @@
   }
   .modeldev-disappoint__item {
     padding: 16px 20px;
+    align-items: start;
   }
   .modeldev-build__grid,
   .modeldev-process2__grid,
@@ -1453,11 +1567,20 @@
   .modeldev-usecases__grid {
     grid-template-columns: 1fr;
   }
-  .modeldev-process2-card,
   .modeldev-why-card {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+  }
+  .modeldev-process2-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding: 30px 10px;
+  }
+  .modeldev-process2-card__badge {
+    order: -1;
   }
   .modeldev-integration-pill {
     width: calc(50% - 10px);
@@ -1465,4 +1588,387 @@
   .modeldev-pricing-cta__title {
     font-size: 32px;
   }
+  .modeldev-timeline {
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-orange-3) rgba(255, 255, 255, 0.1);
+  }
+  .modeldev-timeline::-webkit-scrollbar {
+    height: 6px;
+  }
+  .modeldev-timeline::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  .modeldev-timeline::-webkit-scrollbar-thumb {
+    background: var(--color-orange-3);
+    border-radius: 4px;
+  }
+  .modeldev-timeline-step {
+    flex: 0 0 240px;
+    min-width: 240px;
+  }
+  .modeldev-pricing-cta .btn {
+    font-size: 16px;
+    padding: 14px 14px;
+    gap: 11px;
+  }
+  .modeldev-why-card__badge {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+  }
+  .modeldev-why {
+    padding-top: 100px;
+  }
+  .modeldev-integrations {
+    padding-top: 90px;
+  }
+  .modeldev-pill {
+    font-size: 12px;
+    gap: 6px;
+    padding: 14px 10px;
+    border-radius: 6px;
+  }
+  .modeldev-capabilities__row {
+    gap: 14px;
+  }
+  .modeldev-usecases {
+    padding-top: 80px;
+  }
+  .modeldev-usecase-card__title {
+    font-size: 19px;
+    height: 40px;
+  }
+  .modeldev-build-card {
+    gap: 10px;
+    padding: 30px 18px;
+  }
+  .modeldev-build {
+    padding-top: 60px;
+  }
+  .modeldev-solution__title {
+    font-size: 34px;
+  }
+  .modeldev-solution__desc {
+    font-size: 18px;
+  }
+  .modeldev-h2 {
+    font-size: 35px;
+  }
 }
+
+@media (max-width: 599px) {
+  .modeldev-card.modeldev-build-card {
+    align-items: center;
+    text-align: center;
+  }
+  .modeldev-build-card__head {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+  .modeldev-process2-card__badge {
+    width: 80px;
+    height: 80px;
+  }
+  .modeldev-hero__title {
+    font-size: 30px;
+  }
+  .modeldev-hero__desc {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  .modeldev-hero {
+    padding: 130px 0 0px;
+  }
+  .modeldev-h1-lg {
+    font-size: 30px;
+  }
+  .modeldev-hero__graphic {
+    width: 100%;
+  }
+  .modeldev-hero__actions .btn {
+    justify-content: center;
+    width: 70%;
+  }
+  .modeldev-p-lg {
+    margin: 20px auto 0;
+    font-size: 15px;
+    max-width: 100%;
+  }
+  .modeldev-disappoint__item {
+    padding: 16px 20px;
+    align-items: start;
+    flex-direction: column;
+  }
+  .modeldev-build-card__title {
+    font-size: 22px;
+  }
+  .modeldev-integrations__row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .modeldev-integration-pill {
+    width: 100%;
+  }
+  .modeldev-why-card__title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .modeldev-pricing-cta__desc {
+    margin: 14px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-white);
+  }
+  .modeldev-pricing-cta .btn {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+  .modeldev-disappoint {
+    padding-top: 80px;
+  }
+  .modeldev-solution {
+    padding-top: 80px;
+  }
+  .modeldev-solution__title {
+    font-size: 35px;
+  }
+  .modeldev-solution__desc {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+  .modeldev-build__grid {
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .modeldev-capabilities {
+    padding-top: 70px;
+  }
+  .modeldev-capabilities__rows {
+    margin-top: 40px;
+    gap: 20px;
+  }
+  .modeldev-usecases {
+    padding-top: 70px;
+  }
+  .modeldev-architecture {
+    padding-top: 80px;
+  }
+  .modeldev-section-copy {
+    font-size: 14px;
+  }
+  .modeldev-process2__grid {
+    gap: 26px;
+    margin-top: 50px;
+  }
+  .modeldev-integrations {
+    padding-top: 80px;
+  }
+  .modeldev-why {
+    padding-top: 80px;
+  }
+  .modeldev-why__grid {
+    margin-top: 44px;
+  }
+}
+
+@media (max-width: 481px) {
+  .modeldev-h1-lg {
+    font-size: 25px;
+  }
+  .modeldev-solution__title {
+    font-size: 24px;
+  }
+  .modeldev-integrations {
+    padding-top: 80px;
+  }
+  .modeldev-why {
+    padding-top: 81px;
+  }
+  .modeldev-h2 {
+    font-size: 30px;
+  }
+  .modeldev-usecase-card {
+    padding: 24px 10px;
+  }
+  .modeldev-usecase-card__title {
+    font-size: 18px;
+    height: 30px;
+  }
+  .modeldev-build-card__desc {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+}
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+@keyframes modeldev-fade-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.modeldev-hero__illustration {
+  animation: modeldev-fade-scale-in 0.9s ease both;
+}
+
+.modeldev-build-card,
+.modeldev-usecase-card,
+.modeldev-why-card,
+.modeldev-process2-card,
+.modeldev-timeline-step,
+.modeldev-pill,
+.modeldev-integration-pill {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.modeldev-build__grid.is-visible .modeldev-build-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-why__grid.is-visible .modeldev-why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-process2__grid.is-visible .modeldev-process2-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-timeline.is-visible .modeldev-timeline-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-capabilities__rows.is-visible .modeldev-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(6) { transition-delay: 0.42s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(7) { transition-delay: 0.49s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(8) { transition-delay: 0.56s; }
+
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(6) { transition-delay: 0.42s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(7) { transition-delay: 0.49s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(8) { transition-delay: 0.56s; }
+
+@keyframes modeldev-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.modeldev-build-card__badge,
+.modeldev-process2-card__badge,
+.modeldev-why-card__badge {
+  animation: modeldev-icon-float 3.6s ease-in-out infinite;
+}
+
+.modeldev-build-card:nth-child(1) .modeldev-build-card__badge { animation-delay: -0.4s; }
+.modeldev-build-card:nth-child(2) .modeldev-build-card__badge { animation-delay: -0.8s; }
+.modeldev-build-card:nth-child(3) .modeldev-build-card__badge { animation-delay: -1.2s; }
+.modeldev-build-card:nth-child(4) .modeldev-build-card__badge { animation-delay: -1.6s; }
+.modeldev-build-card:nth-child(5) .modeldev-build-card__badge { animation-delay: -2.0s; }
+.modeldev-build-card:nth-child(6) .modeldev-build-card__badge { animation-delay: -2.4s; }
+.modeldev-process2-card:nth-child(1) .modeldev-process2-card__badge { animation-delay: -0.4s; }
+.modeldev-process2-card:nth-child(2) .modeldev-process2-card__badge { animation-delay: -0.8s; }
+.modeldev-process2-card:nth-child(3) .modeldev-process2-card__badge { animation-delay: -1.2s; }
+.modeldev-process2-card:nth-child(4) .modeldev-process2-card__badge { animation-delay: -1.6s; }
+.modeldev-process2-card:nth-child(5) .modeldev-process2-card__badge { animation-delay: -2.0s; }
+.modeldev-process2-card:nth-child(6) .modeldev-process2-card__badge { animation-delay: -2.4s; }
+.modeldev-why-card:nth-child(1) .modeldev-why-card__badge { animation-delay: -0.4s; }
+.modeldev-why-card:nth-child(2) .modeldev-why-card__badge { animation-delay: -0.8s; }
+.modeldev-why-card:nth-child(3) .modeldev-why-card__badge { animation-delay: -1.2s; }
+.modeldev-why-card:nth-child(4) .modeldev-why-card__badge { animation-delay: -1.6s; }
+.modeldev-why-card:nth-child(5) .modeldev-why-card__badge { animation-delay: -2.0s; }
+.modeldev-why-card:nth-child(6) .modeldev-why-card__badge { animation-delay: -2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+.modeldev-hero__illustration,
+.modeldev-build-card,
+.modeldev-usecase-card,
+.modeldev-why-card,
+.modeldev-process2-card,
+.modeldev-timeline-step,
+.modeldev-pill,
+.modeldev-integration-pill,
+.modeldev-build-card__badge,
+.modeldev-process2-card__badge,
+.modeldev-why-card__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

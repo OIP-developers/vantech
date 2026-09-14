@@ -234,6 +234,13 @@ export default function CustomDevelopmentPage() {
   const processHead = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="customdev-page">
@@ -317,7 +324,7 @@ export default function CustomDevelopmentPage() {
             <h2 className="customdev-h2">What we build</h2>
           </div>
 
-          <div className="customdev-build__grid">
+          <div className={`customdev-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {buildCards.map((card) => (
               <div className="customdev-card customdev-build-card" key={card.title}>
                 <div className="customdev-build-card__glow" />
@@ -338,7 +345,7 @@ export default function CustomDevelopmentPage() {
             <h2 className="customdev-h2">Capabilities</h2>
           </div>
 
-          <div className="customdev-capabilities__rows">
+          <div className={`customdev-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="customdev-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="customdev-pill" key={label}>
@@ -369,7 +376,7 @@ export default function CustomDevelopmentPage() {
             <h2 className="customdev-h2">Use Cases</h2>
           </div>
 
-          <div className="customdev-usecases__grid">
+          <div className={`customdev-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="customdev-card customdev-usecase-card" key={item.title}>
                 <h3 className="customdev-usecase-card__title">{item.title}</h3>
@@ -396,7 +403,7 @@ export default function CustomDevelopmentPage() {
             <span className="customdev-architecture__divider-dot" />
           </div>
 
-          <div className="customdev-timeline">
+          <div className={`customdev-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="customdev-timeline-step" key={step.number}>
                 <span className="customdev-timeline-step__badge">{step.number}</span>
@@ -424,7 +431,7 @@ export default function CustomDevelopmentPage() {
             <h2 className="customdev-h2">Development Process</h2>
           </div>
 
-          <div className="customdev-process2__grid">
+          <div className={`customdev-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card) => (
               <div className="customdev-card customdev-card--flat customdev-process2-card" key={card.title}>
                 <div className="customdev-process2-card__body">
@@ -444,7 +451,7 @@ export default function CustomDevelopmentPage() {
             <h2 className="customdev-h1-lg customdev-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="customdev-integrations__grid">
+          <div className={`customdev-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="customdev-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -489,7 +496,7 @@ export default function CustomDevelopmentPage() {
             <h2 className="customdev-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="customdev-why__grid">
+          <div className={`customdev-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="customdev-card customdev-card--flat customdev-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="customdev-badge-img customdev-why-card__badge" />

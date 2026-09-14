@@ -228,6 +228,13 @@ export default function AIAgentsPage() {
   const process2Head = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
+  const capsRows = useReveal('up');
 
   return (
     <main className="agents-page">
@@ -318,7 +325,7 @@ export default function AIAgentsPage() {
             <h2 className="agents-h2">What We Build</h2>
           </div>
 
-          <div className="agents-build__grid">
+          <div className={`agents-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {buildCards.map((card) => (
               <div className="agents-card agents-build-card" key={card.title}>
                 <div className="agents-build-card__glow" />
@@ -341,7 +348,7 @@ export default function AIAgentsPage() {
             <h2 className="agents-h2">Capabilities</h2>
           </div>
 
-          <div className="agents-capabilities__rows">
+          <div className={`agents-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="agents-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="agents-pill" key={label}>
@@ -372,7 +379,7 @@ export default function AIAgentsPage() {
             <h2 className="agents-h2">Use Cases</h2>
           </div>
 
-          <div className="agents-usecases__grid">
+          <div className={`agents-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="agents-card agents-usecase-card" key={item.title}>
                 <h3 className="agents-usecase-card__title">{item.title}</h3>
@@ -399,7 +406,7 @@ export default function AIAgentsPage() {
             <span className="agents-architecture__divider-dot" />
           </div>
 
-          <div className="agents-timeline">
+          <div className={`agents-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="agents-timeline-step" key={step.number}>
                 <span className="agents-timeline-step__badge">{step.number}</span>
@@ -431,7 +438,7 @@ export default function AIAgentsPage() {
             </p>
           </div>
 
-          <div className="agents-process2__grid">
+          <div className={`agents-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card) => (
               <div className="agents-card agents-card--flat agents-process2-card" key={card.title}>
                 <div className="agents-process2-card__body">
@@ -453,7 +460,7 @@ export default function AIAgentsPage() {
             <h2 className="agents-h1-lg agents-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="agents-integrations__grid">
+          <div className={`agents-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="agents-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -498,7 +505,7 @@ export default function AIAgentsPage() {
             <h2 className="agents-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="agents-why__grid">
+          <div className={`agents-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="agents-card agents-card--flat agents-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="agents-why-card__badge" loading="lazy" />

@@ -215,6 +215,13 @@ export default function MVPDevelopmentPage() {
   const process2Head = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="mvp-page">
@@ -301,7 +308,7 @@ export default function MVPDevelopmentPage() {
             <h2 className="mvp-h2">What We Build</h2>
           </div>
 
-          <div className="mvp-build__grid">
+          <div className={`mvp-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {buildCards.map((card) => (
               <div className="mvp-card mvp-build-card" key={card.title}>
                 <div className="mvp-build-card__glow" />
@@ -322,7 +329,7 @@ export default function MVPDevelopmentPage() {
             <h2 className="mvp-h2">Capabilities</h2>
           </div>
 
-          <div className="mvp-capabilities__rows">
+          <div className={`mvp-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="mvp-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="mvp-pill" key={label}>
@@ -353,7 +360,7 @@ export default function MVPDevelopmentPage() {
             <h2 className="mvp-h2">Use Cases</h2>
           </div>
 
-          <div className="mvp-usecases__grid">
+          <div className={`mvp-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="mvp-card mvp-usecase-card" key={item.title}>
                 <h3 className="mvp-usecase-card__title">{item.title}</h3>
@@ -380,7 +387,7 @@ export default function MVPDevelopmentPage() {
             <span className="mvp-architecture__divider-dot" />
           </div>
 
-          <div className="mvp-timeline">
+          <div className={`mvp-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="mvp-timeline-step" key={step.number}>
                 <span className="mvp-timeline-step__badge">{step.number}</span>
@@ -408,7 +415,7 @@ export default function MVPDevelopmentPage() {
             <h2 className="mvp-h2">Development Process</h2>
           </div>
 
-          <div className="mvp-process2__grid">
+          <div className={`mvp-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card) => (
               <div className="mvp-card mvp-card--flat mvp-process2-card" key={card.title}>
                 <div className="mvp-process2-card__body">
@@ -428,7 +435,7 @@ export default function MVPDevelopmentPage() {
             <h2 className="mvp-h1-lg mvp-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="mvp-integrations__grid">
+          <div className={`mvp-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="mvp-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -473,7 +480,7 @@ export default function MVPDevelopmentPage() {
             <h2 className="mvp-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="mvp-why__grid">
+          <div className={`mvp-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="mvp-card mvp-card--flat mvp-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="mvp-badge-img mvp-why-card__badge" />

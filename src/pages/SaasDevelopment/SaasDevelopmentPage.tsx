@@ -228,6 +228,13 @@ export default function SaasDevelopmentPage() {
   const process2Head = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="saas-page">
@@ -310,7 +317,7 @@ export default function SaasDevelopmentPage() {
             <h2 className="saas-h2">What we build</h2>
           </div>
 
-          <div className="saas-build__grid">
+          <div className={`saas-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {buildCards.map((card) => (
               <div className="saas-card saas-build-card" key={card.title}>
                 <div className="saas-build-card__glow" />
@@ -331,7 +338,7 @@ export default function SaasDevelopmentPage() {
             <h2 className="saas-h2">Capabilities</h2>
           </div>
 
-          <div className="saas-capabilities__rows">
+          <div className={`saas-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="saas-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="saas-pill" key={label}>
@@ -362,7 +369,7 @@ export default function SaasDevelopmentPage() {
             <h2 className="saas-h2">Use Cases</h2>
           </div>
 
-          <div className="saas-usecases__grid">
+          <div className={`saas-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="saas-card saas-usecase-card" key={item.title}>
                 <h3 className="saas-usecase-card__title">{item.title}</h3>
@@ -388,7 +395,7 @@ export default function SaasDevelopmentPage() {
             <span className="saas-architecture__divider-dot" />
           </div>
 
-          <div className="saas-timeline">
+          <div className={`saas-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="saas-timeline-step" key={step.number}>
                 <span className="saas-timeline-step__badge">{step.number}</span>
@@ -416,7 +423,7 @@ export default function SaasDevelopmentPage() {
             <h2 className="saas-h2">Development Process</h2>
           </div>
 
-          <div className="saas-process2__grid">
+          <div className={`saas-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card) => (
               <div className="saas-card saas-card--flat saas-process2-card" key={card.title}>
                 <div className="saas-process2-card__body">
@@ -436,7 +443,7 @@ export default function SaasDevelopmentPage() {
             <h2 className="saas-h1-lg saas-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="saas-integrations__grid">
+          <div className={`saas-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="saas-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -481,7 +488,7 @@ export default function SaasDevelopmentPage() {
             <h2 className="saas-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="saas-why__grid">
+          <div className={`saas-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="saas-card saas-card--flat saas-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="saas-badge-img saas-why-card__badge" />

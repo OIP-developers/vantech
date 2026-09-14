@@ -215,6 +215,14 @@ export default function AutoPilotPage() {
   const processHead = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const includedGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const hubColumnsGrid = useReveal('up');
+  const processGrid1 = useReveal('up');
+  const processGrid2 = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="autopilot-page">
@@ -298,7 +306,7 @@ export default function AutoPilotPage() {
             <h2 className="autopilot-h2">What is included</h2>
           </div>
 
-          <div className="autopilot-included__grid">
+          <div className={`autopilot-included__grid ${includedGrid.className}`} ref={includedGrid.ref}>
             {includedCards.map((card) => (
               <div className="autopilot-card autopilot-included-card" key={card.title}>
                 <div className="autopilot-included-card__glow" />
@@ -319,7 +327,7 @@ export default function AutoPilotPage() {
             <h2 className="autopilot-h2">Capabilities</h2>
           </div>
 
-          <div className="autopilot-capabilities__rows">
+          <div className={`autopilot-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="autopilot-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="autopilot-pill" key={label}>
@@ -350,7 +358,7 @@ export default function AutoPilotPage() {
             <h2 className="autopilot-h2">Use Cases</h2>
           </div>
 
-          <div className="autopilot-usecases__grid">
+          <div className={`autopilot-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="autopilot-card autopilot-usecase-card" key={item.title}>
                 <h3 className="autopilot-usecase-card__title">{item.title}</h3>
@@ -377,7 +385,7 @@ export default function AutoPilotPage() {
             <span className="autopilot-hub__divider-dot" />
           </div>
 
-          <div className="autopilot-hub__columns">
+          <div className={`autopilot-hub__columns ${hubColumnsGrid.className}`} ref={hubColumnsGrid.ref}>
             {hubColumns.map((col) => (
               <div className="autopilot-hub-column" key={col.number}>
                 <span className="autopilot-hub-column__badge">{col.number}</span>
@@ -406,7 +414,7 @@ export default function AutoPilotPage() {
           </div>
 
           <div className="autopilot-process__rows">
-            <div className="autopilot-process__grid">
+            <div className={`autopilot-process__grid ${processGrid1.className}`} ref={processGrid1.ref}>
               {processCards.slice(0, 3).map((card) => (
                 <div className="autopilot-card autopilot-card--flat autopilot-process-card" key={card.title}>
                   <div className="autopilot-process-card__body">
@@ -417,7 +425,7 @@ export default function AutoPilotPage() {
                 </div>
               ))}
             </div>
-            <div className="autopilot-process__grid autopilot-process__grid--2">
+            <div className={`autopilot-process__grid autopilot-process__grid--2 ${processGrid2.className}`} ref={processGrid2.ref}>
               {processCards.slice(3).map((card) => (
                 <div className="autopilot-card autopilot-card--flat autopilot-process-card" key={card.title}>
                   <div className="autopilot-process-card__body">
@@ -438,7 +446,7 @@ export default function AutoPilotPage() {
             <h2 className="autopilot-h1-lg autopilot-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="autopilot-integrations__grid">
+          <div className={`autopilot-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="autopilot-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -483,7 +491,7 @@ export default function AutoPilotPage() {
             <h2 className="autopilot-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="autopilot-why__grid">
+          <div className={`autopilot-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="autopilot-card autopilot-card--flat autopilot-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="autopilot-badge-img autopilot-why-card__badge" />

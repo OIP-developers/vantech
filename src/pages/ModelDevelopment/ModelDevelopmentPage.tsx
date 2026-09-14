@@ -224,6 +224,13 @@ export default function ModelDevelopmentPage() {
   const processHead = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="modeldev-page">
@@ -310,7 +317,7 @@ export default function ModelDevelopmentPage() {
             <h2 className="modeldev-h2">What we build</h2>
           </div>
 
-          <div className="modeldev-build__grid">
+          <div className={`modeldev-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {buildCards.map((card) => (
               <div className="modeldev-card modeldev-build-card" key={card.title}>
                 <div className="modeldev-build-card__glow" />
@@ -331,7 +338,7 @@ export default function ModelDevelopmentPage() {
             <h2 className="modeldev-h2">Capabilities</h2>
           </div>
 
-          <div className="modeldev-capabilities__rows">
+          <div className={`modeldev-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="modeldev-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="modeldev-pill" key={label}>
@@ -362,7 +369,7 @@ export default function ModelDevelopmentPage() {
             <h2 className="modeldev-h2">Use Cases</h2>
           </div>
 
-          <div className="modeldev-usecases__grid">
+          <div className={`modeldev-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="modeldev-card modeldev-usecase-card" key={item.title}>
                 <h3 className="modeldev-usecase-card__title">{item.title}</h3>
@@ -389,7 +396,7 @@ export default function ModelDevelopmentPage() {
             <span className="modeldev-architecture__divider-dot" />
           </div>
 
-          <div className="modeldev-timeline">
+          <div className={`modeldev-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="modeldev-timeline-step" key={step.number}>
                 <span className="modeldev-timeline-step__badge">{step.number}</span>
@@ -417,7 +424,7 @@ export default function ModelDevelopmentPage() {
             <h2 className="modeldev-h2">Development process</h2>
           </div>
 
-          <div className="modeldev-process2__grid">
+          <div className={`modeldev-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card) => (
               <div className="modeldev-card modeldev-card--flat modeldev-process2-card" key={card.title}>
                 <div className="modeldev-process2-card__body">
@@ -437,7 +444,7 @@ export default function ModelDevelopmentPage() {
             <h2 className="modeldev-h1-lg modeldev-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="modeldev-integrations__grid">
+          <div className={`modeldev-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="modeldev-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -482,7 +489,7 @@ export default function ModelDevelopmentPage() {
             <h2 className="modeldev-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="modeldev-why__grid">
+          <div className={`modeldev-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="modeldev-card modeldev-card--flat modeldev-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="modeldev-badge-img modeldev-why-card__badge" />
