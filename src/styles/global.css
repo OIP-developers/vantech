@@ -508,6 +508,11 @@ a.navbar__cta--mobile {
   margin-top: 116px;
 }
 
+.categories__grid > .category-card:nth-child(1) { transition-delay: 0s, 0s, 0s; }
+.categories__grid > .category-card:nth-child(2) { transition-delay: 0s, 0.1s, 0.1s; }
+.categories__grid > .category-card:nth-child(3) { transition-delay: 0s, 0.2s, 0.2s; }
+.categories__grid > .category-card:nth-child(4) { transition-delay: 0s, 0.3s, 0.3s; }
+
 .category-card {
   position: relative;
   overflow: hidden;
@@ -516,7 +521,7 @@ a.navbar__cta--mobile {
   border-radius: 15px;
   text-align: left;
   background: linear-gradient(168.65deg, rgba(0, 0, 0, 0.8) -2.45%, rgba(22, 22, 22, 0.9) 102.09%);
-  transition: background 0.4s ease;
+  transition: background 0.4s ease, opacity 0.8s ease, transform 0.8s ease;
 }
 
 .category-card::before {
@@ -1021,8 +1026,9 @@ a.navbar__cta--mobile {
   inset: 0;
   width: 100%;
   height: 100%;
-  filter: blur(45px);
-  opacity: 0.85;
+  border-radius: 0;
+  object-fit: contain;
+  transform: scale(1.15);
 }
 
 .industries__glow--sharp {
@@ -1148,6 +1154,11 @@ a.navbar__cta--mobile {
   margin-top: 72px;
 }
 
+.why-us__grid > .why-card:nth-child(1) { transition-delay: 0s, 0s, 0s; }
+.why-us__grid > .why-card:nth-child(2) { transition-delay: 0s, 0.1s, 0.1s; }
+.why-us__grid > .why-card:nth-child(3) { transition-delay: 0s, 0.2s, 0.2s; }
+.why-us__grid > .why-card:nth-child(4) { transition-delay: 0s, 0.3s, 0.3s; }
+
 .why-card {
   position: relative;
   overflow: hidden;
@@ -1157,7 +1168,7 @@ a.navbar__cta--mobile {
   border-radius: 15px;
   background: rgba(3, 1, 0, 0.4);
   backdrop-filter: blur(40px);
-  transition: background 0.4s ease;
+  transition: background 0.4s ease, opacity 0.8s ease, transform 0.8s ease;
 }
 
 .why-card::before {
@@ -1485,7 +1496,7 @@ a.navbar__cta--mobile {
   padding: 22px;
   border-radius: 12px;
   background: linear-gradient(168.65deg, rgba(0,0,0,0.8) -2.45%, rgba(22,22,22,0.9) 102.09%);
-  transition: background 0.4s ease;
+  transition: background 0.4s ease, opacity 0.8s ease, transform 0.8s ease;
 }
 .plan-card--active {
   background: var(--color-bg);
@@ -2836,9 +2847,6 @@ a.navbar__cta--mobile {
     top: 11.875vw;
     width: 44.583vw;
     height: 44.583vw;
-  }
-  .industries__glow--soft {
-    filter: blur(2.344vw);
   }
   .industries__glow--sharp {
     top: 0.781vw;
