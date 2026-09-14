@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import ctaOrb from '../assets/images/cta-orb.png';
+import ctaOrbMoon from '../assets/images/orb-sphere.webp';
+import ctaOrbStar from '../assets/images/banner-star.svg';
 import { useReveal } from '../hooks/useReveal';
 
 export default function CTA() {
@@ -20,7 +21,8 @@ export default function CTA() {
     <section className="cta section" id="contact">
       <div className="container cta__row">
         <div className="cta__orb">
-          <img src={ctaOrb} alt="" className="cta__orb-img" />
+          <img src={ctaOrbMoon} alt="" className="cta__orb-img" />
+          <img src={ctaOrbStar} alt="" className="cta__orb-star" />
         </div>
 
         <div className={`cta__copy ${copy.className}`} ref={copy.ref}>

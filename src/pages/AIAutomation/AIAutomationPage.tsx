@@ -45,12 +45,36 @@ import badgeCircle from '../../assets/images/ai-automation/figma/badge-circle.pn
 import orbitRing from '../../assets/images/ai-automation/figma/orbit-ring.svg';
 import orbitEllipse from '../../assets/images/ai-automation/figma/orbit-ellipse.svg';
 import bottomSphere from '../../assets/images/ai-automation/figma/bottom-sphere.png';
-import solutionIllustration from '../../assets/images/ai-automation/figma/solution-illustration.png';
+import solutionStar from '../../assets/images/ai-automation/figma/solution-parts/star.png';
+import solutionStarBgLines from '../../assets/images/ai-automation/figma/solution-parts/star-bg-lines.png';
+import solutionIconTopLeft from '../../assets/images/ai-automation/figma/solution-parts/icon-top-left.png';
+import solutionIconTopRight from '../../assets/images/ai-automation/figma/solution-parts/icon-top-right.png';
+import solutionIconMidLeft from '../../assets/images/ai-automation/figma/solution-parts/icon-mid-left.png';
+import solutionIconMidRight from '../../assets/images/ai-automation/figma/solution-parts/icon-mid-right.png';
+import solutionIconLowerLeft from '../../assets/images/ai-automation/figma/solution-parts/icon-lower-left.png';
+import solutionIconLowerRight from '../../assets/images/ai-automation/figma/solution-parts/icon-lower-right.png';
+import solutionIconBottomLeft from '../../assets/images/ai-automation/figma/solution-parts/icon-bottom-left.png';
+import solutionIconBottomRight from '../../assets/images/ai-automation/figma/solution-parts/icon-bottom-right.png';
 import pricingGlowOrb from '../../assets/images/ai-automation/figma/pricing-glow-orb.png';
 // Shared hero ombre glow — the same asset already used behind the hero on
 // the About and Partners pages; reused here instead of a duplicate export.
 
 const ORBIT_DURATION = '42s';
+
+// Each part is its own pre-cropped piece (icon + the dashed line leading to
+// the centre) cut from the original solution illustration, positioned as a
+// percentage of the graphic's box so it lines up with where it sat in that
+// image — this lets each piece animate/stagger in on its own.
+const solutionParts = [
+  { src: solutionIconTopLeft, left: 21.3, top: 1.9, width: 25.04, dir: 'top' },
+  { src: solutionIconTopRight, left: 55.4, top: 1.9, width: 25.04, dir: 'top' },
+  { src: solutionIconMidLeft, left: 0, top: 25.5, width: 38.67, dir: 'left' },
+  { src: solutionIconMidRight, left: 61.2, top: 25.5, width: 38.67, dir: 'right' },
+  { src: solutionIconLowerLeft, left: 0, top: 46.4, width: 38.67, dir: 'left' },
+  { src: solutionIconLowerRight, left: 61.2, top: 46.4, width: 38.67, dir: 'right' },
+  { src: solutionIconBottomLeft, left: 21.8, top: 52.9, width: 22.74, dir: 'bottom' },
+  { src: solutionIconBottomRight, left: 52.3, top: 52.9, width: 22.74, dir: 'bottom' },
+];
 
 // angle/radius/size derived from each badge's position and footprint in
 // the Figma frame relative to the graphic's center, so the float traces
@@ -232,6 +256,8 @@ export default function AIAutomationPage() {
   const process2Grid = useReveal('up');
   const integrationsGrid = useReveal('up');
   const whyGrid = useReveal('up');
+  const pricingCta = useReveal('up');
+  const architectureDivider = useReveal('up');
 
   return (
     <main className="ai-automation-page">
@@ -351,7 +377,18 @@ export default function AIAutomationPage() {
           </div>
 
           <div className={`ai-automation-solution__graphic ${solutionGraphic.className}`} ref={solutionGraphic.ref}>
-            <img src={solutionIllustration} alt="" loading="lazy" />
+            <img src={solutionStarBgLines} alt="" className="ai-automation-solution__bg-lines" />
+            {solutionParts.map((part, i) => (
+              <img
+                key={i}
+                src={part.src}
+                alt=""
+                loading="lazy"
+                className={`ai-automation-solution__part ai-automation-solution__part--from-${part.dir}`}
+                style={{ left: `${part.left}%`, top: `${part.top}%`, width: `${part.width}%` } as CSSProperties}
+              />
+            ))}
+            <img src={solutionStar} alt="" className="ai-automation-solution__star" />
           </div>
         </div>
       </section>
@@ -438,8 +475,8 @@ export default function AIAutomationPage() {
             </p>
           </div>
 
-          <div style={{ position: 'relative' }}>
-            <hr className="ai-automation-architecture__divider" />
+          <div style={{ position: 'relative' }} ref={architectureDivider.ref}>
+            <hr className={`ai-automation-architecture__divider ${architectureDivider.className}`} />
             <span className="ai-automation-architecture__divider-dot" />
           </div>
 
@@ -550,7 +587,7 @@ export default function AIAutomationPage() {
 
       <section className="ai-automation-pricing-cta section">
         <div className="container">
-          <div className="ai-automation-pricing-cta__card">
+          <div className={`ai-automation-pricing-cta__card ${pricingCta.className}`} ref={pricingCta.ref}>
             <img src={pricingGlowOrb} alt="" className="ai-automation-pricing-cta__glow" loading="lazy" />
             <div className="ai-automation-pricing-cta__copy">
               <h2 className="ai-automation-pricing-cta__title">Starting at $1,500/month</h2>

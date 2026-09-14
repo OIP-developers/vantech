@@ -237,6 +237,8 @@ export default function AIAgentsPage() {
   const integrationsGrid = useReveal('up');
   const whyGrid = useReveal('up');
   const capsRows = useReveal('up');
+  const pricingCta = useReveal('up');
+  const architectureDivider = useReveal('up');
 
   return (
     <main className="agents-page">
@@ -403,8 +405,8 @@ export default function AIAgentsPage() {
             </p>
           </div>
 
-          <div style={{ position: 'relative' }}>
-            <hr className="agents-architecture__divider" />
+          <div style={{ position: 'relative' }} ref={architectureDivider.ref}>
+            <hr className={`agents-architecture__divider ${architectureDivider.className}`} />
             <span className="agents-architecture__divider-dot" />
           </div>
 
@@ -521,7 +523,7 @@ export default function AIAgentsPage() {
 
       <section className="agents-pricing-cta section">
         <div className="container">
-          <div className="agents-pricing-cta__card">
+          <div className={`agents-pricing-cta__card ${pricingCta.className}`} ref={pricingCta.ref}>
             <img src={pricingGlowOrb} alt="" className="agents-pricing-cta__glow" loading="lazy" />
             <div className="agents-pricing-cta__copy">
               <h2 className="agents-pricing-cta__title">Starting at $1,500/month</h2>

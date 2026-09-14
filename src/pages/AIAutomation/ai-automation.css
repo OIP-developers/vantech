@@ -140,12 +140,14 @@
   transform: translate(-50%, -50%);
   object-fit: contain;
   pointer-events: none;
+  z-index: 2;
 }
 
 .ai-automation-orbit__star-glow {
   width: 64%;
   filter: blur(45px);
   opacity: 0.8;
+  z-index: 0;
 }
 
 .ai-automation-orbit__ring {
@@ -167,7 +169,7 @@
   height: auto;
   transform: translate(-50%, -50%) rotate(14.11deg);
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }
 
 .ai-automation-orbit__anchor {
@@ -176,10 +178,19 @@
   top: 35%;
   width: 0;
   height: 0;
-  animation-name: ai-automation-badge-orbit;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-name: ai-automation-badge-orbit, ai-automation-badge-depth;
+  animation-timing-function: linear, steps(1, end);
+  animation-iteration-count: infinite, infinite;
   will-change: transform;
+}
+
+@keyframes ai-automation-badge-depth {
+  0% { z-index: 3; }
+  34% { z-index: 3; }
+  36% { z-index: 1; }
+  84% { z-index: 1; }
+  86% { z-index: 3; }
+  100% { z-index: 3; }
 }
 
 .ai-automation-orbit__radius {
@@ -532,15 +543,93 @@
 }
 
 .ai-automation-solution__graphic {
+  position: relative;
   flex-shrink: 0;
   width: 614px;
+  aspect-ratio: 1218 / 1294;
 }
 
-.ai-automation-solution__graphic img {
-  width: 100%;
+.ai-automation-solution__bg-lines {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 56%;
   height: auto;
-  display: block;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
 }
+
+.ai-automation-solution__star {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 38%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ai-automation-solution__part {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.ai-automation-solution__part--from-top { transform: translateY(-55px) scale(0.85); }
+.ai-automation-solution__part--from-bottom { transform: translateY(55px) scale(0.85); }
+.ai-automation-solution__part--from-left { transform: translateX(-70px) scale(0.85); }
+.ai-automation-solution__part--from-right { transform: translateX(70px) scale(0.85); }
+
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part--from-top {
+  animation: ai-automation-part-float 4.5s ease-in-out infinite, ai-automation-part-in-top 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part--from-bottom {
+  animation: ai-automation-part-float 4.5s ease-in-out infinite, ai-automation-part-in-bottom 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part--from-left {
+  animation: ai-automation-part-float 4.5s ease-in-out infinite, ai-automation-part-in-left 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part--from-right {
+  animation: ai-automation-part-float 4.5s ease-in-out infinite, ai-automation-part-in-right 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ai-automation-part-in-top {
+  from { opacity: 0; transform: translateY(-55px) scale(0.85); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes ai-automation-part-in-bottom {
+  from { opacity: 0; transform: translateY(55px) scale(0.85); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes ai-automation-part-in-left {
+  from { opacity: 0; transform: translateX(-70px) scale(0.85); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes ai-automation-part-in-right {
+  from { opacity: 0; transform: translateX(70px) scale(0.85); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes ai-automation-part-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* nth-of-type counts every <img> sibling (the bg-lines image is #1), so the
+   8 parts are #2 through #9 */
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(2) { animation-delay: 0s, 0s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(3) { animation-delay: 0s, 0.2s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(4) { animation-delay: 0s, 0.4s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(5) { animation-delay: 0s, 0.6s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(6) { animation-delay: 0s, 0.8s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(7) { animation-delay: 0s, 1.0s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(8) { animation-delay: 0s, 1.2s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(9) { animation-delay: 0s, 1.4s; }
 
 /* ---------- What we Automate ---------- */
 
@@ -2231,6 +2320,255 @@
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* ---------- Extra polish pass (matching AI Agents) ---------- */
+
+.ai-automation-page .reveal {
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-automation-page .reveal--left { transform: translateX(-70px) scale(0.97); }
+.ai-automation-page .reveal--right { transform: translateX(70px) scale(0.97); }
+.ai-automation-page .reveal--up { transform: translateY(40px) scale(0.97); }
+
+.ai-automation-page .reveal.is-visible {
+  transform: translate(0, 0) scale(1);
+}
+
+/* Hero copy entrance choreography */
+.ai-automation-hero__copy > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-automation-hero__copy.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ai-automation-hero__copy.is-visible > *:nth-child(1) { transition-delay: 0s; }
+.ai-automation-hero__copy.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+.ai-automation-hero__copy.is-visible > *:nth-child(3) { transition-delay: 0.24s; }
+.ai-automation-hero__copy.is-visible > *:nth-child(4) { transition-delay: 0.36s; }
+
+/* Section-head / solution-copy / friction-copy: heading -> subtext stagger */
+.ai-automation-page .section-head > *,
+.ai-automation-solution__copy > *,
+.ai-automation-friction__copy > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-automation-page .section-head.is-visible > *,
+.ai-automation-solution__copy.is-visible > *,
+.ai-automation-friction__copy.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ai-automation-page .section-head.is-visible > *:nth-child(1),
+.ai-automation-solution__copy.is-visible > *:nth-child(1),
+.ai-automation-friction__copy.is-visible > *:nth-child(1) { transition-delay: 0s; }
+
+.ai-automation-page .section-head.is-visible > *:nth-child(2),
+.ai-automation-solution__copy.is-visible > *:nth-child(2),
+.ai-automation-friction__copy.is-visible > *:nth-child(2) { transition-delay: 0.14s; }
+
+.ai-automation-page .section-head.is-visible > *:nth-child(3),
+.ai-automation-solution__copy.is-visible > *:nth-child(3),
+.ai-automation-friction__copy.is-visible > *:nth-child(3) { transition-delay: 0.28s; }
+
+/* Friction items: per-item stagger + traveling border loop */
+.ai-automation-friction-item {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-automation-friction__list.is-visible .ai-automation-friction-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ai-automation-friction__list.is-visible .ai-automation-friction-item:nth-child(1) { transition-delay: 0s; }
+.ai-automation-friction__list.is-visible .ai-automation-friction-item:nth-child(2) { transition-delay: 0.1s; }
+.ai-automation-friction__list.is-visible .ai-automation-friction-item:nth-child(3) { transition-delay: 0.2s; }
+.ai-automation-friction__list.is-visible .ai-automation-friction-item:nth-child(4) { transition-delay: 0.3s; }
+
+@property --ai-automation-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.ai-automation-friction-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: conic-gradient(
+    from var(--ai-automation-border-angle),
+    var(--color-orange) 0%,
+    var(--color-orange-3) 25%,
+    transparent 50%,
+    var(--color-orange-3) 75%,
+    var(--color-orange) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: ai-automation-border-travel 4s linear infinite;
+}
+
+@keyframes ai-automation-border-travel {
+  to { --ai-automation-border-angle: 360deg; }
+}
+
+/* Solution graphic: only the central star animates, the diagram stays put */
+.ai-automation-solution__star {
+  animation: ai-automation-solution-float 5s ease-in-out infinite;
+}
+
+@keyframes ai-automation-solution-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translate(-50%, -50%) translateY(-14px) rotate(-3.5deg) scale(1.06); }
+}
+
+/* Architecture divider: line draws itself in on scroll */
+.ai-automation-page .ai-automation-architecture__divider.reveal {
+  opacity: 1;
+  transform: none;
+  width: 0%;
+  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-automation-page .ai-automation-architecture__divider.reveal.is-visible {
+  width: 100%;
+}
+
+/* Pricing CTA: glow pulse */
+.ai-automation-pricing-cta__glow {
+  animation: ai-automation-pricing-glow-pulse 5s ease-in-out infinite;
+}
+
+@keyframes ai-automation-pricing-glow-pulse {
+  0%, 100% { transform: scale(1) translateY(0); opacity: 0.6; }
+  50% { transform: scale(1.08) translateY(-10px); opacity: 0.85; }
+}
+
+/* Integration connector: converging sparks + burst */
+.ai-automation-integration-connector__diamond-inner {
+  animation: ai-automation-connector-burst 2.6s ease-in-out infinite;
+}
+
+.ai-automation-integration-connector::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.9), 0 0 16px 4px rgba(2, 103, 188, 0.55);
+  transform: translate(-50%, -50%);
+  animation: ai-automation-connector-travel-left 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+.ai-automation-integration-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.9), 0 0 16px 4px rgba(255, 110, 20, 0.55);
+  transform: translate(-50%, -50%);
+  animation: ai-automation-connector-travel-right 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+@keyframes ai-automation-connector-travel-left {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes ai-automation-connector-travel-right {
+  0% { left: 100%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes ai-automation-connector-burst {
+  0%, 40% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+  48% { transform: translate(-50%, -50%) rotate(45deg) scale(2.6); box-shadow: 0 0 20px 7px rgba(255, 150, 50, 0.85), 0 0 8px 2px rgba(2, 103, 188, 0.6); }
+  64% { transform: translate(-50%, -50%) rotate(45deg) scale(0.65); box-shadow: 0 0 4px 1px rgba(255, 150, 50, 0.25); }
+  100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+}
+
+/* Ambient star-glow breathing */
+.ai-automation-orbit__star-glow {
+  animation: ai-automation-star-glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes ai-automation-star-glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.95; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-automation-hero__copy > *,
+  .ai-automation-page .section-head > *,
+  .ai-automation-solution__copy > *,
+  .ai-automation-friction__copy > *,
+  .ai-automation-friction-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ai-automation-friction-item::after {
+    animation: none;
+    opacity: 0;
+  }
+  .ai-automation-solution__star {
+    animation: none;
+  }
+  .ai-automation-solution__part {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .ai-automation-page .ai-automation-architecture__divider.reveal {
+    width: 100%;
+    transition: none;
+  }
+  .ai-automation-pricing-cta__glow {
+    animation: none;
+  }
+  .ai-automation-integration-connector__diamond-inner {
+    animation: none;
+  }
+  .ai-automation-integration-connector::before,
+  .ai-automation-integration-connector::after {
+    animation: none;
+    opacity: 0;
+  }
+  .ai-automation-orbit__star-glow {
+    animation: none;
   }
 }
 
