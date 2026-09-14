@@ -1375,6 +1375,15 @@
   .ecommerce-solution__row {
     flex-direction: column;
   }
+  .ecommerce-solution__copy {
+    max-width: 100%;
+  }
+  .ecommerce-solution__title {
+    width: 100%;
+  }
+  .ecommerce-solution__desc {
+    width: 100%;
+  }
   .ecommerce-solution__graphic {
     max-width: 100%;
     width: 360px;
@@ -1449,3 +1458,164 @@
     font-size: 32px;
   }
 }
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+@keyframes ecommerce-fade-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.ecommerce-hero__graphic {
+  animation: ecommerce-fade-scale-in 0.9s ease both;
+}
+
+.ecommerce-build-card,
+.ecommerce-usecase-card,
+.ecommerce-why-card,
+.ecommerce-process2-card,
+.ecommerce-timeline-step,
+.ecommerce-pill,
+.ecommerce-integration-pill {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ecommerce-build__grid.is-visible .ecommerce-build-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ecommerce-usecases__grid.is-visible .ecommerce-usecase-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ecommerce-why__grid.is-visible .ecommerce-why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ecommerce-process2__grid.is-visible .ecommerce-process2-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ecommerce-timeline.is-visible .ecommerce-timeline-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ecommerce-build__grid.is-visible .ecommerce-build-card:nth-child(1) { transition-delay: 0.07s; }
+.ecommerce-build__grid.is-visible .ecommerce-build-card:nth-child(2) { transition-delay: 0.14s; }
+.ecommerce-build__grid.is-visible .ecommerce-build-card:nth-child(3) { transition-delay: 0.21s; }
+.ecommerce-build__grid.is-visible .ecommerce-build-card:nth-child(4) { transition-delay: 0.28s; }
+.ecommerce-build__grid.is-visible .ecommerce-build-card:nth-child(5) { transition-delay: 0.35s; }
+.ecommerce-build__grid.is-visible .ecommerce-build-card:nth-child(6) { transition-delay: 0.42s; }
+
+.ecommerce-usecases__grid.is-visible .ecommerce-usecase-card:nth-child(1) { transition-delay: 0.07s; }
+.ecommerce-usecases__grid.is-visible .ecommerce-usecase-card:nth-child(2) { transition-delay: 0.14s; }
+.ecommerce-usecases__grid.is-visible .ecommerce-usecase-card:nth-child(3) { transition-delay: 0.21s; }
+.ecommerce-usecases__grid.is-visible .ecommerce-usecase-card:nth-child(4) { transition-delay: 0.28s; }
+.ecommerce-usecases__grid.is-visible .ecommerce-usecase-card:nth-child(5) { transition-delay: 0.35s; }
+.ecommerce-usecases__grid.is-visible .ecommerce-usecase-card:nth-child(6) { transition-delay: 0.42s; }
+
+.ecommerce-why__grid.is-visible .ecommerce-why-card:nth-child(1) { transition-delay: 0.07s; }
+.ecommerce-why__grid.is-visible .ecommerce-why-card:nth-child(2) { transition-delay: 0.14s; }
+.ecommerce-why__grid.is-visible .ecommerce-why-card:nth-child(3) { transition-delay: 0.21s; }
+.ecommerce-why__grid.is-visible .ecommerce-why-card:nth-child(4) { transition-delay: 0.28s; }
+.ecommerce-why__grid.is-visible .ecommerce-why-card:nth-child(5) { transition-delay: 0.35s; }
+.ecommerce-why__grid.is-visible .ecommerce-why-card:nth-child(6) { transition-delay: 0.42s; }
+
+.ecommerce-process2__grid.is-visible .ecommerce-process2-card:nth-child(1) { transition-delay: 0.07s; }
+.ecommerce-process2__grid.is-visible .ecommerce-process2-card:nth-child(2) { transition-delay: 0.14s; }
+.ecommerce-process2__grid.is-visible .ecommerce-process2-card:nth-child(3) { transition-delay: 0.21s; }
+.ecommerce-process2__grid.is-visible .ecommerce-process2-card:nth-child(4) { transition-delay: 0.28s; }
+.ecommerce-process2__grid.is-visible .ecommerce-process2-card:nth-child(5) { transition-delay: 0.35s; }
+.ecommerce-process2__grid.is-visible .ecommerce-process2-card:nth-child(6) { transition-delay: 0.42s; }
+
+.ecommerce-timeline.is-visible .ecommerce-timeline-step:nth-child(1) { transition-delay: 0.07s; }
+.ecommerce-timeline.is-visible .ecommerce-timeline-step:nth-child(2) { transition-delay: 0.14s; }
+.ecommerce-timeline.is-visible .ecommerce-timeline-step:nth-child(3) { transition-delay: 0.21s; }
+.ecommerce-timeline.is-visible .ecommerce-timeline-step:nth-child(4) { transition-delay: 0.28s; }
+.ecommerce-timeline.is-visible .ecommerce-timeline-step:nth-child(5) { transition-delay: 0.35s; }
+.ecommerce-timeline.is-visible .ecommerce-timeline-step:nth-child(6) { transition-delay: 0.42s; }
+
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill:nth-child(1) { transition-delay: 0.07s; }
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill:nth-child(2) { transition-delay: 0.14s; }
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill:nth-child(3) { transition-delay: 0.21s; }
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill:nth-child(4) { transition-delay: 0.28s; }
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill:nth-child(5) { transition-delay: 0.35s; }
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill:nth-child(6) { transition-delay: 0.42s; }
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill:nth-child(7) { transition-delay: 0.49s; }
+.ecommerce-capabilities__rows.is-visible .ecommerce-pill:nth-child(8) { transition-delay: 0.56s; }
+
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(1) { transition-delay: 0.07s; }
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(2) { transition-delay: 0.14s; }
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(3) { transition-delay: 0.21s; }
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(4) { transition-delay: 0.28s; }
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(5) { transition-delay: 0.35s; }
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(6) { transition-delay: 0.42s; }
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(7) { transition-delay: 0.49s; }
+.ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(8) { transition-delay: 0.56s; }
+
+@keyframes ecommerce-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.ecommerce-build-card__badge,
+.ecommerce-process2-card__badge,
+.ecommerce-why-card__badge {
+  animation: ecommerce-icon-float 3.6s ease-in-out infinite;
+}
+
+.ecommerce-build-card:nth-child(1) .ecommerce-build-card__badge { animation-delay: -0.4s; }
+.ecommerce-build-card:nth-child(2) .ecommerce-build-card__badge { animation-delay: -0.8s; }
+.ecommerce-build-card:nth-child(3) .ecommerce-build-card__badge { animation-delay: -1.2s; }
+.ecommerce-build-card:nth-child(4) .ecommerce-build-card__badge { animation-delay: -1.6s; }
+.ecommerce-build-card:nth-child(5) .ecommerce-build-card__badge { animation-delay: -2.0s; }
+.ecommerce-build-card:nth-child(6) .ecommerce-build-card__badge { animation-delay: -2.4s; }
+.ecommerce-process2-card:nth-child(1) .ecommerce-process2-card__badge { animation-delay: -0.4s; }
+.ecommerce-process2-card:nth-child(2) .ecommerce-process2-card__badge { animation-delay: -0.8s; }
+.ecommerce-process2-card:nth-child(3) .ecommerce-process2-card__badge { animation-delay: -1.2s; }
+.ecommerce-process2-card:nth-child(4) .ecommerce-process2-card__badge { animation-delay: -1.6s; }
+.ecommerce-process2-card:nth-child(5) .ecommerce-process2-card__badge { animation-delay: -2.0s; }
+.ecommerce-process2-card:nth-child(6) .ecommerce-process2-card__badge { animation-delay: -2.4s; }
+.ecommerce-why-card:nth-child(1) .ecommerce-why-card__badge { animation-delay: -0.4s; }
+.ecommerce-why-card:nth-child(2) .ecommerce-why-card__badge { animation-delay: -0.8s; }
+.ecommerce-why-card:nth-child(3) .ecommerce-why-card__badge { animation-delay: -1.2s; }
+.ecommerce-why-card:nth-child(4) .ecommerce-why-card__badge { animation-delay: -1.6s; }
+.ecommerce-why-card:nth-child(5) .ecommerce-why-card__badge { animation-delay: -2.0s; }
+.ecommerce-why-card:nth-child(6) .ecommerce-why-card__badge { animation-delay: -2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+.ecommerce-hero__graphic,
+.ecommerce-build-card,
+.ecommerce-usecase-card,
+.ecommerce-why-card,
+.ecommerce-process2-card,
+.ecommerce-timeline-step,
+.ecommerce-pill,
+.ecommerce-integration-pill,
+.ecommerce-build-card__badge,
+.ecommerce-process2-card__badge,
+.ecommerce-why-card__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

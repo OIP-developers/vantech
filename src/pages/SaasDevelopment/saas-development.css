@@ -1352,6 +1352,12 @@
   .saas-hero .row {
     flex-direction: column;
   }
+  .saas-hero__content {
+    max-width: 100%;
+  }
+  .saas-hero__desc {
+    width: 100%;
+  }
   .saas-hero__title {
     font-size: 42px;
   }
@@ -1442,3 +1448,164 @@
     font-size: 32px;
   }
 }
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+@keyframes saas-fade-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.saas-hero__graphic {
+  animation: saas-fade-scale-in 0.9s ease both;
+}
+
+.saas-build-card,
+.saas-usecase-card,
+.saas-why-card,
+.saas-process2-card,
+.saas-timeline-step,
+.saas-pill,
+.saas-integration-pill {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.saas-build__grid.is-visible .saas-build-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.saas-usecases__grid.is-visible .saas-usecase-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.saas-why__grid.is-visible .saas-why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.saas-process2__grid.is-visible .saas-process2-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.saas-timeline.is-visible .saas-timeline-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.saas-capabilities__rows.is-visible .saas-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.saas-integrations__grid.is-visible .saas-integration-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.saas-build__grid.is-visible .saas-build-card:nth-child(1) { transition-delay: 0.07s; }
+.saas-build__grid.is-visible .saas-build-card:nth-child(2) { transition-delay: 0.14s; }
+.saas-build__grid.is-visible .saas-build-card:nth-child(3) { transition-delay: 0.21s; }
+.saas-build__grid.is-visible .saas-build-card:nth-child(4) { transition-delay: 0.28s; }
+.saas-build__grid.is-visible .saas-build-card:nth-child(5) { transition-delay: 0.35s; }
+.saas-build__grid.is-visible .saas-build-card:nth-child(6) { transition-delay: 0.42s; }
+
+.saas-usecases__grid.is-visible .saas-usecase-card:nth-child(1) { transition-delay: 0.07s; }
+.saas-usecases__grid.is-visible .saas-usecase-card:nth-child(2) { transition-delay: 0.14s; }
+.saas-usecases__grid.is-visible .saas-usecase-card:nth-child(3) { transition-delay: 0.21s; }
+.saas-usecases__grid.is-visible .saas-usecase-card:nth-child(4) { transition-delay: 0.28s; }
+.saas-usecases__grid.is-visible .saas-usecase-card:nth-child(5) { transition-delay: 0.35s; }
+.saas-usecases__grid.is-visible .saas-usecase-card:nth-child(6) { transition-delay: 0.42s; }
+
+.saas-why__grid.is-visible .saas-why-card:nth-child(1) { transition-delay: 0.07s; }
+.saas-why__grid.is-visible .saas-why-card:nth-child(2) { transition-delay: 0.14s; }
+.saas-why__grid.is-visible .saas-why-card:nth-child(3) { transition-delay: 0.21s; }
+.saas-why__grid.is-visible .saas-why-card:nth-child(4) { transition-delay: 0.28s; }
+.saas-why__grid.is-visible .saas-why-card:nth-child(5) { transition-delay: 0.35s; }
+.saas-why__grid.is-visible .saas-why-card:nth-child(6) { transition-delay: 0.42s; }
+
+.saas-process2__grid.is-visible .saas-process2-card:nth-child(1) { transition-delay: 0.07s; }
+.saas-process2__grid.is-visible .saas-process2-card:nth-child(2) { transition-delay: 0.14s; }
+.saas-process2__grid.is-visible .saas-process2-card:nth-child(3) { transition-delay: 0.21s; }
+.saas-process2__grid.is-visible .saas-process2-card:nth-child(4) { transition-delay: 0.28s; }
+.saas-process2__grid.is-visible .saas-process2-card:nth-child(5) { transition-delay: 0.35s; }
+.saas-process2__grid.is-visible .saas-process2-card:nth-child(6) { transition-delay: 0.42s; }
+
+.saas-timeline.is-visible .saas-timeline-step:nth-child(1) { transition-delay: 0.07s; }
+.saas-timeline.is-visible .saas-timeline-step:nth-child(2) { transition-delay: 0.14s; }
+.saas-timeline.is-visible .saas-timeline-step:nth-child(3) { transition-delay: 0.21s; }
+.saas-timeline.is-visible .saas-timeline-step:nth-child(4) { transition-delay: 0.28s; }
+.saas-timeline.is-visible .saas-timeline-step:nth-child(5) { transition-delay: 0.35s; }
+.saas-timeline.is-visible .saas-timeline-step:nth-child(6) { transition-delay: 0.42s; }
+
+.saas-capabilities__rows.is-visible .saas-pill:nth-child(1) { transition-delay: 0.07s; }
+.saas-capabilities__rows.is-visible .saas-pill:nth-child(2) { transition-delay: 0.14s; }
+.saas-capabilities__rows.is-visible .saas-pill:nth-child(3) { transition-delay: 0.21s; }
+.saas-capabilities__rows.is-visible .saas-pill:nth-child(4) { transition-delay: 0.28s; }
+.saas-capabilities__rows.is-visible .saas-pill:nth-child(5) { transition-delay: 0.35s; }
+.saas-capabilities__rows.is-visible .saas-pill:nth-child(6) { transition-delay: 0.42s; }
+.saas-capabilities__rows.is-visible .saas-pill:nth-child(7) { transition-delay: 0.49s; }
+.saas-capabilities__rows.is-visible .saas-pill:nth-child(8) { transition-delay: 0.56s; }
+
+.saas-integrations__grid.is-visible .saas-integration-pill:nth-child(1) { transition-delay: 0.07s; }
+.saas-integrations__grid.is-visible .saas-integration-pill:nth-child(2) { transition-delay: 0.14s; }
+.saas-integrations__grid.is-visible .saas-integration-pill:nth-child(3) { transition-delay: 0.21s; }
+.saas-integrations__grid.is-visible .saas-integration-pill:nth-child(4) { transition-delay: 0.28s; }
+.saas-integrations__grid.is-visible .saas-integration-pill:nth-child(5) { transition-delay: 0.35s; }
+.saas-integrations__grid.is-visible .saas-integration-pill:nth-child(6) { transition-delay: 0.42s; }
+.saas-integrations__grid.is-visible .saas-integration-pill:nth-child(7) { transition-delay: 0.49s; }
+.saas-integrations__grid.is-visible .saas-integration-pill:nth-child(8) { transition-delay: 0.56s; }
+
+@keyframes saas-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.saas-build-card__badge,
+.saas-process2-card__badge,
+.saas-why-card__badge {
+  animation: saas-icon-float 3.6s ease-in-out infinite;
+}
+
+.saas-build-card:nth-child(1) .saas-build-card__badge { animation-delay: -0.4s; }
+.saas-build-card:nth-child(2) .saas-build-card__badge { animation-delay: -0.8s; }
+.saas-build-card:nth-child(3) .saas-build-card__badge { animation-delay: -1.2s; }
+.saas-build-card:nth-child(4) .saas-build-card__badge { animation-delay: -1.6s; }
+.saas-build-card:nth-child(5) .saas-build-card__badge { animation-delay: -2.0s; }
+.saas-build-card:nth-child(6) .saas-build-card__badge { animation-delay: -2.4s; }
+.saas-process2-card:nth-child(1) .saas-process2-card__badge { animation-delay: -0.4s; }
+.saas-process2-card:nth-child(2) .saas-process2-card__badge { animation-delay: -0.8s; }
+.saas-process2-card:nth-child(3) .saas-process2-card__badge { animation-delay: -1.2s; }
+.saas-process2-card:nth-child(4) .saas-process2-card__badge { animation-delay: -1.6s; }
+.saas-process2-card:nth-child(5) .saas-process2-card__badge { animation-delay: -2.0s; }
+.saas-process2-card:nth-child(6) .saas-process2-card__badge { animation-delay: -2.4s; }
+.saas-why-card:nth-child(1) .saas-why-card__badge { animation-delay: -0.4s; }
+.saas-why-card:nth-child(2) .saas-why-card__badge { animation-delay: -0.8s; }
+.saas-why-card:nth-child(3) .saas-why-card__badge { animation-delay: -1.2s; }
+.saas-why-card:nth-child(4) .saas-why-card__badge { animation-delay: -1.6s; }
+.saas-why-card:nth-child(5) .saas-why-card__badge { animation-delay: -2.0s; }
+.saas-why-card:nth-child(6) .saas-why-card__badge { animation-delay: -2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+.saas-hero__graphic,
+.saas-build-card,
+.saas-usecase-card,
+.saas-why-card,
+.saas-process2-card,
+.saas-timeline-step,
+.saas-pill,
+.saas-integration-pill,
+.saas-build-card__badge,
+.saas-process2-card__badge,
+.saas-why-card__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

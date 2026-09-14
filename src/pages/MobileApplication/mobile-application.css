@@ -1370,6 +1370,12 @@
   .mobileapp-solution__row {
     flex-direction: column;
   }
+  .mobileapp-solution__copy {
+    max-width: 100%;
+  }
+  .mobileapp-solution__desc {
+    width: 100%;
+  }
   .mobileapp-solution__graphic {
     max-width: 100%;
     width: 320px;
@@ -1444,3 +1450,164 @@
     font-size: 32px;
   }
 }
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+@keyframes mobileapp-fade-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.mobileapp-hero__graphic {
+  animation: mobileapp-fade-scale-in 0.9s ease both;
+}
+
+.mobileapp-build-card,
+.mobileapp-usecase-card,
+.mobileapp-why-card,
+.mobileapp-process2-card,
+.mobileapp-timeline-step,
+.mobileapp-pill,
+.mobileapp-integration-pill {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.mobileapp-build__grid.is-visible .mobileapp-build-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileapp-usecases__grid.is-visible .mobileapp-usecase-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileapp-why__grid.is-visible .mobileapp-why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileapp-process2__grid.is-visible .mobileapp-process2-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileapp-timeline.is-visible .mobileapp-timeline-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileapp-build__grid.is-visible .mobileapp-build-card:nth-child(1) { transition-delay: 0.07s; }
+.mobileapp-build__grid.is-visible .mobileapp-build-card:nth-child(2) { transition-delay: 0.14s; }
+.mobileapp-build__grid.is-visible .mobileapp-build-card:nth-child(3) { transition-delay: 0.21s; }
+.mobileapp-build__grid.is-visible .mobileapp-build-card:nth-child(4) { transition-delay: 0.28s; }
+.mobileapp-build__grid.is-visible .mobileapp-build-card:nth-child(5) { transition-delay: 0.35s; }
+.mobileapp-build__grid.is-visible .mobileapp-build-card:nth-child(6) { transition-delay: 0.42s; }
+
+.mobileapp-usecases__grid.is-visible .mobileapp-usecase-card:nth-child(1) { transition-delay: 0.07s; }
+.mobileapp-usecases__grid.is-visible .mobileapp-usecase-card:nth-child(2) { transition-delay: 0.14s; }
+.mobileapp-usecases__grid.is-visible .mobileapp-usecase-card:nth-child(3) { transition-delay: 0.21s; }
+.mobileapp-usecases__grid.is-visible .mobileapp-usecase-card:nth-child(4) { transition-delay: 0.28s; }
+.mobileapp-usecases__grid.is-visible .mobileapp-usecase-card:nth-child(5) { transition-delay: 0.35s; }
+.mobileapp-usecases__grid.is-visible .mobileapp-usecase-card:nth-child(6) { transition-delay: 0.42s; }
+
+.mobileapp-why__grid.is-visible .mobileapp-why-card:nth-child(1) { transition-delay: 0.07s; }
+.mobileapp-why__grid.is-visible .mobileapp-why-card:nth-child(2) { transition-delay: 0.14s; }
+.mobileapp-why__grid.is-visible .mobileapp-why-card:nth-child(3) { transition-delay: 0.21s; }
+.mobileapp-why__grid.is-visible .mobileapp-why-card:nth-child(4) { transition-delay: 0.28s; }
+.mobileapp-why__grid.is-visible .mobileapp-why-card:nth-child(5) { transition-delay: 0.35s; }
+.mobileapp-why__grid.is-visible .mobileapp-why-card:nth-child(6) { transition-delay: 0.42s; }
+
+.mobileapp-process2__grid.is-visible .mobileapp-process2-card:nth-child(1) { transition-delay: 0.07s; }
+.mobileapp-process2__grid.is-visible .mobileapp-process2-card:nth-child(2) { transition-delay: 0.14s; }
+.mobileapp-process2__grid.is-visible .mobileapp-process2-card:nth-child(3) { transition-delay: 0.21s; }
+.mobileapp-process2__grid.is-visible .mobileapp-process2-card:nth-child(4) { transition-delay: 0.28s; }
+.mobileapp-process2__grid.is-visible .mobileapp-process2-card:nth-child(5) { transition-delay: 0.35s; }
+.mobileapp-process2__grid.is-visible .mobileapp-process2-card:nth-child(6) { transition-delay: 0.42s; }
+
+.mobileapp-timeline.is-visible .mobileapp-timeline-step:nth-child(1) { transition-delay: 0.07s; }
+.mobileapp-timeline.is-visible .mobileapp-timeline-step:nth-child(2) { transition-delay: 0.14s; }
+.mobileapp-timeline.is-visible .mobileapp-timeline-step:nth-child(3) { transition-delay: 0.21s; }
+.mobileapp-timeline.is-visible .mobileapp-timeline-step:nth-child(4) { transition-delay: 0.28s; }
+.mobileapp-timeline.is-visible .mobileapp-timeline-step:nth-child(5) { transition-delay: 0.35s; }
+.mobileapp-timeline.is-visible .mobileapp-timeline-step:nth-child(6) { transition-delay: 0.42s; }
+
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill:nth-child(1) { transition-delay: 0.07s; }
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill:nth-child(2) { transition-delay: 0.14s; }
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill:nth-child(3) { transition-delay: 0.21s; }
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill:nth-child(4) { transition-delay: 0.28s; }
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill:nth-child(5) { transition-delay: 0.35s; }
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill:nth-child(6) { transition-delay: 0.42s; }
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill:nth-child(7) { transition-delay: 0.49s; }
+.mobileapp-capabilities__rows.is-visible .mobileapp-pill:nth-child(8) { transition-delay: 0.56s; }
+
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill:nth-child(1) { transition-delay: 0.07s; }
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill:nth-child(2) { transition-delay: 0.14s; }
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill:nth-child(3) { transition-delay: 0.21s; }
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill:nth-child(4) { transition-delay: 0.28s; }
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill:nth-child(5) { transition-delay: 0.35s; }
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill:nth-child(6) { transition-delay: 0.42s; }
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill:nth-child(7) { transition-delay: 0.49s; }
+.mobileapp-integrations__grid.is-visible .mobileapp-integration-pill:nth-child(8) { transition-delay: 0.56s; }
+
+@keyframes mobileapp-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.mobileapp-build-card__badge,
+.mobileapp-process2-card__badge,
+.mobileapp-why-card__badge {
+  animation: mobileapp-icon-float 3.6s ease-in-out infinite;
+}
+
+.mobileapp-build-card:nth-child(1) .mobileapp-build-card__badge { animation-delay: -0.4s; }
+.mobileapp-build-card:nth-child(2) .mobileapp-build-card__badge { animation-delay: -0.8s; }
+.mobileapp-build-card:nth-child(3) .mobileapp-build-card__badge { animation-delay: -1.2s; }
+.mobileapp-build-card:nth-child(4) .mobileapp-build-card__badge { animation-delay: -1.6s; }
+.mobileapp-build-card:nth-child(5) .mobileapp-build-card__badge { animation-delay: -2.0s; }
+.mobileapp-build-card:nth-child(6) .mobileapp-build-card__badge { animation-delay: -2.4s; }
+.mobileapp-process2-card:nth-child(1) .mobileapp-process2-card__badge { animation-delay: -0.4s; }
+.mobileapp-process2-card:nth-child(2) .mobileapp-process2-card__badge { animation-delay: -0.8s; }
+.mobileapp-process2-card:nth-child(3) .mobileapp-process2-card__badge { animation-delay: -1.2s; }
+.mobileapp-process2-card:nth-child(4) .mobileapp-process2-card__badge { animation-delay: -1.6s; }
+.mobileapp-process2-card:nth-child(5) .mobileapp-process2-card__badge { animation-delay: -2.0s; }
+.mobileapp-process2-card:nth-child(6) .mobileapp-process2-card__badge { animation-delay: -2.4s; }
+.mobileapp-why-card:nth-child(1) .mobileapp-why-card__badge { animation-delay: -0.4s; }
+.mobileapp-why-card:nth-child(2) .mobileapp-why-card__badge { animation-delay: -0.8s; }
+.mobileapp-why-card:nth-child(3) .mobileapp-why-card__badge { animation-delay: -1.2s; }
+.mobileapp-why-card:nth-child(4) .mobileapp-why-card__badge { animation-delay: -1.6s; }
+.mobileapp-why-card:nth-child(5) .mobileapp-why-card__badge { animation-delay: -2.0s; }
+.mobileapp-why-card:nth-child(6) .mobileapp-why-card__badge { animation-delay: -2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+.mobileapp-hero__graphic,
+.mobileapp-build-card,
+.mobileapp-usecase-card,
+.mobileapp-why-card,
+.mobileapp-process2-card,
+.mobileapp-timeline-step,
+.mobileapp-pill,
+.mobileapp-integration-pill,
+.mobileapp-build-card__badge,
+.mobileapp-process2-card__badge,
+.mobileapp-why-card__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

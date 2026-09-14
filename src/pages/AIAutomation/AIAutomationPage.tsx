@@ -225,6 +225,13 @@ export default function AIAutomationPage() {
   const process2Head = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="ai-automation-page">
@@ -355,7 +362,7 @@ export default function AIAutomationPage() {
             <h2 className="ai-automation-h2">What we Automate</h2>
           </div>
 
-          <div className="ai-automation-build__grid">
+          <div className={`ai-automation-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {offeringCards.map((card) => (
               <div className="ai-automation-card ai-automation-build-card" key={card.title}>
                 <div className="ai-automation-build-card__glow" />
@@ -378,7 +385,7 @@ export default function AIAutomationPage() {
             <h2 className="ai-automation-h2">Capabilities</h2>
           </div>
 
-          <div className="ai-automation-capabilities__rows">
+          <div className={`ai-automation-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="ai-automation-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="ai-automation-pill" key={label}>
@@ -409,7 +416,7 @@ export default function AIAutomationPage() {
             <h2 className="ai-automation-h2">Use Cases</h2>
           </div>
 
-          <div className="ai-automation-usecases__grid">
+          <div className={`ai-automation-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="ai-automation-card ai-automation-usecase-card" key={item.title}>
                 <h3 className="ai-automation-usecase-card__title">{item.title}</h3>
@@ -436,7 +443,7 @@ export default function AIAutomationPage() {
             <span className="ai-automation-architecture__divider-dot" />
           </div>
 
-          <div className="ai-automation-timeline">
+          <div className={`ai-automation-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="ai-automation-timeline-step" key={step.number}>
                 <span className="ai-automation-timeline-step__badge">{step.number}</span>
@@ -464,7 +471,7 @@ export default function AIAutomationPage() {
             <h2 className="ai-automation-h2">Implementation process</h2>
           </div>
 
-          <div className="ai-automation-process2__grid">
+          <div className={`ai-automation-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card) => (
               <div className="ai-automation-card ai-automation-card--flat ai-automation-process2-card" key={card.title}>
                 <div className="ai-automation-process2-card__body">
@@ -484,7 +491,7 @@ export default function AIAutomationPage() {
             <h2 className="ai-automation-h1-lg ai-automation-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="ai-automation-integrations__grid">
+          <div className={`ai-automation-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="ai-automation-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -529,7 +536,7 @@ export default function AIAutomationPage() {
             <h2 className="ai-automation-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="ai-automation-why__grid">
+          <div className={`ai-automation-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card, i) => (
               <div className="ai-automation-card ai-automation-card--flat ai-automation-why-card" key={`${card.title}-${i}`}>
                 <img src={card.icon} alt="" className="ai-automation-why-card__badge" loading="lazy" />

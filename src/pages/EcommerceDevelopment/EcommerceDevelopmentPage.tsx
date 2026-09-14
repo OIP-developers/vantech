@@ -234,6 +234,13 @@ export default function EcommerceDevelopmentPage() {
   const process2Head = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="ecommerce-page">
@@ -317,7 +324,7 @@ export default function EcommerceDevelopmentPage() {
             <h2 className="ecommerce-h2">What We Build</h2>
           </div>
 
-          <div className="ecommerce-build__grid">
+          <div className={`ecommerce-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {buildCards.map((card) => (
               <div className="ecommerce-card ecommerce-build-card" key={card.title}>
                 <div className="ecommerce-build-card__glow" />
@@ -338,7 +345,7 @@ export default function EcommerceDevelopmentPage() {
             <h2 className="ecommerce-h2">Capabilities</h2>
           </div>
 
-          <div className="ecommerce-capabilities__rows">
+          <div className={`ecommerce-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="ecommerce-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="ecommerce-pill" key={label}>
@@ -369,7 +376,7 @@ export default function EcommerceDevelopmentPage() {
             <h2 className="ecommerce-h2">Use Cases</h2>
           </div>
 
-          <div className="ecommerce-usecases__grid">
+          <div className={`ecommerce-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="ecommerce-card ecommerce-usecase-card" key={item.title}>
                 <h3 className="ecommerce-usecase-card__title">{item.title}</h3>
@@ -396,7 +403,7 @@ export default function EcommerceDevelopmentPage() {
             <span className="ecommerce-architecture__divider-dot" />
           </div>
 
-          <div className="ecommerce-timeline">
+          <div className={`ecommerce-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="ecommerce-timeline-step" key={step.number}>
                 <span className="ecommerce-timeline-step__badge">{step.number}</span>
@@ -424,7 +431,7 @@ export default function EcommerceDevelopmentPage() {
             <h2 className="ecommerce-h2">Development Process</h2>
           </div>
 
-          <div className="ecommerce-process2__grid">
+          <div className={`ecommerce-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card, i) => (
               <div className="ecommerce-card ecommerce-card--flat ecommerce-process2-card" key={`${card.title}-${i}`}>
                 <div className="ecommerce-process2-card__body">
@@ -444,7 +451,7 @@ export default function EcommerceDevelopmentPage() {
             <h2 className="ecommerce-h1-lg ecommerce-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="ecommerce-integrations__grid">
+          <div className={`ecommerce-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="ecommerce-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -489,7 +496,7 @@ export default function EcommerceDevelopmentPage() {
             <h2 className="ecommerce-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="ecommerce-why__grid">
+          <div className={`ecommerce-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="ecommerce-card ecommerce-card--flat ecommerce-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="ecommerce-badge-img ecommerce-why-card__badge" />

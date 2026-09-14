@@ -1387,6 +1387,8 @@
   .autopilot-hero__photo-wrap {
     width: 340px;
     height: 260px;
+    right: -80px;
+    top: -15px;
   }
   .autopilot-problem__row {
     flex-direction: column;
@@ -1412,8 +1414,7 @@
     font-size: 42px;
   }
   .autopilot-hero__graphic {
-    width: 100%;
-    height: 340px;
+    display: none;
   }
   .autopilot-h2 {
     font-size: 38px;
@@ -1423,6 +1424,9 @@
   }
   .autopilot-solution__row {
     flex-direction: column;
+  }
+  .autopilot-solution__copy {
+    max-width: 100%;
   }
   .autopilot-solution__graphic {
     max-width: 100%;
@@ -1498,3 +1502,164 @@
     font-size: 32px;
   }
 }
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+@keyframes autopilot-fade-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.autopilot-hero__graphic {
+  animation: autopilot-fade-scale-in 0.9s ease both;
+}
+
+.autopilot-included-card,
+.autopilot-usecase-card,
+.autopilot-why-card,
+.autopilot-process-card,
+.autopilot-hub-column,
+.autopilot-pill,
+.autopilot-integration-pill {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.autopilot-included__grid.is-visible .autopilot-included-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.autopilot-usecases__grid.is-visible .autopilot-usecase-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.autopilot-why__grid.is-visible .autopilot-why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.autopilot-process__grid.is-visible .autopilot-process-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.autopilot-hub__columns.is-visible .autopilot-hub-column {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.autopilot-capabilities__rows.is-visible .autopilot-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.autopilot-included__grid.is-visible .autopilot-included-card:nth-child(1) { transition-delay: 0.07s; }
+.autopilot-included__grid.is-visible .autopilot-included-card:nth-child(2) { transition-delay: 0.14s; }
+.autopilot-included__grid.is-visible .autopilot-included-card:nth-child(3) { transition-delay: 0.21s; }
+.autopilot-included__grid.is-visible .autopilot-included-card:nth-child(4) { transition-delay: 0.28s; }
+.autopilot-included__grid.is-visible .autopilot-included-card:nth-child(5) { transition-delay: 0.35s; }
+.autopilot-included__grid.is-visible .autopilot-included-card:nth-child(6) { transition-delay: 0.42s; }
+
+.autopilot-usecases__grid.is-visible .autopilot-usecase-card:nth-child(1) { transition-delay: 0.07s; }
+.autopilot-usecases__grid.is-visible .autopilot-usecase-card:nth-child(2) { transition-delay: 0.14s; }
+.autopilot-usecases__grid.is-visible .autopilot-usecase-card:nth-child(3) { transition-delay: 0.21s; }
+.autopilot-usecases__grid.is-visible .autopilot-usecase-card:nth-child(4) { transition-delay: 0.28s; }
+.autopilot-usecases__grid.is-visible .autopilot-usecase-card:nth-child(5) { transition-delay: 0.35s; }
+.autopilot-usecases__grid.is-visible .autopilot-usecase-card:nth-child(6) { transition-delay: 0.42s; }
+
+.autopilot-why__grid.is-visible .autopilot-why-card:nth-child(1) { transition-delay: 0.07s; }
+.autopilot-why__grid.is-visible .autopilot-why-card:nth-child(2) { transition-delay: 0.14s; }
+.autopilot-why__grid.is-visible .autopilot-why-card:nth-child(3) { transition-delay: 0.21s; }
+.autopilot-why__grid.is-visible .autopilot-why-card:nth-child(4) { transition-delay: 0.28s; }
+.autopilot-why__grid.is-visible .autopilot-why-card:nth-child(5) { transition-delay: 0.35s; }
+.autopilot-why__grid.is-visible .autopilot-why-card:nth-child(6) { transition-delay: 0.42s; }
+
+.autopilot-process__grid.is-visible .autopilot-process-card:nth-child(1) { transition-delay: 0.07s; }
+.autopilot-process__grid.is-visible .autopilot-process-card:nth-child(2) { transition-delay: 0.14s; }
+.autopilot-process__grid.is-visible .autopilot-process-card:nth-child(3) { transition-delay: 0.21s; }
+.autopilot-process__grid.is-visible .autopilot-process-card:nth-child(4) { transition-delay: 0.28s; }
+.autopilot-process__grid.is-visible .autopilot-process-card:nth-child(5) { transition-delay: 0.35s; }
+.autopilot-process__grid.is-visible .autopilot-process-card:nth-child(6) { transition-delay: 0.42s; }
+
+.autopilot-hub__columns.is-visible .autopilot-hub-column:nth-child(1) { transition-delay: 0.07s; }
+.autopilot-hub__columns.is-visible .autopilot-hub-column:nth-child(2) { transition-delay: 0.14s; }
+.autopilot-hub__columns.is-visible .autopilot-hub-column:nth-child(3) { transition-delay: 0.21s; }
+.autopilot-hub__columns.is-visible .autopilot-hub-column:nth-child(4) { transition-delay: 0.28s; }
+.autopilot-hub__columns.is-visible .autopilot-hub-column:nth-child(5) { transition-delay: 0.35s; }
+.autopilot-hub__columns.is-visible .autopilot-hub-column:nth-child(6) { transition-delay: 0.42s; }
+
+.autopilot-capabilities__rows.is-visible .autopilot-pill:nth-child(1) { transition-delay: 0.07s; }
+.autopilot-capabilities__rows.is-visible .autopilot-pill:nth-child(2) { transition-delay: 0.14s; }
+.autopilot-capabilities__rows.is-visible .autopilot-pill:nth-child(3) { transition-delay: 0.21s; }
+.autopilot-capabilities__rows.is-visible .autopilot-pill:nth-child(4) { transition-delay: 0.28s; }
+.autopilot-capabilities__rows.is-visible .autopilot-pill:nth-child(5) { transition-delay: 0.35s; }
+.autopilot-capabilities__rows.is-visible .autopilot-pill:nth-child(6) { transition-delay: 0.42s; }
+.autopilot-capabilities__rows.is-visible .autopilot-pill:nth-child(7) { transition-delay: 0.49s; }
+.autopilot-capabilities__rows.is-visible .autopilot-pill:nth-child(8) { transition-delay: 0.56s; }
+
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill:nth-child(1) { transition-delay: 0.07s; }
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill:nth-child(2) { transition-delay: 0.14s; }
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill:nth-child(3) { transition-delay: 0.21s; }
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill:nth-child(4) { transition-delay: 0.28s; }
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill:nth-child(5) { transition-delay: 0.35s; }
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill:nth-child(6) { transition-delay: 0.42s; }
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill:nth-child(7) { transition-delay: 0.49s; }
+.autopilot-integrations__grid.is-visible .autopilot-integration-pill:nth-child(8) { transition-delay: 0.56s; }
+
+@keyframes autopilot-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.autopilot-included-card__badge,
+.autopilot-process-card__badge,
+.autopilot-why-card__badge {
+  animation: autopilot-icon-float 3.6s ease-in-out infinite;
+}
+
+.autopilot-included-card:nth-child(1) .autopilot-included-card__badge { animation-delay: -0.4s; }
+.autopilot-included-card:nth-child(2) .autopilot-included-card__badge { animation-delay: -0.8s; }
+.autopilot-included-card:nth-child(3) .autopilot-included-card__badge { animation-delay: -1.2s; }
+.autopilot-included-card:nth-child(4) .autopilot-included-card__badge { animation-delay: -1.6s; }
+.autopilot-included-card:nth-child(5) .autopilot-included-card__badge { animation-delay: -2.0s; }
+.autopilot-included-card:nth-child(6) .autopilot-included-card__badge { animation-delay: -2.4s; }
+.autopilot-process-card:nth-child(1) .autopilot-process-card__badge { animation-delay: -0.4s; }
+.autopilot-process-card:nth-child(2) .autopilot-process-card__badge { animation-delay: -0.8s; }
+.autopilot-process-card:nth-child(3) .autopilot-process-card__badge { animation-delay: -1.2s; }
+.autopilot-process-card:nth-child(4) .autopilot-process-card__badge { animation-delay: -1.6s; }
+.autopilot-process-card:nth-child(5) .autopilot-process-card__badge { animation-delay: -2.0s; }
+.autopilot-process-card:nth-child(6) .autopilot-process-card__badge { animation-delay: -2.4s; }
+.autopilot-why-card:nth-child(1) .autopilot-why-card__badge { animation-delay: -0.4s; }
+.autopilot-why-card:nth-child(2) .autopilot-why-card__badge { animation-delay: -0.8s; }
+.autopilot-why-card:nth-child(3) .autopilot-why-card__badge { animation-delay: -1.2s; }
+.autopilot-why-card:nth-child(4) .autopilot-why-card__badge { animation-delay: -1.6s; }
+.autopilot-why-card:nth-child(5) .autopilot-why-card__badge { animation-delay: -2.0s; }
+.autopilot-why-card:nth-child(6) .autopilot-why-card__badge { animation-delay: -2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+.autopilot-hero__graphic,
+.autopilot-included-card,
+.autopilot-usecase-card,
+.autopilot-why-card,
+.autopilot-process-card,
+.autopilot-hub-column,
+.autopilot-pill,
+.autopilot-integration-pill,
+.autopilot-included-card__badge,
+.autopilot-process-card__badge,
+.autopilot-why-card__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

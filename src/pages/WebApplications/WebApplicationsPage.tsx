@@ -222,6 +222,13 @@ export default function WebApplicationsPage() {
   const process2Head = useReveal('up');
   const integrationsHead = useReveal('up');
   const whyHead = useReveal('up');
+  const buildGrid = useReveal('up');
+  const capsRows = useReveal('up');
+  const usecasesGrid = useReveal('up');
+  const timelineGrid = useReveal('up');
+  const process2Grid = useReveal('up');
+  const integrationsGrid = useReveal('up');
+  const whyGrid = useReveal('up');
 
   return (
     <main className="webapps-page">
@@ -303,7 +310,7 @@ export default function WebApplicationsPage() {
             <h2 className="webapps-h2">What we build</h2>
           </div>
 
-          <div className="webapps-build__grid">
+          <div className={`webapps-build__grid ${buildGrid.className}`} ref={buildGrid.ref}>
             {buildCards.map((card) => (
               <div className="webapps-card webapps-build-card" key={card.title}>
                 <div className="webapps-build-card__glow" />
@@ -324,7 +331,7 @@ export default function WebApplicationsPage() {
             <h2 className="webapps-h2">Capabilities</h2>
           </div>
 
-          <div className="webapps-capabilities__rows">
+          <div className={`webapps-capabilities__rows ${capsRows.className}`} ref={capsRows.ref}>
             <div className="webapps-capabilities__row">
               {capabilityRow1.map((label) => (
                 <span className="webapps-pill" key={label}>
@@ -355,7 +362,7 @@ export default function WebApplicationsPage() {
             <h2 className="webapps-h2">Use Cases</h2>
           </div>
 
-          <div className="webapps-usecases__grid">
+          <div className={`webapps-usecases__grid ${usecasesGrid.className}`} ref={usecasesGrid.ref}>
             {useCases.map((item) => (
               <div className="webapps-card webapps-usecase-card" key={item.title}>
                 <h3 className="webapps-usecase-card__title">{item.title}</h3>
@@ -382,7 +389,7 @@ export default function WebApplicationsPage() {
             <span className="webapps-architecture__divider-dot" />
           </div>
 
-          <div className="webapps-timeline">
+          <div className={`webapps-timeline ${timelineGrid.className}`} ref={timelineGrid.ref}>
             {timelineSteps.map((step) => (
               <div className="webapps-timeline-step" key={step.number}>
                 <span className="webapps-timeline-step__badge">{step.number}</span>
@@ -410,7 +417,7 @@ export default function WebApplicationsPage() {
             <h2 className="webapps-h2">Development Process</h2>
           </div>
 
-          <div className="webapps-process2__grid">
+          <div className={`webapps-process2__grid ${process2Grid.className}`} ref={process2Grid.ref}>
             {processCards.map((card) => (
               <div className="webapps-card webapps-card--flat webapps-process2-card" key={card.title}>
                 <div className="webapps-process2-card__body">
@@ -430,7 +437,7 @@ export default function WebApplicationsPage() {
             <h2 className="webapps-h1-lg webapps-h1-lg--center">Potential Integrations</h2>
           </div>
 
-          <div className="webapps-integrations__grid">
+          <div className={`webapps-integrations__grid ${integrationsGrid.className}`} ref={integrationsGrid.ref}>
             <div className="webapps-integrations__row">
               {integrationsRow1.map((item, i) => (
                 <Fragment key={item.label}>
@@ -475,7 +482,7 @@ export default function WebApplicationsPage() {
             <h2 className="webapps-h2">Why Van Tech Systems</h2>
           </div>
 
-          <div className="webapps-why__grid">
+          <div className={`webapps-why__grid ${whyGrid.className}`} ref={whyGrid.ref}>
             {whyCards.map((card) => (
               <div className="webapps-card webapps-card--flat webapps-why-card" key={card.title}>
                 <img src={card.icon} alt="" className="webapps-badge-img webapps-why-card__badge" />

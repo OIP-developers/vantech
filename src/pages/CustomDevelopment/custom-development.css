@@ -1465,3 +1465,164 @@
     font-size: 32px;
   }
 }
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+@keyframes customdev-fade-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.customdev-hero__graphic {
+  animation: customdev-fade-scale-in 0.9s ease both;
+}
+
+.customdev-build-card,
+.customdev-usecase-card,
+.customdev-why-card,
+.customdev-process2-card,
+.customdev-timeline-step,
+.customdev-pill,
+.customdev-integration-pill {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.customdev-build__grid.is-visible .customdev-build-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.customdev-usecases__grid.is-visible .customdev-usecase-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.customdev-why__grid.is-visible .customdev-why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.customdev-process2__grid.is-visible .customdev-process2-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.customdev-timeline.is-visible .customdev-timeline-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.customdev-capabilities__rows.is-visible .customdev-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.customdev-integrations__grid.is-visible .customdev-integration-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.customdev-build__grid.is-visible .customdev-build-card:nth-child(1) { transition-delay: 0.07s; }
+.customdev-build__grid.is-visible .customdev-build-card:nth-child(2) { transition-delay: 0.14s; }
+.customdev-build__grid.is-visible .customdev-build-card:nth-child(3) { transition-delay: 0.21s; }
+.customdev-build__grid.is-visible .customdev-build-card:nth-child(4) { transition-delay: 0.28s; }
+.customdev-build__grid.is-visible .customdev-build-card:nth-child(5) { transition-delay: 0.35s; }
+.customdev-build__grid.is-visible .customdev-build-card:nth-child(6) { transition-delay: 0.42s; }
+
+.customdev-usecases__grid.is-visible .customdev-usecase-card:nth-child(1) { transition-delay: 0.07s; }
+.customdev-usecases__grid.is-visible .customdev-usecase-card:nth-child(2) { transition-delay: 0.14s; }
+.customdev-usecases__grid.is-visible .customdev-usecase-card:nth-child(3) { transition-delay: 0.21s; }
+.customdev-usecases__grid.is-visible .customdev-usecase-card:nth-child(4) { transition-delay: 0.28s; }
+.customdev-usecases__grid.is-visible .customdev-usecase-card:nth-child(5) { transition-delay: 0.35s; }
+.customdev-usecases__grid.is-visible .customdev-usecase-card:nth-child(6) { transition-delay: 0.42s; }
+
+.customdev-why__grid.is-visible .customdev-why-card:nth-child(1) { transition-delay: 0.07s; }
+.customdev-why__grid.is-visible .customdev-why-card:nth-child(2) { transition-delay: 0.14s; }
+.customdev-why__grid.is-visible .customdev-why-card:nth-child(3) { transition-delay: 0.21s; }
+.customdev-why__grid.is-visible .customdev-why-card:nth-child(4) { transition-delay: 0.28s; }
+.customdev-why__grid.is-visible .customdev-why-card:nth-child(5) { transition-delay: 0.35s; }
+.customdev-why__grid.is-visible .customdev-why-card:nth-child(6) { transition-delay: 0.42s; }
+
+.customdev-process2__grid.is-visible .customdev-process2-card:nth-child(1) { transition-delay: 0.07s; }
+.customdev-process2__grid.is-visible .customdev-process2-card:nth-child(2) { transition-delay: 0.14s; }
+.customdev-process2__grid.is-visible .customdev-process2-card:nth-child(3) { transition-delay: 0.21s; }
+.customdev-process2__grid.is-visible .customdev-process2-card:nth-child(4) { transition-delay: 0.28s; }
+.customdev-process2__grid.is-visible .customdev-process2-card:nth-child(5) { transition-delay: 0.35s; }
+.customdev-process2__grid.is-visible .customdev-process2-card:nth-child(6) { transition-delay: 0.42s; }
+
+.customdev-timeline.is-visible .customdev-timeline-step:nth-child(1) { transition-delay: 0.07s; }
+.customdev-timeline.is-visible .customdev-timeline-step:nth-child(2) { transition-delay: 0.14s; }
+.customdev-timeline.is-visible .customdev-timeline-step:nth-child(3) { transition-delay: 0.21s; }
+.customdev-timeline.is-visible .customdev-timeline-step:nth-child(4) { transition-delay: 0.28s; }
+.customdev-timeline.is-visible .customdev-timeline-step:nth-child(5) { transition-delay: 0.35s; }
+.customdev-timeline.is-visible .customdev-timeline-step:nth-child(6) { transition-delay: 0.42s; }
+
+.customdev-capabilities__rows.is-visible .customdev-pill:nth-child(1) { transition-delay: 0.07s; }
+.customdev-capabilities__rows.is-visible .customdev-pill:nth-child(2) { transition-delay: 0.14s; }
+.customdev-capabilities__rows.is-visible .customdev-pill:nth-child(3) { transition-delay: 0.21s; }
+.customdev-capabilities__rows.is-visible .customdev-pill:nth-child(4) { transition-delay: 0.28s; }
+.customdev-capabilities__rows.is-visible .customdev-pill:nth-child(5) { transition-delay: 0.35s; }
+.customdev-capabilities__rows.is-visible .customdev-pill:nth-child(6) { transition-delay: 0.42s; }
+.customdev-capabilities__rows.is-visible .customdev-pill:nth-child(7) { transition-delay: 0.49s; }
+.customdev-capabilities__rows.is-visible .customdev-pill:nth-child(8) { transition-delay: 0.56s; }
+
+.customdev-integrations__grid.is-visible .customdev-integration-pill:nth-child(1) { transition-delay: 0.07s; }
+.customdev-integrations__grid.is-visible .customdev-integration-pill:nth-child(2) { transition-delay: 0.14s; }
+.customdev-integrations__grid.is-visible .customdev-integration-pill:nth-child(3) { transition-delay: 0.21s; }
+.customdev-integrations__grid.is-visible .customdev-integration-pill:nth-child(4) { transition-delay: 0.28s; }
+.customdev-integrations__grid.is-visible .customdev-integration-pill:nth-child(5) { transition-delay: 0.35s; }
+.customdev-integrations__grid.is-visible .customdev-integration-pill:nth-child(6) { transition-delay: 0.42s; }
+.customdev-integrations__grid.is-visible .customdev-integration-pill:nth-child(7) { transition-delay: 0.49s; }
+.customdev-integrations__grid.is-visible .customdev-integration-pill:nth-child(8) { transition-delay: 0.56s; }
+
+@keyframes customdev-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.customdev-build-card__badge,
+.customdev-process2-card__badge,
+.customdev-why-card__badge {
+  animation: customdev-icon-float 3.6s ease-in-out infinite;
+}
+
+.customdev-build-card:nth-child(1) .customdev-build-card__badge { animation-delay: -0.4s; }
+.customdev-build-card:nth-child(2) .customdev-build-card__badge { animation-delay: -0.8s; }
+.customdev-build-card:nth-child(3) .customdev-build-card__badge { animation-delay: -1.2s; }
+.customdev-build-card:nth-child(4) .customdev-build-card__badge { animation-delay: -1.6s; }
+.customdev-build-card:nth-child(5) .customdev-build-card__badge { animation-delay: -2.0s; }
+.customdev-build-card:nth-child(6) .customdev-build-card__badge { animation-delay: -2.4s; }
+.customdev-process2-card:nth-child(1) .customdev-process2-card__badge { animation-delay: -0.4s; }
+.customdev-process2-card:nth-child(2) .customdev-process2-card__badge { animation-delay: -0.8s; }
+.customdev-process2-card:nth-child(3) .customdev-process2-card__badge { animation-delay: -1.2s; }
+.customdev-process2-card:nth-child(4) .customdev-process2-card__badge { animation-delay: -1.6s; }
+.customdev-process2-card:nth-child(5) .customdev-process2-card__badge { animation-delay: -2.0s; }
+.customdev-process2-card:nth-child(6) .customdev-process2-card__badge { animation-delay: -2.4s; }
+.customdev-why-card:nth-child(1) .customdev-why-card__badge { animation-delay: -0.4s; }
+.customdev-why-card:nth-child(2) .customdev-why-card__badge { animation-delay: -0.8s; }
+.customdev-why-card:nth-child(3) .customdev-why-card__badge { animation-delay: -1.2s; }
+.customdev-why-card:nth-child(4) .customdev-why-card__badge { animation-delay: -1.6s; }
+.customdev-why-card:nth-child(5) .customdev-why-card__badge { animation-delay: -2.0s; }
+.customdev-why-card:nth-child(6) .customdev-why-card__badge { animation-delay: -2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+.customdev-hero__graphic,
+.customdev-build-card,
+.customdev-usecase-card,
+.customdev-why-card,
+.customdev-process2-card,
+.customdev-timeline-step,
+.customdev-pill,
+.customdev-integration-pill,
+.customdev-build-card__badge,
+.customdev-process2-card__badge,
+.customdev-why-card__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

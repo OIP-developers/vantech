@@ -1639,3 +1639,164 @@
     font-size: 32px;
   }
 }
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+@keyframes agents-fade-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.agents-hero__orb-wrap {
+  animation: agents-fade-scale-in 0.9s ease both;
+}
+
+.agents-build-card,
+.agents-usecase-card,
+.agents-why-card,
+.agents-process2-card,
+.agents-timeline-step,
+.agents-pill,
+.agents-integration-pill {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.agents-build__grid.is-visible .agents-build-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.agents-usecases__grid.is-visible .agents-usecase-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.agents-why__grid.is-visible .agents-why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.agents-process2__grid.is-visible .agents-process2-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.agents-timeline.is-visible .agents-timeline-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.agents-capabilities__rows.is-visible .agents-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.agents-integrations__grid.is-visible .agents-integration-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.agents-build__grid.is-visible .agents-build-card:nth-child(1) { transition-delay: 0.07s; }
+.agents-build__grid.is-visible .agents-build-card:nth-child(2) { transition-delay: 0.14s; }
+.agents-build__grid.is-visible .agents-build-card:nth-child(3) { transition-delay: 0.21s; }
+.agents-build__grid.is-visible .agents-build-card:nth-child(4) { transition-delay: 0.28s; }
+.agents-build__grid.is-visible .agents-build-card:nth-child(5) { transition-delay: 0.35s; }
+.agents-build__grid.is-visible .agents-build-card:nth-child(6) { transition-delay: 0.42s; }
+
+.agents-usecases__grid.is-visible .agents-usecase-card:nth-child(1) { transition-delay: 0.07s; }
+.agents-usecases__grid.is-visible .agents-usecase-card:nth-child(2) { transition-delay: 0.14s; }
+.agents-usecases__grid.is-visible .agents-usecase-card:nth-child(3) { transition-delay: 0.21s; }
+.agents-usecases__grid.is-visible .agents-usecase-card:nth-child(4) { transition-delay: 0.28s; }
+.agents-usecases__grid.is-visible .agents-usecase-card:nth-child(5) { transition-delay: 0.35s; }
+.agents-usecases__grid.is-visible .agents-usecase-card:nth-child(6) { transition-delay: 0.42s; }
+
+.agents-why__grid.is-visible .agents-why-card:nth-child(1) { transition-delay: 0.07s; }
+.agents-why__grid.is-visible .agents-why-card:nth-child(2) { transition-delay: 0.14s; }
+.agents-why__grid.is-visible .agents-why-card:nth-child(3) { transition-delay: 0.21s; }
+.agents-why__grid.is-visible .agents-why-card:nth-child(4) { transition-delay: 0.28s; }
+.agents-why__grid.is-visible .agents-why-card:nth-child(5) { transition-delay: 0.35s; }
+.agents-why__grid.is-visible .agents-why-card:nth-child(6) { transition-delay: 0.42s; }
+
+.agents-process2__grid.is-visible .agents-process2-card:nth-child(1) { transition-delay: 0.07s; }
+.agents-process2__grid.is-visible .agents-process2-card:nth-child(2) { transition-delay: 0.14s; }
+.agents-process2__grid.is-visible .agents-process2-card:nth-child(3) { transition-delay: 0.21s; }
+.agents-process2__grid.is-visible .agents-process2-card:nth-child(4) { transition-delay: 0.28s; }
+.agents-process2__grid.is-visible .agents-process2-card:nth-child(5) { transition-delay: 0.35s; }
+.agents-process2__grid.is-visible .agents-process2-card:nth-child(6) { transition-delay: 0.42s; }
+
+.agents-timeline.is-visible .agents-timeline-step:nth-child(1) { transition-delay: 0.07s; }
+.agents-timeline.is-visible .agents-timeline-step:nth-child(2) { transition-delay: 0.14s; }
+.agents-timeline.is-visible .agents-timeline-step:nth-child(3) { transition-delay: 0.21s; }
+.agents-timeline.is-visible .agents-timeline-step:nth-child(4) { transition-delay: 0.28s; }
+.agents-timeline.is-visible .agents-timeline-step:nth-child(5) { transition-delay: 0.35s; }
+.agents-timeline.is-visible .agents-timeline-step:nth-child(6) { transition-delay: 0.42s; }
+
+.agents-capabilities__rows.is-visible .agents-pill:nth-child(1) { transition-delay: 0.07s; }
+.agents-capabilities__rows.is-visible .agents-pill:nth-child(2) { transition-delay: 0.14s; }
+.agents-capabilities__rows.is-visible .agents-pill:nth-child(3) { transition-delay: 0.21s; }
+.agents-capabilities__rows.is-visible .agents-pill:nth-child(4) { transition-delay: 0.28s; }
+.agents-capabilities__rows.is-visible .agents-pill:nth-child(5) { transition-delay: 0.35s; }
+.agents-capabilities__rows.is-visible .agents-pill:nth-child(6) { transition-delay: 0.42s; }
+.agents-capabilities__rows.is-visible .agents-pill:nth-child(7) { transition-delay: 0.49s; }
+.agents-capabilities__rows.is-visible .agents-pill:nth-child(8) { transition-delay: 0.56s; }
+
+.agents-integrations__grid.is-visible .agents-integration-pill:nth-child(1) { transition-delay: 0.07s; }
+.agents-integrations__grid.is-visible .agents-integration-pill:nth-child(2) { transition-delay: 0.14s; }
+.agents-integrations__grid.is-visible .agents-integration-pill:nth-child(3) { transition-delay: 0.21s; }
+.agents-integrations__grid.is-visible .agents-integration-pill:nth-child(4) { transition-delay: 0.28s; }
+.agents-integrations__grid.is-visible .agents-integration-pill:nth-child(5) { transition-delay: 0.35s; }
+.agents-integrations__grid.is-visible .agents-integration-pill:nth-child(6) { transition-delay: 0.42s; }
+.agents-integrations__grid.is-visible .agents-integration-pill:nth-child(7) { transition-delay: 0.49s; }
+.agents-integrations__grid.is-visible .agents-integration-pill:nth-child(8) { transition-delay: 0.56s; }
+
+@keyframes agents-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.agents-build-card__badge,
+.agents-process2-card__badge,
+.agents-why-card__badge {
+  animation: agents-icon-float 3.6s ease-in-out infinite;
+}
+
+.agents-build-card:nth-child(1) .agents-build-card__badge { animation-delay: -0.4s; }
+.agents-build-card:nth-child(2) .agents-build-card__badge { animation-delay: -0.8s; }
+.agents-build-card:nth-child(3) .agents-build-card__badge { animation-delay: -1.2s; }
+.agents-build-card:nth-child(4) .agents-build-card__badge { animation-delay: -1.6s; }
+.agents-build-card:nth-child(5) .agents-build-card__badge { animation-delay: -2.0s; }
+.agents-build-card:nth-child(6) .agents-build-card__badge { animation-delay: -2.4s; }
+.agents-process2-card:nth-child(1) .agents-process2-card__badge { animation-delay: -0.4s; }
+.agents-process2-card:nth-child(2) .agents-process2-card__badge { animation-delay: -0.8s; }
+.agents-process2-card:nth-child(3) .agents-process2-card__badge { animation-delay: -1.2s; }
+.agents-process2-card:nth-child(4) .agents-process2-card__badge { animation-delay: -1.6s; }
+.agents-process2-card:nth-child(5) .agents-process2-card__badge { animation-delay: -2.0s; }
+.agents-process2-card:nth-child(6) .agents-process2-card__badge { animation-delay: -2.4s; }
+.agents-why-card:nth-child(1) .agents-why-card__badge { animation-delay: -0.4s; }
+.agents-why-card:nth-child(2) .agents-why-card__badge { animation-delay: -0.8s; }
+.agents-why-card:nth-child(3) .agents-why-card__badge { animation-delay: -1.2s; }
+.agents-why-card:nth-child(4) .agents-why-card__badge { animation-delay: -1.6s; }
+.agents-why-card:nth-child(5) .agents-why-card__badge { animation-delay: -2.0s; }
+.agents-why-card:nth-child(6) .agents-why-card__badge { animation-delay: -2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+.agents-hero__orb-wrap,
+.agents-build-card,
+.agents-usecase-card,
+.agents-why-card,
+.agents-process2-card,
+.agents-timeline-step,
+.agents-pill,
+.agents-integration-pill,
+.agents-build-card__badge,
+.agents-process2-card__badge,
+.agents-why-card__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

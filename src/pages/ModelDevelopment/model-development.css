@@ -1360,6 +1360,12 @@
   .modeldev-solution__row {
     flex-direction: column-reverse;
   }
+  .modeldev-solution__copy {
+    max-width: 100%;
+  }
+  .modeldev-solution__desc {
+    width: 100%;
+  }
   .modeldev-solution__graphic {
     max-width: 100%;
     width: 360px;
@@ -1466,3 +1472,164 @@
     font-size: 32px;
   }
 }
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+@keyframes modeldev-fade-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.modeldev-hero__illustration {
+  animation: modeldev-fade-scale-in 0.9s ease both;
+}
+
+.modeldev-build-card,
+.modeldev-usecase-card,
+.modeldev-why-card,
+.modeldev-process2-card,
+.modeldev-timeline-step,
+.modeldev-pill,
+.modeldev-integration-pill {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.modeldev-build__grid.is-visible .modeldev-build-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-why__grid.is-visible .modeldev-why-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-process2__grid.is-visible .modeldev-process2-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-timeline.is-visible .modeldev-timeline-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-capabilities__rows.is-visible .modeldev-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-build__grid.is-visible .modeldev-build-card:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-usecases__grid.is-visible .modeldev-usecase-card:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-why__grid.is-visible .modeldev-why-card:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-process2__grid.is-visible .modeldev-process2-card:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-timeline.is-visible .modeldev-timeline-step:nth-child(6) { transition-delay: 0.42s; }
+
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(6) { transition-delay: 0.42s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(7) { transition-delay: 0.49s; }
+.modeldev-capabilities__rows.is-visible .modeldev-pill:nth-child(8) { transition-delay: 0.56s; }
+
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(1) { transition-delay: 0.07s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(2) { transition-delay: 0.14s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(3) { transition-delay: 0.21s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(4) { transition-delay: 0.28s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(5) { transition-delay: 0.35s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(6) { transition-delay: 0.42s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(7) { transition-delay: 0.49s; }
+.modeldev-integrations__grid.is-visible .modeldev-integration-pill:nth-child(8) { transition-delay: 0.56s; }
+
+@keyframes modeldev-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.modeldev-build-card__badge,
+.modeldev-process2-card__badge,
+.modeldev-why-card__badge {
+  animation: modeldev-icon-float 3.6s ease-in-out infinite;
+}
+
+.modeldev-build-card:nth-child(1) .modeldev-build-card__badge { animation-delay: -0.4s; }
+.modeldev-build-card:nth-child(2) .modeldev-build-card__badge { animation-delay: -0.8s; }
+.modeldev-build-card:nth-child(3) .modeldev-build-card__badge { animation-delay: -1.2s; }
+.modeldev-build-card:nth-child(4) .modeldev-build-card__badge { animation-delay: -1.6s; }
+.modeldev-build-card:nth-child(5) .modeldev-build-card__badge { animation-delay: -2.0s; }
+.modeldev-build-card:nth-child(6) .modeldev-build-card__badge { animation-delay: -2.4s; }
+.modeldev-process2-card:nth-child(1) .modeldev-process2-card__badge { animation-delay: -0.4s; }
+.modeldev-process2-card:nth-child(2) .modeldev-process2-card__badge { animation-delay: -0.8s; }
+.modeldev-process2-card:nth-child(3) .modeldev-process2-card__badge { animation-delay: -1.2s; }
+.modeldev-process2-card:nth-child(4) .modeldev-process2-card__badge { animation-delay: -1.6s; }
+.modeldev-process2-card:nth-child(5) .modeldev-process2-card__badge { animation-delay: -2.0s; }
+.modeldev-process2-card:nth-child(6) .modeldev-process2-card__badge { animation-delay: -2.4s; }
+.modeldev-why-card:nth-child(1) .modeldev-why-card__badge { animation-delay: -0.4s; }
+.modeldev-why-card:nth-child(2) .modeldev-why-card__badge { animation-delay: -0.8s; }
+.modeldev-why-card:nth-child(3) .modeldev-why-card__badge { animation-delay: -1.2s; }
+.modeldev-why-card:nth-child(4) .modeldev-why-card__badge { animation-delay: -1.6s; }
+.modeldev-why-card:nth-child(5) .modeldev-why-card__badge { animation-delay: -2.0s; }
+.modeldev-why-card:nth-child(6) .modeldev-why-card__badge { animation-delay: -2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+.modeldev-hero__illustration,
+.modeldev-build-card,
+.modeldev-usecase-card,
+.modeldev-why-card,
+.modeldev-process2-card,
+.modeldev-timeline-step,
+.modeldev-pill,
+.modeldev-integration-pill,
+.modeldev-build-card__badge,
+.modeldev-process2-card__badge,
+.modeldev-why-card__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
