@@ -17,6 +17,7 @@ const data = {
   ...createPlaceholderWorkData('All Access Trip'),
   hero: {
     badges: ['Web Applications', 'Travel & Immigration'],
+    badgesMerged: true,
     titleLines: ['All Access Trip'],
     description:
       'A travel booking and itinerary platform for curated trips, groups and experiences.',

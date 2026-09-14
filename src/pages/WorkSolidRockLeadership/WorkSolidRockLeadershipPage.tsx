@@ -21,6 +21,7 @@ const data = {
   ...createPlaceholderWorkData('Solid Rock Leadership'),
   hero: {
     badges: ['Professional Services', 'Training & Development'],
+    badgesMerged: true,
     titleLines: ['Solid Rock Leadership', 'Development'],
     description:
       'A leadership and financial education platform presenting programs, audiences and a consultation booking journey.',

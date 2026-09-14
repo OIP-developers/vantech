@@ -11,6 +11,7 @@ const data = {
   ...createPlaceholderWorkData('Van Travel Business Two'),
   hero: {
     badges: ['Ai', 'Travel & Immigration'],
+    badgesMerged: true,
     titleLines: ['AI FNA'],
     description:
       'An AI-assisted financial needs analysis tool that turns client data into advisor-ready recommendations.',

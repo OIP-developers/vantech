@@ -45,7 +45,11 @@ export interface WorkCaseStudyRelatedItem {
 export interface WorkCaseStudyData {
   hero: {
     badges: string[];
+    /** Renders all badges inside one merged pill instead of one pill per badge — matches this page's own Figma hero. */
+    badgesMerged?: boolean;
     titleLines: string[];
+    /** Collapses titleLines onto a single line on mobile (≤599px) instead of breaking at each line. Only set this for titles short enough to still read comfortably at that width. */
+    titleOneLineOnMobile?: boolean;
     description: string;
     screenshot: string;
     screenshotAlt: string;
@@ -98,11 +102,15 @@ function stripProtocol(url: string): string {
 export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyData }) {
   const heroLeft = useReveal('left');
   const heroRight = useReveal('right');
+  const heroMockReveal = useReveal('up');
   const overviewReveal = useReveal('left');
   const capabilitiesReveal = useReveal('up');
+  const flowReveal = useReveal('up');
   const approachReveal = useReveal('up');
   const outcomeReveal = useReveal('up');
+  const bannerReveal = useReveal('up');
   const relatedReveal = useReveal('up');
+  const closingReveal = useReveal('up');
 
   const liveUrlLabel =
     data.liveUrlLabel ?? (data.liveUrl === '#' ? 'Coming soon' : stripProtocol(data.liveUrl));
@@ -120,7 +128,7 @@ export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyDat
       <section className="wvt-hero section" id="wvt-hero">
         <div className="container wvt-hero__row">
           <div className={`wvt-hero__left ${heroLeft.className}`} ref={heroLeft.ref}>
-            <div className="wvt-badges">
+            <div className={`wvt-badges${data.hero.badgesMerged ? ' wvt-badges--merged' : ''}`}>
               {data.hero.badges.map((badge) => (
                 <span className="wvt-badge" key={badge}>
                   <Icon svg={badgeCheckSvg} />
@@ -128,11 +136,13 @@ export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyDat
                 </span>
               ))}
             </div>
-            <h1 className="wvt-hero__title">
+            <h1
+              className={`wvt-hero__title${data.hero.titleOneLineOnMobile ? ' wvt-hero__title--one-line-mobile' : ''}`}
+            >
               {data.hero.titleLines.map((line, i) => (
                 <Fragment key={line}>
                   {line}
-                  {i < data.hero.titleLines.length - 1 && <br />}
+                  {i < data.hero.titleLines.length - 1 && <>{' '}<br /></>}
                 </Fragment>
               ))}
             </h1>
@@ -153,7 +163,7 @@ export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyDat
           </div>
         </div>
 
-        <div className="container maic-boc">
+        <div className={`container maic-boc ${heroMockReveal.className}`} ref={heroMockReveal.ref}>
           <div className="wvt-browser-mock">
             <div className="wvt-browser-mock__toolbar">
               <div className="wvt-browser-mock__dots">
@@ -269,7 +279,7 @@ export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyDat
       </section>
 
       <section className="wvt-flow section">
-        <div className="container">
+        <div className={`container ${flowReveal.className}`} ref={flowReveal.ref}>
           <span className="wvt-eyebrow-number">05 — {data.flow.heading ?? 'Services'}</span>
           <div className="wvt-flow__steps">
             {data.flow.steps.map((step, i) => (
@@ -333,7 +343,7 @@ export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyDat
         </div>
       </section>
 
-      <div className="wvt-banner">
+      <div className={`wvt-banner ${bannerReveal.className}`} ref={bannerReveal.ref}>
         <img src={bannerImage} alt="" className="wvt-banner__img" loading="lazy" />
         <span className="wvt-banner__icon">
           <img src={iconCircleBg} alt="" />
@@ -368,7 +378,7 @@ export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyDat
       </section>
 
       <section className="wvt-closing section">
-        <div className="container">
+        <div className={`container ${closingReveal.className}`} ref={closingReveal.ref}>
           <div className="wvt-closing__box">
             <img src={defaultCtaBoxBg} alt="" className="wvt-closing__bg" loading="lazy" />
             <div className="wvt-closing__orb">

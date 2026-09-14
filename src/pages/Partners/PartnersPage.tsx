@@ -7,17 +7,23 @@ import CTA from '../../components/CTA';
 import { useReveal } from '../../hooks/useReveal';
 
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
-import partnerExchangeSvg from '../../assets/icons/material-symbols-partner-exchange.svg?raw';
-import coinSvg from '../../assets/icons/streamline-ultimate-monetization-touch-coin-bold.svg?raw';
+import vtsSparkleSvg from '../../assets/icons/vts-sparkle.svg?raw';
+import mdiHandshakeSvg from '../../assets/icons/mdi-handshake.svg?raw';
+import partnerCtaArrow from '../../assets/icons/partner-cta-arrow.svg';
+import catalogSoftwareSvg from '../../assets/icons/catalog-software.svg?raw';
+import catalogGlobeSvg from '../../assets/icons/catalog-globe.svg?raw';
+import catalogConsultingSvg from '../../assets/icons/catalog-consulting.svg?raw';
+import userVisibleSvg from '../../assets/icons/user-visible.svg?raw';
+import plansCoinSvg from '../../assets/icons/plans-coin.svg?raw';
+import plansStarSvg from '../../assets/icons/plans-star.svg?raw';
+import plansFlashSvg from '../../assets/icons/plans-flash.svg?raw';
 
-import heroBannerBlur from '../../assets/images/about/figma/hero-banner-blur.png';
-import heroBannerGlow from '../../assets/images/about/figma/about-banner12.png';
 import orbSphere from '../../assets/images/orb-sphere.webp';
-import archDivider1 from '../../assets/images/about/image-I-1.png';
-import archDivider2 from '../../assets/images/about/image-J-2.png';
-import archDivider3 from '../../assets/images/about/image-K-3.png';
 import heroChartImg from '../../assets/images/partners-hero-chart.webp';
 import heroStarImg from '../../assets/images/partners-hero-star.webp';
+import tiersBadgeGlow from '../../assets/images/partners-badge-glow.png';
+import tiersGlowTexture from '../../assets/images/partners-glow-texture.png';
+import visibilityOrb from '../../assets/images/partners-visibility-orb.png';
 
 function CheckIcon() {
   return (
@@ -101,34 +107,53 @@ const pipelineStages = [
   { name: 'Support', who: 'Based on partnership model' },
 ];
 
+const catalogIcons: Record<string, string> = {
+  software: catalogSoftwareSvg,
+  globe: catalogGlobeSvg,
+  consulting: catalogConsultingSvg,
+};
+
 const catalogTop = [
   {
     title: 'AI Solutions',
+    slug: 'ai-solutions',
     desc: "Conversational and operational AI systems built around a client's workflows.",
-    items: ['AI Voice Agents', 'AI Chat Agents', 'AI Lead Qualification', 'AI Customer Support', 'AI Knowledge Systems', 'AI Workflow Automation'],
+    icon: 'software',
+    wrapChips: true,
+    items: ['AI Receptionists', 'AI Voice Agents', 'AI Chat Agents', 'AI Lead Qualification', 'AI Customer Support', 'AI Knowledge Systems', 'AI Workflow Automation'],
   },
   {
     title: 'Software',
+    slug: 'software',
     desc: 'Custom applications and platforms engineered for how a business operates.',
-    items: ['Custom Web Applications', 'Marketplace Platforms', 'Internal Business Systems', 'SaaS Platforms', 'Client Portals', 'CRM Platforms'],
+    icon: 'software',
+    titleFirst: true,
+    iconRight: true,
+    items: ['Custom Web Applications', 'SaaS Platforms', 'Marketplace Platforms', 'Client Portals', 'Internal Business Systems', 'CRM Platforms'],
   },
 ];
 
 const catalogBottom = [
   {
     title: 'Automation',
+    slug: 'automation',
     desc: 'Process automation that removes manual work across sales and operations.',
-    items: ['CRM Automation', 'Lead Follow-Up Systems', 'Appointment Automation', 'Email/SMS Workflows', 'Operations Automation', 'Business Process Automation'],
+    icon: 'software',
+    items: ['CRM Automation', 'Email/SMS Workflows', 'Lead Follow-Up Systems', 'Operations Automation', 'Appointment Automation', 'Business Process Automation'],
   },
   {
     title: 'Digital Platforms',
+    slug: 'digital-platforms',
     desc: 'Customer-facing digital products with a premium engineering standard.',
-    items: ['Premium Website', 'E-Commerce', 'Customer Portals', 'Business Dashboards'],
+    icon: 'globe',
+    items: ['Premium Website', 'E-Commerce', 'Customer Portals', 'Business Dashboards', 'Membership Platforms'],
   },
   {
     title: 'Consulting',
+    slug: 'consulting',
     desc: 'Strategic and architectural guidance ahead of a build.',
-    items: ['Product Strategy', 'Technology Architecture', 'AI Readiness', 'Digital Transformation'],
+    icon: 'consulting',
+    items: ['Product Strategy', 'Technology Architecture', 'AI Readiness', 'Digital Transformation', 'System Audits'],
   },
 ];
 
@@ -140,9 +165,15 @@ const brandLayers = [
 
 const aiEngineChips = ['Voice', 'Chat', 'CRM', 'Email', 'SMS', 'Calendar', 'Knowledge Base', 'Analytics', 'Automation', 'API'];
 
+const planIcons: Record<string, string> = {
+  star: plansStarSvg,
+  flash: plansFlashSvg,
+};
+
 const plans = [
   {
     name: 'VTS Connect',
+    icon: 'star',
     price: '$0',
     priceNote: 'Partner Enrollment',
     desc: 'For professionals who occasionally encounter technology opportunities and want a reliable delivery partner to hand them to.',
@@ -159,6 +190,7 @@ const plans = [
   },
   {
     name: 'VTS Pro Partner',
+    icon: 'flash',
     price: '$499',
     priceNote: 'onboarding',
     secondary: '$99/month',
@@ -181,6 +213,7 @@ const plans = [
   },
   {
     name: 'VTS White Label',
+    icon: 'star',
     price: '$1,499',
     priceNote: 'onboarding',
     secondary: '$299/month',
@@ -228,7 +261,7 @@ function CompareCellView({ value }: { value: CompareCell }) {
     );
   }
   if (value === false) {
-    return <span className="partners-compare__dash">—</span>;
+    return <span className="partners-compare__dash" aria-hidden="true" />;
   }
   return <span>{value}</span>;
 }
@@ -366,18 +399,12 @@ export default function PartnersPage() {
   const verticalsHead = useReveal('up');
 
   return (
-    <main className="partners-page">
+    <main className="partners-page partners-body-page">
       <section className="partners-hero section">
-        <div className="partners-hero__banner">
-          <img src={heroBannerBlur} alt="" className="partners-hero__banner-img" loading="eager" />
-        </div>
-        <div className="partners-hero__banner-fade" />
-        <img src={heroBannerGlow} alt="" className="partners-hero__banner-glow" loading="eager" />
-
         <div className="container partners-hero__container">
           <div className={`partners-hero__copy ${heroCopy.className}`} ref={heroCopy.ref}>
-            <span className="eyebrow-pill">
-              <Icon svg={partnerExchangeSvg} className="eyebrow-pill__icon" />
+            <span className="partners-hero__pill">
+              <Icon svg={vtsSparkleSvg} className="partners-hero__pill-icon" />
               VTS Partner Network
             </span>
             <h1 className="partners-hero__title">Grow Your Agency. We Power the Technology.</h1>
@@ -423,89 +450,106 @@ export default function PartnersPage() {
       {/* ---------- Tiers ---------- */}
       <section className="partners-tiers section" id="tiers">
         <div className="container">
-          <div className={`partners-icon-badge-head ${tiersHead.className}`} ref={tiersHead.ref}>
-            <span className="partners-icon-badge">
-              <Icon svg={partnerExchangeSvg} />
-            </span>
-            <svg className="partners-icon-badge-head__arc" viewBox="0 0 620 60" fill="none" preserveAspectRatio="none">
-              <path d="M10 55 C 160 -10, 460 -10, 610 55" stroke="url(#partnersArcGradient)" strokeWidth="1.5" fill="none" />
-              <defs>
-                <linearGradient id="partnersArcGradient" x1="0" y1="0" x2="620" y2="0" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stopColor="var(--color-blue)" stopOpacity="0" />
-                  <stop offset="0.5" stopColor="var(--color-orange)" />
-                  <stop offset="1" stopColor="var(--color-blue)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <h2 className="section-title">One Technology Partner. Multiple Ways to Grow.</h2>
+          <div className={`partners-tiers__head ${tiersHead.className}`} ref={tiersHead.ref}>
+            <div className="partners-tiers__badge">
+              <img src={tiersBadgeGlow} alt="" className="partners-tiers__badge-bg" loading="lazy" />
+              <Icon svg={mdiHandshakeSvg} className="partners-tiers__badge-icon" />
+            </div>
+            <h2 className="section-title partners-tiers__title">
+              <span>One Technology Partner.</span>
+              <span>Multiple Ways to Grow.</span>
+            </h2>
           </div>
 
           <div className="partners-tiers__grid">
             {tiers.map((tier) => (
               <div className="partners-tier-card" key={tier.title}>
-                <h3 className="partners-tier-card__title">{tier.title}</h3>
-                <p className="partners-tier-card__desc">{tier.desc}</p>
-                <div className="partners-tier-card__roles">
-                  {tier.columns.map((col, i) => (
-                    <div className={`partners-tier-role ${i === 0 ? 'partners-tier-role--blue' : 'partners-tier-role--orange'}`} key={col.label}>
-                      <span className="partners-tier-role__label">{col.label}</span>
-                      <ul className="partners-tier-role__list">
-                        {col.items.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                <img src={tiersGlowTexture} alt="" className="partners-tier-card__bg" loading="lazy" />
+                <div className="partners-tier-card__content">
+                  <h3 className="partners-tier-card__title">{tier.title}</h3>
+                  <p className="partners-tier-card__desc">{tier.desc}</p>
+                  <div className="partners-tier-card__roles">
+                    {tier.columns.map((col, i) => (
+                      <div className={`partners-tier-role ${i === 0 ? 'partners-tier-role--blue' : 'partners-tier-role--orange'}`} key={col.label}>
+                        <span className="partners-tier-role__label">{col.label}</span>
+                        <ul className="partners-tier-role__list">
+                          {col.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <a href="/contact" className="partners-tier-card__cta">
+                    {tier.cta}
+                    <img src={partnerCtaArrow} alt="" className="partners-tier-card__cta-icon" />
+                  </a>
                 </div>
-                <a href="/contact" className="partners-tier-card__cta">
-                  {tier.cta}
-                  <span className="partners-tier-card__cta-icon">
-                    <Icon svg={arrowRightSvg} />
-                  </span>
-                </a>
               </div>
             ))}
           </div>
         </div>
-        <img src={archDivider2} alt="" className="partners-divider" loading="lazy" />
       </section>
 
       {/* ---------- Pipeline: You Win the Client ---------- */}
       <section className="partners-pipeline section">
         <div className="container">
           <div className={`section-head ${pipelineHead.className}`} ref={pipelineHead.ref}>
-            <h2 className="section-title">You Win the Client. We Help Deliver the Technology.</h2>
+            <h2 className="section-title partners-pipeline__title">
+              <span>You Win the Client.</span>
+              <span>We Help Deliver the Technology.</span>
+            </h2>
           </div>
 
           <div className="partners-pipeline__track">
-            {pipelineStages.map((stage) => (
-              <div className="partners-pipeline-step" key={stage.name}>
+            {pipelineStages.map((stage, i) => (
+              <div
+                className={`partners-pipeline-step${i === pipelineStages.length - 1 ? ' partners-pipeline-step--last' : ''}`}
+                key={stage.name}
+              >
                 <span className="partners-pipeline-step__name">{stage.name}</span>
                 <span className="partners-pipeline-step__who">{stage.who}</span>
               </div>
             ))}
           </div>
         </div>
-        <img src={archDivider1} alt="" className="partners-divider" loading="lazy" />
       </section>
 
       {/* ---------- Service catalog ---------- */}
       <section className="partners-catalog section">
         <div className="container">
           <div className={`section-head ${catalogHead.className}`} ref={catalogHead.ref}>
-            <span className="eyebrow-pill">What partners can sell</span>
-            <h2 className="section-title">Expand Your Service Catalog Without Expanding Your Engineering Team.</h2>
+            <span className="eyebrow-pill partners-catalog__badge">What partners can sell</span>
+            <h2 className="section-title partners-catalog__title">
+              <span>Expand Your Service Catalog Without</span>
+              <span>Expanding Your Engineering Team.</span>
+            </h2>
           </div>
 
           <div className="partners-catalog__grid-top">
             {catalogTop.map((cat) => (
-              <div className="partners-catalog-card partners-catalog-card--glow" key={cat.title}>
-                <div className="partners-catalog-card__glow-area">
-                  {cat.items.map((item) => (
-                    <span className="partners-chip partners-chip--glass" key={item}>
-                      {item}
-                    </span>
-                  ))}
+              <div
+                className={`partners-catalog-card partners-catalog-card--glow partners-catalog-card--${cat.slug}${cat.titleFirst ? ' partners-catalog-card--title-first' : ''}`}
+                key={cat.title}
+              >
+                <div className={`partners-catalog-card__glow-area${cat.iconRight ? ' partners-catalog-card__glow-area--icon-right' : ''}`}>
+                  <span className={`partners-catalog-card__icon-badge${cat.iconRight ? ' partners-catalog-card__icon-badge--right' : ''}`}>
+                    <img src={orbSphere} alt="" className="partners-catalog-card__icon-orb" loading="lazy" />
+                    <Icon svg={catalogIcons[cat.icon]} className="partners-catalog-card__icon" />
+                  </span>
+                  <div
+                    className={
+                      cat.wrapChips
+                        ? 'partners-catalog-card__chips-wrap'
+                        : `partners-catalog-card__chips-grid${cat.iconRight ? ' partners-catalog-card__chips-grid--icon-right' : ''}`
+                    }
+                  >
+                    {cat.items.map((item) => (
+                      <span className="partners-chip partners-chip--glass" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
                 <h3 className="partners-catalog-card__title">{cat.title}</h3>
                 <p className="partners-catalog-card__desc">{cat.desc}</p>
@@ -515,16 +559,25 @@ export default function PartnersPage() {
 
           <div className="partners-catalog__grid-bottom">
             {catalogBottom.map((cat) => (
-              <div className="partners-catalog-card" key={cat.title}>
+              <div
+                className={`partners-catalog-card partners-catalog-card--glow partners-catalog-card--sm partners-catalog-card--${cat.slug}`}
+                key={cat.title}
+              >
+                <div className="partners-catalog-card__glow-area partners-catalog-card__glow-area--sm">
+                  <span className="partners-catalog-card__icon-badge">
+                    <img src={orbSphere} alt="" className="partners-catalog-card__icon-orb" loading="lazy" />
+                    <Icon svg={catalogIcons[cat.icon]} className="partners-catalog-card__icon" />
+                  </span>
+                  <div className="partners-catalog-card__chips-grid partners-catalog-card__chips-grid--sm">
+                    {cat.items.map((item) => (
+                      <span className="partners-chip partners-chip--glass partners-chip--sm" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 <h3 className="partners-catalog-card__title">{cat.title}</h3>
                 <p className="partners-catalog-card__desc">{cat.desc}</p>
-                <div className="partners-catalog-card__chips">
-                  {cat.items.map((item) => (
-                    <span className="partners-chip" key={item}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
               </div>
             ))}
           </div>
@@ -542,8 +595,12 @@ export default function PartnersPage() {
       <section className="partners-brand section">
         <div className="container partners-brand__row">
           <div className={brandCopy.className} ref={brandCopy.ref}>
-            <h2 className="partners-intel__col-title">Your Brand in Front. Our Technology Behind It.</h2>
-            <p className="partners-intel__col-desc">
+            <h2 className="partners-brand__title">
+              <span>Your Brand in Front.</span>
+              <span>Our Technology</span>
+              <span>Behind It.</span>
+            </h2>
+            <p className="partners-brand__desc">
               Keep your client relationship while gaining access to a broader technology delivery capability.
             </p>
           </div>
@@ -555,7 +612,7 @@ export default function PartnersPage() {
                   <span className="partners-brand-layer__label">{layer.label}</span>
                   <div className="partners-brand-layer__chips">
                     {layer.tags.map((tag) => (
-                      <span className="partners-chip" key={tag}>
+                      <span className="partners-brand-chip" key={tag}>
                         {tag}
                       </span>
                     ))}
@@ -566,24 +623,54 @@ export default function PartnersPage() {
             ))}
           </div>
         </div>
-        <img src={archDivider3} alt="" className="partners-divider" loading="lazy" />
       </section>
 
       {/* ---------- Visibility + AI Engine ---------- */}
       <section className="partners-intel section">
         <div className="container">
-          <div className="partners-intel__row">
+          <div className="partners-intel__row first-row-copy">
             <div className={intelLeft.className} ref={intelLeft.ref}>
-              <h2 className="partners-intel__col-title">Visibility Across Every Delivery Stage</h2>
-              <p className="partners-intel__col-desc">
+              <h2 className="partners-intel__col-title partners-intel__col-title--visibility">
+                <span>Visibility Across</span>
+                <span>Every Delivery Stage</span>
+              </h2>
+              <p className="partners-intel__col-desc partners-intel__col-desc--visibility">
                 Partners see delivery progress, stage status and upcoming milestones for the projects they bring to Van Tech Systems.
               </p>
             </div>
             <div className="partners-intel__decor">
-              <span className="partners-intel__decor-card partners-intel__decor-card--1" />
-              <span className="partners-intel__decor-card partners-intel__decor-card--2" />
+              <span className="partners-intel__decor-ring partners-intel__decor-ring--1" />
+              <span className="partners-intel__decor-ring partners-intel__decor-ring--2" />
+              <span className="partners-intel__decor-shadow" />
+              <div className="partners-intel__decor-card-wrap partners-intel__decor-card-wrap--1">
+                <div className="partners-intel__decor-card partners-intel__decor-card--1">
+                  <span className="partners-intel__decor-card-icon">
+                    <PersonIcon />
+                  </span>
+                  <span className="partners-intel__decor-card-lines">
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                </div>
+              </div>
+              <div className="partners-intel__decor-card-wrap partners-intel__decor-card-wrap--2">
+                <div className="partners-intel__decor-card partners-intel__decor-card--2">
+                  <span className="partners-intel__decor-card-icon">
+                    <PersonIcon />
+                  </span>
+                  <span className="partners-intel__decor-card-lines">
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                </div>
+              </div>
               <span className="partners-intel__decor-avatar">
-                <PersonIcon />
+                <img src={visibilityOrb} alt="" className="partners-intel__decor-orb" loading="lazy" />
+                <Icon svg={userVisibleSvg} className="partners-intel__decor-icon" />
               </span>
             </div>
           </div>
@@ -600,13 +687,13 @@ export default function PartnersPage() {
                 />
                 <div className="partners-ai-sphere__label">
                   <strong>VTS</strong>
-                  <span>AI Engine</span>
+                  <span>AI ENGINE</span>
                 </div>
               </div>
 
               <div className="partners-ai-chips">
                 {aiEngineChips.map((chip) => (
-                  <span className="partners-chip" key={chip}>
+                  <span className="partners-brand-chip" key={chip}>
                     {chip}
                   </span>
                 ))}
@@ -614,16 +701,20 @@ export default function PartnersPage() {
 
               <div className="partners-ai-flow">
                 <span className="partners-ai-flow__box">Client Business</span>
-                <Icon svg={arrowRightSvg} className="partners-ai-flow__arrow" />
+                <span className="partners-ai-flow__connector" />
                 <span className="partners-ai-flow__box">VTS AI Engine</span>
-                <Icon svg={arrowRightSvg} className="partners-ai-flow__arrow" />
+                <span className="partners-ai-flow__connector" />
                 <span className="partners-ai-flow__box">Customer Interactions</span>
               </div>
             </div>
 
             <div className={intelRight.className} ref={intelRight.ref}>
-              <h2 className="partners-intel__col-title">One AI Engine. Many Client Touchpoints.</h2>
-              <p className="partners-intel__col-desc">
+              <h2 className="partners-intel__col-title partners-intel__col-title--ai">
+                <span>One AI Engine.</span>
+                <span>Many Client</span>
+                <span>Touchpoints.</span>
+              </h2>
+              <p className="partners-intel__col-desc partners-intel__col-desc--ai">
                 AI systems are assembled from the channels and data a client actually uses. Integrations shown are conceptual examples
                 and are confirmed during scoping.
               </p>
@@ -635,11 +726,15 @@ export default function PartnersPage() {
       {/* ---------- Partnership pricing plans ---------- */}
       <section className="partners-plans section">
         <div className="container">
-          <div className={`partners-icon-badge-head ${plansHead.className}`} ref={plansHead.ref}>
-            <span className="partners-icon-badge">
-              <Icon svg={coinSvg} />
-            </span>
-            <h2 className="section-title">Choose the Partnership That Fits Your Business</h2>
+          <div className={`partners-tiers__head ${plansHead.className}`} ref={plansHead.ref}>
+            <div className="partners-tiers__badge">
+              <img src={tiersBadgeGlow} alt="" className="partners-tiers__badge-bg" loading="lazy" />
+              <Icon svg={plansCoinSvg} className="partners-tiers__badge-icon" />
+            </div>
+            <h2 className="section-title partners-plans__title">
+              <span>Choose the Partnership That</span>
+              <span>Fits Your Business</span>
+            </h2>
           </div>
 
           <div className="partners-plans__grid">
@@ -650,18 +745,22 @@ export default function PartnersPage() {
               >
                 {plan.highlighted && <span className="partners-plan-card__recommended">Recommended</span>}
                 <span className="partners-plan-card__badge">
-                  <span className="partners-plan-card__badge-dot" />
+                  <Icon svg={planIcons[plan.icon]} className="partners-plan-card__badge-icon" />
                   {plan.name}
                 </span>
                 <div className="partners-plan-card__price-row">
                   <span className="partners-plan-card__price">{plan.price}</span>
                   <span className="partners-plan-card__price-note">{plan.priceNote}</span>
-                  {plan.secondary && <span className="partners-plan-card__secondary">{plan.secondary}</span>}
+                  {plan.secondary && (
+                    <span className="partners-plan-card__secondary">
+                      <span className="partners-plan-card__secondary-amount">{plan.secondary.split('/')[0]}</span>
+                      <span className="partners-plan-card__secondary-period">/{plan.secondary.split('/')[1]}</span>
+                    </span>
+                  )}
                 </div>
                 <p className="partners-plan-card__desc">{plan.desc}</p>
-                <a href="/contact" className={`btn ${plan.highlighted ? 'btn-primary' : 'btn-outline-gradient'}`}>
+                <a href="/contact" className="partners-plan-card__cta">
                   {plan.cta}
-                  <Icon svg={arrowRightSvg} className="btn-icon" />
                 </a>
                 <div className="partners-plan-card__features">
                   {plan.features.map((f) => (
@@ -721,7 +820,7 @@ export default function PartnersPage() {
       <section className="partners-fulfillment section">
         <div className="container">
           <div className={`section-head ${fulfillmentHead.className}`} ref={fulfillmentHead.ref}>
-            <span className="eyebrow-pill">Service partner rates</span>
+            <span className="eyebrow-pill partners-fulfillment__badge">Service partner rates</span>
             <h2 className="section-title">Partner Fulfillment Pricing</h2>
           </div>
 
@@ -733,14 +832,14 @@ export default function PartnersPage() {
                 <div className="plan-card__footer">
                   {svc.customQuote ? (
                     <>
-                      <span className="plan-card__price gradient-text">Custom Quote</span>
+                      <span className="plan-card__price partners-fulfillment__price">Custom Quote</span>
                       {svc.note && <span className="plan-card__note">{svc.note}</span>}
                     </>
                   ) : (
                     <>
                       <span className="plan-card__label">Starting at</span>
                       <div className="plan-card__price-row">
-                        <span className="plan-card__price gradient-text">{svc.price}</span>
+                        <span className="plan-card__price partners-fulfillment__price">{svc.price}</span>
                         {svc.note && <span className="plan-card__note">{svc.note}</span>}
                       </div>
                     </>
@@ -770,15 +869,19 @@ export default function PartnersPage() {
 
       {/* ---------- Industries served ---------- */}
       <section className="partners-verticals section">
-        <div className="partners-verticals__glow-wrap">
-          <img src={orbSphere} alt="" className="partners-verticals__glow" loading="lazy" />
-        </div>
         <div className="container">
           <div className={`section-head ${verticalsHead.className}`} ref={verticalsHead.ref}>
-            <span className="eyebrow-pill">Industries</span>
-            <h2 className="section-title">Built for Businesses That Want to Sell More Than They Build.</h2>
+            <span className="eyebrow-pill partners-verticals__badge">Industries</span>
+            <h2 className="section-title partners-verticals__title">
+              <span>Built for Businesses</span>
+              <span>That Want to Sell More</span>
+              <span>Than They Build.</span>
+            </h2>
           </div>
-
+          <div className="partners-verticals__glow-wrap">
+          <img src={orbSphere} alt="" className="partners-verticals__glow partners-verticals__glow--blur" loading="lazy" />
+          <img src={orbSphere} alt="" className="partners-verticals__glow" loading="lazy" />
+        </div>
           <div className="partners-verticals__rows">
             <div className="partners-verticals__row">
               {verticalsRow1.map((v) => (

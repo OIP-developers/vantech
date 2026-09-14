@@ -12,7 +12,9 @@ const data = {
   ...createPlaceholderWorkData('OneTap Digital Card'),
   hero: {
     badges: ['SaaS', 'Professional Networking'],
+    badgesMerged: true,
     titleLines: ['OneTap', 'Digital Card'],
+    titleOneLineOnMobile: true,
     description:
       'A digital business card platform where professionals share contact details, links and a booking page through a public card link or QR code.',
     screenshot: heroScreenshot,

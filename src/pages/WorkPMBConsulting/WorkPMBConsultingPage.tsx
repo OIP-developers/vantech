@@ -16,6 +16,7 @@ const data = {
   hero: {
     badges: ['Professional Services'],
     titleLines: ['The PMB', 'Consulting'],
+    titleOneLineOnMobile: true,
     description:
       'A professional digital presence for a consulting practice covering business mentorship, formation, branding and growth services.',
     screenshot: heroScreenshot,

@@ -16,7 +16,9 @@ const data = {
   ...createPlaceholderWorkData('Mighty Oak Legacy'),
   hero: {
     badges: ['Business Platforms', 'Legacy & Estate Planning'],
+    badgesMerged: true,
     titleLines: ['Mighty Oak', 'Legacy'],
+    titleOneLineOnMobile: true,
     description:
       'A digital platform built around financial education, mentorship, leadership development and family legacy guidance.',
     screenshot: heroScreenshot,

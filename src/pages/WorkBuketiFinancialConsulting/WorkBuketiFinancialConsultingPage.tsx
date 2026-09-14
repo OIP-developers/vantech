@@ -16,6 +16,7 @@ const data = {
   ...createPlaceholderWorkData('Buketi Financial & Consulting'),
   hero: {
     badges: ['Business Platforms', 'Financial Services'],
+    badgesMerged: true,
     titleLines: ['Buketi Financial', '& Consulting'],
     description:
       'A financial and consulting practice platform with service positioning, advisory offers and qualified enquiry capture.',

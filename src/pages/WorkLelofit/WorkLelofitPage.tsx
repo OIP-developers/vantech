@@ -20,6 +20,7 @@ const data = {
   ...createPlaceholderWorkData('Lelofit'),
   hero: {
     badges: ['Business Platforms', 'Financial Services'],
+    badgesMerged: true,
     titleLines: ['Lelofit'],
     description:
       'A financial and consulting practice platform with service positioning, advisory offers and qualified enquiry capture.',
