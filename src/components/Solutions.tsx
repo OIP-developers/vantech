@@ -15,6 +15,7 @@ import dataSvg from '../assets/icons/bxs-data.svg?raw';
 import emailSvg from '../assets/icons/griddy-icons-email-filled.svg?raw';
 import messagesSvg from '../assets/icons/boxicons-message-detail-filled.svg?raw';
 import OrbSphere from './OrbSphere';
+import dashboardOrb from '../assets/images/dashboard-mock-orb.png';
 import intelligenceLinesSvg from '../assets/icons/intelligence-lines.svg?raw';
 import dashboardLinesSvg from '../assets/icons/dashboard-lines.svg?raw';
 
@@ -48,7 +49,7 @@ function DashboardMockup() {
       <div className="dashboard-mock__searchbar">Explore Agencies Services</div>
       <div className="dashboard-mock__divider" />
       <div className="dashboard-mock__center">
-        <OrbSphere spin />
+        <OrbSphere spin src={dashboardOrb} />
       </div>
       {pills.map((p) => (
         <div

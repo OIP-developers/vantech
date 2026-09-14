@@ -217,9 +217,11 @@ export default function AIAgentsPage() {
     return () => document.removeEventListener('click', handleClick);
   }, []);
 
-  const hero = useReveal('up');
+  const hero = useReveal('right');
+  const heroGraphic = useReveal('left');
   const disappointHead = useReveal('left');
   const disappointList = useReveal<HTMLUListElement>('right');
+  const solutionGraphic = useReveal('left');
   const solutionCopy = useReveal('right');
   const buildHead = useReveal('up');
   const capabilitiesHead = useReveal('up');
@@ -264,7 +266,7 @@ export default function AIAgentsPage() {
             </div>
           </div>
 
-          <div className="agents-hero__graphic" aria-hidden="true">
+          <div className={`agents-hero__graphic ${heroGraphic.className}`} ref={heroGraphic.ref} aria-hidden="true">
             <div className="hero__orbit-ring hero__orbit-ring--1" />
             <div className="hero__orbit-ring hero__orbit-ring--2" />
             <div className="hero__orbit-ring hero__orbit-ring--3" />
@@ -303,7 +305,7 @@ export default function AIAgentsPage() {
 
       <section className="agents-solution section">
         <div className="container agents-solution__row">
-          <div className="agents-solution__graphic">
+          <div className={`agents-solution__graphic ${solutionGraphic.className}`} ref={solutionGraphic.ref}>
             <img src={solutionIllustration} alt="" loading="lazy" />
           </div>
 
