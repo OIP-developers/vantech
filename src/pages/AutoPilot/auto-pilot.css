@@ -1376,33 +1376,6 @@
   }
 }
 
-@media (max-width: 1180px) {
-  .autopilot-h1-lg {
-    font-size: 54px;
-  }
-  .autopilot-hero__graphic {
-    width: 440px;
-    height: 440px;
-  }
-  .autopilot-hero__photo-wrap {
-    width: 340px;
-    height: 260px;
-    right: -80px;
-    top: -15px;
-  }
-  .autopilot-problem__row {
-    flex-direction: column;
-    gap: 40px;
-  }
-  .autopilot-hub__columns {
-    flex-wrap: wrap;
-  }
-  .autopilot-hub-column {
-    flex: 1 1 40%;
-    min-width: 220px;
-  }
-}
-
 @media (max-width: 980px) {
   .autopilot-hero {
     padding: 130px 0 60px;
@@ -1410,11 +1383,33 @@
   .autopilot-hero .row {
     flex-direction: column;
   }
+  .autopilot-hero__content {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .autopilot-hero__desc {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+  }
+  .autopilot-hero__actions {
+    justify-content: center;
+  }
   .autopilot-hero__title {
     font-size: 42px;
   }
   .autopilot-hero__graphic {
-    display: none;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 40px auto 0;
+  }
+  .autopilot-hero__photo-wrap {
+    width: 600px;
+    height: 390px;
+    right: -234px;
+    top: -100px;
   }
   .autopilot-h2 {
     font-size: 38px;
@@ -1422,11 +1417,42 @@
   .autopilot-h1-lg {
     font-size: 42px;
   }
+  .autopilot-p-lg {
+    margin: 20px auto 0;
+    font-size: 18px;
+    max-width: 90%;
+  }
+  .autopilot-problem {
+    padding-top: 20px;
+  }
+  .autopilot-solution {
+    padding-top: 60px;
+  }
+  .autopilot-included {
+    padding-top: 90px;
+  }
+  .autopilot-capabilities {
+    position: relative;
+    padding-top: 116px;
+  }
+  .autopilot-hub {
+    position: relative;
+    padding-top: 113px;
+  }
   .autopilot-solution__row {
     flex-direction: column;
   }
+  .autopilot-solution__title {
+    font-size: 40px;
+    text-align: center;
+  }
   .autopilot-solution__copy {
     max-width: 100%;
+    text-align: center;
+  }
+  .autopilot-solution__desc {
+    font-size: 20px;
+    margin-top: 30px;
   }
   .autopilot-solution__graphic {
     max-width: 100%;
@@ -1437,17 +1463,46 @@
   .autopilot-why__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .autopilot-process__grid:not(.autopilot-process__grid--2) > :last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 50%;
+  }
+  .autopilot-why__grid > :last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 50%;
+  }
+  .autopilot-why-card {
+    align-items: center;
+    text-align: center;
+  }
+  .autopilot-card.autopilot-included-card {
+    align-items: center;
+    text-align: center;
+  }
+  .autopilot-included-card__head {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+  }
   .autopilot-usecases__grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .autopilot-hub__columns {
-    flex-direction: column;
-    gap: 32px;
+    flex-direction: row;
+    gap: 20px;
   }
   .autopilot-pricing-cta__card {
     justify-content: center;
     text-align: center;
-    padding: 40px 32px;
+    padding: 30px 20px;
+  }
+  .autopilot-pricing-cta__title {
+    font-size: 40px;
+  }
+  .autopilot-pricing-cta__desc {
+    font-size: 16px;
   }
   .autopilot-pricing-cta__copy {
     max-width: 100%;
@@ -1460,6 +1515,109 @@
   .autopilot-integration-connector {
     display: none;
   }
+  .autopilot-problem__row {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .autopilot-problem__copy {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .autopilot-problem__list {
+    max-width: 100%;
+    margin: 4px auto 0;
+  }
+  .autopilot-problem__item {
+    gap: 10px;
+  }
+  .autopilot-process {
+    padding-top: 70px;
+  }
+  .autopilot-hub-column__title {
+    margin: 20px 0 0;
+    font-size: 22px;
+  }
+  .autopilot-section-copy {
+    max-width: 100%;
+  }
+  .autopilot-hub-tag {
+    font-size: 13px;
+    height: auto;
+    padding: 8px 16px;
+  }
+  .autopilot-hub-column__tag-row {
+    gap: 8px;
+  }
+  .autopilot-hub-column__badge {
+    font-size: 16px;
+    width: 38px;
+    height: 38px;
+  }
+  .autopilot-process-card__badge {
+    width: 80px;
+    height: 80px;
+  }
+  .autopilot-process-card__desc {
+    margin: 16px 0 0;
+    font-size: 14px;
+  }
+  .autopilot-process-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 29px;
+    padding: 30px 20px 30px 20px;
+  }
+  .autopilot-process-card__badge {
+    order: -1;
+  }
+  .autopilot-process-card__title {
+    font-size: 20px;
+  }
+  .autopilot-integrations {
+    padding-top: 131px;
+  }
+  .autopilot-integrations__grid {
+    margin-top: 40px;
+    gap: 22px;
+  }
+  .autopilot-integration-pill {
+    gap: 10px;
+    min-width: 0;
+    width: 195px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  .autopilot-why {
+    padding-top: 101px;
+  }
+  .autopilot-why-card__badge {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 40px;
+  }
+  .autopilot-why-card__title {
+    font-size: 20px;
+  }
+  .autopilot-pricing-cta {
+    padding: 60px 0 0px;
+  }
+  .autopilot-pricing-cta__glow {
+    left: 50%;
+    right: auto;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+  .autopilot-pricing-cta .btn {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    font-size: 16px;
+    padding: 15px 17px;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1468,11 +1626,12 @@
   }
   .autopilot-hero__actions {
     flex-direction: column;
+    align-items: center;
     width: 100%;
   }
   .autopilot-hero__actions .btn {
     justify-content: center;
-    width: 100%;
+    width: 60%;
   }
   .autopilot-h2 {
     font-size: 30px;
@@ -1482,6 +1641,7 @@
   }
   .autopilot-problem__item {
     padding: 16px 20px;
+    align-items: start;
   }
   .autopilot-included__grid,
   .autopilot-process__grid,
@@ -1489,11 +1649,20 @@
   .autopilot-usecases__grid {
     grid-template-columns: 1fr;
   }
-  .autopilot-process-card,
   .autopilot-why-card {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+  }
+  .autopilot-process-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding: 30px 10px;
+  }
+  .autopilot-process-card__badge {
+    order: -1;
   }
   .autopilot-integration-pill {
     width: calc(50% - 10px);
@@ -1501,6 +1670,144 @@
   .autopilot-pricing-cta__title {
     font-size: 32px;
   }
+  .autopilot-hub__columns {
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-orange-3) rgba(255, 255, 255, 0.1);
+  }
+  .autopilot-hub__columns::-webkit-scrollbar {
+    height: 6px;
+  }
+  .autopilot-hub__columns::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  .autopilot-hub__columns::-webkit-scrollbar-thumb {
+    background: var(--color-orange-3);
+    border-radius: 4px;
+  }
+  .autopilot-hub-column {
+    flex: 0 0 240px;
+    min-width: 240px;
+  }
+  .autopilot-usecases {
+    padding-top: 85px;
+  }
+  .autopilot-solution__row {
+    gap: 40px;
+  }
+  .autopilot-solution__title {
+    font-size: 35px;
+  }
+  .autopilot-solution__desc {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .autopilot-included__grid {
+    gap: 20px;
+    margin-top: 50px;
+  }
+  .autopilot-capabilities__rows {
+    margin-top: 40px;
+  }
+  .autopilot-capabilities {
+    padding-top: 90px;
+  }
+}
+
+@media (max-width: 599px) {
+  .autopilot-card.autopilot-included-card {
+    align-items: center;
+    text-align: center;
+  }
+  .autopilot-included-card__head {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+  .autopilot-process-card__badge {
+    width: 80px;
+    height: 80px;
+  }
+  .autopilot-hero__title {
+    font-size: 30px;
+  }
+  .autopilot-hero__desc {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  .autopilot-hero {
+    padding: 130px 0 0px;
+  }
+  .autopilot-h1-lg {
+    font-size: 30px;
+  }
+  .autopilot-hero__actions .btn {
+    justify-content: center;
+    width: 70%;
+  }
+  .autopilot-p-lg {
+    margin: 20px auto 0;
+    font-size: 15px;
+    max-width: 100%;
+  }
+  .autopilot-problem__item {
+    padding: 16px 20px;
+    align-items: start;
+    flex-direction: column;
+  }
+  .autopilot-included-card__title {
+    font-size: 22px;
+  }
+  .autopilot-integrations__row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .autopilot-integration-pill {
+    width: 100%;
+  }
+  .autopilot-why-card__title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .autopilot-pricing-cta__desc {
+    margin: 14px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-white);
+  }
+  .autopilot-pricing-cta .btn {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 481px) {
+  .autopilot-h1-lg {
+    font-size: 25px;
+  }
+  .autopilot-solution__title {
+    font-size: 24px;
+  }
+  .autopilot-integrations {
+    padding-top: 80px;
+  }
+  .autopilot-why {
+    padding-top: 81px;
+  }
+  .autopilot-h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 320px) {
 }
 
 /* ---------- Motion (scroll + load animations) ---------- */

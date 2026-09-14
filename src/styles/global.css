@@ -4071,7 +4071,10 @@ a.navbar__cta--mobile {
 
   .faq__row {
     flex-direction: column;
+    align-items: center;
     gap: 40px;
+    text-align: center;
+    justify-content: center;
   }
 
   .faq__intro {
@@ -4088,11 +4091,19 @@ a.navbar__cta--mobile {
 
   .faq__intro-heading {
     font-size: 18px;
+    margin-top: 14px;
+  }
+
+  .faq-item__toggle {
+    flex-shrink: 0;
+    width: 14px;
+    height: 18px;
+    color: var(--color-white);
   }
 
   .faq__intro-desc {
     width: 100%;
-    max-width: 340px;
+    max-width: 100%;
     font-size: 17px;
     line-height: 1.5;
   }
@@ -4112,6 +4123,7 @@ a.navbar__cta--mobile {
 
   .faq-item__answer {
     font-size: 16px;
+    text-align: left;
   }
 
   /* ---------- Testimonials ---------- */
@@ -4184,7 +4196,7 @@ a.navbar__cta--mobile {
 
   .cta__preview {
     width: 100%;
-    max-width: 520px;
+    max-width: none;
     margin: 0 auto;
   }
 
@@ -4194,8 +4206,15 @@ a.navbar__cta--mobile {
 
   /* ---------- Footer ---------- */
 
+  .site-footer {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0 40px;
+  }
+
   .footer-card__top {
     padding: 40px 30px;
+    flex-direction: column;
   }
 
   .footer-card__bottom {
@@ -4377,6 +4396,7 @@ a.navbar__cta--mobile {
   }
   .faq-item__answer {
     font-size: 14px;
+    text-align: left;
   }
   .testimonial-card {
     width: 300px;
@@ -4640,8 +4660,9 @@ a.navbar__cta--mobile {
   /* ---------- Testimonials ---------- */
 
   .testimonial-card {
-    width: 240px;
-    height: 240px;
+    width: calc(100vw - 80px);
+    height: auto;
+    min-height: 240px;
     padding: 18px;
   }
 
