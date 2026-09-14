@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import Icon from './Icon';
 import { useReveal } from '../hooks/useReveal';
-import arrowRightSvg from '../assets/icons/boxicons-arrow-right-stroke.svg?raw';
-
-const tabs = ['AI & Automation', 'Software Development', 'For Agencies'];
 
 const plans = [
   { category: 'AI', title: 'AI Receptionist', price: '$1,500', note: 'Ongoing from $249/mo' },
@@ -74,14 +70,6 @@ export default function Pricing() {
           <h2 className="section-title">Simple Pricing. Serious Software.</h2>
         </div>
 
-        <div className="pricing__tabs">
-          {tabs.map((tab, i) => (
-            <button key={tab} className={`pricing__tab${i === 0 ? ' is-active' : ''}`}>
-              {tab}
-            </button>
-          ))}
-        </div>
-
         <div className="pricing__grid">
           {plans.map((plan, i) => (
             <PlanCard
@@ -98,13 +86,6 @@ export default function Pricing() {
           Starting prices are planning benchmarks. Final pricing depends on scope,
           architecture, integrations, timeline and technical requirements.
         </p>
-
-        <div className="pricing__cta">
-          <a href="#contact" className="btn btn-outline-gradient">
-            Get my project estimate
-            <Icon svg={arrowRightSvg} className="btn-icon" />
-          </a>
-        </div>
       </div>
     </section>
   );

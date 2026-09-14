@@ -2,6 +2,7 @@ import Icon from './Icon';
 import { useReveal } from '../hooks/useReveal';
 import arrowRightSvg from '../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import orbGlow from '../assets/images/orb-sphere.webp';
+import orbGlowSoft from '../assets/images/industries-glow-soft.png';
 import healthcareSvg from '../assets/icons/healthcare.svg?raw';
 import dentalSvg from '../assets/icons/dental.svg?raw';
 import legalSvg from '../assets/icons/legal.svg?raw';
@@ -48,7 +49,7 @@ export default function Industries() {
   return (
     <section className="industries section">
       <div className="industries__glow-wrap">
-        <img src={orbGlow} alt="" className="industries__glow industries__glow--soft" />
+        <img src={orbGlowSoft} alt="" className="industries__glow industries__glow--soft" />
         <div className="industries__glow-spin">
           <img src={orbGlow} alt="" className="industries__glow industries__glow--sharp" />
         </div>
