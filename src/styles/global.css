@@ -195,7 +195,18 @@ h1, h2, h3, h4, p {
   line-height: 1.2;
   color: var(--color-white);
   text-align: center;
-  width: 740px;
+  width: 770px;
+}
+
+.section-title--layers,
+.section-title--work {
+  width: auto;
+  white-space: nowrap;
+}
+
+.section-title--principles,
+.section-title--risk {
+  width: 580px;
 }
 
 .section-subtitle {
@@ -2586,7 +2597,15 @@ a.navbar__cta--mobile {
   }
   .section-title {
     font-size: 2.3958vw;
-    width: 38.5417vw;
+    width: 40.1042vw;
+  }
+  .section-title--layers,
+  .section-title--work {
+    width: auto;
+  }
+  .section-title--principles,
+  .section-title--risk {
+    width: 30.2083vw;
   }
   .section-subtitle {
     font-size: 0.833vw;

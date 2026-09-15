@@ -221,7 +221,7 @@ export default function AboutPage() {
   const layersHead = useReveal('up');
   const layersGrid = useReveal('up');
   const principlesHead = useReveal('up');
-  const principlesDiagram = useReveal('up');
+  const archCenter = useReveal('up');
   const principlesGrid = useReveal('up');
   const aiCopy = useReveal('left');
   const aiList = useReveal<HTMLUListElement>('right');
@@ -263,15 +263,15 @@ export default function AboutPage() {
       <section className="about-process section">
         <div className="container maix-new-widthadd">
           <div className={`section-head ${processHead.className}`} ref={processHead.ref}>
-            <h2 className="section-title">
+            <h2 className="section-title section-title--process">
               A delivery model designed around decisions, not deliverables.
             </h2>
           </div>
 
           <div className={`about-process__list ${processGrid.className}`} ref={processGrid.ref}>
-            {processSteps.map((step, i) => (
+            {processSteps.map((step) => (
               <div
-                className={`about-process-item${i === 0 ? ' about-process-item--active' : ''}`}
+                className="about-process-item"
                 key={step.number}
               >
                 <div className="about-process-item__lead">
@@ -307,7 +307,7 @@ export default function AboutPage() {
         <div className="container">
           <div className={`section-head ${layersHead.className}`} ref={layersHead.ref}>
             <img src={layersBadge} alt="" className="about-tech__badge" loading="lazy" />
-            <h2 className="section-title">What we build, layer by layer</h2>
+            <h2 className="section-title section-title--layers">What we build, layer by layer</h2>
           </div>
 
           <div className={`about-layers-table ${layersGrid.className}`} ref={layersGrid.ref}>
@@ -331,14 +331,14 @@ export default function AboutPage() {
         <div className="container">
           <div className={`section-head ${principlesHead.className}`} ref={principlesHead.ref}>
             <span className="eyebrow-pill">Engineering principles</span>
-            <h2 className="section-title">
+            <h2 className="section-title section-title--principles">
               The decisions we make the same way every time
             </h2>
           </div>
 
           <div
-            className={`about-arch-diagram ${principlesDiagram.className}`}
-            ref={principlesDiagram.ref}
+            className={`about-arch-diagram ${archCenter.className}`}
+            ref={archCenter.ref}
           >
             <div className="about-arch-diagram__panel about-arch-diagram__panel--left">
               <div className="about-arch-diagram__row about-arch-diagram__row--end">
@@ -404,11 +404,13 @@ export default function AboutPage() {
               A convincing demo takes an afternoon. A production AI system that
               answers accurately, refuses to invent facts, respects permissions,
               escalates cleanly and can be audited afterwards is an engineering
-              project with a data model behind it. That is the distinction we work
-              to. Our AI systems are grounded in the client's own content and data,
-              constrained to defined actions, logged end to end and monitored after
-              launch — because an AI system that cannot be inspected cannot be
-              trusted with customers.
+              project with a data model behind it.
+            </p>
+            <p className="about-desc">
+              That is the distinction we work to. Our AI systems are grounded in
+              the client's own content and data, constrained to defined actions,
+              logged end to end and monitored after launch — because an AI system
+              that cannot be inspected cannot be trusted with customers.
             </p>
           </div>
 
@@ -427,7 +429,7 @@ export default function AboutPage() {
         <div className="container">
           <div className={`section-head ${riskHead.className}`} ref={riskHead.ref}>
             <span className="eyebrow-pill">Standards and Governance</span>
-            <h2 className="section-title">
+            <h2 className="section-title section-title--risk">
               How we handle data, access and accountability
             </h2>
           </div>
@@ -457,7 +459,7 @@ export default function AboutPage() {
         <div className="container">
           <div className={`section-head ${workHead.className}`} ref={workHead.ref}>
             <img src={Threebusinesses} alt="" className="about-tech__badge" loading="lazy" />
-            <h2 className="section-title">Three ways businesses work with us</h2>
+            <h2 className="section-title section-title--work">Three ways businesses work with us</h2>
           </div>
 
           <div className={`about-work__grid ${workGrid.className}`} ref={workGrid.ref}>
