@@ -216,13 +216,19 @@ export default function AboutPage() {
 
   const hero = useReveal('up');
   const processHead = useReveal('up');
+  const processGrid = useReveal('up');
   const techReveal = useReveal('up');
   const layersHead = useReveal('up');
+  const layersGrid = useReveal('up');
   const principlesHead = useReveal('up');
+  const principlesDiagram = useReveal('up');
+  const principlesGrid = useReveal('up');
   const aiCopy = useReveal('left');
   const aiList = useReveal<HTMLUListElement>('right');
   const riskHead = useReveal('up');
+  const riskGrid = useReveal('up');
   const workHead = useReveal('up');
+  const workGrid = useReveal('up');
 
   return (
     <main className="about-page about-banner">
@@ -262,7 +268,7 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="about-process__list">
+          <div className={`about-process__list ${processGrid.className}`} ref={processGrid.ref}>
             {processSteps.map((step, i) => (
               <div
                 className={`about-process-item${i === 0 ? ' about-process-item--active' : ''}`}
@@ -304,7 +310,7 @@ export default function AboutPage() {
             <h2 className="section-title">What we build, layer by layer</h2>
           </div>
 
-          <div className="about-layers-table">
+          <div className={`about-layers-table ${layersGrid.className}`} ref={layersGrid.ref}>
             {layers.map((layer) => (
               <div className="about-layers-table__row" key={layer.number}>
                 <h3 className="about-layers-table__title">{layer.title}</h3>
@@ -330,7 +336,10 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="about-arch-diagram">
+          <div
+            className={`about-arch-diagram ${principlesDiagram.className}`}
+            ref={principlesDiagram.ref}
+          >
             <div className="about-arch-diagram__panel about-arch-diagram__panel--left">
               <div className="about-arch-diagram__row about-arch-diagram__row--end">
                 <span className="about-arch-diagram__pill about-arch-diagram__pill--orange">Business goal</span>
@@ -371,7 +380,10 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="about-principles__grid">
+          <div
+            className={`about-principles__grid ${principlesGrid.className}`}
+            ref={principlesGrid.ref}
+          >
             {principles.map((p) => (
               <div className="about-principle-card" key={p.title}>
                 <h3 className="about-principle-card__title">{p.title}</h3>
@@ -420,7 +432,7 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="about-risk__grid">
+          <div className={`about-risk__grid ${riskGrid.className}`} ref={riskGrid.ref}>
             {riskCards.map((card) => (
               <div className="about-risk-card" key={card.title}>
                 <img src={card.icon} alt="" className="about-risk-card__icon" loading="lazy" />
@@ -448,7 +460,7 @@ export default function AboutPage() {
             <h2 className="section-title">Three ways businesses work with us</h2>
           </div>
 
-          <div className="about-work__grid">
+          <div className={`about-work__grid ${workGrid.className}`} ref={workGrid.ref}>
             {workCards.map((card) => (
               <div className="about-work-card" key={card.number}>
                 {/* <Icon svg={workBadgeSvg} className="about-work-card__badge" /> */}

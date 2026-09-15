@@ -164,3 +164,40 @@
   }
 }
 
+/* Scoped override — only the shared FAQ component as it appears on this
+   page should get this spacing, not every other page that renders it. */
+.contact-page .faq {
+  padding: 120px 0 0;
+}
+
+/* ---------- Motion (scroll + load animations) ---------- */
+/* Same scoped reveal-easing polish used on the services pages — also
+   upgrades the shared FAQ/Testimonials components' own .reveal elements
+   when they render inside this page. */
+.contact-page .reveal {
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-page .reveal--left { transform: translateX(-70px) scale(0.97); }
+.contact-page .reveal--right { transform: translateX(70px) scale(0.97); }
+.contact-page .reveal--up { transform: translateY(40px) scale(0.97); }
+
+.contact-page .reveal.is-visible {
+  transform: translate(0, 0) scale(1);
+}
+
+@keyframes contact-fade-scale-in {
+  from { opacity: 0; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.contact-hero__bg {
+  animation: contact-fade-scale-in 1.1s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-hero__bg {
+    animation: none;
+  }
+}
+

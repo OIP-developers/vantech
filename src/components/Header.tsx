@@ -26,9 +26,8 @@ const navLinks = [
   { label: 'Partner Program', href: '/partners' },
   {
     label: 'Work',
-    href: '#work',
+    href: '/work',
     dropdown: [
-      { label: 'Work Main Page', href: '/work' },
       { label: 'Power Mindset Breakthrough', href: '/power-mindset-breakthrough' },
       { label: 'Van Travel Business', href: '/van-travel-business' },
       { label: 'Van Travel Business Two', href: '/van-travel-business-two' },

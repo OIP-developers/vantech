@@ -55,10 +55,10 @@
 
 .about-hero {
   position: relative;
-  padding: 249px 0 448px;
+  padding: 220px 0 330px;
 }
 body .about-banner{
-  background-image: url(../../assets/images/about/about-page-bg.webp);
+  background-image: url(../../assets/images/about/about-page-bg-new.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1134,7 +1134,7 @@ body .about-banner{
 @media (min-width: 981px) {
 
   .about-hero {
-    padding: 12.9688vw 0 23.3333vw;
+    padding: 11.4583vw 0 17.1875vw;
   }
 
   .about-hero__banner {
@@ -1239,7 +1239,7 @@ body .about-banner{
     padding: 1.4583vw 1.6667vw;
     border-radius: 0.7813vw;
     backdrop-filter: blur(1.3021vw);
-    border: 0.0521vw solid transparent;
+    border-width: 0.0521vw;
   }
 
   .about-process-item::before {
@@ -1999,5 +1999,93 @@ body .about-banner{
 @media (max-width: 359px) {
   .about-hero__title {
     font-size: 15px;
+  }
+}
+
+/* ---------- Motion (scroll + load animations) ---------- */
+
+/* Scoped reveal easing polish (matching the services pages) */
+.about-page .reveal {
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-page .reveal--left { transform: translateX(-70px) scale(0.97); }
+.about-page .reveal--right { transform: translateX(70px) scale(0.97); }
+.about-page .reveal--up { transform: translateY(40px) scale(0.97); }
+
+.about-page .reveal.is-visible {
+  transform: translate(0, 0) scale(1);
+}
+
+@keyframes about-fade-scale-in {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.about-hero__banner-img {
+  animation: about-fade-scale-in 1.1s ease both;
+}
+
+/* Card / row stagger reveals — each grid/list wrapper toggles .is-visible
+   via useReveal, then each child fades and slides up in sequence. */
+.about-process-item,
+.about-layers-table__row,
+.about-principle-card,
+.about-risk-card,
+.about-work-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-process__list.is-visible .about-process-item,
+.about-layers-table.is-visible .about-layers-table__row,
+.about-principles__grid.is-visible .about-principle-card,
+.about-risk__grid.is-visible .about-risk-card,
+.about-work__grid.is-visible .about-work-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-process__list.is-visible .about-process-item:nth-child(1) { transition-delay: 0.07s; }
+.about-process__list.is-visible .about-process-item:nth-child(2) { transition-delay: 0.14s; }
+.about-process__list.is-visible .about-process-item:nth-child(3) { transition-delay: 0.21s; }
+.about-process__list.is-visible .about-process-item:nth-child(4) { transition-delay: 0.28s; }
+.about-process__list.is-visible .about-process-item:nth-child(5) { transition-delay: 0.35s; }
+
+.about-layers-table.is-visible .about-layers-table__row:nth-child(1) { transition-delay: 0.07s; }
+.about-layers-table.is-visible .about-layers-table__row:nth-child(2) { transition-delay: 0.14s; }
+.about-layers-table.is-visible .about-layers-table__row:nth-child(3) { transition-delay: 0.21s; }
+.about-layers-table.is-visible .about-layers-table__row:nth-child(4) { transition-delay: 0.28s; }
+.about-layers-table.is-visible .about-layers-table__row:nth-child(5) { transition-delay: 0.35s; }
+
+.about-principles__grid.is-visible .about-principle-card:nth-child(1) { transition-delay: 0.07s; }
+.about-principles__grid.is-visible .about-principle-card:nth-child(2) { transition-delay: 0.14s; }
+.about-principles__grid.is-visible .about-principle-card:nth-child(3) { transition-delay: 0.21s; }
+.about-principles__grid.is-visible .about-principle-card:nth-child(4) { transition-delay: 0.28s; }
+.about-principles__grid.is-visible .about-principle-card:nth-child(5) { transition-delay: 0.35s; }
+.about-principles__grid.is-visible .about-principle-card:nth-child(6) { transition-delay: 0.42s; }
+
+.about-risk__grid.is-visible .about-risk-card:nth-child(1) { transition-delay: 0.07s; }
+.about-risk__grid.is-visible .about-risk-card:nth-child(2) { transition-delay: 0.14s; }
+.about-risk__grid.is-visible .about-risk-card:nth-child(3) { transition-delay: 0.21s; }
+.about-risk__grid.is-visible .about-risk-card:nth-child(4) { transition-delay: 0.28s; }
+.about-risk__grid.is-visible .about-risk-card:nth-child(5) { transition-delay: 0.35s; }
+
+.about-work__grid.is-visible .about-work-card:nth-child(1) { transition-delay: 0.07s; }
+.about-work__grid.is-visible .about-work-card:nth-child(2) { transition-delay: 0.14s; }
+.about-work__grid.is-visible .about-work-card:nth-child(3) { transition-delay: 0.21s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero__banner-img,
+  .about-process-item,
+  .about-layers-table__row,
+  .about-principle-card,
+  .about-risk-card,
+  .about-work-card {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
