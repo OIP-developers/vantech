@@ -16,9 +16,11 @@ import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw'
 import databaseSvg from '../../assets/icons/bi-database-fill.svg?raw';
 import webhookSvg from '../../assets/icons/carbon-webhook.svg?raw';
 
-import heroRocket from '../../assets/images/mvp-development/figma/hero-orbit/rocket-with-ring.png';
-import heroOrbitBadgeShield from '../../assets/images/mvp-development/figma/hero-orbit/icon-shield-cropped.png';
-import heroOrbitBadgeCheck from '../../assets/images/mvp-development/figma/hero-orbit/icon-checkmark-cropped.png';
+import heroStar from '../../assets/images/mvp-development/figma/hero-orbit/rocket-single.png';
+import rocketBgLines from '../../assets/images/mvp-development/figma/hero-orbit/rocket-bg-lines.png';
+import orbitEllipse from '../../assets/images/mvp-development/figma/hero-orbit/orbit-ellipse.svg';
+import orbitBadgeShield from '../../assets/images/mvp-development/figma/hero-orbit/movicon1.png';
+import orbitBadgeCheck from '../../assets/images/mvp-development/figma/hero-orbit/movicon2.png';
 import solutionGlow from '../../assets/images/mvp-development/figma/solution-glow.png';
 import pricingGlowOrb from '../../assets/images/mvp-development/figma/pricing-glow-orb.png';
 
@@ -40,17 +42,15 @@ import whyIconScoped from '../../assets/images/mvp-development/figma/why-icon-sc
 import whyIconArchitected from '../../assets/images/mvp-development/figma/why-icon-architected.png';
 import whyIconTeam from '../../assets/images/mvp-development/figma/why-icon-team.png';
 
-const ORBIT_DURATION_S = 34;
-const ORBIT_DURATION = `${ORBIT_DURATION_S}s`;
+const ORBIT_DURATION = '42s';
 
-// Both badges ride the same hand-traced ellipse path (mvp-badge-orbit,
-// fit to the ring artwork's own curve) and are just started at a different
-// point in that shared cycle via a negative animation-delay — same
-// technique as AI Automation's orbitBadges.
+// Same hand-traced ellipse path (mvp-badge-orbit) as AI Automation, just 2
+// badges instead of 4 — each just started at a different point in the
+// shared 42s cycle via animation-delay.
 const orbitBadges = [
-  { img: heroOrbitBadgeShield, size: 76 },
-  { img: heroOrbitBadgeCheck, size: 76 },
-].map((b, i, arr) => ({ ...b, delay: -((i / arr.length) * ORBIT_DURATION_S) }));
+  { img: orbitBadgeShield, size: 68 },
+  { img: orbitBadgeCheck, size: 68 },
+];
 
 const problems = [
   'Scope grows faster than the product can be built.',
@@ -271,30 +271,36 @@ export default function MVPDevelopmentPage() {
             </div>
 
             <div className="mvp-hero__graphic" aria-hidden="true">
-              <img src={heroRocket} alt="" className="mvp-hero__rocket" loading="eager" />
-              {orbitBadges.map((item, i) => (
-                <div
-                  key={i}
-                  className="mvp-orbit-anchor"
-                  style={
-                    {
-                      animationDuration: ORBIT_DURATION,
-                      animationDelay: `${item.delay}s, ${item.delay}s`,
-                    } as React.CSSProperties
-                  }
-                >
-                  <div className="mvp-orbit-radius">
-                    <div className="mvp-orbit-counter">
-                      <img
-                        src={item.img}
-                        alt=""
-                        className="mvp-orbit-badge"
-                        style={{ '--badge-size': item.size } as React.CSSProperties}
-                      />
+              <div className="mvp-orbit">
+                <img src={rocketBgLines} alt="" className="mvp-orbit__bg-lines" />
+                <img src={orbitEllipse} alt="" className="mvp-orbit__ellipse" />
+                <img src={heroStar} alt="" className="mvp-orbit__star-glow" />
+                <img src={heroStar} alt="" className="mvp-orbit__star" />
+
+                {orbitBadges.map((item, i) => (
+                  <div
+                    key={i}
+                    className="mvp-orbit__anchor"
+                    style={
+                      {
+                        animationDuration: ORBIT_DURATION,
+                        animationDelay: `-${(i / orbitBadges.length) * 42}s`,
+                      } as React.CSSProperties
+                    }
+                  >
+                    <div className="mvp-orbit__radius">
+                      <div className="mvp-orbit__counter">
+                        <img
+                          src={item.img}
+                          alt=""
+                          className="mvp-orbit__badge"
+                          style={{ '--badge-size': item.size } as React.CSSProperties}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

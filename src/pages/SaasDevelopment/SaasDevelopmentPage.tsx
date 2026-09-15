@@ -19,7 +19,8 @@ import toolsSvg from '../../assets/icons/bi-tools.svg?raw';
 import webhooksSvg from '../../assets/icons/ph-webhooks-logo-fill.svg?raw';
 
 import heroMockup from '../../assets/images/saas-development/figma/hero-dashboard-mockup.png';
-import solutionIllustration from '../../assets/images/saas-development/figma/solution-illustration.png';
+import solutionIllustration from '../../assets/images/saas-development/figma/solution-illustration-new.png';
+import solutionBgLines from '../../assets/images/saas-development/figma/solution-bg-lines.png';
 
 import buildIconMultitenant from '../../assets/images/saas-development/figma/build-icon-multitenant.png';
 import buildIconIdentity from '../../assets/images/saas-development/figma/build-icon-identity.png';
@@ -221,6 +222,7 @@ export default function SaasDevelopmentPage() {
   const disappointHead = useReveal('left');
   const disappointList = useReveal<HTMLUListElement>('right');
   const solutionCopy = useReveal('right');
+  const solutionGraphic = useReveal('left');
   const buildHead = useReveal('up');
   const capabilitiesHead = useReveal('up');
   const usecasesHead = useReveal('up');
@@ -296,8 +298,12 @@ export default function SaasDevelopmentPage() {
 
       <section className="saas-solution section">
         <div className="container saas-solution__row">
-          <div className="saas-solution__graphic">
-            <img src={solutionIllustration} alt="" loading="lazy" />
+          <div
+            className={`saas-solution__graphic ${solutionGraphic.className}`}
+            ref={solutionGraphic.ref}
+          >
+            <img src={solutionBgLines} alt="" className="saas-solution__graphic-bg" />
+            <img src={solutionIllustration} alt="" className="saas-solution__illustration" loading="lazy" />
           </div>
 
           <div className={`saas-solution__copy ${solutionCopy.className}`} ref={solutionCopy.ref}>

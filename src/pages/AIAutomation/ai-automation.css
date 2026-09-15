@@ -7,10 +7,32 @@
   position: relative;
   overflow-x: clip;
   padding-top: 91px;
+}
+
+/* Full-page background texture, faded out over its last 10% so it blends
+   smoothly into the CTA/footer instead of cutting off with a hard edge
+   (same fix as the AI Agents page: stretched via top/bottom rather than a
+   fixed height, so it always matches this page's real content height). */
+.ai-automation-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url(../../assets/images/ai-automation/figma/services-body-bg.webp);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ai-automation-page > * {
+  position: relative;
+  z-index: 1;
 }
 /* ---------- Hero ---------- */
 

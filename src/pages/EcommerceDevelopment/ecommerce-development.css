@@ -5,10 +5,30 @@
 .ecommerce-page {
   position: relative;
   overflow-x: clip;
+}
+
+/* Full-page background texture, faded out over its last 10% so it blends
+   smoothly into the CTA/footer instead of cutting off with a hard edge. */
+.ecommerce-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url(../../assets/images/ecommerce-development/figma/services-body-bg.webp);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ecommerce-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ---------- Shared heading styles ---------- */
@@ -233,6 +253,7 @@
 }
 
 .ecommerce-leak__item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -240,7 +261,20 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(25px);
-  border: 1px solid var(--color-orange-3);
+  border: 1px solid transparent;
+}
+
+.ecommerce-leak__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: var(--gradient-border);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .ecommerce-leak__item-number {
@@ -991,7 +1025,12 @@
     padding: 1.0417vw 1.5625vw;
     border-radius: 0.5208vw;
     backdrop-filter: blur(1.3021vw);
-    border: 0.0521vw solid var(--color-orange-3);
+    border: 0.0521vw solid transparent;
+  }
+
+  .ecommerce-leak__item::before {
+    padding: 0.0521vw;
+    border-radius: 0.5208vw;
   }
 
   .ecommerce-leak__item-number {
@@ -1803,6 +1842,106 @@
 .ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(7) { transition-delay: 0.49s; }
 .ecommerce-integrations__grid.is-visible .ecommerce-integration-pill:nth-child(8) { transition-delay: 0.56s; }
 
+@property --ecommerce-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.ecommerce-leak__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: conic-gradient(
+    from var(--ecommerce-border-angle),
+    var(--color-orange) 0%,
+    var(--color-orange-3) 25%,
+    transparent 50%,
+    var(--color-orange-3) 75%,
+    var(--color-orange) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: ecommerce-border-travel 4s linear infinite;
+}
+
+@keyframes ecommerce-border-travel {
+  to { --ecommerce-border-angle: 360deg; }
+}
+
+/* Integration connector: converging sparks + subtle burst */
+.ecommerce-integration-connector__diamond-inner {
+  animation: ecommerce-connector-burst 2.6s ease-in-out infinite;
+}
+
+.ecommerce-integration-connector::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  animation: ecommerce-connector-travel-left 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+.ecommerce-integration-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  animation: ecommerce-connector-travel-right 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+@keyframes ecommerce-connector-travel-left {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes ecommerce-connector-travel-right {
+  0% { left: 100%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes ecommerce-connector-burst {
+  0%, 40% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+  48% { transform: translate(-50%, -50%) rotate(45deg) scale(1.5); box-shadow: 0 0 6px 2px rgba(255, 150, 50, 0.5); }
+  64% { transform: translate(-50%, -50%) rotate(45deg) scale(0.85); box-shadow: none; }
+  100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+}
+
+/* Gentle reveal-in + float for the solution mockup graphic */
+@keyframes ecommerce-mockup-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.ecommerce-solution__graphic.is-visible .ecommerce-solution__mockup {
+  animation: ecommerce-mockup-float 3s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
 @keyframes ecommerce-icon-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
@@ -1844,11 +1983,37 @@
 .ecommerce-integration-pill,
 .ecommerce-build-card__badge,
 .ecommerce-process2-card__badge,
-.ecommerce-why-card__badge {
+.ecommerce-why-card__badge,
+.ecommerce-solution__mockup {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
+  .ecommerce-leak__item::after {
+    animation: none;
+    opacity: 0;
+  }
+  .ecommerce-integration-connector__diamond-inner {
+    animation: none;
+  }
+  .ecommerce-integration-connector::before,
+  .ecommerce-integration-connector::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Scoped reveal easing polish (matching the other service pages) */
+.ecommerce-page .reveal {
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ecommerce-page .reveal--left { transform: translateX(-70px) scale(0.97); }
+.ecommerce-page .reveal--right { transform: translateX(70px) scale(0.97); }
+.ecommerce-page .reveal--up { transform: translateY(40px) scale(0.97); }
+
+.ecommerce-page .reveal.is-visible {
+  transform: translate(0, 0) scale(1);
 }
 

@@ -227,6 +227,7 @@ export default function EcommerceDevelopmentPage() {
   const leakHead = useReveal('left');
   const leakList = useReveal<HTMLUListElement>('right');
   const solutionCopy = useReveal('right');
+  const solutionGraphic = useReveal('left');
   const buildHead = useReveal('up');
   const capabilitiesHead = useReveal('up');
   const usecasesHead = useReveal('up');
@@ -303,7 +304,10 @@ export default function EcommerceDevelopmentPage() {
 
       <section className="ecommerce-solution section">
         <div className="container ecommerce-solution__row">
-          <div className="ecommerce-solution__graphic">
+          <div
+            className={`ecommerce-solution__graphic ${solutionGraphic.className}`}
+            ref={solutionGraphic.ref}
+          >
             <img src={solutionGlow} alt="" className="ecommerce-solution__mockup" loading="lazy" />
           </div>
 

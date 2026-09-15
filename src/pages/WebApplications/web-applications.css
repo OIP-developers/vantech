@@ -5,10 +5,30 @@
 .webapps-page {
   position: relative;
   overflow-x: clip;
+}
+
+/* Full-page background texture, faded out over its last 10% so it blends
+   smoothly into the CTA/footer instead of cutting off with a hard edge. */
+.webapps-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url(../../assets/images/web-applications/figma/services-body-bg.webp);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webapps-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ---------- Shared heading styles ---------- */

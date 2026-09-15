@@ -17,7 +17,9 @@ import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw'
 import databaseSvg from '../../assets/icons/ant-design-database-filled.svg?raw';
 import restApiSvg from '../../assets/icons/dashicons-rest-api.svg?raw';
 
-import heroAppMockup from '../../assets/images/mobile-application/figma/hero-app-mockup.png';
+import heroMockupGlow from '../../assets/images/mobile-application/figma/hero-parts/glow-badges.png';
+import heroMockupPhone from '../../assets/images/mobile-application/figma/hero-parts/phone.png';
+import heroMockupIcon from '../../assets/images/mobile-application/figma/hero-parts/icon-card.png';
 import solutionIllustration from '../../assets/images/mobile-application/figma/solution-illustration.png';
 
 import buildIconCustomer from '../../assets/images/mobile-application/figma/build-icon-customer.png';
@@ -262,7 +264,22 @@ export default function MobileApplicationPage() {
             </div>
 
             <div className="mobileapp-hero__graphic" aria-hidden="true">
-              <img src={heroAppMockup} alt="" className="mobileapp-hero__mockup" loading="eager" />
+              <img
+                src={heroMockupGlow}
+                alt=""
+                className="mobileapp-hero__mockup-part mobileapp-hero__mockup-part--glow"
+              />
+              <img
+                src={heroMockupPhone}
+                alt=""
+                className="mobileapp-hero__mockup-part mobileapp-hero__mockup-part--phone"
+                loading="eager"
+              />
+              <img
+                src={heroMockupIcon}
+                alt=""
+                className="mobileapp-hero__mockup-part mobileapp-hero__mockup-part--icon"
+              />
             </div>
           </div>
         </div>

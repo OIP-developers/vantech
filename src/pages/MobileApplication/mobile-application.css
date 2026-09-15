@@ -5,10 +5,30 @@
 .mobileapp-page {
   position: relative;
   overflow-x: clip;
+}
+
+/* Full-page background texture, faded out over its last 10% so it blends
+   smoothly into the CTA/footer instead of cutting off with a hard edge. */
+.mobileapp-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url(../../assets/images/mobile-application/figma/services-body-bg.webp);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mobileapp-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ---------- Shared heading styles ---------- */
@@ -194,12 +214,35 @@
   flex-shrink: 0;
   width: 690px;
   height: auto;
+  aspect-ratio: 1587 / 1620;
   pointer-events: none;
 }
 
-.mobileapp-hero__mockup {
-  width: 100%;
+/* Same flat mockup as before, now three pre-cropped parts (glow + badges,
+   phone, floating icon card) positioned back to the exact spot they sat at
+   in that image — matched pixel-for-pixel by overlaying each part on the
+   original composite — so each piece can animate in on its own. */
+.mobileapp-hero__mockup-part {
+  position: absolute;
   height: auto;
+}
+
+.mobileapp-hero__mockup-part--glow {
+  left: 11.468%;
+  top: 5%;
+  width: 81.096%;
+}
+
+.mobileapp-hero__mockup-part--phone {
+  left: 35.224%;
+  top: 14.383%;
+  width: 49.905%;
+}
+
+.mobileapp-hero__mockup-part--icon {
+  left: 70.51%;
+  top: 54.321%;
+  width: 19.66%;
 }
 
 /* ---------- Problem / Solution ---------- */
@@ -269,7 +312,7 @@
 }
 
 .mobileapp-solution {
-  padding-top: 200px;
+  padding-top: 160px;
 }
 
 .mobileapp-solution__row {
@@ -315,7 +358,7 @@
 
 .mobileapp-build {
   position: relative;
-  padding-top: 150px;
+  padding-top: 90px;
 }
 
 
@@ -1019,7 +1062,7 @@
   }
 
   .mobileapp-solution {
-    padding-top: 10.4167vw;
+    padding-top: 8.3333vw;
   }
 
   .mobileapp-solution__row {
@@ -1045,7 +1088,7 @@
   }
 
   .mobileapp-build {
-    padding-top: 7.8125vw;
+    padding-top: 4.6875vw;
   }
 
   .mobileapp-build__grid {
@@ -1716,6 +1759,47 @@
   animation: mobileapp-fade-scale-in 0.9s ease both;
 }
 
+/* Each hero mockup piece slides in from its own side on load, staggered,
+   so it reads clearly as pieces arriving rather than one flat fade. The
+   glow/badges layer is left static — it's background, not a UI element. */
+@keyframes mobileapp-mockup-in-up {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes mobileapp-mockup-in-right {
+  from { opacity: 0; transform: translate(30px, 20px); }
+  to { opacity: 1; transform: translate(0, 0); }
+}
+
+/* Continuous idle float once each part has arrived — listed AFTER the
+   entrance in the animation shorthand (so it takes over once the one-shot
+   entrance's fill:both would otherwise freeze the transform), each with its
+   own animation-delay equal to its entrance's own delay + duration so it
+   only starts once that part has actually settled in place. */
+@keyframes mobileapp-mockup-float-phone {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes mobileapp-mockup-float-icon {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, -140px); }
+}
+
+
+.mobileapp-hero__mockup-part--phone {
+  animation: mobileapp-mockup-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both,
+    mobileapp-mockup-float-phone 6s ease-in-out infinite;
+  animation-delay: 0.1s, 0.9s;
+}
+
+.mobileapp-hero__mockup-part--icon {
+  animation: mobileapp-mockup-in-right 0.8s cubic-bezier(0.16, 1, 0.3, 1) both,
+    mobileapp-mockup-float-icon 9s ease-in-out infinite;
+  animation-delay: 0.55s, 1.35s;
+}
+
 .mobileapp-build-card,
 .mobileapp-usecase-card,
 .mobileapp-why-card,
@@ -1958,7 +2042,8 @@
 .mobileapp-build-card__badge,
 .mobileapp-process2-card__badge,
 .mobileapp-why-card__badge,
-.mobileapp-solution__graphic img {
+.mobileapp-solution__graphic img,
+.mobileapp-hero__mockup-part {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;

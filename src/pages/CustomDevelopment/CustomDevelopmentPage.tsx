@@ -227,6 +227,7 @@ export default function CustomDevelopmentPage() {
   const disappointHead = useReveal('left');
   const disappointList = useReveal<HTMLUListElement>('right');
   const solutionCopy = useReveal('right');
+  const solutionGraphic = useReveal('left');
   const buildHead = useReveal('up');
   const capabilitiesHead = useReveal('up');
   const usecasesHead = useReveal('up');
@@ -303,7 +304,10 @@ export default function CustomDevelopmentPage() {
 
       <section className="customdev-solution section">
         <div className="container customdev-solution__row">
-          <div className="customdev-solution__graphic">
+          <div
+            className={`customdev-solution__graphic ${solutionGraphic.className}`}
+            ref={solutionGraphic.ref}
+          >
             <img src={solutionIllustration} alt="" loading="lazy" />
           </div>
 

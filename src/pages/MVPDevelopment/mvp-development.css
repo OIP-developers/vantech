@@ -5,10 +5,30 @@
 .mvp-page {
   position: relative;
   overflow-x: clip;
+}
+
+/* Full-page background texture, faded out over its last 10% so it blends
+   smoothly into the CTA/footer instead of cutting off with a hard edge. */
+.mvp-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url(../../assets/images/mvp-development/figma/services-body-bg.webp);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mvp-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ---------- Shared heading styles ---------- */
@@ -196,26 +216,63 @@
   pointer-events: none;
 }
 
-/* This single image now bakes in the rocket, the orbit ring and the
-   background lines exactly as positioned in the reference — no separate
-   ring/background layers. Badges still orbit in CSS, hand-traced to this
-   image's own ring (see mvp-badge-orbit below: center/axes/tilt measured
-   directly off the ring artwork), same technique as
-   .ai-automation-orbit__ellipse. */
-.mvp-hero__rocket {
+/* Full copy of AI Automation's hero banner (ring + ellipse + star + 4
+   orbiting badges) — same assets, same hand-traced orbit path, just
+   mvp-prefixed. */
+.mvp-orbit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  --orbit-scale: 1;
+  transform: scale(var(--orbit-scale));
+}
+
+.mvp-orbit__bg-lines {
   position: absolute;
-  left: 50%;
+  left: 40%;
   top: 50%;
-  width: 632px;
+  width: 560px;
   height: auto;
   transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.mvp-orbit__star,
+.mvp-orbit__star-glow {
+  position: absolute;
+  left: 40%;
+  top: 46%;
+  width: 100%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  pointer-events: none;
   z-index: 2;
 }
 
-.mvp-orbit-anchor {
+.mvp-orbit__star-glow {
+  width: 64%;
+  filter: blur(45px);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.mvp-orbit__ellipse {
   position: absolute;
-  left: calc(50% + 84.6px);
-  top: calc(50% - 133.3px);
+  left: 60%;
+  top: 25%;
+  width: 70%;
+  height: auto;
+  transform: translate(-50%, -50%) rotate(14.11deg);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.mvp-orbit__anchor {
+  position: absolute;
+  left: 49%;
+  top: 35%;
   width: 0;
   height: 0;
   animation-name: mvp-badge-orbit, mvp-badge-depth;
@@ -224,90 +281,6 @@
   will-change: transform;
 }
 
-.mvp-orbit-radius {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.mvp-orbit-counter {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-/* Traced from the ring artwork's own ellipse (fit to its pixels: center,
-   semi-axes and tilt). Sampled at equal ARC-LENGTH steps (not equal angle)
-   so the badge travels at constant visual speed — an eccentric ellipse
-   sampled at equal angles moves slowly near the tips and fast near the
-   sides, which with linear interpolation looked like it sped up and
-   lurched off the ring. 48 steps keeps each straight-line segment close
-   enough to the true curve that it doesn't cut corners either. */
-@keyframes mvp-badge-orbit {
-  0.0000% { transform: translate(-50%, -50%) translate(209.40px, 106.87px); }
-  2.0833% { transform: translate(-50%, -50%) translate(193.98px, 122.62px); }
-  4.1667% { transform: translate(-50%, -50%) translate(173.22px, 130.51px); }
-  6.2500% { transform: translate(-50%, -50%) translate(151.05px, 133.37px); }
-  8.3333% { transform: translate(-50%, -50%) translate(128.60px, 133.06px); }
-  10.4167% { transform: translate(-50%, -50%) translate(106.56px, 130.61px); }
-  12.5000% { transform: translate(-50%, -50%) translate(84.60px, 126.54px); }
-  14.5833% { transform: translate(-50%, -50%) translate(62.58px, 121.09px); }
-  16.6667% { transform: translate(-50%, -50%) translate(41.28px, 114.66px); }
-  18.7500% { transform: translate(-50%, -50%) translate(20.27px, 107.29px); }
-  20.8333% { transform: translate(-50%, -50%) translate(-0.56px, 99.01px); }
-  22.9167% { transform: translate(-50%, -50%) translate(-21.01px, 89.97px); }
-  25.0000% { transform: translate(-50%, -50%) translate(-41.27px, 80.09px); }
-  27.0833% { transform: translate(-50%, -50%) translate(-60.79px, 69.68px); }
-  29.1667% { transform: translate(-50%, -50%) translate(-80.12px, 58.44px); }
-  31.2500% { transform: translate(-50%, -50%) translate(-99.04px, 46.44px); }
-  33.3333% { transform: translate(-50%, -50%) translate(-117.33px, 33.77px); }
-  35.4167% { transform: translate(-50%, -50%) translate(-135.04px, 20.31px); }
-  37.5000% { transform: translate(-50%, -50%) translate(-152.36px, 5.71px); }
-  39.5833% { transform: translate(-50%, -50%) translate(-168.53px, -9.67px); }
-  41.6667% { transform: translate(-50%, -50%) translate(-183.42px, -26.06px); }
-  43.7500% { transform: translate(-50%, -50%) translate(-196.83px, -44.03px); }
-  45.8333% { transform: translate(-50%, -50%) translate(-207.49px, -63.63px); }
-  47.9167% { transform: translate(-50%, -50%) translate(-213.24px, -85.04px); }
-  50.0000% { transform: translate(-50%, -50%) translate(-209.40px, -106.87px); }
-  52.0833% { transform: translate(-50%, -50%) translate(-193.98px, -122.62px); }
-  54.1667% { transform: translate(-50%, -50%) translate(-173.22px, -130.51px); }
-  56.2500% { transform: translate(-50%, -50%) translate(-151.05px, -133.37px); }
-  58.3333% { transform: translate(-50%, -50%) translate(-128.60px, -133.06px); }
-  60.4167% { transform: translate(-50%, -50%) translate(-106.56px, -130.61px); }
-  62.5000% { transform: translate(-50%, -50%) translate(-84.60px, -126.54px); }
-  64.5833% { transform: translate(-50%, -50%) translate(-62.58px, -121.09px); }
-  66.6667% { transform: translate(-50%, -50%) translate(-41.28px, -114.66px); }
-  68.7500% { transform: translate(-50%, -50%) translate(-20.27px, -107.29px); }
-  70.8333% { transform: translate(-50%, -50%) translate(0.56px, -99.01px); }
-  72.9167% { transform: translate(-50%, -50%) translate(21.01px, -89.97px); }
-  75.0000% { transform: translate(-50%, -50%) translate(41.27px, -80.09px); }
-  77.0833% { transform: translate(-50%, -50%) translate(60.79px, -69.68px); }
-  79.1667% { transform: translate(-50%, -50%) translate(80.12px, -58.44px); }
-  81.2500% { transform: translate(-50%, -50%) translate(99.04px, -46.44px); }
-  83.3333% { transform: translate(-50%, -50%) translate(117.33px, -33.78px); }
-  85.4167% { transform: translate(-50%, -50%) translate(135.04px, -20.31px); }
-  87.5000% { transform: translate(-50%, -50%) translate(152.36px, -5.71px); }
-  89.5833% { transform: translate(-50%, -50%) translate(168.53px, 9.67px); }
-  91.6667% { transform: translate(-50%, -50%) translate(183.42px, 26.06px); }
-  93.7500% { transform: translate(-50%, -50%) translate(196.83px, 44.03px); }
-  95.8333% { transform: translate(-50%, -50%) translate(207.49px, 63.63px); }
-  97.9167% { transform: translate(-50%, -50%) translate(213.24px, 85.04px); }
-}
-
-.mvp-orbit-badge {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: calc(var(--badge-size, 76) * 1px);
-  height: calc(var(--badge-size, 76) * 1px);
-  max-width: none;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Front while riding the near/bottom half of the ellipse, back while on the
-   far/top half — each badge is phased to its own start point via
-   animation-delay (see orbitBadges in MVPDevelopmentPage.tsx). */
 @keyframes mvp-badge-depth {
   0% { z-index: 3; }
   34% { z-index: 3; }
@@ -317,9 +290,72 @@
   100% { z-index: 3; }
 }
 
+.mvp-orbit__radius {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.mvp-orbit__counter {
+  position: absolute;
+  left: 70px;
+  top: -70px;
+}
+
+@keyframes mvp-badge-orbit {
+  0.0000% { transform: translate(-50%, -50%) translate(210.45px, 52.90px); }
+  4.1667% { transform: translate(-50%, -50%) translate(200.47px, 62.27px); }
+  8.3333% { transform: translate(-50%, -50%) translate(176.83px, 67.39px); }
+  12.5000% { transform: translate(-50%, -50%) translate(141.14px, 67.93px); }
+  16.6667% { transform: translate(-50%, -50%) translate(95.83px, 63.83px); }
+  20.8333% { transform: translate(-50%, -50%) translate(43.99px, 55.38px); }
+  25.0000% { transform: translate(-50%, -50%) translate(-10.85px, 43.16px); }
+  29.1667% { transform: translate(-50%, -50%) translate(-64.95px, 28.00px); }
+  33.3333% { transform: translate(-50%, -50%) translate(-114.62px, 10.93px); }
+  37.5000% { transform: translate(-50%, -50%) translate(-156.48px, -6.89px); }
+  41.6667% { transform: translate(-50%, -50%) translate(-187.68px, -24.23px); }
+  45.8333% { transform: translate(-50%, -50%) translate(-206.09px, -39.93px); }
+  50.0000% { transform: translate(-50%, -50%) translate(-210.45px, -52.90px); }
+  54.1667% { transform: translate(-50%, -50%) translate(-200.47px, -62.27px); }
+  58.3333% { transform: translate(-50%, -50%) translate(-176.83px, -67.39px); }
+  62.5000% { transform: translate(-50%, -50%) translate(-141.14px, -67.93px); }
+  66.6667% { transform: translate(-50%, -50%) translate(-95.83px, -63.83px); }
+  70.8333% { transform: translate(-50%, -50%) translate(-43.99px, -55.38px); }
+  75.0000% { transform: translate(-50%, -50%) translate(10.85px, -43.16px); }
+  79.1667% { transform: translate(-50%, -50%) translate(64.95px, -28.00px); }
+  83.3333% { transform: translate(-50%, -50%) translate(114.62px, -10.93px); }
+  87.5000% { transform: translate(-50%, -50%) translate(156.48px, 6.89px); }
+  91.6667% { transform: translate(-50%, -50%) translate(187.68px, 24.23px); }
+  95.8333% { transform: translate(-50%, -50%) translate(206.09px, 39.93px); }
+  100.0000% { transform: translate(-50%, -50%) translate(210.45px, 52.90px); }
+}
+
+.mvp-orbit__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--badge-size, 68) * 1px);
+  height: calc(var(--badge-size, 68) * 1px);
+  /* now rendered as a plain <img> (movicon1/movicon2) instead of a span
+     with a background-image — without this, the global img{max-width:100%}
+     resolves against the zero-width orbit-anchor chain and collapses the
+     badge to 0px wide. */
+  max-width: none;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 36px rgba(255, 110, 20, 0.35);
+  transform: translate(-50%, -50%);
+}
+
+.mvp-orbit__badge .icon {
+  width: 38%;
+  height: 38%;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .mvp-orbit-anchor,
-  .mvp-orbit-counter {
+  .mvp-orbit__anchor,
+  .mvp-orbit__counter {
     animation: none;
   }
 }
@@ -1093,6 +1129,15 @@
     top: 0vw;
     width: 31.25vw;
     height: 31.25vw;
+  }
+
+  .mvp-orbit__counter {
+    left: 3.6458vw;
+    top: -3.6458vw;
+  }
+
+  .mvp-orbit__bg-lines {
+    width: 29.1667vw;
   }
 
   .mvp-disappoint {
