@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import ipadScreen from '../assets/images/ipad-screen.webp';
-import dummyPowerMindset from '../assets/images/dummy-power-mindset.webp';
-import dummyAiFna from '../assets/images/dummy-ai-fna.webp';
-import dummyProvexa from '../assets/images/dummy-provexa.webp';
+import vanTravelBusiness from '../assets/images/portfolio/van-travel-business.png';
+import powerMindset from '../assets/images/portfolio/power-mindset.png';
+import aiFna from '../assets/images/portfolio/ai-fna.png';
+import oneTapDigitalCard from '../assets/images/portfolio/onetap-digital-card.png';
 import Icon from './Icon';
 import { useReveal } from '../hooks/useReveal';
 import arrowRightSvg from '../assets/icons/at-icons-arrow-right.svg?raw';
@@ -12,25 +12,25 @@ const platforms = [
     number: '01',
     title: 'Van Travel Business',
     desc: 'A travel and immigration business platform covering packages, document intake and client enquiries.',
-    image: ipadScreen,
+    image: vanTravelBusiness,
   },
   {
     number: '02',
     title: 'Power Mindset Breakthrough',
     desc: 'A coaching and personal development platform with programmes, booking and content delivery.',
-    image: dummyPowerMindset,
+    image: powerMindset,
   },
   {
     number: '03',
     title: 'AI FNA',
     desc: 'An AI-assisted financial needs analysis tool that turns client data into advisor-ready recommendations.',
-    image: dummyAiFna,
+    image: aiFna,
   },
   {
     number: '04',
-    title: 'Provexa AI',
-    desc: 'An AI platform that automates document analysis, verification and decision support workflows.',
-    image: dummyProvexa,
+    title: 'OneTap Digital Card',
+    desc: 'A digital business card platform where professionals share contact details, links and a booking page through a public card link or QR code.',
+    image: oneTapDigitalCard,
   },
 ];
 

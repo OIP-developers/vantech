@@ -1393,23 +1393,18 @@ a.navbar__cta--mobile {
 }
 
 .device-mock__bezel {
-  padding: 14px;
-  background: linear-gradient(160deg, #e8e8e8, #c7c9ca);
-  border-radius: 36px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  /* No CSS-drawn bezel anymore — the source images already have their own
+     device frame baked in, so this just sizes the raw image. */
 }
 
 .device-mock__screen {
   height: 552px;
-  background: #0b0b0b;
-  border-radius: 22px;
-  overflow: hidden;
 }
 
 .device-mock__screen img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top;
 }
 
@@ -2985,14 +2980,8 @@ a.navbar__cta--mobile {
   .device-mock {
     width: 44.167vw;
   }
-  .device-mock__bezel {
-    padding: 0.729vw;
-    border-radius: 1.875vw;
-    box-shadow: 0 1.563vw 4.167vw rgba(0, 0, 0, 0.55);
-  }
   .device-mock__screen {
     height: 28.75vw;
-    border-radius: 1.146vw;
   }
   .device-mock__image {
     animation: portfolio-image-in-desktop 0.7s cubic-bezier(0.16, 1, 0.3, 1);
@@ -4077,14 +4066,8 @@ a.navbar__cta--mobile {
     margin: 0 auto;
   }
 
-  .device-mock__bezel {
-    padding: 10px;
-    border-radius: 24px;
-  }
-
   .device-mock__screen {
     height: 300px;
-    border-radius: 14px;
   }
 
   .portfolio:before {
