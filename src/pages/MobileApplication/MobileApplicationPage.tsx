@@ -217,6 +217,7 @@ export default function MobileApplicationPage() {
   const disappointHead = useReveal('left');
   const disappointList = useReveal<HTMLUListElement>('right');
   const solutionCopy = useReveal('right');
+  const solutionGraphic = useReveal('left');
   const buildHead = useReveal('up');
   const capabilitiesHead = useReveal('up');
   const usecasesHead = useReveal('up');
@@ -290,7 +291,10 @@ export default function MobileApplicationPage() {
 
       <section className="mobileapp-solution section">
         <div className="container mobileapp-solution__row">
-          <div className="mobileapp-solution__graphic">
+          <div
+            className={`mobileapp-solution__graphic ${solutionGraphic.className}`}
+            ref={solutionGraphic.ref}
+          >
             <img src={solutionIllustration} alt="" loading="lazy" />
           </div>
 

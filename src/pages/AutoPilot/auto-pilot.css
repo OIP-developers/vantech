@@ -117,7 +117,7 @@
 
 .autopilot-hero {
   position: relative;
-  padding: 200px 0 140px;
+  padding: 200px 0 40px;
 }
 
 .autopilot-hero .row {
@@ -198,16 +198,38 @@
 .autopilot-hero__photo-wrap {
   position: absolute;
   width: 940px;
-  height: 630px;
+  height: 560px;
   z-index: 1;
-  right: -213px;
-  top: -40px;
+  right: -216px;
+  top: 50px;
 }
 
 .autopilot-hero__photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.autopilot-hero__star {
+  position: absolute;
+  left: 8%;
+  top: -24%;
+  width: 60%;
+  height: auto;
+  z-index: 2;
+  transform-origin: center;
+  animation: autopilot-star-levitate 5s ease-in-out infinite;
+}
+
+@keyframes autopilot-star-levitate {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .autopilot-hero__star {
+    animation: none;
+  }
 }
 
 /* ---------- Problem ---------- */
@@ -265,7 +287,7 @@
 /* ---------- Solution intro ---------- */
 
 .autopilot-solution {
-  padding-top: 160px;
+  padding-top: 140px;
 }
 
 .autopilot-solution__row {
@@ -285,13 +307,29 @@
   pointer-events: none;
 }
 
-.autopilot-solution__moon {
+.autopilot-solution__moon-wrap {
   position: relative;
   z-index: 1;
   flex-shrink: 0;
   width: 42%;
+}
+
+.autopilot-solution__moon {
+  display: block;
+  width: 100%;
   height: auto;
+  border-radius: 50%;
   animation: autopilot-moon-spin 14s linear infinite;
+}
+
+.autopilot-solution__star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 45%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .autopilot-solution__ripple {
@@ -336,7 +374,7 @@
 /* ---------- What is included ---------- */
 
 .autopilot-included {
-  padding-top: 160px;
+  padding-top: 140px;
 }
 
 .autopilot-included__grid {
@@ -616,7 +654,7 @@
 /* ---------- How The Engagement Works ---------- */
 
 .autopilot-process {
-  padding-top: 200px;
+  padding-top: 180px;
 }
 
 .autopilot-process__rows {
@@ -949,7 +987,7 @@
   }
 
   .autopilot-hero {
-    padding: 10.4167vw 0 7.2917vw;
+    padding: 10.4167vw 0 2.0833vw;
   }
 
   .autopilot-hero .row {
@@ -1004,9 +1042,9 @@
 
   .autopilot-hero__photo-wrap {
     width: 48.9583vw;
-    height: 32.8125vw;
-    right: -11.0938vw;
-    top: -2.0833vw;
+    height: 29.1667vw;
+    right: -11.25vw;
+    top: 2.6042vw;
   }
 
   .autopilot-problem {
@@ -1044,7 +1082,7 @@
   }
 
   .autopilot-solution {
-    padding-top: 8.3333vw;
+    padding-top: 7.2917vw;
   }
 
   .autopilot-solution__row {
@@ -1069,7 +1107,7 @@
   }
 
   .autopilot-included {
-    padding-top: 8.3333vw;
+    padding-top: 7.2917vw;
   }
 
   .autopilot-included__grid {
@@ -1220,7 +1258,7 @@
   }
 
   .autopilot-process {
-    padding-top: 10.4167vw;
+    padding-top: 9.375vw;
   }
 
   .autopilot-process__rows {
@@ -1967,6 +2005,76 @@
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* Integration connector: converging sparks + subtle burst (matching the
+   other service pages) */
+.autopilot-integration-connector__diamond-inner {
+  animation: autopilot-connector-burst 2.6s ease-in-out infinite;
+}
+
+.autopilot-integration-connector::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  animation: autopilot-connector-travel-left 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+.autopilot-integration-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  animation: autopilot-connector-travel-right 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+@keyframes autopilot-connector-travel-left {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes autopilot-connector-travel-right {
+  0% { left: 100%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes autopilot-connector-burst {
+  0%, 40% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+  48% { transform: translate(-50%, -50%) rotate(45deg) scale(1.5); box-shadow: 0 0 6px 2px rgba(255, 150, 50, 0.5); }
+  64% { transform: translate(-50%, -50%) rotate(45deg) scale(0.85); box-shadow: none; }
+  100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .autopilot-integration-connector__diamond-inner {
+    animation: none;
+  }
+  .autopilot-integration-connector::before,
+  .autopilot-integration-connector::after {
+    animation: none;
+    opacity: 0;
   }
 }
 

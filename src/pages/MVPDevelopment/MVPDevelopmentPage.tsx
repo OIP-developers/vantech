@@ -16,7 +16,9 @@ import funnelSvg from '../../assets/icons/ant-design-funnel-plot-filled.svg?raw'
 import databaseSvg from '../../assets/icons/bi-database-fill.svg?raw';
 import webhookSvg from '../../assets/icons/carbon-webhook.svg?raw';
 
-import heroRocket from '../../assets/images/mvp-development/figma/hero-rocket.png';
+import heroRocket from '../../assets/images/mvp-development/figma/hero-orbit/rocket-with-ring.png';
+import heroOrbitBadgeShield from '../../assets/images/mvp-development/figma/hero-orbit/icon-shield-cropped.png';
+import heroOrbitBadgeCheck from '../../assets/images/mvp-development/figma/hero-orbit/icon-checkmark-cropped.png';
 import solutionGlow from '../../assets/images/mvp-development/figma/solution-glow.png';
 import pricingGlowOrb from '../../assets/images/mvp-development/figma/pricing-glow-orb.png';
 
@@ -37,6 +39,18 @@ import processIconLaunch from '../../assets/images/mvp-development/figma/process
 import whyIconScoped from '../../assets/images/mvp-development/figma/why-icon-scoped.png';
 import whyIconArchitected from '../../assets/images/mvp-development/figma/why-icon-architected.png';
 import whyIconTeam from '../../assets/images/mvp-development/figma/why-icon-team.png';
+
+const ORBIT_DURATION_S = 34;
+const ORBIT_DURATION = `${ORBIT_DURATION_S}s`;
+
+// Both badges ride the same hand-traced ellipse path (mvp-badge-orbit,
+// fit to the ring artwork's own curve) and are just started at a different
+// point in that shared cycle via a negative animation-delay — same
+// technique as AI Automation's orbitBadges.
+const orbitBadges = [
+  { img: heroOrbitBadgeShield, size: 76 },
+  { img: heroOrbitBadgeCheck, size: 76 },
+].map((b, i, arr) => ({ ...b, delay: -((i / arr.length) * ORBIT_DURATION_S) }));
 
 const problems = [
   'Scope grows faster than the product can be built.',
@@ -208,6 +222,7 @@ export default function MVPDevelopmentPage() {
   const disappointHead = useReveal('left');
   const disappointList = useReveal<HTMLUListElement>('right');
   const solutionCopy = useReveal('right');
+  const solutionGraphic = useReveal('left');
   const buildHead = useReveal('up');
   const capabilitiesHead = useReveal('up');
   const usecasesHead = useReveal('up');
@@ -257,6 +272,29 @@ export default function MVPDevelopmentPage() {
 
             <div className="mvp-hero__graphic" aria-hidden="true">
               <img src={heroRocket} alt="" className="mvp-hero__rocket" loading="eager" />
+              {orbitBadges.map((item, i) => (
+                <div
+                  key={i}
+                  className="mvp-orbit-anchor"
+                  style={
+                    {
+                      animationDuration: ORBIT_DURATION,
+                      animationDelay: `${item.delay}s, ${item.delay}s`,
+                    } as React.CSSProperties
+                  }
+                >
+                  <div className="mvp-orbit-radius">
+                    <div className="mvp-orbit-counter">
+                      <img
+                        src={item.img}
+                        alt=""
+                        className="mvp-orbit-badge"
+                        style={{ '--badge-size': item.size } as React.CSSProperties}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -285,7 +323,11 @@ export default function MVPDevelopmentPage() {
 
       <section className="mvp-solution section">
         <div className="container mvp-solution__row">
-          <div className="mvp-solution__graphic" aria-hidden="true">
+          <div
+            className={`mvp-solution__graphic ${solutionGraphic.className}`}
+            ref={solutionGraphic.ref}
+            aria-hidden="true"
+          >
             <img src={solutionGlow} alt="" className="mvp-solution__mockup" loading="lazy" />
           </div>
 

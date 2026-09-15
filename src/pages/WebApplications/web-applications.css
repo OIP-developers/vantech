@@ -272,6 +272,7 @@
 }
 
 .webapps-disappoint__item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -279,7 +280,20 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(25px);
-  border: 1px solid var(--color-orange-3);
+  border: 1px solid transparent;
+}
+
+.webapps-disappoint__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: var(--gradient-border);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .webapps-disappoint__item-number {
@@ -347,7 +361,7 @@
 
 .webapps-build {
   position: relative;
-  padding-top: 160px;
+  padding-top: 140px;
 }
 
 
@@ -639,7 +653,7 @@
 /* ---------- Development process ---------- */
 
 .webapps-process2 {
-  padding-top: 200px;
+  padding-top: 130px;
 }
 
 .webapps-process2__grid {
@@ -829,7 +843,7 @@
 
 .webapps-pricing-cta {
   position: relative;
-  padding: 100px 0 120px;
+  padding: 100px 0 60px;
 }
 
 .webapps-pricing-cta__card {
@@ -1056,7 +1070,12 @@
     padding: 1.0417vw 1.5625vw;
     border-radius: 0.5208vw;
     backdrop-filter: blur(1.3021vw);
-    border: 0.0521vw solid var(--color-orange-3);
+    border: 0.0521vw solid transparent;
+  }
+
+  .webapps-disappoint__item::before {
+    padding: 0.0521vw;
+    border-radius: 0.5208vw;
   }
 
   .webapps-disappoint__item-number {
@@ -1094,7 +1113,7 @@
   }
 
   .webapps-build {
-    padding-top: 8.3333vw;
+    padding-top: 7.2917vw;
   }
 
   .webapps-build__grid {
@@ -1243,7 +1262,7 @@
   }
 
   .webapps-process2 {
-    padding-top: 10.4167vw;
+    padding-top: 6.7708vw;
   }
 
   .webapps-process2__grid {
@@ -1348,7 +1367,7 @@
   }
 
   .webapps-pricing-cta {
-    padding: 5.2083vw 0 6.25vw;
+    padding: 5.2083vw 0 3.125vw;
   }
 
   .webapps-pricing-cta__card {
@@ -1859,6 +1878,106 @@
 .webapps-integrations__grid.is-visible .webapps-integration-pill:nth-child(7) { transition-delay: 0.49s; }
 .webapps-integrations__grid.is-visible .webapps-integration-pill:nth-child(8) { transition-delay: 0.56s; }
 
+@property --webapps-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.webapps-disappoint__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: conic-gradient(
+    from var(--webapps-border-angle),
+    var(--color-orange) 0%,
+    var(--color-orange-3) 25%,
+    transparent 50%,
+    var(--color-orange-3) 75%,
+    var(--color-orange) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: webapps-border-travel 4s linear infinite;
+}
+
+@keyframes webapps-border-travel {
+  to { --webapps-border-angle: 360deg; }
+}
+
+/* Integration connector: converging sparks + subtle burst */
+.webapps-integration-connector__diamond-inner {
+  animation: webapps-connector-burst 2.6s ease-in-out infinite;
+}
+
+.webapps-integration-connector::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  animation: webapps-connector-travel-left 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+.webapps-integration-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  animation: webapps-connector-travel-right 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+@keyframes webapps-connector-travel-left {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes webapps-connector-travel-right {
+  0% { left: 100%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes webapps-connector-burst {
+  0%, 40% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+  48% { transform: translate(-50%, -50%) rotate(45deg) scale(1.5); box-shadow: 0 0 6px 2px rgba(255, 150, 50, 0.5); }
+  64% { transform: translate(-50%, -50%) rotate(45deg) scale(0.85); box-shadow: none; }
+  100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+}
+
+/* Gentle reveal-in + float for the solution mockup graphic */
+@keyframes webapps-mockup-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.webapps-solution__graphic.is-visible img {
+  animation: webapps-mockup-float 3s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
 @keyframes webapps-icon-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
@@ -1900,11 +2019,37 @@
 .webapps-integration-pill,
 .webapps-build-card__badge,
 .webapps-process2-card__badge,
-.webapps-why-card__badge {
+.webapps-why-card__badge,
+.webapps-solution__graphic img {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
+  .webapps-disappoint__item::after {
+    animation: none;
+    opacity: 0;
+  }
+  .webapps-integration-connector__diamond-inner {
+    animation: none;
+  }
+  .webapps-integration-connector::before,
+  .webapps-integration-connector::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Scoped reveal easing polish (matching the other service pages) */
+.webapps-page .reveal {
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.webapps-page .reveal--left { transform: translateX(-70px) scale(0.97); }
+.webapps-page .reveal--right { transform: translateX(70px) scale(0.97); }
+.webapps-page .reveal--up { transform: translateY(40px) scale(0.97); }
+
+.webapps-page .reveal.is-visible {
+  transform: translate(0, 0) scale(1);
 }
 

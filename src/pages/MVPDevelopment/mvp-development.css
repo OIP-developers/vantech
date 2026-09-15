@@ -196,9 +196,132 @@
   pointer-events: none;
 }
 
+/* This single image now bakes in the rocket, the orbit ring and the
+   background lines exactly as positioned in the reference — no separate
+   ring/background layers. Badges still orbit in CSS, hand-traced to this
+   image's own ring (see mvp-badge-orbit below: center/axes/tilt measured
+   directly off the ring artwork), same technique as
+   .ai-automation-orbit__ellipse. */
 .mvp-hero__rocket {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 632px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.mvp-orbit-anchor {
+  position: absolute;
+  left: calc(50% + 84.6px);
+  top: calc(50% - 133.3px);
+  width: 0;
+  height: 0;
+  animation-name: mvp-badge-orbit, mvp-badge-depth;
+  animation-timing-function: linear, steps(1, end);
+  animation-iteration-count: infinite, infinite;
+  will-change: transform;
+}
+
+.mvp-orbit-radius {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.mvp-orbit-counter {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Traced from the ring artwork's own ellipse (fit to its pixels: center,
+   semi-axes and tilt). Sampled at equal ARC-LENGTH steps (not equal angle)
+   so the badge travels at constant visual speed — an eccentric ellipse
+   sampled at equal angles moves slowly near the tips and fast near the
+   sides, which with linear interpolation looked like it sped up and
+   lurched off the ring. 48 steps keeps each straight-line segment close
+   enough to the true curve that it doesn't cut corners either. */
+@keyframes mvp-badge-orbit {
+  0.0000% { transform: translate(-50%, -50%) translate(209.40px, 106.87px); }
+  2.0833% { transform: translate(-50%, -50%) translate(193.98px, 122.62px); }
+  4.1667% { transform: translate(-50%, -50%) translate(173.22px, 130.51px); }
+  6.2500% { transform: translate(-50%, -50%) translate(151.05px, 133.37px); }
+  8.3333% { transform: translate(-50%, -50%) translate(128.60px, 133.06px); }
+  10.4167% { transform: translate(-50%, -50%) translate(106.56px, 130.61px); }
+  12.5000% { transform: translate(-50%, -50%) translate(84.60px, 126.54px); }
+  14.5833% { transform: translate(-50%, -50%) translate(62.58px, 121.09px); }
+  16.6667% { transform: translate(-50%, -50%) translate(41.28px, 114.66px); }
+  18.7500% { transform: translate(-50%, -50%) translate(20.27px, 107.29px); }
+  20.8333% { transform: translate(-50%, -50%) translate(-0.56px, 99.01px); }
+  22.9167% { transform: translate(-50%, -50%) translate(-21.01px, 89.97px); }
+  25.0000% { transform: translate(-50%, -50%) translate(-41.27px, 80.09px); }
+  27.0833% { transform: translate(-50%, -50%) translate(-60.79px, 69.68px); }
+  29.1667% { transform: translate(-50%, -50%) translate(-80.12px, 58.44px); }
+  31.2500% { transform: translate(-50%, -50%) translate(-99.04px, 46.44px); }
+  33.3333% { transform: translate(-50%, -50%) translate(-117.33px, 33.77px); }
+  35.4167% { transform: translate(-50%, -50%) translate(-135.04px, 20.31px); }
+  37.5000% { transform: translate(-50%, -50%) translate(-152.36px, 5.71px); }
+  39.5833% { transform: translate(-50%, -50%) translate(-168.53px, -9.67px); }
+  41.6667% { transform: translate(-50%, -50%) translate(-183.42px, -26.06px); }
+  43.7500% { transform: translate(-50%, -50%) translate(-196.83px, -44.03px); }
+  45.8333% { transform: translate(-50%, -50%) translate(-207.49px, -63.63px); }
+  47.9167% { transform: translate(-50%, -50%) translate(-213.24px, -85.04px); }
+  50.0000% { transform: translate(-50%, -50%) translate(-209.40px, -106.87px); }
+  52.0833% { transform: translate(-50%, -50%) translate(-193.98px, -122.62px); }
+  54.1667% { transform: translate(-50%, -50%) translate(-173.22px, -130.51px); }
+  56.2500% { transform: translate(-50%, -50%) translate(-151.05px, -133.37px); }
+  58.3333% { transform: translate(-50%, -50%) translate(-128.60px, -133.06px); }
+  60.4167% { transform: translate(-50%, -50%) translate(-106.56px, -130.61px); }
+  62.5000% { transform: translate(-50%, -50%) translate(-84.60px, -126.54px); }
+  64.5833% { transform: translate(-50%, -50%) translate(-62.58px, -121.09px); }
+  66.6667% { transform: translate(-50%, -50%) translate(-41.28px, -114.66px); }
+  68.7500% { transform: translate(-50%, -50%) translate(-20.27px, -107.29px); }
+  70.8333% { transform: translate(-50%, -50%) translate(0.56px, -99.01px); }
+  72.9167% { transform: translate(-50%, -50%) translate(21.01px, -89.97px); }
+  75.0000% { transform: translate(-50%, -50%) translate(41.27px, -80.09px); }
+  77.0833% { transform: translate(-50%, -50%) translate(60.79px, -69.68px); }
+  79.1667% { transform: translate(-50%, -50%) translate(80.12px, -58.44px); }
+  81.2500% { transform: translate(-50%, -50%) translate(99.04px, -46.44px); }
+  83.3333% { transform: translate(-50%, -50%) translate(117.33px, -33.78px); }
+  85.4167% { transform: translate(-50%, -50%) translate(135.04px, -20.31px); }
+  87.5000% { transform: translate(-50%, -50%) translate(152.36px, -5.71px); }
+  89.5833% { transform: translate(-50%, -50%) translate(168.53px, 9.67px); }
+  91.6667% { transform: translate(-50%, -50%) translate(183.42px, 26.06px); }
+  93.7500% { transform: translate(-50%, -50%) translate(196.83px, 44.03px); }
+  95.8333% { transform: translate(-50%, -50%) translate(207.49px, 63.63px); }
+  97.9167% { transform: translate(-50%, -50%) translate(213.24px, 85.04px); }
+}
+
+.mvp-orbit-badge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--badge-size, 76) * 1px);
+  height: calc(var(--badge-size, 76) * 1px);
+  max-width: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Front while riding the near/bottom half of the ellipse, back while on the
+   far/top half — each badge is phased to its own start point via
+   animation-delay (see orbitBadges in MVPDevelopmentPage.tsx). */
+@keyframes mvp-badge-depth {
+  0% { z-index: 3; }
+  34% { z-index: 3; }
+  36% { z-index: 1; }
+  84% { z-index: 1; }
+  86% { z-index: 3; }
+  100% { z-index: 3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mvp-orbit-anchor,
+  .mvp-orbit-counter {
+    animation: none;
+  }
 }
 
 /* ---------- Problem / Solution ---------- */
@@ -230,6 +353,7 @@
 }
 
 .mvp-disappoint__item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -238,7 +362,20 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(25px);
-  border: 1px solid var(--color-orange-3);
+  border: 1px solid transparent;
+}
+
+.mvp-disappoint__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: var(--gradient-border);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .mvp-disappoint__item-number {
@@ -255,7 +392,7 @@
 }
 
 .mvp-solution {
-  padding-top: 200px;
+  padding-top: 160px;
 }
 
 .mvp-solution__row {
@@ -301,7 +438,7 @@
 
 .mvp-build {
   position: relative;
-  padding-top: 190px;
+  padding-top: 140px;
 }
 
 .mvp-build .container {
@@ -585,7 +722,7 @@
 /* ---------- Development Process ---------- */
 
 .mvp-process2 {
-  padding-top: 200px;
+  padding-top: 160px;
 }
 
 .mvp-process2__grid {
@@ -730,7 +867,7 @@
 /* ---------- Why Van Tech Systems ---------- */
 
 .mvp-why {
-  padding-top: 200px;
+  padding-top: 160px;
 }
 
 .mvp-why__grid {
@@ -981,7 +1118,12 @@
     padding: 1.0417vw 1.5625vw;
     border-radius: 0.5208vw;
     backdrop-filter: blur(1.3021vw);
-    border: 0.0521vw solid var(--color-orange-3);
+    border: 0.0521vw solid transparent;
+  }
+
+  .mvp-disappoint__item::before {
+    padding: 0.0521vw;
+    border-radius: 0.5208vw;
   }
 
   .mvp-disappoint__item-number {
@@ -993,7 +1135,7 @@
   }
 
   .mvp-solution {
-    padding-top: 10.4167vw;
+    padding-top: 8.3333vw;
   }
 
   .mvp-solution__row {
@@ -1019,7 +1161,7 @@
   }
 
   .mvp-build {
-    padding-top: 9.8958vw;
+    padding-top: 7.2917vw;
   }
 
   .mvp-build__grid {
@@ -1169,7 +1311,7 @@
   }
 
   .mvp-process2 {
-    padding-top: 10.4167vw;
+    padding-top: 8.3333vw;
   }
 
   .mvp-process2__grid {
@@ -1244,7 +1386,7 @@
   }
 
   .mvp-why {
-    padding-top: 10.4167vw;
+    padding-top: 8.3333vw;
   }
 
   .mvp-why__grid {
@@ -1811,6 +1953,110 @@
   animation: mvp-icon-float 3.6s ease-in-out infinite;
 }
 
+@property --mvp-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.mvp-disappoint__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: conic-gradient(
+    from var(--mvp-border-angle),
+    var(--color-orange) 0%,
+    var(--color-orange-3) 25%,
+    transparent 50%,
+    var(--color-orange-3) 75%,
+    var(--color-orange) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: mvp-border-travel 4s linear infinite;
+}
+
+@keyframes mvp-border-travel {
+  to { --mvp-border-angle: 360deg; }
+}
+
+/* Integration connector: converging sparks + subtle burst */
+.mvp-integration-connector__diamond-inner {
+  animation: mvp-connector-burst 2.6s ease-in-out infinite;
+}
+
+.mvp-integration-connector::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  animation: mvp-connector-travel-left 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+.mvp-integration-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  animation: mvp-connector-travel-right 2.6s ease-in infinite;
+  pointer-events: none;
+}
+
+@keyframes mvp-connector-travel-left {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes mvp-connector-travel-right {
+  0% { left: 100%; opacity: 0; }
+  8% { opacity: 1; }
+  44% { left: 50%; opacity: 1; }
+  48% { left: 50%; opacity: 0; }
+  100% { left: 50%; opacity: 0; }
+}
+
+@keyframes mvp-connector-burst {
+  0%, 40% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+  48% { transform: translate(-50%, -50%) rotate(45deg) scale(1.5); box-shadow: 0 0 6px 2px rgba(255, 150, 50, 0.5); }
+  64% { transform: translate(-50%, -50%) rotate(45deg) scale(0.85); box-shadow: none; }
+  100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
+}
+
+/* Gentle reveal-in + float for the solution mockup graphic */
+.mvp-solution__graphic.reveal--left {
+  transition-duration: 0.9s;
+}
+
+@keyframes mvp-mockup-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.mvp-solution__graphic.is-visible .mvp-solution__mockup {
+  animation: mvp-mockup-float 3s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
 .mvp-build-card:nth-child(1) .mvp-build-card__badge { animation-delay: -0.4s; }
 .mvp-build-card:nth-child(2) .mvp-build-card__badge { animation-delay: -0.8s; }
 .mvp-build-card:nth-child(3) .mvp-build-card__badge { animation-delay: -1.2s; }
@@ -1841,11 +2087,37 @@
 .mvp-integration-pill,
 .mvp-build-card__badge,
 .mvp-process2-card__badge,
-.mvp-why-card__badge {
+.mvp-why-card__badge,
+.mvp-solution__mockup {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
+  .mvp-integration-connector__diamond-inner {
+    animation: none;
+  }
+  .mvp-integration-connector::before,
+  .mvp-integration-connector::after {
+    animation: none;
+    opacity: 0;
+  }
+  .mvp-disappoint__item::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Scoped reveal easing polish (matching the other service pages) */
+.mvp-page .reveal {
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mvp-page .reveal--left { transform: translateX(-70px) scale(0.97); }
+.mvp-page .reveal--right { transform: translateX(70px) scale(0.97); }
+.mvp-page .reveal--up { transform: translateY(40px) scale(0.97); }
+
+.mvp-page .reveal.is-visible {
+  transform: translate(0, 0) scale(1);
 }
 

@@ -19,8 +19,10 @@ import formSvg from '../../assets/icons/fluent-form-32-filled.svg?raw';
 import personSupportSvg from '../../assets/icons/fluent-person-support-28-filled.svg?raw';
 import databaseSvg from '../../assets/icons/bi-database-fill.svg?raw';
 
-import heroPhoto from '../../assets/images/auto-pilot/figma/hero-photo.png';
-import solutionMoon from '../../assets/images/auto-pilot/figma/solution-moon.png';
+import heroPhoto from '../../assets/images/auto-pilot/figma/hero-hand.png';
+import heroStar from '../../assets/images/auto-pilot/figma/hero-star.png';
+import solutionMoon from '../../assets/images/orb-sphere.webp';
+import solutionStar from '../../assets/images/banner-star.svg';
 import solutionRipple from '../../assets/images/auto-pilot/figma/solution-ripple.png';
 import pricingGlowOrb from '../../assets/images/auto-pilot/figma/pricing-glow-orb.png';
 
@@ -255,6 +257,7 @@ export default function AutoPilotPage() {
             <div className="autopilot-hero__graphic" aria-hidden="true">
               <div className="autopilot-hero__photo-wrap">
                 <img src={heroPhoto} alt="" className="autopilot-hero__photo" loading="eager" />
+                <img src={heroStar} alt="" className="autopilot-hero__star" loading="eager" />
               </div>
             </div>
           </div>
@@ -285,7 +288,10 @@ export default function AutoPilotPage() {
       <section className="autopilot-solution section">
         <div className="container autopilot-solution__row">
           <div className="autopilot-solution__graphic" aria-hidden="true">
-            <img src={solutionMoon} alt="" className="autopilot-solution__moon" loading="lazy" />
+            <div className="autopilot-solution__moon-wrap">
+              <img src={solutionMoon} alt="" className="autopilot-solution__moon" loading="lazy" />
+              <img src={solutionStar} alt="" className="autopilot-solution__star" loading="lazy" />
+            </div>
             <img src={solutionRipple} alt="" className="autopilot-solution__ripple" loading="lazy" />
           </div>
 

@@ -19,7 +19,12 @@ import analyticsSvg from '../../assets/icons/clarity-analytics-solid-badged.svg?
 import heroIllustration from '../../assets/images/model-development/figma/bannnersectionimg/modeldev-hero__graphic.png';
 import heroStarLeft from '../../assets/images/model-development/figma/bannnersectionimg/modeldev-heroIconleft.png';
 import heroStarRight from '../../assets/images/model-development/figma/bannnersectionimg/modeldev-heroIconright.png';
-import solutionIllustration from '../../assets/images/model-development/figma/solution-illustration.png';
+import solutionStar from '../../assets/images/model-development/figma/solution-parts/star.png';
+import solutionBgArcs from '../../assets/images/model-development/figma/solution-parts/bg-arcs.png';
+import solutionIconTopLeft from '../../assets/images/model-development/figma/solution-parts/icon-top-left.png';
+import solutionIconTopRight from '../../assets/images/model-development/figma/solution-parts/icon-top-right.png';
+import solutionIconBottomLeft from '../../assets/images/model-development/figma/solution-parts/icon-bottom-left.png';
+import solutionIconBottomRight from '../../assets/images/model-development/figma/solution-parts/icon-bottom-right.png';
 import pricingGlowOrb from '../../assets/images/model-development/figma/pricing-glow.png';
 
 import buildIconDataIngestion from '../../assets/images/model-development/figma/build-icon-data-ingestion.png';
@@ -45,6 +50,17 @@ const problems = [
   'Answers cannot be traced back to a source.',
   'Sensitive information has no defined boundary.',
   'There is no way to measure whether output quality is improving.',
+];
+
+// Each icon is its own pre-cropped piece cut from the original solution
+// illustration, positioned (center point, as a percentage of the graphic's
+// box) to match its spot in that image — this lets each one slide in from
+// its own direction instead of the flat image moving as one rigid block.
+const solutionIcons = [
+  { src: solutionIconTopLeft, left: 26.2, top: 24.6, width: 47.5, dir: 'top' },
+  { src: solutionIconTopRight, left: 77.0, top: 34.8, width: 47.3, dir: 'right' },
+  { src: solutionIconBottomLeft, left: 22.1, top: 75.0, width: 44.9, dir: 'left' },
+  { src: solutionIconBottomRight, left: 60.6, top: 83.2, width: 26.9, dir: 'bottom' },
 ];
 
 const buildCards = [
@@ -214,9 +230,11 @@ export default function ModelDevelopmentPage() {
   }, []);
 
   const hero = useReveal('up');
+  const heroGraphic = useReveal('up');
   const disappointHead = useReveal('left');
   const disappointList = useReveal<HTMLUListElement>('right');
   const solutionCopy = useReveal('right');
+  const solutionGraphic = useReveal('left');
   const buildHead = useReveal('up');
   const capabilitiesHead = useReveal('up');
   const usecasesHead = useReveal('up');
@@ -231,6 +249,8 @@ export default function ModelDevelopmentPage() {
   const process2Grid = useReveal('up');
   const integrationsGrid = useReveal('up');
   const whyGrid = useReveal('up');
+  const pricingCta = useReveal('up');
+  const architectureDivider = useReveal('up');
 
   return (
     <main className="modeldev-page">
@@ -264,7 +284,7 @@ export default function ModelDevelopmentPage() {
               </div>
             </div>
 
-            <div className="modeldev-hero__graphic" aria-hidden="true">
+            <div className={`modeldev-hero__graphic ${heroGraphic.className}`} ref={heroGraphic.ref} aria-hidden="true">
               <img src={heroIllustration} alt="" className="modeldev-hero__illustration" loading="eager" />
               <img src={heroStarLeft} alt="" className="modeldev-hero__star modeldev-hero__star--left" loading="eager" />
               <img src={heroStarRight} alt="" className="modeldev-hero__star modeldev-hero__star--right" loading="eager" />
@@ -305,8 +325,19 @@ export default function ModelDevelopmentPage() {
             </p>
           </div>
 
-          <div className="modeldev-solution__graphic">
-            <img src={solutionIllustration} alt="" loading="lazy" />
+          <div className={`modeldev-solution__graphic ${solutionGraphic.className}`} ref={solutionGraphic.ref}>
+            <img src={solutionBgArcs} alt="" className="modeldev-solution__bg-arcs" />
+            {solutionIcons.map((icon, i) => (
+              <img
+                key={i}
+                src={icon.src}
+                alt=""
+                loading="lazy"
+                className={`modeldev-solution__icon modeldev-solution__icon--from-${icon.dir}`}
+                style={{ left: `${icon.left}%`, top: `${icon.top}%`, width: `${icon.width}%` } as React.CSSProperties}
+              />
+            ))}
+            <img src={solutionStar} alt="" className="modeldev-solution__star" />
           </div>
         </div>
       </section>
@@ -391,8 +422,8 @@ export default function ModelDevelopmentPage() {
             </p>
           </div>
 
-          <div style={{ position: 'relative' }}>
-            <hr className="modeldev-architecture__divider" />
+          <div style={{ position: 'relative' }} ref={architectureDivider.ref}>
+            <hr className={`modeldev-architecture__divider ${architectureDivider.className}`} />
             <span className="modeldev-architecture__divider-dot" />
           </div>
 
@@ -503,7 +534,7 @@ export default function ModelDevelopmentPage() {
 
       <section className="modeldev-pricing-cta section">
         <div className="container">
-          <div className="modeldev-pricing-cta__card">
+          <div className={`modeldev-pricing-cta__card ${pricingCta.className}`} ref={pricingCta.ref}>
             <img src={pricingGlowOrb} alt="" className="modeldev-pricing-cta__glow" loading="lazy" />
             <div className="modeldev-pricing-cta__copy">
               <h2 className="modeldev-pricing-cta__title">Starting at $1,500/month</h2>

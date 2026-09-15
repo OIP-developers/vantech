@@ -215,6 +215,7 @@ export default function WebApplicationsPage() {
   const disappointHead = useReveal('left');
   const disappointList = useReveal<HTMLUListElement>('right');
   const solutionCopy = useReveal('right');
+  const solutionGraphic = useReveal('left');
   const buildHead = useReveal('up');
   const capabilitiesHead = useReveal('up');
   const usecasesHead = useReveal('up');
@@ -289,7 +290,10 @@ export default function WebApplicationsPage() {
 
       <section className="webapps-solution section">
         <div className="container webapps-solution__row">
-          <div className="webapps-solution__graphic">
+          <div
+            className={`webapps-solution__graphic ${solutionGraphic.className}`}
+            ref={solutionGraphic.ref}
+          >
             <img src={solutionIllustration} alt="" loading="lazy" />
           </div>
 

@@ -585,17 +585,22 @@
 .ai-automation-solution__part--from-left { transform: translateX(-70px) scale(0.85); }
 .ai-automation-solution__part--from-right { transform: translateX(70px) scale(0.85); }
 
+/* Entrance keyframe listed first (lower priority), float second (higher
+   priority) — float gets a per-part delay equal to that part's own entrance
+   delay + duration, so it only takes over `transform` once the slide-in has
+   actually finished (otherwise the two fight over the property and either
+   the entrance never plays or the float never shows). */
 .ai-automation-solution__graphic.is-visible .ai-automation-solution__part--from-top {
-  animation: ai-automation-part-float 4.5s ease-in-out infinite, ai-automation-part-in-top 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: ai-automation-part-in-top 0.95s cubic-bezier(0.16, 1, 0.3, 1) both, ai-automation-part-float 4.5s ease-in-out infinite;
 }
 .ai-automation-solution__graphic.is-visible .ai-automation-solution__part--from-bottom {
-  animation: ai-automation-part-float 4.5s ease-in-out infinite, ai-automation-part-in-bottom 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: ai-automation-part-in-bottom 0.95s cubic-bezier(0.16, 1, 0.3, 1) both, ai-automation-part-float 4.5s ease-in-out infinite;
 }
 .ai-automation-solution__graphic.is-visible .ai-automation-solution__part--from-left {
-  animation: ai-automation-part-float 4.5s ease-in-out infinite, ai-automation-part-in-left 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: ai-automation-part-in-left 0.95s cubic-bezier(0.16, 1, 0.3, 1) both, ai-automation-part-float 4.5s ease-in-out infinite;
 }
 .ai-automation-solution__graphic.is-visible .ai-automation-solution__part--from-right {
-  animation: ai-automation-part-float 4.5s ease-in-out infinite, ai-automation-part-in-right 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: ai-automation-part-in-right 0.95s cubic-bezier(0.16, 1, 0.3, 1) both, ai-automation-part-float 4.5s ease-in-out infinite;
 }
 
 @keyframes ai-automation-part-in-top {
@@ -622,14 +627,14 @@
 
 /* nth-of-type counts every <img> sibling (the bg-lines image is #1), so the
    8 parts are #2 through #9 */
-.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(2) { animation-delay: 0s, 0s; }
-.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(3) { animation-delay: 0s, 0.2s; }
-.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(4) { animation-delay: 0s, 0.4s; }
-.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(5) { animation-delay: 0s, 0.6s; }
-.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(6) { animation-delay: 0s, 0.8s; }
-.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(7) { animation-delay: 0s, 1.0s; }
-.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(8) { animation-delay: 0s, 1.2s; }
-.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(9) { animation-delay: 0s, 1.4s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(2) { animation-delay: 0s, 0.95s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(3) { animation-delay: 0.2s, 1.15s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(4) { animation-delay: 0.4s, 1.35s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(5) { animation-delay: 0.6s, 1.55s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(6) { animation-delay: 0.8s, 1.75s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(7) { animation-delay: 1.0s, 1.95s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(8) { animation-delay: 1.2s, 2.15s; }
+.ai-automation-solution__graphic.is-visible .ai-automation-solution__part:nth-of-type(9) { animation-delay: 1.4s, 2.35s; }
 
 /* ---------- What we Automate ---------- */
 
@@ -2472,11 +2477,11 @@
   position: absolute;
   top: 50%;
   left: 0%;
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: #ffffff;
-  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.9), 0 0 16px 4px rgba(2, 103, 188, 0.55);
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
   transform: translate(-50%, -50%);
   animation: ai-automation-connector-travel-left 2.6s ease-in infinite;
   pointer-events: none;
@@ -2487,11 +2492,11 @@
   position: absolute;
   top: 50%;
   left: 100%;
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: #ffffff;
-  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.9), 0 0 16px 4px rgba(255, 110, 20, 0.55);
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.6);
   transform: translate(-50%, -50%);
   animation: ai-automation-connector-travel-right 2.6s ease-in infinite;
   pointer-events: none;
@@ -2515,8 +2520,8 @@
 
 @keyframes ai-automation-connector-burst {
   0%, 40% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
-  48% { transform: translate(-50%, -50%) rotate(45deg) scale(2.6); box-shadow: 0 0 20px 7px rgba(255, 150, 50, 0.85), 0 0 8px 2px rgba(2, 103, 188, 0.6); }
-  64% { transform: translate(-50%, -50%) rotate(45deg) scale(0.65); box-shadow: 0 0 4px 1px rgba(255, 150, 50, 0.25); }
+  48% { transform: translate(-50%, -50%) rotate(45deg) scale(1.5); box-shadow: 0 0 6px 2px rgba(255, 150, 50, 0.5); }
+  64% { transform: translate(-50%, -50%) rotate(45deg) scale(0.85); box-shadow: none; }
   100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); box-shadow: none; }
 }
 
