@@ -5,6 +5,7 @@ import Testimonials from '../../components/Testimonials';
 import FAQ from '../../components/FAQ';
 import CTA from '../../components/CTA';
 import { useReveal } from '../../hooks/useReveal';
+import { usePinnedReveal } from '../../hooks/usePinnedReveal';
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import techBadge from '../../assets/images/section-about-3/technology-badge.webp';
 import layersBadge from '../../assets/images/section-about-3/layers-badge.webp';
@@ -215,7 +216,7 @@ export default function AboutPage() {
 
   const hero = useReveal('up');
   const processHead = useReveal('left');
-  const processGrid = useReveal('up');
+  const processPin = usePinnedReveal(processSteps.length);
   const techReveal = useReveal('right');
   const layersHead = useReveal('left');
   const layersGrid = useReveal('up');
@@ -266,21 +267,29 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className={`about-process__list ${processGrid.className}`} ref={processGrid.ref}>
-            {processSteps.map((step) => (
-              <div
-                className="about-process-item"
-                key={step.number}
-              >
-                <div className="about-process-item__lead">
-                  <div className="about-process-item__icon about-process-item__icon--img">
-                    <img src={step.iconImg} alt="" className="about-process-item__icon-img" />
+          <div
+            className="about-process__pin-wrapper"
+            ref={processPin.wrapperRef}
+            style={{ height: `calc(100vh + ${processPin.scrollSpan}px)` }}
+          >
+            <div className="about-process__pin">
+              <div className="about-process__list">
+                {processSteps.map((step, i) => (
+                  <div
+                    className={`about-process-item${i <= processPin.activeIndex ? ' is-active' : ''}`}
+                    key={step.number}
+                  >
+                    <div className="about-process-item__lead">
+                      <div className="about-process-item__icon about-process-item__icon--img">
+                        <img src={step.iconImg} alt="" className="about-process-item__icon-img" />
+                      </div>
+                      <h3 className="about-process-item__title">{step.title}</h3>
+                    </div>
+                    <p className="about-process-item__desc">{step.desc}</p>
                   </div>
-                  <h3 className="about-process-item__title">{step.title}</h3>
-                </div>
-                <p className="about-process-item__desc">{step.desc}</p>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>

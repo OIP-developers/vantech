@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './partners.css';
 import Icon from '../../components/Icon';
 import FAQ from '../../components/FAQ';
 import Testimonials from '../../components/Testimonials';
 import CTA from '../../components/CTA';
 import { useReveal } from '../../hooks/useReveal';
-import { useRowShrink } from '../../hooks/useRowShrink';
 
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import vtsSparkleSvg from '../../assets/icons/vts-sparkle.svg?raw';
 import mdiHandshakeSvg from '../../assets/icons/mdi-handshake.svg?raw';
-import partnerCtaArrow from '../../assets/icons/partner-cta-arrow.svg';
+import partnerCtaArrowSvg from '../../assets/icons/partner-cta-arrow.svg?raw';
 import catalogSoftwareSvg from '../../assets/icons/catalog-software.svg?raw';
 import catalogGlobeSvg from '../../assets/icons/catalog-globe.svg?raw';
 import catalogConsultingSvg from '../../assets/icons/catalog-consulting.svg?raw';
@@ -290,6 +289,288 @@ const compareRows: { label: string; connect: CompareCell; pro: CompareCell; whit
   { label: 'Architecture support', connect: false, pro: 'On request', white: true },
 ];
 
+function TierCard({ tier }: { tier: (typeof tiers)[number] }) {
+  const reveal = useReveal('up');
+  return (
+    <div className={`partners-tier-card ${reveal.className}`} ref={reveal.ref}>
+      <img src={tiersGlowTexture} alt="" className="partners-tier-card__bg" loading="lazy" />
+      <div className="partners-tier-card__content">
+        <h3 className="partners-tier-card__title">{tier.title}</h3>
+        <p
+          className={`partners-tier-card__desc${tier.title === 'Referral Partner' ? ' partners-tier-card__desc--referral' : ''}`}
+        >
+          {tier.desc}
+        </p>
+        <div className="partners-tier-card__roles">
+          {tier.columns.map((col, i) => (
+            <div className={`partners-tier-role ${i === 0 ? 'partners-tier-role--blue' : 'partners-tier-role--orange'}`} key={col.label}>
+              <span className="partners-tier-role__label">{col.label}</span>
+              <ul className="partners-tier-role__list">
+                {col.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <a href="/contact" className="partners-tier-card__cta">
+          {tier.cta}
+          <Icon svg={partnerCtaArrowSvg} className="partners-tier-card__cta-icon" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function PipelineStep({
+  stage,
+  isLast,
+  isActive,
+  onEnter,
+  onLeave,
+}: {
+  stage: (typeof pipelineStages)[number];
+  isLast: boolean;
+  isActive: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
+  const reveal = useReveal('up');
+  return (
+    <div
+      className={`partners-pipeline-step${isLast ? ' partners-pipeline-step--last' : ''}${isActive ? ' partners-pipeline-step--active' : ''} ${reveal.className}`}
+      ref={reveal.ref}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+    >
+      <div className="partners-pipeline-step__glow" />
+      <span className="partners-pipeline-step__name">{stage.name}</span>
+      <span className="partners-pipeline-step__who">{stage.who}</span>
+    </div>
+  );
+}
+
+function CatalogTopCard({ cat }: { cat: (typeof catalogTop)[number] }) {
+  const reveal = useReveal('up');
+  return (
+    <div
+      className={`partners-catalog-card partners-catalog-card--glow partners-catalog-card--${cat.slug}${cat.titleFirst ? ' partners-catalog-card--title-first' : ''} ${reveal.className}`}
+      ref={reveal.ref}
+    >
+      <div className={`partners-catalog-card__glow-area${cat.iconRight ? ' partners-catalog-card__glow-area--icon-right' : ''}`}>
+        <span className={`partners-catalog-card__icon-badge${cat.iconRight ? ' partners-catalog-card__icon-badge--right' : ''}`}>
+          <img src={orbSphere} alt="" className="partners-catalog-card__icon-orb" loading="lazy" />
+          <Icon svg={catalogIcons[cat.icon]} className="partners-catalog-card__icon" />
+        </span>
+        {cat.wrapChips && cat.chipRows ? (
+          <div className="partners-catalog-card__chips-wrap">
+            {cat.chipRows.map((row, i) => (
+              <div className="partners-catalog-card__chips-row" key={i}>
+                {row.map((entry) => {
+                  const [text, variant] = entry.split('--');
+                  const suffix = variant ? `${chipImageClass[text]}-${variant}` : chipImageClass[text];
+                  return (
+                    <span
+                      className={`partners-chip partners-chip--glass${suffix ? ` partners-chip--${suffix}` : ''}`}
+                      key={entry}
+                    >
+                      {text}
+                    </span>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div
+            className={`partners-catalog-card__chips-grid${cat.iconRight ? ' partners-catalog-card__chips-grid--icon-right' : ''}`}
+          >
+            {cat.items.map((item) => (
+              <span
+                className={`partners-chip partners-chip--glass${chipImageClass[item] ? ` partners-chip--${chipImageClass[item]}` : ''}`}
+                key={item}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      <h3 className="partners-catalog-card__title">{cat.title}</h3>
+      <p className="partners-catalog-card__desc">{cat.desc}</p>
+    </div>
+  );
+}
+
+function CatalogBottomCard({ cat }: { cat: (typeof catalogBottom)[number] }) {
+  const reveal = useReveal('up');
+  return (
+    <div
+      className={`partners-catalog-card partners-catalog-card--glow partners-catalog-card--sm partners-catalog-card--${cat.slug} ${reveal.className}`}
+      ref={reveal.ref}
+    >
+      <div className="partners-catalog-card__glow-area partners-catalog-card__glow-area--sm">
+        <span className="partners-catalog-card__icon-badge">
+          <img src={orbSphere} alt="" className="partners-catalog-card__icon-orb" loading="lazy" />
+          <Icon svg={catalogIcons[cat.icon]} className="partners-catalog-card__icon" />
+        </span>
+        <div className="partners-catalog-card__chips-grid partners-catalog-card__chips-grid--sm">
+          {cat.items.map((item) => (
+            <span
+              className={`partners-chip partners-chip--glass partners-chip--sm${chipImageClass[item] ? ` partners-chip--${chipImageClass[item]}` : ''}`}
+              key={item}
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+      <h3 className="partners-catalog-card__title">{cat.title}</h3>
+      <p className="partners-catalog-card__desc">{cat.desc}</p>
+    </div>
+  );
+}
+
+function BrandLayerItem({
+  layer,
+  index,
+  isLast,
+}: {
+  layer: (typeof brandLayers)[number];
+  index: number;
+  isLast: boolean;
+}) {
+  const reveal = useReveal('up');
+  return (
+    <div style={{ display: 'contents' }}>
+      <div
+        className={`partners-brand-layer ${reveal.className}`}
+        ref={reveal.ref}
+        style={{ transitionDelay: `${index * 0.12}s` }}
+      >
+        <span className="partners-brand-layer__label">{layer.label}</span>
+        <div className="partners-brand-layer__chips">
+          {layer.tags.map((tag) => (
+            <span className="partners-brand-chip" key={tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+      {!isLast && <span className="partners-brand-connector" />}
+    </div>
+  );
+}
+
+function edgeFromPoint(e: { clientX: number; clientY: number }, rect: DOMRect): 'top' | 'bottom' | 'left' | 'right' {
+  const x = e.clientX - rect.left - rect.width / 2;
+  const y = e.clientY - rect.top - rect.height / 2;
+  if (Math.abs(x) / rect.width > Math.abs(y) / rect.height) {
+    return x > 0 ? 'right' : 'left';
+  }
+  return y > 0 ? 'bottom' : 'top';
+}
+
+const originForEdge: Record<'top' | 'bottom' | 'left' | 'right', string> = {
+  top: '50% 0%',
+  bottom: '50% 100%',
+  left: '0% 50%',
+  right: '100% 50%',
+};
+
+function PartnerPlanCard({ plan }: { plan: (typeof plans)[number] }) {
+  const reveal = useReveal('up');
+  const fillRef = useRef<HTMLSpanElement>(null);
+
+  const setFillOrigin = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!fillRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    fillRef.current.style.transformOrigin = originForEdge[edgeFromPoint(e, rect)];
+  };
+
+  return (
+    <div
+      className={`partners-plan-card${plan.highlighted ? ' partners-plan-card--highlight' : ''}${plan.accentOrange ? ' partners-plan-card--accent-orange' : ''} ${reveal.className}`}
+      ref={reveal.ref}
+      onMouseEnter={setFillOrigin}
+      onMouseLeave={setFillOrigin}
+    >
+      <span className="partners-plan-card__hover-fill" ref={fillRef} />
+      {plan.highlighted && <span className="partners-plan-card__recommended">Recommended</span>}
+      <span className="partners-plan-card__badge">
+        <Icon svg={planIcons[plan.icon]} className="partners-plan-card__badge-icon" />
+        {plan.name}
+      </span>
+      <div className="partners-plan-card__price-row">
+        <span className="partners-plan-card__price">{plan.price}</span>
+        <span className="partners-plan-card__price-note">{plan.priceNote}</span>
+        {plan.secondary && (
+          <span className="partners-plan-card__secondary">
+            <span className="partners-plan-card__secondary-amount">{plan.secondary.split('/')[0]}</span>
+            <span className="partners-plan-card__secondary-period">/{plan.secondary.split('/')[1]}</span>
+          </span>
+        )}
+      </div>
+      <p className="partners-plan-card__desc">{plan.desc}</p>
+      <a href="/contact" className="partners-plan-card__cta">
+        {plan.cta}
+      </a>
+      <div className="partners-plan-card__features">
+        {plan.features.map((f) => (
+          <div className="partners-plan-card__feature" key={f}>
+            <span className="partners-plan-card__check">
+              <CheckIcon />
+            </span>
+            {f}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FulfillmentCard({
+  svc,
+  isActive,
+  onEnter,
+  onLeave,
+}: {
+  svc: (typeof fulfillmentServices)[number];
+  isActive: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
+  const reveal = useReveal('up');
+  return (
+    <div
+      className={`plan-card${isActive ? ' plan-card--active' : ''} ${reveal.className}`}
+      ref={reveal.ref}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+    >
+      <div className="plan-card__glow" />
+      <span className="plan-card__category">{svc.category}</span>
+      <h3 className="plan-card__title">{svc.title}</h3>
+      <div className="plan-card__footer">
+        {svc.customQuote ? (
+          <>
+            <span className="plan-card__price partners-fulfillment__price">Custom Quote</span>
+            {svc.note && <span className="plan-card__note">{svc.note}</span>}
+          </>
+        ) : (
+          <>
+            <span className="plan-card__label">Starting at</span>
+            <div className="plan-card__price-row">
+              <span className="plan-card__price partners-fulfillment__price">{svc.price}</span>
+              {svc.note && <span className="plan-card__note">{svc.note}</span>}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function CompareCellView({ value }: { value: CompareCell }) {
   if (value === true) {
     return (
@@ -333,8 +614,10 @@ function MarginCalculator() {
     setter(Number.isNaN(n) ? 0 : n);
   };
 
+  const cardReveal = useReveal('up');
+
   return (
-    <div className="partners-calculator__card">
+    <div className={`partners-calculator__card ${cardReveal.className}`} ref={cardReveal.ref}>
       <div className="partners-calculator__inputs">
         <h3 className="partners-calculator__card-title">Model Your Own Economics</h3>
         <div className="partners-calculator__field">
@@ -401,6 +684,10 @@ function MarginCalculator() {
 }
 
 export default function PartnersPage() {
+  const [fulfillmentActiveIndex, setFulfillmentActiveIndex] = useState(0);
+  const [statsActiveIndex, setStatsActiveIndex] = useState(0);
+  const [pipelineActiveIndex, setPipelineActiveIndex] = useState(0);
+
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const anchor = (e.target as HTMLElement).closest('a');
@@ -426,7 +713,6 @@ export default function PartnersPage() {
   const tiersHead = useReveal('up');
   const pipelineHead = useReveal('up');
   const catalogHead = useReveal('up');
-  const catalogRowShrink = useRowShrink();
   const brandCopy = useReveal('left');
   const brandGraphic = useReveal('right');
   const intelLeft = useReveal('left');
@@ -436,6 +722,10 @@ export default function PartnersPage() {
   const fulfillmentHead = useReveal('up');
   const calculatorHead = useReveal('up');
   const verticalsHead = useReveal('up');
+  const compareTableReveal = useReveal('up');
+  const aiFlowBox1 = useReveal<HTMLSpanElement>('up');
+  const aiFlowBox2 = useReveal<HTMLSpanElement>('up');
+  const aiFlowBox3 = useReveal<HTMLSpanElement>('up');
 
   return (
     <main className="partners-page partners-body-page">
@@ -476,8 +766,14 @@ export default function PartnersPage() {
 
         <div className="container">
           <div className={`partners-stats ${statsReveal.className}`} ref={statsReveal.ref}>
-            {stats.map((s) => (
-              <div className="partners-stat" key={s.label}>
+            {stats.map((s, i) => (
+              <div
+                className={`partners-stat${i === statsActiveIndex ? ' partners-stat--active' : ''}`}
+                key={s.label}
+                onMouseEnter={() => setStatsActiveIndex(i)}
+                onMouseLeave={() => setStatsActiveIndex(0)}
+              >
+                <div className="partners-stat__glow" />
                 <span className="partners-stat__value">{s.value}</span>
                 <span className="partners-stat__label">{s.label}</span>
               </div>
@@ -504,33 +800,7 @@ export default function PartnersPage() {
 
           <div className="partners-tiers__grid">
             {tiers.map((tier) => (
-              <div className="partners-tier-card" key={tier.title}>
-                <img src={tiersGlowTexture} alt="" className="partners-tier-card__bg" loading="lazy" />
-                <div className="partners-tier-card__content">
-                  <h3 className="partners-tier-card__title">{tier.title}</h3>
-                  <p
-                    className={`partners-tier-card__desc${tier.title === 'Referral Partner' ? ' partners-tier-card__desc--referral' : ''}`}
-                  >
-                    {tier.desc}
-                  </p>
-                  <div className="partners-tier-card__roles">
-                    {tier.columns.map((col, i) => (
-                      <div className={`partners-tier-role ${i === 0 ? 'partners-tier-role--blue' : 'partners-tier-role--orange'}`} key={col.label}>
-                        <span className="partners-tier-role__label">{col.label}</span>
-                        <ul className="partners-tier-role__list">
-                          {col.items.map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                  <a href="/contact" className="partners-tier-card__cta">
-                    {tier.cta}
-                    <img src={partnerCtaArrow} alt="" className="partners-tier-card__cta-icon" />
-                  </a>
-                </div>
-              </div>
+              <TierCard tier={tier} key={tier.title} />
             ))}
           </div>
         </div>
@@ -548,13 +818,14 @@ export default function PartnersPage() {
 
           <div className="partners-pipeline__track">
             {pipelineStages.map((stage, i) => (
-              <div
-                className={`partners-pipeline-step${i === pipelineStages.length - 1 ? ' partners-pipeline-step--last' : ''}`}
+              <PipelineStep
+                stage={stage}
+                isLast={i === pipelineStages.length - 1}
+                isActive={i === pipelineActiveIndex}
+                onEnter={() => setPipelineActiveIndex(i)}
+                onLeave={() => setPipelineActiveIndex(0)}
                 key={stage.name}
-              >
-                <span className="partners-pipeline-step__name">{stage.name}</span>
-                <span className="partners-pipeline-step__who">{stage.who}</span>
-              </div>
+              />
             ))}
           </div>
         </div>
@@ -571,106 +842,16 @@ export default function PartnersPage() {
             </h2>
           </div>
 
-          <div
-            className="partners-catalog__row-wrap"
-            ref={catalogRowShrink.wrapperRef}
-            style={{
-              height: catalogRowShrink.contentHeight
-                ? `${catalogRowShrink.contentHeight + catalogRowShrink.extraPx}px`
-                : '100vh',
-            }}
-          >
-          <div className="partners-catalog__row-sticky">
-          <div
-            className="partners-catalog__grid-top"
-            ref={catalogRowShrink.contentRef}
-            style={{ transform: `perspective(1200px) scale(${catalogRowShrink.scale})` }}
-          >
+          <div className="partners-catalog__grid-top">
             {catalogTop.map((cat) => (
-              <div
-                className={`partners-catalog-card partners-catalog-card--glow partners-catalog-card--${cat.slug}${cat.titleFirst ? ' partners-catalog-card--title-first' : ''}`}
-                key={cat.title}
-              >
-                <div className={`partners-catalog-card__glow-area${cat.iconRight ? ' partners-catalog-card__glow-area--icon-right' : ''}`}>
-                  <span className={`partners-catalog-card__icon-badge${cat.iconRight ? ' partners-catalog-card__icon-badge--right' : ''}`}>
-                    <img src={orbSphere} alt="" className="partners-catalog-card__icon-orb" loading="lazy" />
-                    <Icon svg={catalogIcons[cat.icon]} className="partners-catalog-card__icon" />
-                  </span>
-                  {cat.wrapChips && cat.chipRows ? (
-                    <div className="partners-catalog-card__chips-wrap">
-                      {cat.chipRows.map((row, i) => (
-                        <div className="partners-catalog-card__chips-row" key={i}>
-                          {row.map((entry) => {
-                            const [text, variant] = entry.split('--');
-                            const suffix = variant ? `${chipImageClass[text]}-${variant}` : chipImageClass[text];
-                            return (
-                              <span
-                                className={`partners-chip partners-chip--glass${suffix ? ` partners-chip--${suffix}` : ''}`}
-                                key={entry}
-                              >
-                                {text}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div
-                      className={`partners-catalog-card__chips-grid${cat.iconRight ? ' partners-catalog-card__chips-grid--icon-right' : ''}`}
-                    >
-                      {cat.items.map((item) => (
-                        <span
-                          className={`partners-chip partners-chip--glass${chipImageClass[item] ? ` partners-chip--${chipImageClass[item]}` : ''}`}
-                          key={item}
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <h3 className="partners-catalog-card__title">{cat.title}</h3>
-                <p className="partners-catalog-card__desc">{cat.desc}</p>
-              </div>
+              <CatalogTopCard cat={cat} key={cat.title} />
             ))}
-          </div>
-          </div>
           </div>
 
-          <div
-            className="partners-catalog__row-wrap partners-catalog__row-wrap--last"
-            style={catalogRowShrink.contentHeight ? { marginTop: `-${catalogRowShrink.contentHeight}px` } : undefined}
-          >
-          <div className="partners-catalog__row-sticky partners-catalog__row-sticky--last">
           <div className="partners-catalog__grid-bottom">
             {catalogBottom.map((cat) => (
-              <div
-                className={`partners-catalog-card partners-catalog-card--glow partners-catalog-card--sm partners-catalog-card--${cat.slug}`}
-                key={cat.title}
-              >
-                <div className="partners-catalog-card__glow-area partners-catalog-card__glow-area--sm">
-                  <span className="partners-catalog-card__icon-badge">
-                    <img src={orbSphere} alt="" className="partners-catalog-card__icon-orb" loading="lazy" />
-                    <Icon svg={catalogIcons[cat.icon]} className="partners-catalog-card__icon" />
-                  </span>
-                  <div className="partners-catalog-card__chips-grid partners-catalog-card__chips-grid--sm">
-                    {cat.items.map((item) => (
-                      <span
-                        className={`partners-chip partners-chip--glass partners-chip--sm${chipImageClass[item] ? ` partners-chip--${chipImageClass[item]}` : ''}`}
-                        key={item}
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <h3 className="partners-catalog-card__title">{cat.title}</h3>
-                <p className="partners-catalog-card__desc">{cat.desc}</p>
-              </div>
+              <CatalogBottomCard cat={cat} key={cat.title} />
             ))}
-          </div>
-          </div>
           </div>
 
           <div className="partners-catalog__cta">
@@ -698,19 +879,7 @@ export default function PartnersPage() {
 
           <div className={`partners-brand-layers ${brandGraphic.className}`} ref={brandGraphic.ref}>
             {brandLayers.map((layer, i) => (
-              <div key={layer.label} style={{ display: 'contents' }}>
-                <div className="partners-brand-layer">
-                  <span className="partners-brand-layer__label">{layer.label}</span>
-                  <div className="partners-brand-layer__chips">
-                    {layer.tags.map((tag) => (
-                      <span className="partners-brand-chip" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                {i < brandLayers.length - 1 && <span className="partners-brand-connector" />}
-              </div>
+              <BrandLayerItem layer={layer} index={i} isLast={i === brandLayers.length - 1} key={layer.label} />
             ))}
           </div>
         </div>
@@ -791,11 +960,11 @@ export default function PartnersPage() {
               </div>
 
               <div className="partners-ai-flow">
-                <span className="partners-ai-flow__box">Client Business</span>
+                <span className={`partners-ai-flow__box ${aiFlowBox1.className}`} ref={aiFlowBox1.ref}>Client Business</span>
                 <span className="partners-ai-flow__connector" />
-                <span className="partners-ai-flow__box">VTS AI Engine</span>
+                <span className={`partners-ai-flow__box ${aiFlowBox2.className}`} ref={aiFlowBox2.ref}>VTS AI Engine</span>
                 <span className="partners-ai-flow__connector" />
-                <span className="partners-ai-flow__box">Customer Interactions</span>
+                <span className={`partners-ai-flow__box ${aiFlowBox3.className}`} ref={aiFlowBox3.ref}>Customer Interactions</span>
               </div>
             </div>
 
@@ -830,40 +999,7 @@ export default function PartnersPage() {
 
           <div className="partners-plans__grid">
             {plans.map((plan) => (
-              <div
-                className={`partners-plan-card${plan.highlighted ? ' partners-plan-card--highlight' : ''}${plan.accentOrange ? ' partners-plan-card--accent-orange' : ''}`}
-                key={plan.name}
-              >
-                {plan.highlighted && <span className="partners-plan-card__recommended">Recommended</span>}
-                <span className="partners-plan-card__badge">
-                  <Icon svg={planIcons[plan.icon]} className="partners-plan-card__badge-icon" />
-                  {plan.name}
-                </span>
-                <div className="partners-plan-card__price-row">
-                  <span className="partners-plan-card__price">{plan.price}</span>
-                  <span className="partners-plan-card__price-note">{plan.priceNote}</span>
-                  {plan.secondary && (
-                    <span className="partners-plan-card__secondary">
-                      <span className="partners-plan-card__secondary-amount">{plan.secondary.split('/')[0]}</span>
-                      <span className="partners-plan-card__secondary-period">/{plan.secondary.split('/')[1]}</span>
-                    </span>
-                  )}
-                </div>
-                <p className="partners-plan-card__desc">{plan.desc}</p>
-                <a href="/contact" className="partners-plan-card__cta">
-                  {plan.cta}
-                </a>
-                <div className="partners-plan-card__features">
-                  {plan.features.map((f) => (
-                    <div className="partners-plan-card__feature" key={f}>
-                      <span className="partners-plan-card__check">
-                        <CheckIcon />
-                      </span>
-                      {f}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <PartnerPlanCard plan={plan} key={plan.name} />
             ))}
           </div>
         </div>
@@ -876,7 +1012,7 @@ export default function PartnersPage() {
             <h2 className="section-title">Compare partnership levels</h2>
           </div>
 
-          <div className="partners-compare__table-wrap">
+          <div className={`partners-compare__table-wrap ${compareTableReveal.className}`} ref={compareTableReveal.ref}>
             <table className="partners-compare__table">
               <thead>
                 <tr>
@@ -916,27 +1052,14 @@ export default function PartnersPage() {
           </div>
 
           <div className="pricing__grid">
-            {fulfillmentServices.map((svc) => (
-              <div className="plan-card" key={svc.title}>
-                <span className="plan-card__category">{svc.category}</span>
-                <h3 className="plan-card__title">{svc.title}</h3>
-                <div className="plan-card__footer">
-                  {svc.customQuote ? (
-                    <>
-                      <span className="plan-card__price partners-fulfillment__price">Custom Quote</span>
-                      {svc.note && <span className="plan-card__note">{svc.note}</span>}
-                    </>
-                  ) : (
-                    <>
-                      <span className="plan-card__label">Starting at</span>
-                      <div className="plan-card__price-row">
-                        <span className="plan-card__price partners-fulfillment__price">{svc.price}</span>
-                        {svc.note && <span className="plan-card__note">{svc.note}</span>}
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
+            {fulfillmentServices.map((svc, i) => (
+              <FulfillmentCard
+                svc={svc}
+                isActive={i === fulfillmentActiveIndex}
+                onEnter={() => setFulfillmentActiveIndex(i)}
+                onLeave={() => setFulfillmentActiveIndex(0)}
+                key={svc.title}
+              />
             ))}
           </div>
 
@@ -974,19 +1097,23 @@ export default function PartnersPage() {
           <img src={orbSphere} alt="" className="partners-verticals__glow" loading="lazy" />
         </div>
           <div className="partners-verticals__rows">
-            <div className="partners-verticals__row">
-              {verticalsRow1.map((v) => (
-                <span className="partners-vertical-pill" key={v}>
-                  {v}
-                </span>
-              ))}
+            <div className="partners-verticals__row-mask">
+              <div className="partners-verticals__row partners-verticals__row--left">
+                {[...verticalsRow1, ...verticalsRow1].map((v, i) => (
+                  <span className="partners-vertical-pill" key={`${v}-${i}`}>
+                    {v}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="partners-verticals__row">
-              {verticalsRow2.map((v) => (
-                <span className="partners-vertical-pill" key={v}>
-                  {v}
-                </span>
-              ))}
+            <div className="partners-verticals__row-mask">
+              <div className="partners-verticals__row partners-verticals__row--right">
+                {[...verticalsRow2, ...verticalsRow2].map((v, i) => (
+                  <span className="partners-vertical-pill" key={`${v}-${i}`}>
+                    {v}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 

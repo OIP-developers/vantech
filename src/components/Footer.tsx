@@ -58,14 +58,14 @@ export default function Footer() {
                     <span className="footer-brand__bracket">[</span> Call us{' '}
                     <span className="footer-brand__bracket">]</span>
                   </span>
-                  <span className="footer-brand__contact-value">+1234 567 89</span>
+                  <a href="tel:+19034763762" className="footer-brand__contact-value">+19034763762</a>
                 </div>
                 <div>
                   <span className="footer-brand__contact-label">
                     <span className="footer-brand__bracket">[</span> Mail us{' '}
                     <span className="footer-brand__bracket">]</span>
                   </span>
-                  <span className="footer-brand__contact-value">hello@vantechsystems.tech</span>
+                  <a href="mailto:hello@vantechsystems.tech" className="footer-brand__contact-value">hello@vantechsystems.tech</a>
                 </div>
               </div>
             </div>

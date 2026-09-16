@@ -129,7 +129,7 @@ export default function Header() {
             </ul>
 
             <a
-              href={isHome ? '#contact' : '/#contact'}
+              href="#contact"
               className="navbar__cta navbar__cta--mobile"
               onClick={closeMenu}
             >
@@ -145,7 +145,7 @@ export default function Header() {
                 </li>
               ))}
             </ul>
-            <a href={isHome ? '#contact' : '/#contact'} className="navbar__cta navbar__cta--desktop">
+            <a href="#contact" className="navbar__cta navbar__cta--desktop">
               Start a Project
             </a>
             <button

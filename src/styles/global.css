@@ -93,6 +93,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* overflow-x:hidden on html/body would clip horizontal bleed, but per the CSS
+   Overflow spec it also force-promotes overflow-y to auto on that element,
+   turning it into a scroll container and silently breaking position:sticky
+   everywhere on the page. overflow-x:clip on #root gets the same horizontal
+   clipping without that side effect (clip never creates a scroll container). */
 #root {
   overflow-x: clip;
 }
@@ -1936,9 +1941,6 @@ a.navbar__cta--mobile {
 .cta__preview {
   flex-shrink: 0;
   width: 613px;
-  padding: 14px;
-  border-radius:9px;
-  border: 1px solid transparent;
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
               var(--gradient-border) border-box;
 }
@@ -2067,6 +2069,7 @@ a.navbar__cta--mobile {
   font-weight: 700;
   font-size: 20px;
   color: var(--color-white);
+  text-decoration: none;
 }
 
 .footer-links__title {
@@ -3228,9 +3231,6 @@ a.navbar__cta--mobile {
   }
   .cta__preview {
     width: 31.927vw;
-    padding: 0.729vw;
-    border-radius:0.469vw;
-    border: 0.052vw solid transparent;
   }
   .cta__booking-frame {
     height: 36.667vw;

@@ -273,6 +273,29 @@
   flex-direction: column;
   gap: 35px;
   margin-top: 64px;
+  width: 100%;
+}
+
+.about-process__pin-wrapper {
+  position: relative;
+}
+
+.about-process__pin {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-process__pin-wrapper {
+    height: auto !important;
+  }
+  .about-process__pin {
+    position: static;
+    min-height: 0;
+  }
 }
 
 .about-process-item {
@@ -605,6 +628,11 @@
   font-size: 14px;
   color: var(--color-white);
   white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.about-layers-table__tag:hover {
+  background: var(--color-orange-3);
 }
 
 /* ---------- Engineering principles ---------- */
@@ -2314,7 +2342,11 @@
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.about-process__list.is-visible .about-process-item,
+.about-process-item.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .about-layers-table.is-visible .about-layers-table__row,
 .about-principles__grid.is-visible .about-principle-card,
 .about-risk__grid.is-visible .about-risk-card,
@@ -2322,12 +2354,6 @@
   opacity: 1;
   transform: translateY(0);
 }
-
-.about-process__list.is-visible .about-process-item:nth-child(1) { transition-delay: 0.07s; }
-.about-process__list.is-visible .about-process-item:nth-child(2) { transition-delay: 0.14s; }
-.about-process__list.is-visible .about-process-item:nth-child(3) { transition-delay: 0.21s; }
-.about-process__list.is-visible .about-process-item:nth-child(4) { transition-delay: 0.28s; }
-.about-process__list.is-visible .about-process-item:nth-child(5) { transition-delay: 0.35s; }
 
 .about-layers-table.is-visible .about-layers-table__row:nth-child(1) { transition-delay: 0.07s; }
 .about-layers-table.is-visible .about-layers-table__row:nth-child(2) { transition-delay: 0.14s; }
