@@ -132,7 +132,7 @@ export default function WorkMainPage() {
           </p>
 
           <div className="work-hero__actions">
-            <a href="/contact" className="btn btn-primary">
+            <a href="/contact" className="btn btn-outline">
               Start a Project
               <Icon svg={arrowRightSvg} className="btn-icon" />
             </a>
@@ -194,7 +194,7 @@ export default function WorkMainPage() {
                     </span>
                   </a>
                   <span className="work-card__link">
-                    View All Site
+                    View Live Site
                     <span className="work-card__link-icon work-card__link-icon--site">
                       <Icon svg={caseStudyArrowSvg} />
                     </span>

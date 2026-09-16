@@ -131,8 +131,9 @@ body .backimage-boy {
   gap: 6px;
   padding: 8px 18px;
   border-radius: 20px;
-  border: 1px solid var(--color-orange);
-  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid transparent;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) padding-box,
+              var(--gradient-border) border-box;
   font-family: var(--font-ui);
   font-weight: 600;
   font-size: 13px;
@@ -260,9 +261,10 @@ body .backimage-boy {
 
 .wvt-browser-mock__url a {
   padding: 7px 18px;
-  border: 1px solid var(--color-orange-3);
+  border: 1px solid transparent;
   border-radius: 5px;
-  background: #202020;
+  background: linear-gradient(#202020, #202020) padding-box,
+              var(--gradient-border) border-box;
   font-family: var(--font-heading);
   font-size: 12px;
   color: var(--color-white);
@@ -306,7 +308,9 @@ body .backimage-boy {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  margin-top: 90px;
+  width: 920px;
+  margin: 0 auto;
+  padding-top: 90px;
 }
 
 .wvt-stat {
@@ -316,6 +320,13 @@ body .backimage-boy {
   border: 1px solid rgba(145, 145, 145, 0.4);
   backdrop-filter: blur(33px);
   background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 102%);
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.wvt-stat:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-orange);
 }
 
 .wvt-stat__label {
@@ -1215,8 +1226,9 @@ body .backimage-boy {
     gap: 0.3125vw;
     padding: 0.4167vw 0.9375vw;
     border-radius: 1.0417vw;
-    border: 0.0521vw solid var(--color-orange);
-    background: rgba(0, 0, 0, 0.5);
+    border: 0.0521vw solid transparent;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) padding-box,
+                var(--gradient-border) border-box;
     font-family: var(--font-ui);
     font-weight: 600;
     font-size: 0.6771vw;
@@ -1342,9 +1354,10 @@ body .backimage-boy {
   
   .wvt-browser-mock__url a {
     padding: 0.3646vw 0.9375vw;
-    border: 0.0521vw solid var(--color-orange-3);
+    border: 0.0521vw solid transparent;
     border-radius: 0.2604vw;
-    background: #202020;
+    background: linear-gradient(#202020, #202020) padding-box,
+                var(--gradient-border) border-box;
     font-family: var(--font-heading);
     font-size: 0.625vw;
     color: var(--color-white);
@@ -1388,7 +1401,9 @@ body .backimage-boy {
     display: flex;
     flex-wrap: wrap;
     gap: 1.25vw;
-    margin-top: 4.6875vw;
+    width: 47.9167vw;
+    margin: 0 auto;
+    padding-top: 4.6875vw;
   }
   
   .wvt-stat {
@@ -1398,6 +1413,13 @@ body .backimage-boy {
     border: 0.0521vw solid rgba(145, 145, 145, 0.4);
     backdrop-filter: blur(1.7188vw);
     background: linear-gradient(175deg, rgba(0, 0, 0, 0.8) 2.45%, rgba(22, 22, 22, 0.9) 102%);
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .wvt-stat:hover {
+    transform: translateY(-0.1563vw);
+    border-color: var(--color-orange);
   }
   
   .wvt-stat__label {
@@ -2503,7 +2525,7 @@ body .backimage-boy {
 
   .wvt-stats {
     gap: 16px;
-    margin-top: 60px;
+    padding-top: 60px;
   }
 
   .wvt-stat__label {
