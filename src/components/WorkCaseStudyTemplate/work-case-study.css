@@ -315,7 +315,7 @@ body .backimage-boy {
 
 .wvt-stat {
   flex: 1 1 200px;
-  padding: 28px 32px;
+  padding: 28px 26px;
   border-radius: 12px;
   border: 1px solid rgba(145, 145, 145, 0.4);
   backdrop-filter: blur(33px);
@@ -531,7 +531,7 @@ body .backimage-boy {
 .wvt-capability-card {
   flex: 1 1 190px;
   min-width: 190px;
-  padding: 15px 20px;
+  padding: 15px 14px;
   border-radius: 15px;
   border: 1px solid rgba(145, 145, 145, 0.4);
   backdrop-filter: blur(25px);
@@ -1408,7 +1408,7 @@ body .backimage-boy {
   
   .wvt-stat {
     flex: 1 1 10.4167vw;
-    padding: 1.4583vw 1.6667vw;
+    padding: 1.4583vw 1.3542vw;
     border-radius: 0.625vw;
     border: 0.0521vw solid rgba(145, 145, 145, 0.4);
     backdrop-filter: blur(1.7188vw);
@@ -1624,7 +1624,7 @@ body .backimage-boy {
   .wvt-capability-card {
     flex: 1 1 9.8958vw;
     min-width: 9.8958vw;
-    padding: 0.7813vw 1.0417vw;
+    padding: 0.7813vw 0.7292vw;
     border-radius: 0.7813vw;
     border: 0.0521vw solid rgba(145, 145, 145, 0.4);
     backdrop-filter: blur(1.3021vw);
