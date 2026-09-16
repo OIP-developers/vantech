@@ -10,6 +10,7 @@ import relatedWork3 from '../../assets/images/work-van-travel/figma/related-work
 const data: WorkCaseStudyData = {
   hero: {
     badges: ['Web Applications', 'Travel & Immigration'],
+    badgesMerged: true,
     titleLines: ['Van Travel', 'Business'],
     description:
       'A travel and immigration business platform covering packages, document intake and client enquiries.',
