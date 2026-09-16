@@ -71,25 +71,24 @@
   background-position: center bottom;
   background-size: 100% auto;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
-.about-hero__banner {
+
+.about-hero::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  aspect-ratio: 2299 / 880;
-  filter: blur(60px);
-  z-index: 0;
+  height: auto;
+  aspect-ratio: 3840 / 2156;
+  background-image: url(../../assets/images/about/hero-banner-bg.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
   pointer-events: none;
+  z-index: 0;
 }
-
-.about-hero__banner-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .about-hero__banner-fade {
   position: absolute;
   top: 0;
@@ -239,7 +238,7 @@
   left: 0;
   width: 267px;
   height: 612px;
-  background-image: url(../../assets/images/about/delivery-left-img-a.webp);
+  background-image: url(../../assets/images/about/process-left-deco.png);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 2;
@@ -251,7 +250,7 @@
   right: 0;
   width: 256px;
   height: 605px;
-  background-image: url(../../assets/images/about/Three-businesses-rigth-S.webp);
+  background-image: url(../../assets/images/about/process-right-deco.png);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 2;
@@ -400,6 +399,8 @@
   height: 145px;
   margin: 0 auto;
   /* animation: about-tech-badge-pulse 3.5s ease-in-out infinite; */
+  position: relative;
+  z-index: 2;
 }
 .about-divider-top {
   position: absolute;
@@ -484,6 +485,25 @@
 .about-layers {
   position: relative;
   padding-top: 186px;
+  padding-bottom: 200px;
+}
+
+.about-layers::after {
+  content: '';
+  position: absolute;
+  bottom: -310px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3840 / 3882;
+  background-image: url(../../assets/images/about/layers-ambient-glow.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .about-layers::before {
@@ -500,7 +520,7 @@
   background-position: center top;
   background-size: 100% auto;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .about-layers__bg {
@@ -591,7 +611,7 @@
 
 .about-principles {
   position: relative;
-  padding: 193px 0 320px;
+  padding: 30px 0 320px;
   overflow: hidden;
 }
 
@@ -1082,7 +1102,40 @@
 /* ---------- Risk / ownership grid ---------- */
 
 .about-risk {
+  position: relative;
   padding-top:214px;
+}
+
+.about-risk::before {
+  content: '';
+  position: absolute;
+  top: -300px;
+  left: 0;
+  width: 700px;
+  height: auto;
+  aspect-ratio: 1936 / 3872;
+  background-image: url(../../assets/images/about/risk-left-deco.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 100% auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-risk::after {
+  content: '';
+  position: absolute;
+  top: -300px;
+  right: 0;
+  width: 800px;
+  height: auto;
+  aspect-ratio: 1998 / 3904;
+  background-image: url(../../assets/images/about/risk-right-deco.png);
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 100% auto;
+  pointer-events: none;
+  z-index: 0;
 }
 .about-work-card .icon-fle {
   display: flex;
@@ -1194,7 +1247,6 @@
   right: 0;
   width: 170px;
   height: 331px;
-  opacity: 1;
   z-index: 0;
   pointer-events: none;
 }
@@ -1281,16 +1333,16 @@
 
 @media (min-width: 981px) {
 
+  .about-page .section-head.reveal.is-visible {
+    gap: 0.8854vw;
+  }
+
   .about-hero {
     padding: 11.4583vw 0 17.1875vw;
   }
 
   .about-hero::before {
     bottom: -2.0833vw;
-  }
-
-  .about-hero__banner {
-    filter: blur(3.125vw);
   }
 
   .about-hero__banner-fade {
@@ -1485,6 +1537,11 @@
 
   .about-layers {
     padding-top: 9.6875vw;
+    padding-bottom: 10.4167vw;
+  }
+
+  .about-layers::after {
+    bottom: -16.1458vw;
   }
 
   .about-layers::before {
@@ -1538,7 +1595,7 @@
   }
 
   .about-principles {
-    padding: 10.0521vw 0 16.6667vw;
+    padding: 1.5625vw 0 16.6667vw;
   }
 
   .about-principles::before {
@@ -1694,6 +1751,16 @@
 
   .about-risk {
     padding-top: 11.1458vw;
+  }
+
+  .about-risk::before {
+    top: -15.625vw;
+    width: 36.4583vw;
+  }
+
+  .about-risk::after {
+    top: -15.625vw;
+    width: 41.6667vw;
   }
 
   .about-risk__grid {
@@ -2207,13 +2274,32 @@
   transform: translate(0, 0) scale(1);
 }
 
-@keyframes about-fade-scale-in {
-  from { opacity: 0; transform: scale(1.05); }
-  to { opacity: 1; transform: scale(1); }
+.about-page .section-head.reveal.is-visible {
+  gap: 17px;
+  position: relative;
+  z-index: 2;
 }
 
-.about-hero__banner-img {
-  animation: about-fade-scale-in 1.1s ease both;
+.about-hero__actions .btn {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-hero__content.is-visible .about-hero__actions .btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-hero__content.is-visible .about-hero__actions .btn:nth-child(1) { transition-delay: 0.5s; }
+.about-hero__content.is-visible .about-hero__actions .btn:nth-child(2) { transition-delay: 0.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero__actions .btn {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Card / row stagger reveals — each grid/list wrapper toggles .is-visible
@@ -2267,7 +2353,6 @@
 .about-work__grid.is-visible .about-work-card:nth-child(3) { transition-delay: 0.21s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .about-hero__banner-img,
   .about-process-item,
   .about-layers-table__row,
   .about-principle-card,

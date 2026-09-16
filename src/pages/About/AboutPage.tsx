@@ -14,7 +14,6 @@ import architectureIcon from '../../assets/images/about/section2-icons/architect
 import buildIcon from '../../assets/images/about/section2-icons/build.png';
 import integrationIcon from '../../assets/images/about/section2-icons/integration.png';
 import deploymentIcon from '../../assets/images/about/section2-icons/deployment.png';
-import heroBannerBlur from '../../assets/images/about/hero-banner-blur.webp';
 import archDecisionSphere from '../../assets/images/about/figma/architecture-decision-sphere.webp';
 import accessControlIcon from '../../assets/images/about/Access-control-c.png';
 import confidentialityIcon from '../../assets/images/about/Confidentiality-E.png';
@@ -215,27 +214,26 @@ export default function AboutPage() {
   }, []);
 
   const hero = useReveal('up');
-  const processHead = useReveal('up');
+  const processHead = useReveal('left');
   const processGrid = useReveal('up');
-  const techReveal = useReveal('up');
-  const layersHead = useReveal('up');
+  const techReveal = useReveal('right');
+  const layersHead = useReveal('left');
   const layersGrid = useReveal('up');
   const principlesHead = useReveal('up');
   const archCenter = useReveal('up');
   const principlesGrid = useReveal('up');
   const aiCopy = useReveal('left');
   const aiList = useReveal<HTMLUListElement>('right');
-  const riskHead = useReveal('up');
+  const riskHead = useReveal('right');
   const riskGrid = useReveal('up');
-  const workHead = useReveal('up');
+  const riskNote = useReveal('up');
+  const workHead = useReveal('left');
   const workGrid = useReveal('up');
+  const workGlowReveal = useReveal<HTMLImageElement>('up');
 
   return (
     <main className="about-page about-banner">
       <section className="about-hero section">
-        <div className="about-hero__banner">
-          <img src={heroBannerBlur} alt="" className="about-hero__banner-img" loading="eager" />
-        </div>
         <div className={`container about-hero__content ${hero.className}`} ref={hero.ref}>
           <span className="eyebrow-pill">About Van Tech Systems</span>
           <h1 className="about-hero__title">
@@ -444,7 +442,7 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <p className="about-risk__note">
+          <p className={`about-risk__note ${riskNote.className}`} ref={riskNote.ref}>
             Detailed policies are available in our legal center, including privacy,
             terms, cookies, accessibility and AI usage.{' '}
             <a href="/legal" className="about-risk__note-link">
@@ -455,7 +453,13 @@ export default function AboutPage() {
       </section>
 
       <section className="about-work section">
-        <img src={workGlow} alt="" className="about-work__glow" loading="lazy" />
+        <img
+          src={workGlow}
+          alt=""
+          className={`about-work__glow ${workGlowReveal.className}`}
+          ref={workGlowReveal.ref}
+          loading="lazy"
+        />
         <div className="container">
           <div className={`section-head ${workHead.className}`} ref={workHead.ref}>
             <img src={Threebusinesses} alt="" className="about-tech__badge" loading="lazy" />

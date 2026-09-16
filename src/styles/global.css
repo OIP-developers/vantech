@@ -77,7 +77,6 @@
 html {
   scroll-behavior: smooth;
   background: var(--color-bg);
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -91,8 +90,11 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.5;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  overflow-x: clip;
 }
 
 img {
@@ -195,7 +197,7 @@ h1, h2, h3, h4, p {
   line-height: 1.2;
   color: var(--color-white);
   text-align: center;
-  width: 770px;
+  width: 820px;
 }
 
 .section-title--layers,
@@ -2597,7 +2599,7 @@ a.navbar__cta--mobile {
   }
   .section-title {
     font-size: 2.3958vw;
-    width: 40.1042vw;
+    width: 42.7083vw;
   }
   .section-title--layers,
   .section-title--work {

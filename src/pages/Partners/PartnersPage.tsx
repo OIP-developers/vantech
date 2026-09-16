@@ -5,6 +5,7 @@ import FAQ from '../../components/FAQ';
 import Testimonials from '../../components/Testimonials';
 import CTA from '../../components/CTA';
 import { useReveal } from '../../hooks/useReveal';
+import { useRowShrink } from '../../hooks/useRowShrink';
 
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
 import vtsSparkleSvg from '../../assets/icons/vts-sparkle.svg?raw';
@@ -24,6 +25,38 @@ import heroStarImg from '../../assets/images/partners-hero-star.webp';
 import tiersBadgeGlow from '../../assets/images/partners-badge-glow.png';
 import tiersGlowTexture from '../../assets/images/partners-glow-texture.png';
 import visibilityOrb from '../../assets/images/partners-visibility-orb.png';
+
+const chipImageClass: Record<string, string> = {
+  'AI Chat Agents': 'ai-chat-agents',
+  'AI Customer Support': 'ai-customer-support',
+  'AI Knowledge Systems': 'ai-knowledge-systems',
+  'AI Lead Qualification': 'ai-lead-qualification',
+  'AI Receptionists': 'ai-receptionists',
+  'AI Voice Agents': 'ai-voice-agents',
+  'AI Workflow Automation': 'ai-workflow-automation',
+  'Custom Web Applications': 'custom-web-applications',
+  'SaaS Platforms': 'saas-platforms',
+  'Marketplace Platforms': 'marketplace-platforms',
+  'Client Portals': 'client-portals',
+  'Internal Business Systems': 'internal-business-systems',
+  'CRM Platforms': 'crm-platforms',
+  'CRM Automation': 'crm-automation',
+  'Email/SMS Workflows': 'email-sms-workflows',
+  'Lead Follow-Up Systems': 'lead-follow-up-systems',
+  'Operations Automation': 'operations-automation',
+  'Appointment Automation': 'appointment-automation',
+  'Business Process Automation': 'business-process-automation',
+  'Premium Website': 'premium-website',
+  'E-Commerce': 'e-commerce',
+  'Customer Portals': 'customer-portals',
+  'Business Dashboards': 'business-dashboards',
+  'Membership Platforms': 'membership-platforms',
+  'Product Strategy': 'product-strategy',
+  'Technology Architecture': 'technology-architecture',
+  'AI Readiness': 'ai-readiness',
+  'Digital Transformation': 'digital-transformation',
+  'System Audits': 'system-audits',
+};
 
 function CheckIcon() {
   return (
@@ -120,6 +153,11 @@ const catalogTop = [
     desc: "Conversational and operational AI systems built around a client's workflows.",
     icon: 'software',
     wrapChips: true,
+    chipRows: [
+      ['AI Receptionists', 'AI Voice Agents', 'AI Chat Agents'],
+      ['AI Lead Qualification', 'AI Customer Support', 'AI Knowledge Systems'],
+      ['AI Knowledge Systems--bottom', 'AI Workflow Automation'],
+    ],
     items: ['AI Receptionists', 'AI Voice Agents', 'AI Chat Agents', 'AI Lead Qualification', 'AI Customer Support', 'AI Knowledge Systems', 'AI Workflow Automation'],
   },
   {
@@ -388,6 +426,7 @@ export default function PartnersPage() {
   const tiersHead = useReveal('up');
   const pipelineHead = useReveal('up');
   const catalogHead = useReveal('up');
+  const catalogRowShrink = useRowShrink();
   const brandCopy = useReveal('left');
   const brandGraphic = useReveal('right');
   const intelLeft = useReveal('left');
@@ -417,7 +456,7 @@ export default function PartnersPage() {
               focus on relationships, sales, strategy and growth.
             </p>
             <div className="partners-hero__actions">
-              <a href="/contact" className="btn btn-primary">
+              <a href="/contact" className="btn btn-outline">
                 Become VTS Partner
                 <Icon svg={arrowRightSvg} className="btn-icon" />
               </a>
@@ -449,6 +488,8 @@ export default function PartnersPage() {
 
       {/* ---------- Tiers ---------- */}
       <section className="partners-tiers section" id="tiers">
+        <span className="partners-tiers__glow-left" />
+        <span className="partners-tiers__glow-right" />
         <div className="container">
           <div className={`partners-tiers__head ${tiersHead.className}`} ref={tiersHead.ref}>
             <div className="partners-tiers__badge">
@@ -467,7 +508,11 @@ export default function PartnersPage() {
                 <img src={tiersGlowTexture} alt="" className="partners-tier-card__bg" loading="lazy" />
                 <div className="partners-tier-card__content">
                   <h3 className="partners-tier-card__title">{tier.title}</h3>
-                  <p className="partners-tier-card__desc">{tier.desc}</p>
+                  <p
+                    className={`partners-tier-card__desc${tier.title === 'Referral Partner' ? ' partners-tier-card__desc--referral' : ''}`}
+                  >
+                    {tier.desc}
+                  </p>
                   <div className="partners-tier-card__roles">
                     {tier.columns.map((col, i) => (
                       <div className={`partners-tier-role ${i === 0 ? 'partners-tier-role--blue' : 'partners-tier-role--orange'}`} key={col.label}>
@@ -526,7 +571,21 @@ export default function PartnersPage() {
             </h2>
           </div>
 
-          <div className="partners-catalog__grid-top">
+          <div
+            className="partners-catalog__row-wrap"
+            ref={catalogRowShrink.wrapperRef}
+            style={{
+              height: catalogRowShrink.contentHeight
+                ? `${catalogRowShrink.contentHeight + catalogRowShrink.extraPx}px`
+                : '100vh',
+            }}
+          >
+          <div className="partners-catalog__row-sticky">
+          <div
+            className="partners-catalog__grid-top"
+            ref={catalogRowShrink.contentRef}
+            style={{ transform: `perspective(1200px) scale(${catalogRowShrink.scale})` }}
+          >
             {catalogTop.map((cat) => (
               <div
                 className={`partners-catalog-card partners-catalog-card--glow partners-catalog-card--${cat.slug}${cat.titleFirst ? ' partners-catalog-card--title-first' : ''}`}
@@ -537,26 +596,53 @@ export default function PartnersPage() {
                     <img src={orbSphere} alt="" className="partners-catalog-card__icon-orb" loading="lazy" />
                     <Icon svg={catalogIcons[cat.icon]} className="partners-catalog-card__icon" />
                   </span>
-                  <div
-                    className={
-                      cat.wrapChips
-                        ? 'partners-catalog-card__chips-wrap'
-                        : `partners-catalog-card__chips-grid${cat.iconRight ? ' partners-catalog-card__chips-grid--icon-right' : ''}`
-                    }
-                  >
-                    {cat.items.map((item) => (
-                      <span className="partners-chip partners-chip--glass" key={item}>
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                  {cat.wrapChips && cat.chipRows ? (
+                    <div className="partners-catalog-card__chips-wrap">
+                      {cat.chipRows.map((row, i) => (
+                        <div className="partners-catalog-card__chips-row" key={i}>
+                          {row.map((entry) => {
+                            const [text, variant] = entry.split('--');
+                            const suffix = variant ? `${chipImageClass[text]}-${variant}` : chipImageClass[text];
+                            return (
+                              <span
+                                className={`partners-chip partners-chip--glass${suffix ? ` partners-chip--${suffix}` : ''}`}
+                                key={entry}
+                              >
+                                {text}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      className={`partners-catalog-card__chips-grid${cat.iconRight ? ' partners-catalog-card__chips-grid--icon-right' : ''}`}
+                    >
+                      {cat.items.map((item) => (
+                        <span
+                          className={`partners-chip partners-chip--glass${chipImageClass[item] ? ` partners-chip--${chipImageClass[item]}` : ''}`}
+                          key={item}
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <h3 className="partners-catalog-card__title">{cat.title}</h3>
                 <p className="partners-catalog-card__desc">{cat.desc}</p>
               </div>
             ))}
           </div>
+          </div>
+          </div>
 
+          <div
+            className="partners-catalog__row-wrap partners-catalog__row-wrap--last"
+            style={catalogRowShrink.contentHeight ? { marginTop: `-${catalogRowShrink.contentHeight}px` } : undefined}
+          >
+          <div className="partners-catalog__row-sticky partners-catalog__row-sticky--last">
           <div className="partners-catalog__grid-bottom">
             {catalogBottom.map((cat) => (
               <div
@@ -570,7 +656,10 @@ export default function PartnersPage() {
                   </span>
                   <div className="partners-catalog-card__chips-grid partners-catalog-card__chips-grid--sm">
                     {cat.items.map((item) => (
-                      <span className="partners-chip partners-chip--glass partners-chip--sm" key={item}>
+                      <span
+                        className={`partners-chip partners-chip--glass partners-chip--sm${chipImageClass[item] ? ` partners-chip--${chipImageClass[item]}` : ''}`}
+                        key={item}
+                      >
                         {item}
                       </span>
                     ))}
@@ -580,6 +669,8 @@ export default function PartnersPage() {
                 <p className="partners-catalog-card__desc">{cat.desc}</p>
               </div>
             ))}
+          </div>
+          </div>
           </div>
 
           <div className="partners-catalog__cta">
