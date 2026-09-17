@@ -7,6 +7,7 @@ import CTA from '../CTA';
 import { useReveal } from '../../hooks/useReveal';
 
 import arrowRightSvg from '../../assets/icons/boxicons-arrow-right-stroke.svg?raw';
+import caseStudyArrowSvg from '../../assets/icons/at-icons-arrow-right.svg?raw';
 import badgeCheckSvg from '../../assets/icons/work-van-badge-check.svg?raw';
 import shareIconSvg from '../../assets/icons/ci-share-ios-export.svg?raw';
 import copyIconSvg from '../../assets/icons/akar-icons-copy.svg?raw';
@@ -40,6 +41,8 @@ export interface WorkCaseStudyRelatedItem {
   tag: string;
   title: string;
   desc: string;
+  /** Internal route to that project's case study page. Card renders without a "View Work" button when omitted. */
+  href?: string;
 }
 
 export interface WorkCaseStudyData {
@@ -228,6 +231,79 @@ export default function WorkCaseStudyTemplate({
               <p className="wvt-detail-item__desc">{data.detail.builtDesc}</p>
               <span className="wvt-detail-item__divider" />
             </div>
+
+            <div className={`wvt-capabilities ${capabilitiesReveal.className}`} ref={capabilitiesReveal.ref}>
+              <span className="wvt-eyebrow-number">04 — Core capabilities</span>
+              <p className="wvt-section-desc">{data.capabilities.desc}</p>
+
+              <div className="wvt-capabilities__grid">
+                {data.capabilities.items.map((c) => (
+                  <div className="wvt-capability-card" key={c.number}>
+                    <span className="wvt-capability-card__number">{c.number}</span>
+                    <span className="wvt-capability-card__title">{c.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={`wvt-flow ${flowReveal.className}`} ref={flowReveal.ref}>
+              <span className="wvt-eyebrow-number">05 — {data.flow.heading ?? 'Services'}</span>
+              <div className="wvt-flow__steps">
+                {data.flow.steps.map((step, i) => (
+                  <div className="wvt-flow__step-wrap" key={step}>
+                    <span className="wvt-flow__step">{step}</span>
+                    {i < data.flow.steps.length - 1 && <span className="wvt-flow__connector" />}
+                  </div>
+                ))}
+              </div>
+              <p className="wvt-flow__caption">{data.flow.caption}</p>
+            </div>
+
+            <div className={`wvt-approach ${approachReveal.className}`} ref={approachReveal.ref}>
+              <span className="wvt-approach__divider" />
+              <span className="wvt-eyebrow-number">06 — System approach</span>
+
+              <div className="wvt-diagram">
+                <div className="wvt-diagram__badge">
+                  <Icon svg={carbonReferenceArchitectureSvg} className="wvt-diagram__badge-icon" />
+                  <span className="wvt-diagram__badge-label">
+                    {data.diagram.badgeLines.map((line, i) => (
+                      <Fragment key={line}>
+                        {line}
+                        {i < data.diagram.badgeLines.length - 1 && <br />}
+                      </Fragment>
+                    ))}
+                  </span>
+                </div>
+
+                <img src={diagramVector29} alt="" className="wvt-diagram__vector wvt-diagram__vector--1" />
+                <img src={diagramVector31} alt="" className="wvt-diagram__vector wvt-diagram__vector--2" />
+                <img src={diagramVector31} alt="" className="wvt-diagram__vector wvt-diagram__vector--3" />
+                <img src={diagramVector30} alt="" className="wvt-diagram__vector wvt-diagram__vector--4" />
+                <span className="wvt-diagram__dot wvt-diagram__dot--center" />
+
+                <div className="wvt-diagram__pills">
+                  {data.diagram.pills.map((pill, i) => (
+                    <span className="wvt-diagram__pill-row" key={`${pill}-${i}`}>
+                      <span className="wvt-diagram__pill-dot" />
+                      <span className="wvt-diagram__pill">{pill}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className={`wvt-outcome ${outcomeReveal.className}`} ref={outcomeReveal.ref}>
+              <span className="wvt-eyebrow-number">07 — Outcome</span>
+              <ul className="wvt-outcome__list">
+                {data.outcomes.map((item, i) => (
+                  <li key={`${item}-${i}`}>
+                    <span className="wvt-outcome__dot" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <aside className="wvt-sidebar">
@@ -269,86 +345,6 @@ export default function WorkCaseStudyTemplate({
         </div>
       </section>
 
-      <section className="wvt-capabilities section">
-        <div className={`container ${capabilitiesReveal.className}`} ref={capabilitiesReveal.ref}>
-          <span className="wvt-eyebrow-number">04 — Core capabilities</span>
-          <p className="wvt-section-desc">{data.capabilities.desc}</p>
-
-          <div className="wvt-capabilities__grid">
-            {data.capabilities.items.map((c) => (
-              <div className="wvt-capability-card" key={c.number}>
-                <span className="wvt-capability-card__number">{c.number}</span>
-                <span className="wvt-capability-card__title">{c.title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="wvt-flow section">
-        <div className={`container ${flowReveal.className}`} ref={flowReveal.ref}>
-          <span className="wvt-eyebrow-number">05 — {data.flow.heading ?? 'Services'}</span>
-          <div className="wvt-flow__steps">
-            {data.flow.steps.map((step, i) => (
-              <div className="wvt-flow__step-wrap" key={step}>
-                <span className="wvt-flow__step">{step}</span>
-                {i < data.flow.steps.length - 1 && <span className="wvt-flow__connector" />}
-              </div>
-            ))}
-          </div>
-          <p className="wvt-flow__caption">{data.flow.caption}</p>
-        </div>
-      </section>
-
-      <section className="wvt-approach section">
-        <div className={`container ${approachReveal.className}`} ref={approachReveal.ref}>
-          <span className="wvt-eyebrow-number">06 — System approach</span>
-
-          <div className="wvt-diagram">
-            <div className="wvt-diagram__badge">
-              <Icon svg={carbonReferenceArchitectureSvg} className="wvt-diagram__badge-icon" />
-              <span className="wvt-diagram__badge-label">
-                {data.diagram.badgeLines.map((line, i) => (
-                  <Fragment key={line}>
-                    {line}
-                    {i < data.diagram.badgeLines.length - 1 && <br />}
-                  </Fragment>
-                ))}
-              </span>
-            </div>
-
-            <img src={diagramVector29} alt="" className="wvt-diagram__vector wvt-diagram__vector--1" />
-            <img src={diagramVector31} alt="" className="wvt-diagram__vector wvt-diagram__vector--2" />
-            <img src={diagramVector31} alt="" className="wvt-diagram__vector wvt-diagram__vector--3" />
-            <img src={diagramVector30} alt="" className="wvt-diagram__vector wvt-diagram__vector--4" />
-            <span className="wvt-diagram__dot wvt-diagram__dot--center" />
-
-            <div className="wvt-diagram__pills">
-              {data.diagram.pills.map((pill, i) => (
-                <span className="wvt-diagram__pill-row" key={`${pill}-${i}`}>
-                  <span className="wvt-diagram__pill-dot" />
-                  <span className="wvt-diagram__pill">{pill}</span>
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="wvt-outcome section">
-        <div className={`container ${outcomeReveal.className}`} ref={outcomeReveal.ref}>
-          <span className="wvt-eyebrow-number">07 — Outcome</span>
-          <ul className="wvt-outcome__list">
-            {data.outcomes.map((item, i) => (
-              <li key={`${item}-${i}`}>
-                <span className="wvt-outcome__dot" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       <div className={`wvt-banner ${bannerReveal.className}`} ref={bannerReveal.ref}>
         <img src={bannerImage} alt="" className="wvt-banner__img" loading="lazy" />
         <span className="wvt-banner__icon">
@@ -370,6 +366,14 @@ export default function WorkCaseStudyTemplate({
                 <span className="wvt-related-card__tag">{item.tag}</span>
                 <h3 className="wvt-related-card__title">{item.title}</h3>
                 <p className="wvt-related-card__desc">{item.desc}</p>
+                {item.href && (
+                  <a href={item.href} className="wvt-related-card__link">
+                    View Work
+                    <span className="wvt-related-card__link-icon">
+                      <Icon svg={caseStudyArrowSvg} />
+                    </span>
+                  </a>
+                )}
               </div>
             ))}
           </div>

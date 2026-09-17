@@ -393,6 +393,7 @@ export default function AboutPage() {
           >
             {principles.map((p) => (
               <div className="about-principle-card" key={p.title}>
+                <div className="about-principle-card__glow" />
                 <h3 className="about-principle-card__title">{p.title}</h3>
                 <p className="about-principle-card__desc">{p.desc}</p>
               </div>
@@ -444,6 +445,7 @@ export default function AboutPage() {
           <div className={`about-risk__grid ${riskGrid.className}`} ref={riskGrid.ref}>
             {riskCards.map((card) => (
               <div className="about-risk-card" key={card.title}>
+                <div className="about-risk-card__glow" />
                 <img src={card.icon} alt="" className="about-risk-card__icon" loading="lazy" />
                 <h3 className="about-risk-card__title">{card.title}</h3>
                 <p className="about-risk-card__desc">{card.desc}</p>
@@ -478,6 +480,7 @@ export default function AboutPage() {
           <div className={`about-work__grid ${workGrid.className}`} ref={workGrid.ref}>
             {workCards.map((card) => (
               <div className="about-work-card" key={card.number}>
+                <div className="about-work-card__glow" />
                 {/* <Icon svg={workBadgeSvg} className="about-work-card__badge" /> */}
                 <div className="icon-fle">
                   <h3 className="about-work-card__title">{card.title}</h3>

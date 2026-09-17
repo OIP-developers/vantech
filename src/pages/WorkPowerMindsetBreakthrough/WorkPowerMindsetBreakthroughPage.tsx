@@ -67,18 +67,21 @@ const data = {
       tag: 'Professional Services',
       title: 'The PMB Consulting',
       desc: 'A professional digital presence for a consulting practice covering business mentorship, formation, branding and growth services.',
+      href: '/pmb-consulting',
     },
     {
       image: relatedWorkSolidRock,
       tag: 'Professional Services',
       title: 'Solid Rock Leadership Development',
       desc: 'A leadership and financial education platform presenting programs, audiences and a consultation booking journey.',
+      href: '/solid-rock-leadership-development',
     },
     {
       image: relatedWorkOneTap,
       tag: 'SaaS',
       title: 'OneTap Digital Card',
       desc: 'A digital business card platform where professionals share contact details, links and a booking page through a public card link or QR code.',
+      href: '/onetap-digital-card',
     },
   ],
 };

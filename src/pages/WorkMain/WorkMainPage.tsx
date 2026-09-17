@@ -30,39 +30,35 @@ const portfolioItems = [
     category: 'SaaS',
     desc: 'A digital business card platform where professionals share contact details, links and a booking page through a public card link or QR code.',
     image: oneTapImg,
-    caseHref: CASE_STUDY_CTA,
+    caseHref: '/onetap-digital-card',
   },
   {
     title: 'The PMB Consulting',
     category: 'Business Platforms',
     desc: 'A professional digital presence for a consulting practice covering business mentorship, formation, branding and growth services.',
     image: pmbConsultingImg,
-    caseHref: CASE_STUDY_CTA,
-    titleHref: 'https://vantechsystems.tech/work/pmb-consulting',
+    caseHref: '/pmb-consulting',
   },
   {
     title: 'Buketi Financial & Consulting',
     category: 'Business Platforms',
     desc: 'A financial and consulting practice platform with service positioning, advisory offers and qualified enquiry capture.',
     image: buketiImg,
-    caseHref: CASE_STUDY_CTA,
-    titleHref: 'https://vantechsystems.tech/work/buketi-insurance-services',
+    caseHref: '/buketi-insurance-services',
   },
   {
     title: 'Mighty Oak Legacy',
     category: 'Business Platforms',
     desc: 'A digital platform built around financial education, mentorship, leadership development and family legacy guidance.',
     image: mightyOakImg,
-    caseHref: CASE_STUDY_CTA,
-    titleHref: 'https://vantechsystems.tech/work/mighty-oak-legacy',
+    caseHref: '/mighty-oak-legacy',
   },
   {
     title: 'Solid Rock Leadership Development',
     category: 'Business Platforms',
     desc: 'A leadership and financial education platform presenting programs, audiences and a consultation booking journey.',
     image: solidRockImg,
-    caseHref: CASE_STUDY_CTA,
-    titleHref: 'https://vantechsystems.tech/work/solid-rock-leadership-development',
+    caseHref: '/solid-rock-leadership-development',
   },
   {
     title: 'Van Travel Business',
@@ -83,21 +79,21 @@ const portfolioItems = [
     category: 'Business Platforms',
     desc: 'A coaching and personal development platform with programmes, booking and content delivery.',
     image: powerMindsetImg,
-    caseHref: CASE_STUDY_CTA,
+    caseHref: '/power-mindset-breakthrough',
   },
   {
     title: 'Lelofit',
     category: 'SaaS',
     desc: 'A fitness and coaching experience with programme discovery, plans and member sign-up.',
     image: lelofitImg,
-    caseHref: CASE_STUDY_CTA,
+    caseHref: '/lelofit',
   },
   {
     title: 'All Access Trip',
     category: 'Web Applications',
     desc: 'A travel booking and itinerary platform for curated trips, groups and experiences.',
     image: allAccessTripImg,
-    caseHref: CASE_STUDY_CTA,
+    caseHref: '/all-access-trip',
   },
 ];
 
@@ -166,18 +162,14 @@ export default function WorkMainPage() {
                   <img src={item.image} alt={`${item.title} platform preview`} loading="lazy" />
                 </div>
 
-                {item.titleHref ? (
-                  <a
-                    href={item.titleHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="work-card__title"
-                  >
-                    {item.title}
-                  </a>
-                ) : (
-                  <span className="work-card__title">{item.title}</span>
-                )}
+                <a
+                  href={item.caseHref}
+                  target={item.caseHref.startsWith('http') ? '_blank' : undefined}
+                  rel={item.caseHref.startsWith('http') ? 'noreferrer' : undefined}
+                  className="work-card__title"
+                >
+                  {item.title}
+                </a>
 
                 <p className="work-card__desc">{item.desc}</p>
 
