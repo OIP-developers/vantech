@@ -58,7 +58,7 @@ export default function Footer() {
                     <span className="footer-brand__bracket">[</span> Call us{' '}
                     <span className="footer-brand__bracket">]</span>
                   </span>
-                  <a href="tel:+19034763762" className="footer-brand__contact-value">+19034763762</a>
+                  <a href="tel:+19034763762" className="footer-brand__contact-value">+1-903-4763762</a>
                 </div>
                 <div>
                   <span className="footer-brand__contact-label">
