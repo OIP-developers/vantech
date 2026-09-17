@@ -89,5 +89,5 @@ const data = {
 };
 
 export default function WorkBuketiFinancialConsultingPage() {
-  return <WorkCaseStudyTemplate data={data} />;
+  return <WorkCaseStudyTemplate data={data} pageClassName="wvt-page--buketi" />;
 }

@@ -69,7 +69,8 @@
   border-radius: 16px;
   border: 1px solid transparent;
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+              conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
+  animation: gradient-border-spin 3s linear infinite;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 

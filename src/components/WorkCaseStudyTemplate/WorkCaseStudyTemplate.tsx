@@ -99,7 +99,14 @@ function stripProtocol(url: string): string {
   return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 }
 
-export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyData }) {
+export default function WorkCaseStudyTemplate({
+  data,
+  pageClassName,
+}: {
+  data: WorkCaseStudyData;
+  /** Extra class on the page root — lets one case study page carry its own CSS overrides without affecting the shared template. */
+  pageClassName?: string;
+}) {
   const heroLeft = useReveal('left');
   const heroRight = useReveal('right');
   const heroMockReveal = useReveal('up');
@@ -122,7 +129,7 @@ export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyDat
 
   return (
     <main
-      className="wvt-page backimage-boy"
+      className={`wvt-page backimage-boy${pageClassName ? ` ${pageClassName}` : ''}`}
       style={data.heroBackgroundImage ? { backgroundImage: `url(${data.heroBackgroundImage})` } : undefined}
     >
       <section className="wvt-hero section" id="wvt-hero">
@@ -320,7 +327,6 @@ export default function WorkCaseStudyTemplate({ data }: { data: WorkCaseStudyDat
               {data.diagram.pills.map((pill, i) => (
                 <span className="wvt-diagram__pill-row" key={`${pill}-${i}`}>
                   <span className="wvt-diagram__pill-dot" />
-                  <span className="wvt-diagram__pill-line" />
                   <span className="wvt-diagram__pill">{pill}</span>
                 </span>
               ))}

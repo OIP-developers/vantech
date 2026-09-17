@@ -53,11 +53,12 @@
     inset: 0;
     padding: 0.044vw;
     border-radius: 0.990vw;
-    background: var(--gradient-border);
+    background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+    animation: gradient-border-spin 3s linear infinite;
   }
 
   .work-hero__title {
@@ -277,11 +278,12 @@
     inset: 0;
     padding: 0.84px;
     border-radius: 19px;
-    background: var(--gradient-border);
+    background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+    animation: gradient-border-spin 3s linear infinite;
   }
 
   .work-hero__title {
@@ -502,11 +504,12 @@
     inset: 0;
     padding: 0.84px;
     border-radius: 19px;
-    background: var(--gradient-border);
+    background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+    animation: gradient-border-spin 3s linear infinite;
   }
 
   .work-hero__title {
@@ -741,11 +744,12 @@
     inset: 0;
     padding: 0.84px;
     border-radius: 19px;
-    background: var(--gradient-border);
+    background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+    animation: gradient-border-spin 3s linear infinite;
   }
 
   .work-hero__title {

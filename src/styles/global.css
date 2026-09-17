@@ -177,6 +177,24 @@ h1, h2, h3, h4, p {
   position: relative;
 }
 
+/* ---------- Animated gradient border (shared site-wide) ----------
+   Rotates the border's own conic-gradient angle only (not the element's
+   transform), so it stays exactly on the shape's outline instead of a
+   rotated box swinging its corners outside it. Used by any gradient-border
+   element that should visibly animate. */
+
+@property --gradient-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes gradient-border-spin {
+  to {
+    --gradient-border-angle: 360deg;
+  }
+}
+
 /* ---------- Typography ---------- */
 
 .eyebrow-pill {
@@ -190,9 +208,10 @@ h1, h2, h3, h4, p {
   font-weight: 600;
   color: var(--color-white);
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+              conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
   border: 1px solid transparent;
   text-transform: uppercase;
+  animation: gradient-border-spin 3s linear infinite;
 }
 
 .section-title {
@@ -290,8 +309,9 @@ h1, h2, h3, h4, p {
 
 .btn-outline-gradient {
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+              conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
   border: 1.8px solid transparent;
+  animation: gradient-border-spin 3s linear infinite;
 }
 
 .btn-outline-gradient:hover {
@@ -549,7 +569,8 @@ a.navbar__cta--mobile {
   inset: 0;
   padding: 1px;
   border-radius: 15px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -805,7 +826,8 @@ a.navbar__cta--mobile {
   border-radius: 12px;
   border: 1.2px solid transparent;
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+              conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
+  animation: gradient-border-spin 3s linear infinite;
 }
 
 .dashboard-mock__lines {
@@ -947,7 +969,8 @@ a.navbar__cta--mobile {
   inset: 0;
   padding: 2.3px;
   border-radius: 15px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -1136,7 +1159,8 @@ a.navbar__cta--mobile {
   inset: 0;
   padding: 1.5px;
   border-radius: 5px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -1193,7 +1217,8 @@ a.navbar__cta--mobile {
   inset: 0;
   padding: 1px;
   border-radius: 15px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -1480,7 +1505,8 @@ a.navbar__cta--mobile {
 
 .pricing__tab.is-active {
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+              conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
+  animation: gradient-border-spin 3s linear infinite;
   border: 1.8px solid transparent;
 }
 
@@ -1813,7 +1839,8 @@ a.navbar__cta--mobile {
   inset: 0;
   padding: 1px;
   border-radius: 38px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -1942,7 +1969,8 @@ a.navbar__cta--mobile {
   flex-shrink: 0;
   width: 613px;
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+              conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
+  animation: gradient-border-spin 3s linear infinite;
 }
 
 .cta__booking-frame {
@@ -2464,7 +2492,8 @@ a.navbar__cta--mobile {
   inset: 0;
   padding: 2px;
   border-radius: 15px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -2555,7 +2584,8 @@ a.navbar__cta--mobile {
   font-weight: 600;
   color: var(--color-white);
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+              conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
+  animation: gradient-border-spin 3s linear infinite;
   border: 1.5px solid transparent;
   white-space: nowrap;
   cursor: pointer;

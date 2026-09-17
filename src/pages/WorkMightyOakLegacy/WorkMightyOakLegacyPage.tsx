@@ -93,5 +93,5 @@ const data = {
 };
 
 export default function WorkMightyOakLegacyPage() {
-  return <WorkCaseStudyTemplate data={data} />;
+  return <WorkCaseStudyTemplate data={data} pageClassName="wvt-page--mighty-oak" />;
 }

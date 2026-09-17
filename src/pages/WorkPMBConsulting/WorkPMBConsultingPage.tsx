@@ -91,5 +91,5 @@ const data = {
 };
 
 export default function WorkPMBConsultingPage() {
-  return <WorkCaseStudyTemplate data={data} />;
+  return <WorkCaseStudyTemplate data={data} pageClassName="wvt-page--pmb" />;
 }

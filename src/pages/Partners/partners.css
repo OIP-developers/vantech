@@ -127,7 +127,8 @@
   inset: 0;
   padding: 0.84px;
   border-radius: 19px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -492,7 +493,8 @@
   inset: 0;
   padding: 1.9px;
   border-radius: 12.4px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -827,7 +829,8 @@
   inset: 0;
   padding: 1px;
   border-radius: 12.4px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -1566,7 +1569,8 @@
   inset: 0;
   padding: 1px;
   border-radius: 10px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -1980,7 +1984,8 @@
   inset: 0;
   padding: 1px;
   border-radius: 10px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -2440,7 +2445,8 @@
 .partners-fulfillment .pricing__grid > .plan-card:nth-child(4n) { transition-delay: 0.24s; }
 
 .partners-fulfillment__badge {
-  background: linear-gradient(#050607, #050607) padding-box, var(--gradient-border) border-box;
+  background: linear-gradient(#050607, #050607) padding-box, conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
+  animation: gradient-border-spin 3s linear infinite;
 }
 
 .partners-fulfillment .plan-card {
@@ -2713,7 +2719,8 @@
 }
 
 .partners-verticals__badge {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) padding-box, var(--gradient-border) border-box;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) padding-box, conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
+  animation: gradient-border-spin 3s linear infinite;
 }
 
 .partners-verticals .section-head {

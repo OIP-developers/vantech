@@ -88,7 +88,8 @@
   inset: 0;
   padding: 1px;
   border-radius: 15px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -500,7 +501,8 @@
   border-radius: 7px;
   border: 1.5px solid transparent;
   background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-              var(--gradient-border) border-box;
+              conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3)) border-box;
+  animation: gradient-border-spin 3s linear infinite;
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: 18px;
@@ -772,7 +774,8 @@
   inset: 0;
   padding: 1px;
   border-radius: 7px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -897,7 +900,8 @@
   inset: 0;
   padding: 1px;
   border-radius: 10px;
-  background: var(--gradient-border);
+  background: conic-gradient(from var(--gradient-border-angle), var(--color-orange-3), #000000, var(--color-blue-2), var(--color-orange-3));
+  animation: gradient-border-spin 3s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;

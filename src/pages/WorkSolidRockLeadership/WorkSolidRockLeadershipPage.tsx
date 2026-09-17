@@ -97,5 +97,5 @@ const data = {
 };
 
 export default function WorkSolidRockLeadershipPage() {
-  return <WorkCaseStudyTemplate data={data} />;
+  return <WorkCaseStudyTemplate data={data} pageClassName="wvt-page--solid-rock" />;
 }
