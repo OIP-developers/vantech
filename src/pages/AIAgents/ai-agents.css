@@ -479,6 +479,7 @@
 }
 
 .agents-build::before {
+  display: none;
   content: '';
   position: absolute;
   left: 50%;

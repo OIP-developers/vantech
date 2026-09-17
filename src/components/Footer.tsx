@@ -122,8 +122,8 @@ export default function Footer() {
           <div className="footer-card__bottom">
             <p>&copy; 2026 Van Tech Systems. All rights reserved.</p>
             <div className="footer-card__bottom-links">
-              <a href="#home">Privacy Policy</a>
-              <a href="#home">Terms of Services</a>
+              <a href="/privacy-policy">Privacy Policy</a>
+              <a href="/terms-of-service">Terms of Services</a>
             </div>
           </div>
         </div>

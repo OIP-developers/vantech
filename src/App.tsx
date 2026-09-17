@@ -26,6 +26,8 @@ import WorkSolidRockLeadershipPage from './pages/WorkSolidRockLeadership/WorkSol
 import WorkBuketiFinancialConsultingPage from './pages/WorkBuketiFinancialConsulting/WorkBuketiFinancialConsultingPage';
 import WorkLelofitPage from './pages/WorkLelofit/WorkLelofitPage';
 import WorkAllAccessTripPage from './pages/WorkAllAccessTrip/WorkAllAccessTripPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicy/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfService/TermsOfServicePage';
 
 function App() {
   return (
@@ -57,6 +59,8 @@ function App() {
         <Route path="/lelofit" element={<WorkLelofitPage />} />
         <Route path="/all-access-trip" element={<WorkAllAccessTripPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
