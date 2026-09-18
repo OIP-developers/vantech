@@ -398,6 +398,9 @@ h1, h2, h3, h4, p {
   white-space: nowrap;
   transition: color 0.25s ease;
 }
+.navbar__link[href="#faq"] {
+  text-transform: uppercase;
+}
 
 .navbar__link:hover {
   color: var(--color-orange);
@@ -4730,6 +4733,13 @@ a.navbar__cta--mobile {
 /* Mobile and Tab Media Queries */
 /* / 320 to 767 --Galaxy S5 jiophone2 -- / */
 @media(max-width:599px){
+
+  /* white-space:nowrap on the base rule (see .section-title--work above)
+     was blocking width from ever wrapping this to 2 lines. */
+  .section-title--work {
+    width: 280px;
+    white-space: normal;
+  }
 
   .container,
   .container--wide {

@@ -2420,7 +2420,7 @@
     padding: 140px 0 20px;
   }
   .about-hero__title {
-    font-size: 22px;
+    font-size: 28px;
     margin: 20px 0 16px;
   }
   .about-hero__desc {
@@ -2441,11 +2441,12 @@
   }
 
   .about-title {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .about-process .section-title {
-    font-size: 22px;
+    width: 80%;
+    font-size: 28px;
     letter-spacing: 0.2px;
     line-height: 1.3;
   }
@@ -2457,14 +2458,20 @@
     font-size: 20px;
   }
   .about-process-item__desc {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.5;
     letter-spacing: 0.2px;
+  }
+
+  .about-tech .about-title {
+    font-size: 30px;
+    max-width: 90%;
   }
 
   .about-tech-card {
     padding: 20px 18px 22px;
     font-size: 15px;
+    text-align: center;
   }
   .about-tech-card--primary {
     padding: 20px 18px 24px;
@@ -2480,8 +2487,48 @@
     padding: 0 16px;
   }
 
+  .about-layers-table__row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 0;
+  }
+
+  /* 599px -> 482px: exactly 2 pills per row via grid (not flex-wrap, so
+     rows always align regardless of label length). Reset back to the
+     default flex-wrap layout in the 481px block below. */
+  .about-layers-table__tags {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  .about-layers-table__tag {
+    white-space: normal;
+    text-align: center;
+    padding: 7px 22px;
+  }
+  /* When a layer has an odd number of pills, the last one is alone in its
+     row — matches here (last child at an odd position) so it spans both
+     columns and centers instead of sitting stuck in the left column. */
+  .about-layers-table__tags > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
   .about-principles {
-    padding: 48px 0 56px;
+    padding: 48px 0 136px;
+  }
+
+  .about-page .section-title--principles,
+  .about-page .section-title--risk {
+    width: 80%;
+  }
+
+  .about-risk__note {
+    margin: 26px auto 0;
+    max-width: 100%;
+    font-size: 14px;
   }
 
   .about-ai {
@@ -2509,12 +2556,81 @@
     width: 40px;
     height: 40px;
   }
+
+  .about-page .section-title {
+    font-size: 28px;
+    width: 340px;
+  }
+
+  .about-arch-diagram {
+    margin: 44px 0;
+  }
+
+  .about-desc + .about-desc {
+    margin-top: 20px;
+  }
+
+  .about-page .faq__title {
+    font-size: 32px;
+    width: 80%;
+    margin: 20px auto 0;
+  }
 }
 
-/* Extra-narrow phones: keep the hero title wrapping to two lines */
-@media (max-width: 419px) {
-  .about-hero__title {
+@media (max-width: 481px) {
+  .about-layers-table__tags {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .about-layers-table__tag {
+    white-space: nowrap;
+  }
+
+  .about-page h2.section-title.section-title--process {
+    width: 100%;
+  }
+
+  .about-page .section-title {
+    font-size: 28px;
+    width: 100%;
+  }
+
+  .about-principle-card__title {
     font-size: 18px;
+  }
+
+  .about-principle-card__desc {
+    font-size: 13px;
+  }
+
+  .about-ai {
+    padding-top: 30px;
+  }
+
+  .about-page .cta__title {
+    font-size: 28px;
+  }
+
+  .about-page .cta__desc {
+    font-size: 13px;
+    margin: 18px 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .about-page .section-title {
+    width: 340px;
+    max-width: 100%;
+  }
+  /* .section-title--layers has white-space:nowrap on its own (unscoped)
+     base rule in global.css, which blocks any width from ever wrapping it
+     — same root cause already fixed for --work. Override both here. */
+  .about-page .section-title--layers {
+    width: 210px;
+    max-width: 100%;
+    white-space: normal;
   }
 }
 
@@ -2527,6 +2643,9 @@
 @media (max-width: 359px) {
   .about-hero__title {
     font-size: 15px;
+  }
+  .about-page .section-title {
+    font-size: 24px;
   }
 }
 
