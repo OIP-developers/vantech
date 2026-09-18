@@ -32,7 +32,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main>
+    <main className="home-page">
       <Hero />
       <Categories />
       <Solutions />

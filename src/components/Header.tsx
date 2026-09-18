@@ -67,6 +67,12 @@ export default function Header() {
             <img src={logo} alt="Van Tech Systems" width={113} height={54} />
           </a>
 
+          <div
+            className={`navbar__backdrop${isMenuOpen ? ' is-open' : ''}`}
+            onClick={closeMenu}
+            aria-hidden="true"
+          />
+
           <nav className={`navbar__nav${isMenuOpen ? ' is-open' : ''}`}>
             <ul className="navbar__links">
               {navLinks.map((link) => {

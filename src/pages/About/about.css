@@ -2030,16 +2030,19 @@
     max-width: 90%;
   }
   .about-hero {
-    padding: 180px 0 60px;
+    padding: 160px 0 100px;
   }
   .about-hero__content {
     max-width: 100%;
   }
   .about-hero__title {
-    font-size: 40px;
+    font-size: 36px;
+    margin: 20px 0 20px;
   }
   .about-hero__desc {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
   }
   .about-row {
     grid-template-columns: 1fr;
@@ -2059,6 +2062,14 @@
     margin-top: 60px;
   }
 
+  .about-page .btn {
+    font-size: 16px;
+  }
+
+  .about-page h2.section-title.section-title--process {
+    width: 80%;
+  }
+
   .about-process {
     padding-top: 60px;
   }
@@ -2071,7 +2082,15 @@
     margin-top: 40px;
   }
   .about-process-item {
-    gap: 40px;
+    gap: 20px;
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+  .about-process-item__title {
+    font-size: 20px;
+  }
+  .about-process-item__desc {
+    font-size: 14px;
   }
 
   .about-tech {
@@ -2080,25 +2099,55 @@
   .about-tech .container {
     max-width: 90%;
   }
+  .about-tech::before {
+    top: 60px;
+    width: 100%;
+  }
   .about-tech__badge {
-    width: 115px;
-    height: 115px;
+    width: 100px;
+    height: 100px;
     margin: 0 auto;
   }
   .about-tech-card--primary {
-    padding: 28px 40px 32px;
-    font-size: 24px;
+    padding: 28px 20px 30px;
+    font-size: 18px;
+  }
+  .about-tech-card {
+    padding: 30px 20px 20px 30px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border-soft);
+    font-size: 14px;
   }
 
   .about-layers {
     padding-top: 100px;
+    padding-bottom: 20px;
   }
   .about-layers .container {
     max-width: 90%;
   }
+  .about-layers::before {
+    top: 40px;
+    width: 100%;
+  }
+  .about-layers-table {
+    margin-top: 34px;
+    padding: 0 20px;
+  }
+  .about-layers-table__tag {
+    font-size: 13px;
+  }
+  .about-layers-table__row {
+    gap: 10px 10px;
+    padding: 20px 0 20px;
+  }
+  .about-layers-table__tags {
+    column-gap: 10px;
+    row-gap: 20px;
+  }
 
   .about-principles {
-    padding: 100px 0 120px;
+    padding: 80px 0 180px;
   }
   .about-principles .container {
     max-width: 90%;
@@ -2106,9 +2155,32 @@
   .about-principles__grid {
     margin-top: 56px;
   }
+  .about-principle-card {
+    padding: 26px 20px;
+  }
+  .about-principle-card__desc {
+    margin: 20px 0 0;
+    font-size: 14px;
+  }
+  .about-principles::before {
+    width: 100%;
+    bottom: 0;
+  }
+
+  .about-page .eyebrow-pill {
+    font-size: 13px;
+  }
 
   .about-ai {
-    padding-top: 90px;
+    padding-top: 60px;
+  }
+  .about-ai .about-title,
+  .about-ai .about-desc {
+    max-width: 100%;
+  }
+  .about-desc {
+    font-size: 14px;
+    margin: 20px 0 0;
   }
 
   .about-risk {
@@ -2152,11 +2224,21 @@
     height: 56px;
   }
   .about-work-card__desc {
-    margin: 30px 0 0;
-    font-size: 16px;
-    line-height: 1.5;
+    margin: 16px 0 0;
+    font-size: 14px;
     max-width: 100%;
-    letter-spacing: 0.3px;
+    letter-spacing: 0;
+  }
+
+  .about-work::before {
+    width: 100%;
+    top: 70px;
+  }
+
+  .about-risk__note {
+    margin: 35px auto 0;
+    max-width: 80%;
+    font-size: 14px;
   }
 }
 
@@ -2165,8 +2247,11 @@
     padding: 120px 0 56px;
   }
   .about-hero__title {
-    font-size: 26px;
-    margin: 24px 0 20px;
+    font-size: 32px;
+    margin: 24px 0 24px;
+  }
+  .about-hero::before {
+    bottom: -60px;
   }
   .about-hero__desc {
     font-size: 15px;
@@ -2224,7 +2309,7 @@
   }
 
   .about-process {
-    padding-top: 48px;
+    padding-top: 80px;
   }
   .about-process__list {
     gap: 18px;
@@ -2236,18 +2321,24 @@
   }
   .about-tech__badge,
   .about-layers .about-tech__badge {
-    width: 96px;
-    height: 96px;
+    width: 90px;
+    height: 90px;
   }
   .about-tech .about-title {
     margin: 20px 0 28px;
+    font-size: 28px;
   }
   .about-tech-card {
     padding: 24px 22px 26px;
   }
   .about-tech-card--primary {
-    padding: 24px 24px 28px;
-    font-size: 20px;
+    padding: 24px 16px 24px;
+    font-size: 17px;
+  }
+
+  .about-page .section-title--principles,
+  .about-page .section-title--risk {
+    width: 70%;
   }
 
   .about-layers {
@@ -2255,7 +2346,9 @@
   }
 
   .about-principles {
-    padding: 64px 0 72px;
+    padding: 64px 0 140px;
+  }
+  .about-principles::before {
   }
   .about-principles__grid {
     gap: 16px;
@@ -2272,6 +2365,13 @@
     padding: 14px 18px;
     gap: 14px;
   }
+  .about-ai__point-text {
+    font-size: 14px;
+  }
+
+  p.about-desc {
+    margin: 16px 0 0;
+  }
 
   .about-risk {
     padding-top: 64px;
@@ -2283,6 +2383,11 @@
   .about-risk-card {
     padding: 22px 20px 26px;
   }
+  .about-risk__note {
+    margin: 35px auto 0;
+    max-width: 80%;
+    font-size: 14px;
+  }
 
   .about-work {
     padding: 72px 0 0;
@@ -2290,12 +2395,19 @@
   .about-work__glow {
     display: none;
   }
+  .about-work::before {
+    width: 100%;
+    top: 50px;
+  }
   .about-work__grid {
     gap: 16px;
     margin-top: 32px;
   }
   .about-work-card__desc {
+    margin: 16px 0 0;
+    font-size: 14px;
     max-width: 100%;
+    letter-spacing: 0;
   }
 }
 

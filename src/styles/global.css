@@ -224,6 +224,11 @@ h1, h2, h3, h4, p {
   width: 820px;
 }
 
+/* Scoped to .home-page so the sitewide h2.section-title width on other pages is untouched. */
+.home-page h2.section-title {
+  width: 100%;
+}
+
 .section-title--layers,
 .section-title--work {
   width: auto;
@@ -3545,10 +3550,32 @@ a.navbar__cta--mobile {
     padding: 12px 16px;
   }
 
+  .navbar__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 149;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .navbar__backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .navbar__nav {
     position: fixed;
-    inset: 0;
-    display: none;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 320px;
+    max-width: 85vw;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -3556,10 +3583,15 @@ a.navbar__cta--mobile {
     padding: 100px 24px 60px;
     overflow-y: auto;
     z-index: 150;
+    transform: translateX(100%);
+    pointer-events: none;
+    transition: transform 0.35s ease;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
   }
 
   .navbar__nav.is-open {
-    display: flex;
+    transform: translateX(0);
+    pointer-events: auto;
   }
 
   .navbar__links {
@@ -3758,7 +3790,7 @@ a.navbar__cta--mobile {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    margin-top: 60px;
+    margin-top: 40px;
   }
 
   .category-card {
@@ -3808,11 +3840,13 @@ a.navbar__cta--mobile {
   }
 
   .solutions__title {
-    font-size: 30px;
+    font-size: 36px;
+    width: 60%;
+    margin: 20px auto 0;
   }
 
   .solutions__desc {
-    max-width: 100%;
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
     font-size: 17px;
@@ -3900,7 +3934,7 @@ a.navbar__cta--mobile {
   /* ---------- Steps ---------- */
 
   .steps {
-    padding-top: 120px;
+    padding-top: 90px;
   }
 
   .steps__grid {
@@ -4345,10 +4379,96 @@ a.navbar__cta--mobile {
   }
   .solutions--reverse .solutions__row--reverse {
     flex-direction: column-reverse !important;
-    gap: 90px !important;
+    gap: 60px !important;
   }
 
+  /* Scoped to .home-page — these classes are shared with other pages,
+     so unscoped edits here would leak site-wide. */
+  .home-page .industries__glow-wrap {
+    width: 100%;
+    height: 400px;
+    top: 58px;
+  }
 
+  .home-page .industries__rows {
+    margin: 20px 0;
+    gap: 30px;
+  }
+
+  .home-page .section-title {
+    font-size: 25px;
+  }
+
+  .home-page .steps__grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px 20px;
+    margin-top: 50px;
+  }
+
+  .home-page .pricing__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+  }
+
+  .home-page .faq__intro-desc {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+
+  .home-page .eyebrow-pill {
+    font-size: 12px;
+  }
+
+  .home-page .why-us {
+    padding-top: 50px;
+  }
+
+  .home-page .btn {
+    font-size: 16px;
+  }
+
+  .home-page .portfolio {
+    padding-top: 90px;
+  }
+
+  .home-page .pricing {
+    padding-top: 100px;
+  }
+
+  .home-page .faq {
+    padding-top: 80px;
+  }
+
+  .home-page .testimonials {
+    padding-top: 80px;
+  }
+
+  .home-page .section-head.reveal.reveal--up.is-visible .section-title {
+    font-size: 34px;
+    width: 60%;
+  }
+
+  .home-page .cta__title {
+    font-size: 44px;
+  }
+
+  .home-page .cta__desc {
+    font-size: 15px;
+    width: 80%;
+    margin: 20px auto 0;
+  }
+
+  .home-page .section-subtitle {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    width: 80%;
+  }
 }
 
 /* / 600 to 767 --Nexus 7-- / */
@@ -4390,8 +4510,8 @@ a.navbar__cta--mobile {
   }
 
   .stats-card {
-        margin-top: 90px;
-        padding: 21px 15px;
+        margin-top: 20px;
+        padding: 30px 20px;
   }
 
   .stats-card__grid {
@@ -4453,6 +4573,24 @@ a.navbar__cta--mobile {
     height: 280px;
     top: 65%;
     transform: translate(-50%, -50%);
+  }
+
+  .home-page .industries__glow-wrap {
+    width: 100%;
+    height: 450px;
+    top: 248px;
+  }
+
+  .solutions__desc {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .steps {
+    padding-top: 80px;
   }
 
   /* ---------- Why Us ---------- */
@@ -4535,6 +4673,58 @@ a.navbar__cta--mobile {
     gap: 30px;
   }
 
+  .home-page .section-head.reveal.reveal--up.is-visible .section-title {
+    font-size: 34px;
+    width: 70%;
+  }
+
+  .home-page .section-subtitle {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    width: 80%;
+  }
+
+  .solutions__title {
+    font-size: 36px;
+    width: 70%;
+    margin: 20px auto 0;
+  }
+
+  .home-page .btn {
+    font-size: 14px;
+  }
+
+  .home-page .btn-icon {
+    width: 16px;
+    height: 17px;
+  }
+
+  .home-page .faq__title {
+    font-size: 34px;
+  }
+
+  .home-page .cta__title {
+    font-size: 40px;
+  }
+
+  .home-page .footer-brand__contact-value {
+    font-size: 18px;
+  }
+
+  .home-page .footer-links ul {
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .home-page .footer-links a {
+    font-size: 15px;
+  }
+
+  .home-page .faq {
+    padding-top: 50px;
+  }
+
 }
 
 /* Mobile and Tab Media Queries */
@@ -4605,7 +4795,7 @@ a.navbar__cta--mobile {
   }
 
   .hero__title {
-    font-size:19px;
+    font-size: 30px;
   }
   .hero__desc {
     font-size: 14px;
@@ -4654,7 +4844,8 @@ a.navbar__cta--mobile {
   /* ---------- Solutions ---------- */
 
   .solutions__title {
-    font-size: 24px;
+    font-size: 32px;
+    width: 80%;
   }
 
   .dashboard-mock {
@@ -4728,6 +4919,7 @@ a.navbar__cta--mobile {
 
   .portfolio-item__mock-image {
     max-width: 100%;
+    height: auto;
   }
 
   /* ---------- FAQ ---------- */
@@ -4818,7 +5010,7 @@ a.navbar__cta--mobile {
     padding: 45px 18px 30px;
   }
   .industries {
-      padding: 80px 0 30px;
+      padding: 110px 0 30px;
   }
   .industries__glow-wrap {
     left: 50%;
@@ -4990,6 +5182,237 @@ a.navbar__cta--mobile {
   }
   .footer-links a {
     font-size: 14px;
+  }
+
+  .home-page .section-head.reveal.reveal--up.is-visible .section-title {
+    font-size: 32px;
+    width: 82%;
+  }
+
+  .home-page .section-subtitle {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    width: 80%;
+  }
+
+  .solutions--reverse {
+    padding-top: 80px;
+  }
+
+  .home-page .industries__glow-wrap {
+    width: 100%;
+    height: 100%;
+    top: 275px;
+  }
+
+  .home-page .section-head.reveal.reveal--up.is-visible {
+    gap: 12px;
+  }
+
+  .industries__cta {
+    margin-top: 20px;
+  }
+
+  .home-page .pricing__grid {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+
+  .home-page .pricing {
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+
+  .home-page .faq__title {
+    font-size: 32px;
+    width: 80%;
+    margin: 20px auto 0;
+  }
+
+  .home-page .faq__intro-desc {
+    width: 70%;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 10px;
+    margin: 10px auto 0;
+  }
+
+  .home-page .faq-item__answer {
+    font-size: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .home-page .cta__title {
+    font-size: 36px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .home-page .cta__desc {
+    font-size: 14px;
+    width: 100%;
+    margin: 20px auto 0;
+  }
+
+  .home-page .cta {
+    padding: 100px 0 40px;
+  }
+
+  .why-card__desc {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+}
+
+/* / 320 to 481 --small phones-- / */
+@media(max-width:481px){
+
+  .home-page .section-head.reveal.reveal--up.is-visible .section-title {
+    font-size: 32px;
+    width: 90%;
+  }
+
+  .solutions__title {
+    font-size: 32px;
+    width: 90%;
+  }
+
+  .home-page .steps__grid {
+    gap: 20px 20px;
+  }
+
+  .industries__glow--soft {
+    transform: scale(1.5);
+  }
+
+  .portfolio__row {
+    margin-top: 40px;
+  }
+
+  .pricing__note {
+    margin-top: 30px;
+  }
+
+}
+
+/* / 320 to 430 --small phones-- / */
+@media(max-width:430px){
+
+  .home-page .section-head.reveal.reveal--up.is-visible .section-title {
+    font-size: 32px;
+    width: 90%;
+  }
+
+  .solutions__title {
+    font-size: 33px;
+    width: 90%;
+  }
+
+  .industries__glow--soft {
+    transform: scale(1.4);
+  }
+
+  .portfolio__row {
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 30px;
+  }
+
+}
+
+/* / 320 to 390 --small phones-- / */
+@media(max-width:390px){
+
+  .industries__glow--soft {
+    transform: scale(1.5);
+  }
+
+}
+
+/* / 320 --smallest phones-- / */
+@media(max-width:320px){
+
+  .hero__title {
+    font-size: 26px;
+  }
+
+  .hero__desc {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  .home-page .section-head.reveal.reveal--up.is-visible .section-title {
+    font-size: 26px;
+    width: 100%;
+  }
+
+  .home-page .section-subtitle {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0;
+    width: 100%;
+  }
+
+  .solutions__title {
+    font-size: 26px;
+    width: 100%;
+  }
+
+  .industries__glow--soft {
+    transform: scale(1.6);
+  }
+
+  .why-card__desc {
+    font-size: 13px;
+  }
+
+  .pricing__note {
+    font-size: 13px;
+  }
+
+  .home-page .faq__title {
+    font-size: 26px;
+    width: 100%;
+  }
+
+  .home-page .faq__intro-desc {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .home-page .faq-item__question {
+    font-size: 14px;
+  }
+
+  .home-page .cta__title {
+    font-size: 26px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .home-page .cta__desc {
+    font-size: 13px;
+  }
+
+  .home-page .footer-brand__contact-label {
+    font-size: 12px;
+  }
+
+  .home-page .footer-brand__contact-value {
+    font-size: 13px;
+  }
+
+  .home-page .footer-links ul {
+    gap: 10px;
+  }
+
+  .home-page .plan-card__title {
+    font-size: 16px;
   }
 
 }
