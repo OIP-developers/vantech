@@ -933,3 +933,62 @@
     background: #229def;
   }
 }
+
+@media (max-width: 481px) {
+  .work-hero {
+    padding: 130px 0 70px;
+  }
+
+  .work-hero__title {
+    font-size: 22px;
+  }
+
+  .work-hero__desc {
+    font-size: 14px;
+  }
+
+  .work-hero__actions {
+    flex-wrap: wrap;
+  }
+
+  .work-portfolio__grid {
+    gap: 24px;
+  }
+
+  .work-card {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .work-hero {
+    padding: 120px 0 60px;
+  }
+
+  .work-hero__title {
+    font-size: 20px;
+  }
+
+  .work-hero__badge {
+    font-size: 12px;
+    padding: 7px 14px;
+  }
+
+  .work-hero__actions .btn {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .work-card {
+    padding: 16px;
+  }
+
+  .work-card__title {
+    font-size: 16px;
+  }
+
+  .work-card__links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

@@ -2604,3 +2604,33 @@
   }
 }
 
+
+@media (max-width: 320px) {
+  .ai-automation-hero__title {
+    font-size: 30px;
+  }
+
+  .ai-automation-hero__desc {
+    font-size: 14px;
+  }
+
+  .ai-automation-friction__title {
+    font-size: 26px;
+  }
+
+  .ai-automation-solution__title {
+    font-size: 26px;
+  }
+
+  .ai-automation-h2 {
+    font-size: 28px;
+  }
+
+  .ai-automation-h1-lg {
+    font-size: 26px;
+  }
+
+  .ai-automation-why-card {
+    padding: 18px 12px;
+  }
+}

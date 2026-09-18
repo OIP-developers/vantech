@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/Home/HomePage';
@@ -28,10 +29,29 @@ import WorkLelofitPage from './pages/WorkLelofit/WorkLelofitPage';
 import WorkAllAccessTripPage from './pages/WorkAllAccessTrip/WorkAllAccessTripPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicy/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfService/TermsOfServicePage';
+import LegalPage from './pages/Legal/LegalPage';
+import CookiePolicyPage from './pages/CookiePolicy/CookiePolicyPage';
+import AccessibilityPage from './pages/Accessibility/AccessibilityPage';
+import AIUsagePage from './pages/AIUsage/AIUsagePage';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const previous = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = previous;
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -61,6 +81,10 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+        <Route path="/legal" element={<LegalPage />} />
+        <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+        <Route path="/accessibility" element={<AccessibilityPage />} />
+        <Route path="/ai-usage" element={<AIUsagePage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

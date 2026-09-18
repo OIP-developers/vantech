@@ -14,9 +14,13 @@
 }
 
 /* Scoped to the OneTap Digital Card page only (via pageClassName) — does not
-   affect .wvt-stats on any other case study page sharing this template. */
-.wvt-page--onetap section#wvt-hero .wvt-stats {
-  width: 1230px;
+   affect .wvt-stats on any other case study page sharing this template.
+   Desktop-only: below 981px this falls back to the shared responsive
+   .wvt-stats width instead of a fixed px value that would overflow. */
+@media (min-width: 981px) {
+  .wvt-page--onetap section#wvt-hero .wvt-stats {
+    width: 1230px;
+  }
 }
 
 /* Scoped to the OneTap Digital Card page only — forces the 8 capability
@@ -29,9 +33,13 @@
 }
 
 /* Scoped to the PMB Consulting page only — does not affect .wvt-stats on
-   any other case study page sharing this template. */
-.wvt-page--pmb .wvt-stats {
-  width: 1230px;
+   any other case study page sharing this template. Desktop-only: below
+   981px this falls back to the shared responsive .wvt-stats width instead
+   of a fixed px value that would overflow. */
+@media (min-width: 981px) {
+  .wvt-page--pmb .wvt-stats {
+    width: 1230px;
+  }
 }
 
 /* Scoped to the PMB Consulting page only — keeps every capability card the
@@ -66,9 +74,12 @@
 }
 
 /* Scoped to the Solid Rock Leadership Development page only — does not
-   affect the hero title width on any other case study page. */
-.wvt-page--solid-rock h1.wvt-hero__title {
-  width: 715px;
+   affect the hero title width on any other case study page. Desktop-only:
+   a fixed px width would overflow narrower screens. */
+@media (min-width: 981px) {
+  .wvt-page--solid-rock h1.wvt-hero__title {
+    width: 715px;
+  }
 }
 
 /* Scoped to the Solid Rock Leadership Development page only — does not
@@ -447,7 +458,8 @@ body .backimage-boy {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  width: 920px;
+  width: 100%;
+  max-width: 920px;
   margin: 0 auto;
   padding-top: 90px;
 }
@@ -2485,6 +2497,13 @@ body .backimage-boy {
 }
 
 @media (max-width: 980px) {
+  /* OneTap's fixed 5-column capabilities grid is a desktop-only layout —
+     revert to the shared responsive flex-wrap below 981px so cards don't
+     overflow the narrower column. */
+  .wvt-page--onetap .wvt-capabilities__grid {
+    display: flex;
+  }
+
   .wvt-hero {
     padding-top: 110px;
   }
@@ -2977,5 +2996,92 @@ body .backimage-boy {
 
   .wvt-closing__sparkle {
     width: 60%;
+  }
+}
+@media (max-width: 481px) {
+  .wvt-hero__title {
+    font-size: 24px;
+  }
+
+  .wvt-hero__title--one-line-mobile {
+    font-size: 19px;
+  }
+
+  .wvt-hero__desc {
+    font-size: 13px;
+  }
+
+  .wvt-stat__label {
+    font-size: 17px;
+  }
+
+  .wvt-eyebrow-number {
+    font-size: 17px;
+  }
+
+  .wvt-capability-card {
+    padding: 13px 10px;
+  }
+
+  .wvt-flow__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .wvt-diagram__badge {
+    width: 180px;
+    height: 180px;
+  }
+
+  .wvt-related__title {
+    font-size: 26px;
+  }
+
+  .wvt-closing__title {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 320px) {
+  .wvt-hero__title {
+    font-size: 21px;
+  }
+
+  .wvt-hero__title--one-line-mobile {
+    font-size: 17px;
+  }
+
+  .wvt-hero__actions {
+    flex-wrap: wrap;
+  }
+
+  .wvt-hero__actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .wvt-stats {
+    gap: 12px;
+  }
+
+  .wvt-stat__label {
+    font-size: 15px;
+  }
+
+  .wvt-diagram__badge {
+    width: 150px;
+    height: 150px;
+  }
+
+  .wvt-diagram__badge-label {
+    font-size: 17px;
+  }
+
+  .wvt-related__title {
+    font-size: 22px;
+  }
+
+  .wvt-closing__orb {
+    width: 140px;
+    height: 140px;
+    margin: 40px -40px -50px auto;
   }
 }

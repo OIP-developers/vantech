@@ -158,6 +158,10 @@
   .contact-hero__booking-frame {
     height: 500px;
   }
+
+  .contact-page .faq {
+    padding: 30px 0 0;
+  }
 }
 
 /* Scoped override — only the shared FAQ component as it appears on this

@@ -26,7 +26,12 @@ const servicesLinksB = [
   { label: 'Custom Software', href: '/custom-development' },
   { label: 'Ecommerce', href: '/ecommerce-development' },
 ];
-const legalLinks = ['Legal center', 'Cookies', 'Accessibility', 'AI usage'];
+const legalLinks = [
+  { label: 'Legal center', href: '/legal' },
+  { label: 'Cookies', href: '/cookie-policy' },
+  { label: 'Accessibility', href: '/accessibility' },
+  { label: 'AI usage', href: '/ai-usage' },
+];
 
 export default function Footer() {
   const location = useLocation();
@@ -111,8 +116,8 @@ export default function Footer() {
               <h4 className="footer-links__title gradient-text">Legal</h4>
               <ul>
                 {legalLinks.map((l) => (
-                  <li key={l}>
-                    <a href="#home">{l}</a>
+                  <li key={l.label}>
+                    <a href={l.href}>{l.label}</a>
                   </li>
                 ))}
               </ul>

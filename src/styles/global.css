@@ -221,7 +221,9 @@ h1, h2, h3, h4, p {
   line-height: 1.2;
   color: var(--color-white);
   text-align: center;
-  width: 820px;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
 }
 
 /* Scoped to .home-page so the sitewide h2.section-title width on other pages is untouched. */

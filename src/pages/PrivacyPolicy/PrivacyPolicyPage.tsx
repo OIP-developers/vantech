@@ -1,5 +1,6 @@
 import '../../styles/legal.css';
 import { useReveal } from '../../hooks/useReveal';
+import LegalSidebar from '../../components/LegalSidebar';
 
 export default function PrivacyPolicyPage() {
   const hero = useReveal('up');
@@ -11,120 +12,118 @@ export default function PrivacyPolicyPage() {
         <div className={`container legal-hero__content ${hero.className}`} ref={hero.ref}>
           <span className="eyebrow-pill">Legal</span>
           <h1 className="legal-hero__title">Privacy Policy</h1>
-          <p className="legal-hero__updated">Last updated: September 17, 2026</p>
+          <p className="legal-hero__updated">Last updated: 18 August 2026</p>
         </div>
       </section>
 
       <section className="legal-content section">
-        <div className={`container legal-content__wrap ${content.className}`} ref={content.ref}>
+        <div className="container">
+          <div className={`legal-layout ${content.className}`} ref={content.ref}>
+            <LegalSidebar />
+            <div className="legal-content__wrap">
+          <h2>1. Who We Are</h2>
           <p>
-            Van Tech Systems (&ldquo;Van Tech Systems&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or
-            &ldquo;our&rdquo;) builds AI systems, SaaS platforms, web and mobile applications, and
-            custom business software for our clients. This Privacy Policy explains what
-            information we collect when you visit vantechsystems.tech (the &ldquo;Site&rdquo;),
-            how we use it, and the choices you have.
+            Van Tech Systems designs and builds AI, software and automation systems. This policy
+            covers personal data processed through our website, our project discovery form, our
+            AI assistant and the commercial relationship that may follow. For data we process on
+            behalf of a client while delivering a project, the client is the data controller and
+            we act as a processor under the terms of the applicable agreement.
           </p>
 
-          <h2>1. Information We Collect</h2>
-          <p>We collect information in the following ways:</p>
+          <h2>2. Data We Collect</h2>
           <ul>
-            <li>
-              <strong>Information you provide directly.</strong> When you submit a contact form,
-              book a free AI session, or otherwise reach out to us, we collect details such as
-              your name, email address, phone number, company name, and any project or message
-              details you choose to share.
-            </li>
-            <li>
-              <strong>Booking and scheduling data.</strong> Our booking widget is provided by a
-              third-party scheduling platform. When you book a session through it, that
-              information is processed by us and by the scheduling provider in order to confirm
-              and manage your appointment.
-            </li>
-            <li>
-              <strong>Usage information.</strong> Like most websites, our hosting and
-              infrastructure providers may automatically log basic technical information, such as
-              your browser type, device type, and pages visited, to keep the Site secure and
-              functioning correctly.
-            </li>
-            <li>
-              <strong>Cookies and similar technologies.</strong> We may use cookies or similar
-              local storage to remember your preferences (for example, your selected language)
-              and to keep the Site working properly. You can control cookies through your browser
-              settings.
-            </li>
+            <li>Contact details you provide: name, email address, phone number, company name and role.</li>
+            <li>Project information: descriptions, requirements, budget and timeline indications, and any files you choose to attach.</li>
+            <li>Conversation data: messages exchanged with our AI assistant, and appointment details when you book a call.</li>
+            <li>Technical data: IP-derived request metadata, browser type, referring source and pages viewed, used to keep the service secure and to understand which content is useful.</li>
+            <li>Client engagement data: information required to deliver contracted work, including systems access details shared under agreement.</li>
           </ul>
 
-          <h2>2. How We Use Your Information</h2>
-          <p>We use the information we collect to:</p>
+          <h2>3. Why We Process It</h2>
           <ul>
-            <li>Respond to your inquiries and schedule consultations or discovery calls;</li>
-            <li>Provide, maintain, and improve the Site and the services we offer;</li>
-            <li>Send you information you have requested, such as project proposals or follow-ups;</li>
-            <li>Understand how the Site is used so we can improve its content and performance; and</li>
-            <li>Comply with our legal obligations and protect against fraud or misuse.</li>
+            <li><strong>Responding to enquiries and preparing proposals</strong> — steps taken at your request prior to a contract.</li>
+            <li><strong>Delivering and supporting contracted work</strong> — performance of a contract.</li>
+            <li><strong>Securing our systems and preventing abuse</strong> — legitimate interest.</li>
+            <li><strong>Improving our content and services</strong> — legitimate interest.</li>
+            <li><strong>Sending operational and, where opted in, occasional updates</strong> — consent or legitimate interest.</li>
           </ul>
-          <p>We do not sell your personal information.</p>
 
-          <h2>3. How We Share Information</h2>
+          <h2>4. Automated Assessment of Enquiries</h2>
           <p>
-            We do not share your personal information with third parties except with service
-            providers who help us operate the Site and run our business — such as our scheduling
-            and booking platform, hosting provider, and email tools — and only to the extent
-            necessary for them to provide those services to us. We may also disclose information
-            if required to do so by law, or to protect the rights, property, or safety of Van
-            Tech Systems, our clients, or others.
+            Project enquiries may be summarised and prioritised by an automated system so our
+            team can respond faster and more accurately. The output is used internally only and
+            is always reviewed by a person before any decision affecting you is taken. No enquiry
+            is rejected solely by automated means, and you can ask for a human review of anything
+            we send you.
           </p>
 
-          <h2>4. Data Retention</h2>
+          <h2>5. AI Assistant Conversations</h2>
           <p>
-            We keep the information we collect for as long as it is needed for the purposes
-            described in this Policy, such as maintaining an ongoing client relationship or
-            responding to your inquiry, unless a longer retention period is required or permitted
-            by law.
+            Conversations with our website assistant are stored so we can maintain context,
+            review quality, and improve answers. Do not share passwords, payment details or
+            sensitive personal data in the chat. You may request deletion of a conversation at
+            any time by contacting us with the approximate date and email address used.
           </p>
 
-          <h2>5. Your Rights and Choices</h2>
+          <h2>6. Sharing and Processors</h2>
           <p>
-            Depending on where you are located, you may have the right to request access to,
-            correction of, or deletion of the personal information we hold about you, or to
-            object to certain uses of it. To make a request, contact us using the details below
-            and we will respond within a reasonable timeframe.
+            We do not sell personal data. We share it only with service providers who help us
+            operate: cloud hosting and database infrastructure, transactional email delivery, and
+            AI model providers used to power assistant and assessment features. Each provider is
+            bound by contract to process data only on our instructions and to apply appropriate
+            security measures.
           </p>
 
-          <h2>6. Children&rsquo;s Privacy</h2>
+          <h2>7. International Transfers</h2>
           <p>
-            The Site is intended for businesses and professionals and is not directed at children
-            under 16. We do not knowingly collect personal information from children.
+            Our infrastructure and providers may process data outside your country of residence.
+            Where that happens, transfers rely on recognised safeguards such as standard
+            contractual clauses or an adequacy decision.
           </p>
 
-          <h2>7. Security</h2>
+          <h2>8. Retention</h2>
+          <ul>
+            <li>Enquiry records: retained while a commercial relationship is being considered, then for a limited period for record-keeping, unless you ask for deletion.</li>
+            <li>Client project data: retained for the duration of the engagement and any agreed support period, then deleted or returned according to the agreement.</li>
+            <li>Assistant conversations: retained for quality and improvement purposes and deleted on request.</li>
+            <li>Email delivery logs: retained for a limited period to diagnose delivery problems.</li>
+          </ul>
+
+          <h2>9. Security</h2>
           <p>
-            We take reasonable technical and organizational measures to protect the information
-            we hold. However, no method of transmission or storage over the internet is
-            completely secure, and we cannot guarantee absolute security.
+            We apply least-privilege access, row-level authorization on stored records, encrypted
+            transport, encrypted secret storage and logging of administrative actions. Access to
+            client environments is restricted to the engineers assigned to that engagement and
+            revoked at the end of it. No system is absolutely secure. If a breach affects your
+            data, we will notify you and, where required, the relevant authority without undue
+            delay.
           </p>
 
-          <h2>8. International Visitors</h2>
+          <h2>10. Your Rights</h2>
+          <ul>
+            <li>Access a copy of the personal data we hold about you.</li>
+            <li>Correct data that is inaccurate or incomplete.</li>
+            <li>Request deletion of data we no longer need to keep.</li>
+            <li>Object to or restrict certain processing based on legitimate interest.</li>
+            <li>Withdraw consent at any time where processing relies on consent.</li>
+            <li>Request a portable copy of data you provided to us.</li>
+          </ul>
+
+          <h2>11. Children</h2>
           <p>
-            We work with clients around the world. If you access the Site from outside the
-            country in which our servers or service providers are located, your information may
-            be transferred to, stored, and processed in a different country.
+            Our services are directed at businesses. We do not knowingly collect personal data
+            from children. If you believe a child has provided us with data, contact us and we
+            will delete it.
           </p>
 
-          <h2>9. Changes to This Policy</h2>
+          <h2>12. Changes and Contact</h2>
           <p>
-            We may update this Privacy Policy from time to time to reflect changes in our
-            practices or for legal, operational, or regulatory reasons. We will update the
-            &ldquo;Last updated&rdquo; date above when we do.
+            We update this policy when our processing changes. The date at the top of the page
+            reflects the current version. To exercise a right or ask a question, contact us at{' '}
+            <a href="mailto:hello@vantechsystems.tech">hello@vantechsystems.tech</a>.
           </p>
-
-          <h2>10. Contact Us</h2>
-          <p>
-            If you have any questions about this Privacy Policy or how we handle your
-            information, contact us at{' '}
-            <a href="mailto:hello@vantechsystems.tech">hello@vantechsystems.tech</a> or{' '}
-            <a href="tel:+19034763762">+1 (903) 476-3762</a>.
-          </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
