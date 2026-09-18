@@ -85,6 +85,56 @@
   color: var(--color-orange);
 }
 
+@media (min-width: 981px) {
+  .legal-center {
+    padding: 0 0 5.2083vw;
+  }
+
+  .legal-center__grid {
+    max-width: 51.0417vw;
+    gap: 1.0417vw;
+  }
+
+  .legal-center__card {
+    padding: 1.4583vw;
+    border-radius: 0.7813vw;
+    border: 0.0521vw solid rgba(255, 255, 255, 0.15);
+  }
+
+  .legal-center__card:hover {
+    transform: translateY(-0.2083vw);
+  }
+
+  .legal-center__card-title {
+    font-size: 1.0417vw;
+    margin: 0 0 0.5208vw;
+  }
+
+  .legal-center__card-desc {
+    font-size: 0.7813vw;
+  }
+
+  .legal-center__card-footer {
+    margin-top: 1.0417vw;
+    padding-top: 0.8333vw;
+    border-top: 0.0521vw solid var(--color-border-soft-3);
+  }
+
+  .legal-center__card-updated {
+    font-size: 0.625vw;
+  }
+
+  .legal-center__card-arrow {
+    font-size: 0.9375vw;
+  }
+
+  .legal-center__contact {
+    max-width: 51.0417vw;
+    margin: 2.0833vw auto 0;
+    font-size: 0.7813vw;
+  }
+}
+
 @media (max-width: 767px) {
   .legal-center__grid {
     grid-template-columns: 1fr;
